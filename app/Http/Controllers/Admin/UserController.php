@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
+use App\Http\Requests\UserupdateRequest;
 use Hash;
 use App\Model\Admin\User;
 
@@ -18,38 +19,28 @@ class UserController extends Controller
     public function index(Request $request)
     {
         //
-        // dd($_GET);
-
-        // dd($request->num, $request->username);
-
-        // dd($request->all());
-        //一个条件的搜索
-        // $res = User::where('username','like','%'.$request->username.'%')->paginate($request->input('num',10));
-
         //多个条件的搜索
-        $res = User::orderBy('id','asc')
+        $res = User::orderBy("id","asc")
             ->where(function($query) use($request){
                 //检测关键字
-                $username = $request->input('username');
-                $email = $request->input('email');
+                $username = $request->input("username");
+                $email = $request->input("email");
                 //如果用户名不为空
                 if(!empty($username)) {
-                    $query->where('username','like','%'.$username.'%');
+                    $query->where("username","like","%".$username."%");
                 }
                 //如果邮箱不为空
                 if(!empty($email)) {
-                    $query->where('email','like','%'.$email.'%');
+                    $query->where("email","like","%".$email."%");
                 }
             })
-        ->paginate($request->input('num', 10));
+        ->paginate($request->input("num", 10));
 
-            // dd($res);
 
-        return view('admin.user.index',[
-            'title'=>'用户的列表页面',
-            'res'=>$res,
-            'request'=>$request
-
+        return view("admin/user/index", [
+            "title" => "用户列表页面",
+            "res" => $res,
+            "request" => $request
         ]);
     }
 
@@ -61,7 +52,9 @@ class UserController extends Controller
     public function create()
     {
         //
-        return view('admin.user.add',['title'=>'添加管理员']);
+        return view("admin/user/add", [
+            "title" => "用户添加"
+        ]);
     }
 
     /**
@@ -72,64 +65,51 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
-        //表单验证
-     /*   $this->validate($request, [
-            'username' => 'required|regex:/^\w{6,16}$/',
-            'password' => 'required|regex:/^\S{6,12}$/',
-            'repass'=>'same:password',
-            'phone'=>'regex:/^1[3456789]\d{9}$/',
-            'email'=>'email',
-            'profile'=>'required'
-        ],[
-            'username.required' => '用户名不能为空',
-            'username.regex'=>'用户名格式不正确',
-            'password.required'  => '密码不能为空',
-            'password.regex'  => '密码格式不正确',
-            'repass.same'=>'两次密码不一致',
-            'phone.regex'=>'手机号码格式不正确',
-            'email.email'=>'邮箱格式不正确',
-            'profile.required'=>'请上传图片'
-        ]);*/
-        $res = $request->except('_token','profile','repass');
+        // 获取表单提交结果
+        $res = $request -> except("_token", "pic", "repass");
 
-        if($request->hasFile('profile')){
+        // dd($res);
+
+        // 头像
+        if($request->hasFile("pic")){
             //自定义名字
             $name = rand(111,999).time();
 
             //获取后缀
-            $suffix = $request->file('profile')->getClientOriginalExtension();
+            $suffix = $request->file("pic")->getClientOriginalExtension();
 
-            $request->file('profile')->move('./uploads',$name.'.'.$suffix);
+            $request->file("pic")->move("./uploads",$name.".".$suffix);
 
-            $res['profile'] = '/uploads/'.$name.'.'.$suffix;
+            $res["pic"] = "/uploads/".$name.".".$suffix;
 
         }
 
         //网数据表里面添加数据  hash加密
-        $res['password'] = Hash::make($request->password);
-
-        //加密 解密
-        // $res['password'] = encrypt($request->password);
-
-
-        // dd()
-
-        //存数据
+        $res["password"] = Hash::make($request->password);
         
+        //加密 解密
+        // $res["password"] = encrypt($request->password);
 
+        // dump($res);exit;
+
+        // 存数据
         try{
-
             $data = User::create($res);
-            
             if($data){
-                return redirect('/admin/user')->with('success','添加成功');
+                return redirect("/admin/user")->with("success", "添加成功");
             }
-
         }catch(\Exception $e){
-
-            return back()->with('error','添加失败');
+            return back()->with("error","添加失败");
         }
+        /*$data = User::create($res);
+
+        if ($data) {
+            echo "添加成功";
+        } else {
+            echo "添加失败";
+        }*/
     }
+    
 
     /**
      * Display the specified resource.
@@ -154,9 +134,9 @@ class UserController extends Controller
         // 根据id获取数据
         $res = User::find($id);
 
-        return view('admin.user.edit',[
-            'title'=>'用户的修改页面',
-            'res'=>$res
+        return view("admin.user.edit",[
+            "title"=>"用户的修改页面",
+            "res"=>$res
         ]);
     }
 
@@ -167,43 +147,73 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserupdateRequest $request, $id)
     {
-        //表单验证
+        //
+        $res = $request->except("_token","pic","_method");
 
-        //unlink
+        // dd($res);
 
-        $res = $request->except('_token','profile','_method');
+        // if($request->hasFile("pic")){
+        //     //自定义名字
+        //     $name = rand(111,999).time();
 
-        if($request->hasFile('profile')){
+        //     //获取后缀
+        //     $suffix = $request->file("pic")->getClientOriginalExtension();
+
+        //     $request->file("pic")->move("./uploads",$name.".".$suffix);
+
+        //     $res["pic"] = "/uploads/".$name.".".$suffix;
+
+        // }
+
+        // //数据表修改数据
+        // try{
+
+        //     $data = User::where("id", $id)->update($res);
+            
+        //     if($data){
+        //         return redirect("/admin/user")->with("success","修改成功");
+        //     }
+
+        // }catch(\Exception $e){
+
+        //     return back()->with("error","修改失败");
+        // }$res = $request->except("_token","pic","_method");
+
+        if($request->hasFile("pic")){
             //自定义名字
             $name = rand(111,999).time();
 
             //获取后缀
-            $suffix = $request->file('profile')->getClientOriginalExtension();
+            $suffix = $request->file("pic")->getClientOriginalExtension();
 
-            $request->file('profile')->move('./uploads',$name.'.'.$suffix);
+            $request->file("pic")->move("./uploads",$name.".".$suffix);
 
-            $res['profile'] = '/uploads/'.$name.'.'.$suffix;
+            $res["pic"] = "/uploads/".$name.".".$suffix;
 
         }
 
-        //数据表修改数据
+        // 数据表修改数据
         try{
 
-            $data = User::where('id', $id)->update($res);
+            $data = User::where("id", $id)->update($res);
             
             if($data){
-                return redirect('/admin/user')->with('success','修改成功');
+                return redirect("/admin/user")->with("success","修改成功");
             }
 
         }catch(\Exception $e){
 
-            return back()->with('error','修改失败');
+            return back()->with("error","修改失败");
         }
 
-
-
+        // $data = User::where("id", $id)->update($res);
+        // if ($data) {
+        //     echo "修改成功";
+        // } else {
+        //     echo "修改失败";
+        // }
     }
 
     /**
@@ -215,7 +225,6 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
-
         //删除图片  头像
         //unlink
 
@@ -224,33 +233,41 @@ class UserController extends Controller
             $res = User::destroy($id);
             
             if($res){
-                return redirect('/admin/user')->with('success','删除成功');
+                return redirect("/admin/user")->with("success","删除成功");
             }
 
         }catch(\Exception $e){
 
-            return back()->with('error','删除失败');
+            return back()->with("error","删除失败");
         }
-
-
     }
 
-    public function ajaxupdate(Request $request)
+        public function ajaxupdate(Request $request)
     {
         //判断空 
 
         //判断用户名是否一样
 
-        //判断位数 6~12
+        //判断位数 6~16
+
+        // dd($request);
+        // $this->validate($request, [
+        //     "username" => "required|regex:/^\w{6,16}$/",
+        //     "username"=>"different:username"
+        // ],[
+        //     "username.required" => "用户名不能为空",
+        //     "username.regex"=>"用户名格式不正确",
+        //     "username.different"=>"修改的用户名一致"
+        // ]);
 
         $res = [];
 
         $id = $request->ids;
 
-        $res['username'] = $request->uv;
+        $res["username"] = $request->uv;
 
         //修改数据
-        $data = User::where('id',$id)->update($res);
+        $data = User::where("id",$id)->update($res);
 
         if($data){
 
@@ -259,7 +276,5 @@ class UserController extends Controller
 
             echo 0;
         }
-
-
     }
 }

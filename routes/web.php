@@ -16,6 +16,9 @@ Route::get('/', function () {
 });
 
 //后台的登录
+Route::any("admin/login", "Admin\LoginController@login");
+Route::any("admin/dologin", "Admin\LoginController@dologin");
+Route::any("admin/captcha", "Admin\LoginController@captcha");
 
 
 //后台
@@ -27,6 +30,17 @@ Route::group([], function(){
 	//后台的用户管理
 	Route::resource('admin/user',"Admin\UserController");
 	Route::get('/admin/usajax','Admin\UserController@ajaxupdate');
+
+
+	//友情链接
+	Route::resource('admin/link', 'Admin\LinkController');
+
+	//商品的分类管理
+	route::resource('admin/cate','Admin\CateController');
+
+	// 后台的轮播图管理
+	Route::resource('admin/lunbo','Admin\LunboController');
+	Route::any('/admin/upload','Admin\LunboController@upload');
 
 	//友情链接
 	Route::resource('admin/link', 'Admin\LinkController');

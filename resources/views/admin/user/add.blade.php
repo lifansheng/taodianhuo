@@ -1,95 +1,90 @@
-@extends('layout.admins')
+@extends("layout.admins")
 
-@section('title',$title)
+@section("title", $title);
 
-@section('content')
-	<div class="mws-panel grid_8">
-    	<div class="mws-panel-header">
-        	<span>{{$title}}</span>
-        </div>
-        <div class="mws-panel-body no-padding">
-
-			@if (count($errors) > 0)
-			<div class="mws-form-message error">
-            	显示错误信息
+@section("content")
+<div class="mws-panel grid_8">
+    <div class="mws-panel-header">
+        <span>{{$title}}</span>
+    </div>
+    <div class="mws-panel-body no-padding">
+            @if (count($errors) > 0)
+            <div class="mws-form-message error">
+                显示错误信息
                 <ul>
-                	@foreach ($errors->all() as $error)
-                	<li style='font-size:14px'>{{$error}}</li>
-                	@endforeach
+                    @foreach ($errors->all() as $error)
+                    <li style='font-size:14px'>{{$error}}</li>
+                    @endforeach
                 </ul>
             </div>
             @endif
-
-        	<form action="/admin/user" method="post" class="mws-form" enctype='multipart/form-data'>
-        		<div class="mws-form-inline">
-        			<div class="mws-form-row">
-        				<label class="mws-form-label">用户名</label>
-        				<div class="mws-form-item">
-        					<input type="text" class="small" name='username'>
-        				</div>
-        			</div>
-
-        			<div class="mws-form-row">
-        				<label class="mws-form-label">密码</label>
-        				<div class="mws-form-item">
-        					<input type="password" class="small" name='password'>
-        				</div>
-        			</div>
-
-        			<div class="mws-form-row">
-        				<label class="mws-form-label">确认密码</label>
-        				<div class="mws-form-item">
-        					<input type="password" class="small" name='repass'>
-        				</div>
-        			</div>
-
-        			<div class="mws-form-row">
-        				<label class="mws-form-label">手机号</label>
-        				<div class="mws-form-item">
-        					<input type="text" class="small" name='phone'>
-        				</div>
-        			</div>
-
-        			<div class="mws-form-row">
-        				<label class="mws-form-label">邮箱</label>
-        				<div class="mws-form-item">
-        					<input type="text" class="small" name='email'>
-        				</div>
-        			</div>
-					
-					<div class="mws-form-row">
-                    	<label class="mws-form-label">头像</label>
-                    	<div class="mws-form-item">
-                        	<div style="position: relative;" class="fileinput-holder">
-                        		<input type="file" name='profile' style="position: absolute; top: 0px; right: 0px; margin: 0px; cursor: pointer; font-size: 999px; opacity: 0; z-index: 999;">
-                        	</div>
-                        </div>
+        <form class="mws-form" action="/admin/user" method="post" enctype="multipart/form-data">
+            {{csrf_field()}}
+            <div class="mws-form-inline">
+                <div class="mws-form-row">
+                    <label class="mws-form-label">用户名</label>
+                    <div class="mws-form-item">
+                        <input class="small" type="text" name="username">
                     </div>
-
-        			
-        			<div class="mws-form-row">
-        				<label class="mws-form-label">状态</label>
-        				<div class="mws-form-item clearfix">
-        					<ul class="mws-form-list inline">
-        						<li><label><input type="radio" name='status' value="1" checked>开启</label></li>
-        						<li><label><input type="radio" name='status' value="0">禁用</label></li>
-        					</ul>
-        				</div>
-        			</div>
-        		</div>
-        		<div class="mws-button-row">
-					{{csrf_field()}}
-
-        			<input type="submit" class="btn btn-primary" value="添加">
-        			
-        		</div>
-        	</form>
-        </div>    	
-    </div>
+                </div>
+                <div class="mws-form-row">
+                    <label class="mws-form-label">密码</label>
+                    <div class="mws-form-item">
+                        <input class="small" type="password" name="password">
+                    </div>
+                </div>
+                <div class="mws-form-row">
+                    <label class="mws-form-label">确认密码</label>
+                    <div class="mws-form-item">
+                        <input class="small" type="password" name="repass">
+                    </div>
+                </div>
+                <div class="mws-form-row">
+                    <label class="mws-form-label">年龄</label>
+                    <div class="mws-form-item">
+                        <input class="small" type="text" name="age">
+                    </div>
+                </div>
+                <div class="mws-form-row">
+                    <label class="mws-form-label">手机号码</label>
+                    <div class="mws-form-item">
+                        <input class="small" type="text" name="tel">
+                    </div>
+                </div>
+                <div class="mws-form-row">
+                    <label class="mws-form-label">邮箱</label>
+                    <div class="mws-form-item">
+                        <input class="small" type="text" name="email">
+                    </div>
+                </div>
+                <div class="mws-form-row">
+                        <label class="mws-form-label">头像</label>
+                        <div class="mws-form-item">
+                            <div class="fileinput-holder" style="position: relative;">
+                                <input name="pic" type="file" style="position: absolute; top: 0px; right: 0px; margin: 0px; cursor: pointer; font-size: 999px; opacity: 0; z-index: 999;" type="file">
+                            </div>
+                        </div>
+                </div>
+                <div class="mws-form-row">
+                    <label class="mws-form-label">性别</label>
+                    <div class="mws-form-item clearfix">
+                        <ul class="mws-form-list inline">
+                            <li><label><input type="radio" name="sex" value="m" checked> 男</label></li>
+                            <li><label><input type="radio" name="sex" value="w"> 女</label></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="mws-button-row">
+                <input value="添加" class="btn btn-info" type="submit">
+            </div>
+        </form>
+    </div>      
+</div>
 @stop
 
 @section('js')
 <script>
-	$('.mws-form-message').delay(2000).fadeOut(2000);
+    $('.mws-form-message').delay(2000).fadeOut(2000);
 </script>
 @stop
