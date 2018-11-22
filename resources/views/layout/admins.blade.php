@@ -116,6 +116,14 @@
                             <li><a href="/admin/user">浏览用户</a></li>
                         </ul>
                     </li>
+
+                    <li>
+                        <a href="#"><i class="icon-pictures"></i>轮播图管理</a>
+                        <ul class='closed'>
+                            <li><a href="/admin/lunbo/create">轮播图添加</a></li>
+                            <li><a href="/admin/lunbo">轮播图列表</a></li>
+                        </ul>
+                    </li>
                    
                    
                 </ul>
@@ -158,7 +166,7 @@
     </div>
 
     <!-- JavaScript Plugins -->
-    <script src="/admins/js/libs/jquery-1.8.3.min.js"></script>
+    <script src="/admins/js/libs/jquery-3.3.1.min.js"></script>
     <script src="/admins/js/libs/jquery.mousewheel.min.js"></script>
     <script src="/admins/js/libs/jquery.placeholder.min.js"></script>
     <script src="/admins/custom-plugins/fileinput.js"></script>

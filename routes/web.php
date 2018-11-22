@@ -29,6 +29,10 @@ Route::group([], function(){
 	Route::get('/admin/usajax','Admin\UserController@ajaxupdate');
 
 
+	// 后台的轮播图管理
+	Route::resource('admin/lunbo','Admin\LunboController');
+	Route::any('/admin/upload','Admin\LunboController@upload');
+
 });
 
 //前台
