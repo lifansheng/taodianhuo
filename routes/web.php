@@ -28,7 +28,11 @@ Route::group([], function(){
 	Route::resource('admin/user',"Admin\UserController");
 	Route::get('/admin/usajax','Admin\UserController@ajaxupdate');
 
+	//友情链接
+	Route::resource('admin/link', 'Admin\LinkController');
 
+	//ajax
+	Route::get('admin/lkajax','Admin\LinkController@ajaxupdate');
 });
 
 //前台
