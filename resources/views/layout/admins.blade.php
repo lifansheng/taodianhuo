@@ -116,6 +116,13 @@
                             <li><a href="/admin/user">浏览用户</a></li>
                         </ul>
                     </li>
+                    <li>
+                        <a href="#"><i class="icon-list"></i>商品分类管理</a>
+                        <ul class='closed'>
+                            <li><a href="/admin/cate/create">分类添加</a></li>
+                            <li><a href="/admin/cate">浏览分类</a></li>
+                        </ul>
+                    </li>
                    
                    
                 </ul>
