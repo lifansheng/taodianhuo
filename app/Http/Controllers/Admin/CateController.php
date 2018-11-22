@@ -202,7 +202,7 @@ class CateController extends Controller
       /*  $cate = Cate::all();
         // dd($cate);
         foreach($cate as $k => $v){
-            dd ($v['pid']);
+            dd 
         }
         exit;
         $pid = */
