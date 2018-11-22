@@ -34,10 +34,13 @@ Route::group([], function(){
 	//商品的分类管理
 	route::resource('admin/cate','Admin\CateController');
 
-
 	// 后台的轮播图管理
 	Route::resource('admin/lunbo','Admin\LunboController');
 	Route::any('/admin/upload','Admin\LunboController@upload');
+
+	//友情链接
+	Route::resource('admin/link', 'Admin\LinkController');
+
 
 });
 

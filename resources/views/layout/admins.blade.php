@@ -117,6 +117,7 @@
                         </ul>
                     </li>
 
+<<<<<<< HEAD
 
                     <li>
                         <a href="#"><i class="icon-pictures"></i>轮播图管理</a>
@@ -130,6 +131,13 @@
                             <li><a href="/admin/cate/create">分类添加</a></li>
                             <li><a href="/admin/cate">浏览分类</a></li>
 
+=======
+                    <li>
+                        <a href="#"><i class="icon-users"></i>友情链接管理</a>
+                        <ul class='closed'>
+                            <li><a href="/admin/link/create">添加链接</a></li>
+                            <li><a href="/admin/link">查看链接</a></li>
+>>>>>>> origin/ding
                         </ul>
                     </li>
                    
