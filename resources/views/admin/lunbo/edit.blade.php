@@ -80,6 +80,7 @@
 
 @section('js')
 <script type="text/javascript">
+    $('.mws-form-message').delay(2000).fadeOut(2000);
     $(function () {
         $("#file_upload").change(function () {
 

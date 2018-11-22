@@ -123,7 +123,7 @@
                         <ul class='closed'>
                             <li><a href="/admin/lunbo/create">轮播图添加</a></li>
                             <li><a href="/admin/lunbo">轮播图列表</a></li>
-
+                        </ul>
                     <li>
                         <a href="#"><i class="icon-list"></i>商品分类管理</a>
                         <ul class='closed'>

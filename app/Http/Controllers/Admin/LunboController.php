@@ -17,11 +17,25 @@ class LunboController extends Controller
      */
     public function index(Request $request)
     {
-        //获取网站配置信息
-        $data = Lunbo::get();
+
+        $data = Lunbo::orderBy("id","asc")
+            ->where(function($query) use($request){
+                //检测关键字
+                $title = $request->input("title");
+                //如果用户名不为空
+                if(!empty($title)) {
+                    $query->where("title","like","%".$title."%");
+                }
+            })
+        ->paginate($request->input("num", 3));
+        // dd($data);
 
         // 加载模板
-        return view('admin.lunbo.index',['title'=>'轮播图列表','data'=>$data]);
+        return view('admin.lunbo.index',[
+        	'title'=>'轮播图列表',
+        	'data'=>$data,
+        	'request'=>$request
+        ]);
     }
 
     /**
