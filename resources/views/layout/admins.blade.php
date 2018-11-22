@@ -117,27 +117,22 @@
                         </ul>
                     </li>
 
-
-                     <li>
-                        <a href="#"><i class="icon-github-2"></i>友情链接管理</a>
+                    <li>
+                        <a href="#"><i class="icon-list"></i>商品分类管理</a>
                         <ul class='closed'>
-                            <li><a href="/admin/link/create">链接添加</a></li>
-                            <li><a href="/admin/link">查看链接</a></li>
-
+                            <li><a href="/admin/cate/create">分类添加</a></li>
+                            <li><a href="/admin/cate">浏览分类</a></li>
                         </ul>
+                    </li>
+
                     <li>
                         <a href="#"><i class="icon-pictures"></i>轮播图管理</a>
                         <ul class='closed'>
                             <li><a href="/admin/lunbo/create">轮播图添加</a></li>
                             <li><a href="/admin/lunbo">轮播图列表</a></li>
                         </ul>
-                    <li>
-                        <a href="#"><i class="icon-list"></i>商品分类管理</a>
-                        <ul class='closed'>
-                            <li><a href="/admin/cate/create">分类添加</a></li>
-                            <li><a href="/admin/cate">浏览分类</a></li>
+                    </li>
 
-                        </ul>
                     <li>
                         <a href="#"><i class="icon-users"></i>友情链接管理</a>
                         <ul class='closed'>
