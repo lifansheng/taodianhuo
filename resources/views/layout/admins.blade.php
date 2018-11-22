@@ -116,6 +116,14 @@
                             <li><a href="/admin/user">浏览用户</a></li>
                         </ul>
                     </li>
+
+                    <li>
+                        <a href="#"><i class="icon-users"></i>友情链接管理</a>
+                        <ul class='closed'>
+                            <li><a href="/admin/link/create">添加链接</a></li>
+                            <li><a href="/admin/link">查看链接</a></li>
+                        </ul>
+                    </li>
                    
                    
                 </ul>
