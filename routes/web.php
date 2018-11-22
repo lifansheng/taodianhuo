@@ -16,6 +16,9 @@ Route::get('/', function () {
 });
 
 //后台的登录
+Route::any("admin/login", "Admin\LoginController@login");
+Route::any("admin/dologin", "Admin\LoginController@dologin");
+Route::any("admin/captcha", "Admin\LoginController@captcha");
 
 
 //后台
