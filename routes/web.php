@@ -28,6 +28,9 @@ Route::group([], function(){
 	Route::resource('admin/user',"Admin\UserController");
 	Route::get('/admin/usajax','Admin\UserController@ajaxupdate');
 
+	//商品的分类管理
+	route::resource('admin/cate','Admin\CateController');
+
 
 	// 后台的轮播图管理
 	Route::resource('admin/lunbo','Admin\LunboController');
