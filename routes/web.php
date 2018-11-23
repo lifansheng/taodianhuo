@@ -20,10 +20,21 @@ Route::any("admin/login", "Admin\LoginController@login");
 Route::any("admin/dologin", "Admin\LoginController@dologin");
 Route::any("admin/captcha", "Admin\LoginController@captcha");
 
+//后台的修改已登录管理员的头像
+Route::any("admin/pic", "Admin\LoginController@pic");
+Route::any("admin/upload", "Admin\LoginController@upload");
+
+//改密码
+Route::any("admin/changepass", "Admin\LoginController@changepass");
+Route::any("admin/changenewpass", "Admin\LoginController@changenewpass");
+
+//退出登录
+Route::any("admin/logout", "Admin\LoginController@logout");
+
 
 //后台
-Route::group([], function(){
-
+Route::group(["middleware" => "login"], function(){
+ 
 	//后台的首页
 	Route::get('/admin', 'Admin\IndexController@index');
 

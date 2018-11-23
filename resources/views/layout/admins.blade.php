@@ -59,21 +59,23 @@
             
             <!-- User Information and functions section -->
             <div id="mws-user-info" class="mws-inset">
-            
+                @php 
+                    $user = DB::table("user") -> where("id", session("uid")) -> first();
+                @endphp
             	<!-- User Photo -->
             	<div id="mws-user-photo">
-                	<img src="/admins/example/profile.jpg" alt="User Photo">
+                	<img src="{{$user->pic}}" alt="User Photo">
                 </div>
                 
                 <!-- Username and Functions -->
                 <div id="mws-user-functions">
                     <div id="mws-username">
-                        Hello, jack&rose
+                        Hello, {{$user->username}}
                     </div>
                     <ul>
-                    	<li><a href="#">修改头像</a></li>
-                        <li><a href="#">修改密码</a></li>
-                        <li><a href="index.html">退出</a></li>
+                    	<li><a href="/admin/pic">修改头像</a></li>
+                        <li><a href="/admin/changepass">修改密码</a></li>
+                        <li><a href="/admin/logout">退出</a></li>
                     </ul>
                 </div>
             </div>
@@ -158,7 +160,7 @@
     </div>
 
     <!-- JavaScript Plugins -->
-    <script src="/admins/js/libs/jquery-1.8.3.min.js"></script>
+    <script src="/admins/js/libs/jquery-3.3.1.min.js"></script>
     <script src="/admins/js/libs/jquery.mousewheel.min.js"></script>
     <script src="/admins/js/libs/jquery.placeholder.min.js"></script>
     <script src="/admins/custom-plugins/fileinput.js"></script>
@@ -191,10 +193,13 @@
 
     <!-- Demo Scripts (remove if not needed) -->
     <script src="/admins/js/demo/demo.dashboard.js"></script>
+    <script>
+        $('.mws-form-message').delay(2000).fadeOut(2000);
+    </script>
 
     @section('js')
 
-
+    
     @show
 
 </body>
