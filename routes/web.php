@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home.welcome');
-});
+// Route::get('/', function () {
+//     return view('home.welcome');
+// });
 
 //后台的登录
 Route::any("admin/login", "Admin\LoginController@login");
@@ -50,3 +50,6 @@ Route::group([], function(){
 });
 
 //前台
+		Route::get('/',function(){
+			return view('home.index');
+		});
