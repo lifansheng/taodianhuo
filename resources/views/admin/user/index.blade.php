@@ -55,7 +55,7 @@
                             ID
                         </th>
                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
-                        rowspan="1" colspan="1" style="width: 100px;" aria-label="Browser: activate to sort column ascending">
+                        rowspan="1" colspan="1" style="width: 20px;" aria-label="Browser: activate to sort column ascending">
                             用户名
                         </th>
                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
@@ -75,8 +75,12 @@
                             邮箱
                         </th>
                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
-                        rowspan="1" colspan="1" style="width: 97px;" aria-label="CSS grade: activate to sort column ascending">
+                        rowspan="1" colspan="1" style="width: 57px;" aria-label="CSS grade: activate to sort column ascending">
                             头像
+                        </th>
+                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
+                        rowspan="1" colspan="1" style="width: 40px;" aria-label="CSS grade: activate to sort column ascending">
+                            状态
                         </th>
                          <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
                         rowspan="1" colspan="1" style="width: 97px;" aria-label="CSS grade: activate to sort column ascending">
@@ -118,6 +122,13 @@
                         </td>
                         <td class=" ">
                             <img src="{{$v->pic}}" alt="" width='80px'>
+                        </td>
+                        <td class=" ">
+                            @if($v->auth == '1')
+                            开启
+                            @else
+                            关闭
+                            @endif
                         </td>
                         
                         <td class=" ">
