@@ -70,6 +70,15 @@
                             </ul>
                         </div>
                     </div>
+                    <div class="mws-form-row">
+                        <label class="mws-form-label">状态</label>
+                        <div class="mws-form-item clearfix">
+                            <ul class="mws-form-list inline">
+                                <li><label><input type="radio" name='auth' value="1" @if($res->auth== '1') checked @endif>开启</label></li>
+                                <li><label><input type="radio" name='auth' value="0" @if($res->auth== '0') checked @endif>关闭</label></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
                 <div class="mws-button-row">
                     {{csrf_field()}}
