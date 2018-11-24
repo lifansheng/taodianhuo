@@ -33,6 +33,8 @@ Route::group([], function(){
 
 	//商品的分类管理
 	route::resource('admin/cate','Admin\CateController');
+	//商品的管理
+	route::resource('admin/goods','Admin\GoodsController');
 
 
 	// 后台的轮播图管理

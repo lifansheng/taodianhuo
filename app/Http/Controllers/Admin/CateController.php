@@ -207,11 +207,31 @@ class CateController extends Controller
         exit;
         $pid = */
         //查询pid
-        $pid = DB::select('select pid from cate');
+        // $pid = DB::select('select pid from cate');
+        // $flights = Cate::all();
+        // foreach ($flights as $flight) {
+        //     $b = "$flight->pid";
+        //     // dd($id);
+        //     $arr = str_split($b);
+        //     dump($arr);
+        //     var_dump($id);
+        //     var_dump(in_array($id,$arr));
+        
+        // }
+        // exit;
+        // foreach($pid as  $v){
+        //     dd($v->pid);
 
-        dd($pid);
+        //     // dd(in_array($id,$pid));
+        // }
+        // dd($pid);
 
+        // dump($pid);
+        // dd(in_array($id,$pid));
 
+        // if(in_array($id,$pid)){
+
+        // }
          try{
             $res = Cate::destroy($id);
             if($res){
