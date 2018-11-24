@@ -71,7 +71,7 @@
                         </th>
                     </tr>
                 </thead>
-                <tbody role="alert" aria-live="polite" aria-relevant="all" style=" text-align:center; ">
+                <tbody role="alert" aria-live="polite" aria-relevant="all">
 					@foreach($res as $k => $v)
 
 					@if($k % 2 == 0)
@@ -82,19 +82,19 @@
 
                   	<!-- <tr class='@if($k % 2 == 0) odd @else even @endif'> -->
                         <center> 
-                        <td class="">
+                        <td class=""  style=" text-align:center; ">
                             {{$v->id}}
                         </td>
-                        <td class="uname">
+                        <td class="uname" >
                             {{$v->title}}
                         </td>
-                        <td class=" ">
+                        <td class=" "  style=" text-align:center; ">
                             {{lists($v->pid)}}
                         </td>
-                        <td class=" ">
+                        <td class=" "  style=" text-align:center; ">
                             {{$v->path}}
                         </td>
-                        <td class=" ">
+                        <td class=" "  style=" text-align:center; ">
                             <a href="/admin/cate/{{$v->id}}/edit" class='btn btn-info'>修改</a>
 
                             <form action="/admin/cate/{{$v->id}}" method='post' style='display:inline'>

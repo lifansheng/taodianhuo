@@ -133,6 +133,7 @@
                             <li><a href="/admin/lunbo/create">轮播图添加</a></li>
                             <li><a href="/admin/lunbo">轮播图列表</a></li>
                         </ul>
+
                     </li>
 
                     <li>
@@ -140,6 +141,15 @@
                         <ul class='closed'>
                             <li><a href="/admin/link/create">添加链接</a></li>
                             <li><a href="/admin/link">查看链接</a></li>
+
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#"><i class="icon-lollipop"></i>商品管理</a>
+                        <ul class='closed'>
+                            <li><a href="/admin/goods/create">商品添加</a></li>
+                            <li><a href="/admin/goods">浏览商品</a></li>
 
                         </ul>
                     </li>
