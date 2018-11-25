@@ -10,14 +10,14 @@
         <div class="mws-panel-body no-padding">
 
             @if (count($errors) > 0)
-            <div class="mws-form-message error">
-                显示错误信息
-                <ul>
-                    @foreach ($errors->all() as $error)
-                    <li style='font-size:14px'>{{$error}}</li>
-                    @endforeach
-                </ul>
-            </div>
+                <div class="mws-form-message error">
+                    显示错误信息
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li style='font-size:14px'>{{$error}}</li>
+                        @endforeach
+                    </ul>
+                </div>
             @endif
 
             <form action="/admin/cate/{{$res->id}}" method="post" class="mws-form">
@@ -39,9 +39,9 @@
                                     @foreach($rs as $v)
 
                                      @if($res->pid == $v->id)
-                                    <option value='{{$v->id}}' selected>{{$v->title}}</option>
+                                        <option value='{{$v->id}}' selected>{{$v->title}}</option>
                                     @else
-                                    <option value='{{$v->id}}'>{{$v->title}}</option> 
+                                        <option value='{{$v->id}}'>{{$v->title}}</option> 
                                     @endif                                       
                                     @endforeach
                                
