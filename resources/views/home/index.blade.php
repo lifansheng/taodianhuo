@@ -199,6 +199,13 @@
 																				<span class="icon-bar"></span>
 																			</button>
 																		 
+
+
+
+
+
+
+																		 				<!-- 列表页 -->
 																			<div id="ResMenuvertical_menu" class="collapse menu-responsive-wrapper">
 																				<ul id="menu-vertical-menu" class="etrostore_resmenu">
 																					<li class="menu-computers-laptops">
@@ -365,267 +372,19 @@
 																		</div>
 													  
 																		<ul id="menu-vertical-menu-1" class="nav vertical-megamenu etrostore-mega etrostore-menures">
-																			<li class="menu-computers-laptops etrostore-menu-custom level1">
-																				<a href="simple_product.html" class="item-link">
-																					<span class="have-title">
-																						<span class="menu-color" data-color="#7ac143"></span>
-																						
-																						<span class="menu-title">Computers & Laptops</span>
-																					</span>
-																				</a>
-																			</li>
 																			
-																			<li class="fix-menu dropdown menu-smartphones-tablet etrostore-mega-menu level1">
-																				<a href="simple_product.html" class="item-link dropdown-toggle">
-																					<span class="have-title">
-																						<span class="menu-color" data-color="#efc73a"></span>
-																						
-																						<span class="menu-title">Smartphones & Tablet</span>
-																					</span>
-																				</a>
-																				
-																				<ul class="dropdown-menu nav-level1 column-3">
-																					<li class="dropdown-submenu column-3 menu-electronics">
-																						<a href="#">
-																							<span class="have-title">
-																								<span class="menu-title">Electronics</span>
-																							</span>
-																						</a>
-																						
-																						<ul class="dropdown-sub nav-level2">
-																							<li class="menu-laptop-desktop-accessories">
-																								<a href="#">
-																									<span class="have-title">
-																										<span class="menu-title">Laptop & Desktop Accessories</span>
-																									</span>
-																								</a>
-																							</li>
-																							
-																							<li class="menu-storage-external-drives">
-																								<a href="#">
-																									<span class="have-title">
-																										<span class="menu-title">Storage & External Drives</span>
-																									</span>
-																								</a>
-																							</li>
-																							
-																							<li class="menu-networking-wireless">
-																								<a href="#">
-																									<span class="have-title">
-																										<span class="menu-title">Networking & Wireless</span>
-																									</span>
-																								</a>
-																							</li>
-																							
-																							<li class="menu-motherboards-cpus-psus">
-																								<a href="#">
-																									<span class="have-title">
-																										<span class="menu-title">Motherboards, CPUs & PSUs</span>
-																									</span>
-																								</a>
-																							</li>
-																							
-																							<li class="menu-webcams">
-																								<a href="#">
-																									<span class="have-title">
-																										<span class="menu-title">Webcams</span>
-																									</span>
-																								</a>
-																							</li>
-																						</ul>
-																					</li>
-																					
-																					<li class="dropdown-submenu column-3 menu-smartphone">
-																						<a href="#">
-																							<span class="have-title">
-																								<span class="menu-title">Smartphone</span>
-																							</span>
-																						</a>
-																						
-																						<ul class="dropdown-sub nav-level2">
-																							<li class="menu-mobile-phones">
-																								<a href="#">
-																									<span class="have-title">
-																										<span class="menu-title">Mobile Phones</span>
-																									</span>
-																								</a>
-																							</li>
-																							
-																							<li class="menu-smart-watches-accessories">
-																								<a href="#">
-																									<span class="have-title">
-																										<span class="menu-title">Smart Watches & Accessories</span>
-																									</span>
-																								</a>
-																							</li>
-																							
-																							<li class="menu-mobile-accessories">
-																								<a href="#">
-																									<span class="have-title">
-																										<span class="menu-title">Mobile Accessories</span>
-																									</span>
-																								</a>
-																							</li>
-																							
-																							<li class="menu-cases-covers">
-																								<a href="#">
-																									<span class="have-title">
-																										<span class="menu-title">Cases & Covers</span>
-																									</span>
-																								</a>
-																							</li>
-																							
-																							<li class="menu-power-banks">
-																								<a href="#">
-																									<span class="have-title">
-																										<span class="menu-title">Power Banks</span>
-																									</span>
-																								</a>
-																							</li>
-																						</ul>
-																					</li>
-																				   
-																					<li class="dropdown-submenu column-3 menu-tablets">
-																						<a href="#">
-																							<span class="have-title">
-																								<span class="menu-title">Tablets</span>
-																							</span>
-																						</a>
-																						
-																						<ul class="dropdown-sub nav-level2">
-																							<li class="menu-tablet-accessories">
-																								<a href="#">
-																									<span class="have-title">
-																										<span class="menu-title">Tablet Accessories</span>
-																									</span>
-																								</a>
-																							</li>
-																							
-																							<li class="menu-cases-covers">
-																								<a href="#">
-																									<span class="have-title">
-																										<span class="menu-title">Cases & Covers</span>
-																									</span>
-																								</a>
-																							</li>
-																							
-																							<li class="menu-power-banks">
-																								<a href="#">
-																									<span class="have-title">
-																										<span class="menu-title">Power Banks</span>
-																									</span>
-																								</a>
-																							</li>
-																							
-																							<li class="menu-memory-cards">
-																								<a href="#">
-																									<span class="have-title">
-																										<span class="menu-title">Memory Cards</span>
-																									</span>
-																								</a>
-																							</li>
-																						</ul>
-																					</li>
-																				   
-																					<li class="dropdown-submenu column-3 menu-computer">
-																						<a href="#">
-																							<span class="have-title">
-																								<span class="menu-title">Computer</span>
-																							</span>
-																						</a>
-																						
-																						<ul class="dropdown-sub nav-level2">
-																							<li class="menu-macbooks-imacs">
-																								<a href="#">
-																									<span class="have-title">
-																										<span class="menu-title">Macbooks & iMacs</span>
-																									</span>
-																								</a>
-																							</li>
-																							
-																							<li class="menu-computers-desktops">
-																								<a href="#">
-																									<span class="have-title">
-																										<span class="menu-title">Computers & Desktops</span>
-																									</span>
-																								</a>
-																							</li>
-																							
-																							<li class="menu-printers-scanners-faxs">
-																								<a href="#">
-																									<span class="have-title">
-																										<span class="menu-title">Printers, Scanners, & Faxs</span>
-																									</span>
-																								</a>
-																							</li>
-																							
-																							<li class="menu-laptop-desktop-accessories">
-																								<a href="#">
-																									<span class="have-title">
-																										<span class="menu-title">Laptop & Desktop Accessories</span>
-																									</span>
-																								</a>
-																							</li>
-																							
-																							<li class="menu-storage-external-drives">
-																								<a href="#">
-																									<span class="have-title">
-																										<span class="menu-title">Storage & External Drives</span>
-																									</span>
-																								</a>
-																							</li>
-																						</ul>
-																					</li>
-																					
-																					<li class="fix-position dropdown-submenu column-3 menu-image">
-																						<ul class="dropdown-sub nav-level2">
-																							<li class="menu-image-1 etrostore-menu-img">
-																								<a href="#">
-																									<span class="">
-																										<span class="menu-img">
-																											<img src="homes/images/1903/menu-bn7.jpg" alt="Menu Image" /></span>
-																									</span>
-																								</a>
-																							</li>
-																							
-																							<li class="menu-image-2 etrostore-menu-img">
-																								<a href="#">
-																									<span class="">
-																										<span class="menu-img">
-																											<img src="homes/images/1903/menu-bn8.jpg" alt="Menu Image" /></span>
-																									</span>
-																								</a>
-																							</li>
-																							
-																							<li class="menu-image-3 etrostore-menu-img">
-																								<a href="#">
-																									<span class="">
-																										<span class="menu-img">
-																											<img src="homes/images/1903/menu-bn9.jpg" alt="Menu Image" /></span>
-																									</span>
-																								</a>
-																							</li>
-																						</ul>
-																					</li>
-																				</ul>
-																			</li>
 																			
-																			<li class="menu-cameras-camcorders etrostore-menu-custom level1">
-																				<a href="simple_product.html" class="item-link">
-																					<span class="have-title">
-																						<span class="menu-color" data-color="#fe9901"></span>
-																						
-																						<span class="menu-title">Cameras & Camcorders</span>
-																					</span>
-																				</a>
-																			</li>
 																			
 																			<li class="dropdown menu-electronic-component etrostore-mega-menu level1">
+
+
+
+
 																				<a href="simple_product.html" class="item-link dropdown-toggle">
 																					<span class="have-title">
 																						<span class="menu-color" data-color="#f03442"></span>
 																						
-																						<span class="menu-title">Electronic Component</span>
+																						<span class="menu-title">一级目录4</span>
 																					</span>
 																				</a>
 																				
@@ -634,10 +393,10 @@
 																						<a href="#">
 																							<span class="have-title">
 																								<span class="menu-img">
-																									<img src="homes/images/1903/menu-bn7.jpg" alt="Menu Image" />
+																									<img src="/homes/images/1903/menu-bn7.jpg" alt="Menu Image" />
 																								</span>
 																								
-																								<span class="menu-title">Electronics</span>
+																								<span class="menu-title">二级目录</span>
 																							</span>
 																						</a>
 																						
@@ -645,254 +404,34 @@
 																							<li class="menu-leds">
 																								<a href="#">
 																									<span class="have-title">
-																										<span class="menu-title">Leds</span>
+																										<span class="menu-title">三级目录</span>
 																									</span>
 																								</a>
 																							</li>
+
+
 																							
-																							<li class="menu-laptop-desktop-accessories">
-																								<a href="#">
-																									<span class="have-title">
-																										<span class="menu-title">Laptop & Desktop Accessories</span>
-																									</span>
-																								</a>
-																							</li>
-																							
-																							<li class="menu-storage-external-drives">
-																								<a href="#">
-																									<span class="have-title">
-																										<span class="menu-title">Storage & External Drives</span>
-																									</span>
-																								</a>
-																							</li>
-																							
-																							<li class="menu-networking-wireless">
-																								<a href="#">
-																									<span class="have-title">
-																										<span class="menu-title">Networking & Wireless</span>
-																									</span>
-																								</a>
-																							</li>
-																							
-																							<li class="menu-motherboards-cpus-psus">
-																								<a href="#">
-																									<span class="have-title">
-																										<span class="menu-title">Motherboards, CPUs & PSUs</span>
-																									</span>
-																								</a>
-																							</li>
-																							
-																							<li class="menu-webcams">
-																								<a href="#">
-																									<span class="have-title">
-																										<span class="menu-title">Webcams</span>
-																									</span>
-																								</a>
-																							</li>
-																							
-																							<li class="menu-gaming-mice">
-																								<a href="#">
-																									<span class="have-title">
-																										<span class="menu-title">Gaming Mice</span>
-																									</span>
-																								</a>
-																							</li>
 																						</ul>
 																					</li>
 																					
-																					<li class="dropdown-submenu column-3 menu-smartphone etrostore-menu-img">
-																						<a href="#">
-																							<span class="have-title">
-																								<span class="menu-img">
-																									<img src="homes/images/1903/menu-bn8.jpg" alt="Menu Image" />
-																								</span>
-																								
-																								<span class="menu-title">Smartphone</span>
-																							</span>
-																						</a>
-																						
-																						<ul class="dropdown-sub nav-level2">
-																							<li class="menu-smartphones">
-																								<a href="#">
-																									<span class="have-title">
-																										<span class="menu-title">Smartphones</span>
-																									</span>
-																								</a>
-																							</li>
-																							
-																							<li class="menu-mobile-phones">
-																								<a href="#">
-																									<span class="have-title">
-																										<span class="menu-title">Mobile Phones</span>
-																									</span>
-																								</a>
-																							</li>
-																							
-																							<li class="menu-smart-watches-accessories">
-																								<a href="#">
-																									<span class="have-title">
-																										<span class="menu-title">Smart Watches & Accessories</span>
-																									</span>
-																								</a>
-																							</li>
-																							
-																							<li class="menu-mobile-accessories">
-																								<a href="#">
-																									<span class="have-title">
-																										<span class="menu-title">Mobile Accessories</span>
-																									</span>
-																								</a>
-																							</li>
-																							
-																							<li class="menu-cases-covers">
-																								<a href="#">
-																									<span class="have-title">
-																										<span class="menu-title">Cases & Covers</span>
-																									</span>
-																								</a>
-																							</li>
-																							
-																							<li class="menu-power-banks">
-																								<a href="#">
-																									<span class="have-title">
-																										<span class="menu-title">Power Banks</span>
-																									</span>
-																								</a>
-																							</li>
-																							
-																							<li class="menu-memory-cards">
-																								<a href="#">
-																									<span class="have-title">
-																										<span class="menu-title">Memory Cards</span>
-																									</span>
-																								</a>
-																							</li>
-																						</ul>
-																					</li>
+
+
+
+
+
+
+																				
+
+
+
+																				
 																					
-																					<li class="dropdown-submenu column-3 menu-tablet etrostore-menu-img">
-																						<a href="#">
-																							<span class="have-title">
-																								<span class="menu-img">
-																									<img src="homes/images/1903/menu-bn9.jpg" alt="Menu Image" />
-																								</span>
-																								
-																								<span class="menu-title">Tablet</span>
-																							</span>
-																						</a>
-																						
-																						<ul class="dropdown-sub nav-level2">
-																							<li class="menu-tablets">
-																								<a href="#">
-																									<span class="have-title">
-																										<span class="menu-title">Tablets</span>
-																									</span>
-																								</a>
-																							</li>
-																							
-																							<li class="menu-tablet-accessories">
-																								<a href="#">
-																									<span class="have-title">
-																										<span class="menu-title">Tablet Accessories</span>
-																									</span>
-																								</a>
-																							</li>
-																							
-																							<li class="menu-cases-covers">
-																								<a href="#">
-																									<span class="have-title">
-																										<span class="menu-title">Cases & Covers</span>
-																									</span>
-																								</a>
-																							</li>
-																							
-																							<li class="menu-power-banks">
-																								<a href="#">
-																									<span class="have-title">
-																										<span class="menu-title">Power Banks</span>
-																									</span>
-																								</a>
-																							</li>
-																							
-																							<li class="menu-memory-cards">
-																								<a href="#">
-																									<span class="have-title">
-																										<span class="menu-title">Memory Cards</span>
-																									</span>
-																								</a>
-																							</li>
-																							
-																							<li class="menu-headphonesheadsets">
-																								<a href="#">
-																									<span class="have-title">
-																										<span class="menu-title">Headphones/Headsets</span>
-																									</span>
-																								</a>
-																							</li>
-																						</ul>
-																					</li>
 																				</ul>
 																			</li>
+
 																			
-																			<li class="menu-home-appliances etrostore-menu-custom level1">
-																				<a href="simple_product.html" class="item-link">
-																					<span class="have-title">
-																						<span class="menu-color" data-color="#f034ca"></span>
-																						
-																						<span class="menu-title">Home Appliances</span>
-																					</span>
-																				</a>
-																			</li>
 																			
-																			<li class="menu-home-furniture etrostore-menu-custom level1">
-																				<a href="simple_product.html" class="item-link">
-																					<span class="have-title">
-																						<span class="menu-color" data-color="#7745bc"></span>
-																						
-																						<span class="menu-title">Home Furniture</span>
-																					</span>
-																				</a>
-																			</li>
 																			
-																			<li class="menu-household-goods etrostore-menu-custom level1">
-																				<a href="simple_product.html" class="item-link">
-																					<span class="have-title">
-																						<span class="menu-color" data-color="#42b8d1"></span>
-																						
-																						<span class="menu-title">Household Goods</span>
-																					</span>
-																				</a>
-																			</li>
-																			
-																			<li class="menu-television etrostore-menu-custom level1">
-																				<a href="simple_product.html" class="item-link">
-																					<span class="have-title">
-																						<span class="menu-color" data-color="#3f5eca"></span>
-																						
-																						<span class="menu-title">Television</span>
-																					</span>
-																				</a>
-																			</li>
-																			
-																			<li class="menu-accessories-for-tablet etrostore-menu-custom level1">
-																				<a href="simple_product.html" class="item-link">
-																					<span class="have-title">
-																						<span class="menu-color" data-color="#13528c"></span>
-																						
-																						<span class="menu-title">Accessories for Tablet</span>
-																					</span>
-																				</a>
-																			</li>
-																			
-																			<li class="menu-laptops-accessories etrostore-menu-custom level1">
-																				<a href="simple_product.html" class="item-link">
-																					<span class="have-title">
-																						<span class="menu-color" data-color="#2f2e2e"></span>
-																						
-																						<span class="menu-title">Laptops & Accessories</span>
-																					</span>
-																				</a>
-																			</li>
 																			
 																			<li class="menu-blender etrostore-menu-custom level1" style="display: none;">
 																				<a href="simple_product.html" class="item-link">

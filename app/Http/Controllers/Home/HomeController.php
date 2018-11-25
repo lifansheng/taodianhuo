@@ -1,0 +1,31 @@
+<?php
+
+namespace App\Http\Controllers\Home;
+
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+// use App\Model\Admin\Cate;
+
+class HomeController extends Controller
+{
+
+	 public static function Home($pid)
+    {
+
+        $cate = cate::where('pid',$pid)->get();
+        
+        $arr = [];
+
+        foreach($cate as $k=>$v){
+
+            if($v->pid==$pid){
+
+                $v->sub=self::getCategoryMessage($v->id);
+
+                $arr[]=$v;
+            }
+        }  
+        return $arr;
+    }
+
+}
