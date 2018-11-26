@@ -1,4 +1,4 @@
-<?php
+`<?php
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +20,7 @@ Route::any("admin/login", "Admin\LoginController@login");
 Route::any("admin/dologin", "Admin\LoginController@dologin");
 Route::any("admin/captcha", "Admin\LoginController@captcha");
 
+
 //后台的修改已登录管理员的头像
 Route::any("admin/pic", "Admin\LoginController@pic");
 Route::any("admin/upload", "Admin\LoginController@upload");
@@ -36,7 +37,7 @@ Route::any("admin/logout", "Admin\LoginController@logout");
 Route::group(["middleware" => "login"], function(){
  
 	//后台的首页
-	Route::get('/admin', 'Admin\IndexController@index');
+	Route::get('/admin', 'Admin\IndexController@indexs');
 
 	//后台的用户管理
 	Route::resource('admin/user',"Admin\UserController");
@@ -60,9 +61,17 @@ Route::group(["middleware" => "login"], function(){
 
 	//ajax
 	Route::get('admin/lkajax','Admin\LinkController@ajaxupdate');
+
+	//网站配置
+	// Route::get('admin/')
+
+	
 });
 
 //前台
 		Route::get('/',function(){
 			return view('home.index');
 		});
+
+		// 列表页
+	Route::get('home/details','Home\HomeController@details');

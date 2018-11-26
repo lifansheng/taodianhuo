@@ -370,25 +370,42 @@
 																				</ul>
 																			</div>
 																		</div>
+
+
+
+
+
+
+
+
+
+
+																			@php
+
+					use App\Http\Controllers\Home\HomeController;
+
+						$rs = HomeController::getCateMessage(0);
+
+						
+					
+
+					@endphp
 													  
 																		<ul id="menu-vertical-menu-1" class="nav vertical-megamenu etrostore-mega etrostore-menures">
 																			
-																			
+																			@foreach($rs as $v)
 																			
 																			<li class="dropdown menu-electronic-component etrostore-mega-menu level1">
-
-
-
-
 																				<a href="simple_product.html" class="item-link dropdown-toggle">
 																					<span class="have-title">
 																						<span class="menu-color" data-color="#f03442"></span>
 																						
-																						<span class="menu-title">一级目录4</span>
+																						<span class="menu-title">{{$v->title}}</span>
 																					</span>
 																				</a>
-																				
+																				@if($v->sub)
 																				<ul class="dropdown-menu nav-level1 column-3">
+																					@foreach($v->sub as $vv)
 																					<li class="dropdown-submenu column-3 menu-electronics etrostore-menu-img">
 																						<a href="#">
 																							<span class="have-title">
@@ -396,62 +413,42 @@
 																									<img src="/homes/images/1903/menu-bn7.jpg" alt="Menu Image" />
 																								</span>
 																								
-																								<span class="menu-title">二级目录</span>
+																								<span class="menu-title">{{$vv->title}}</span>
 																							</span>
 																						</a>
-																						
+																						@if($vv->sub)
 																						<ul class="dropdown-sub nav-level2">
+																							@foreach($vv->sub as $vvv)
 																							<li class="menu-leds">
-																								<a href="#">
+																								<a href="home/details">
 																									<span class="have-title">
-																										<span class="menu-title">三级目录</span>
+																										<span class="menu-title">{{$vvv->title}}</span>
 																									</span>
 																								</a>
 																							</li>
+																							@endforeach
 
 
 																							
 																						</ul>
+																						@endif
 																					</li>
-																					
 
+																					@endforeach
 
-
-
-
-
-																				
-
-
-
-																				
-																					
+		
 																				</ul>
+																				@endif
 																			</li>
 
 																			
 																			
 																			
 																			
-																			<li class="menu-blender etrostore-menu-custom level1" style="display: none;">
-																				<a href="simple_product.html" class="item-link">
-																					<span class="have-title">
-																						<span class="menu-color" data-color="#e93434"></span>
-																						
-																						<span class="menu-title">Blender</span>
-																					</span>
-																				</a>
-																			</li>
+															
 																			
-																			<li class="menu-vacuum-cleaner etrostore-menu-custom level1" style="display: none;">
-																				<a href="simple_product.html" class="item-link">
-																					<span class="have-title">
-																						<span class="menu-color" data-color="#f034ca"></span>
-																						
-																						<span class="menu-title">Vacuum Cleaner</span>
-																					</span>
-																				</a>
-																			</li>
+																		
+																			@endforeach
 																		</ul>
 																	</div>
 																</div>

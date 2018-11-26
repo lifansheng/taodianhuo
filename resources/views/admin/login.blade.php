@@ -29,7 +29,7 @@
 						<form action="/admin/dologin" name="f" method="post">
 							<div class="input_outer">
 								<span class="u_user"></span>
-								<input name="username" class="text" style="color: #FFFFFF !important" type="text" placeholder="请输入账户">
+						<input name="username" class="text" style="color: #FFFFFF !important; position:absolute; z-index:100;"type="text" placeholder="请输入账户">
 							</div>
 							<div class="input_outer">
 								<span class="us_uer"></span>
