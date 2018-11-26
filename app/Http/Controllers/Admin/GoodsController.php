@@ -76,70 +76,53 @@ class GoodsController extends Controller
         //
        // $res = $request->all();
        $res = $request->except('_token','gimg');
-
        //添加数据到goods表里面
-       $rs = Goods::create($res);
+       // $rs = Goods::create($res);
+
+        try{
+
+            $rs = Goods::create($res);
+            
+            if($rs){
+                redirect('/admin/goods')->with('success','添加成功');
+            }
+
+            }catch(\Exception $e){
+
+                return back()->with('error','添加失败');
+            }
        // dd($res);
        //模型关联
 
        $id = $rs->id;
-      /* if($request->hasFile('gimg')){
-            $file = $request->file('gimg');
 
-            $arr = [];
-            foreach($file as $k => $v){
-                $ar = [];
-                $ar = ['gid'] = $id
-                //随机名
-                // $name = rand(1111,9999).time();
-
-                $name = rand(1111,9999).time();
-
-                //后缀 
-                // $suffix = $v->
-                $suffix = $v->getClientOriginalExtension();
-
-                //移动
-                $v->move('./uploads', $name.'.'.$suffix);
-
-                $ar['gimg'] = '/uploads/'.$name.'.'.$suffix;
-
-                //一次性插入多条
-                $arr[] = $ar;
-            }
-            dd($arr);
-
-       }*/
        if($request->hasFile('gimg')){
 
             $file = $request->file('gimg'); //$_FILES
 
             $arr = [];
             foreach($file as $k => $v){
+              //先定义一个数组
+              $ar = [];
 
-                $ar = [];
+              $ar['gid'] = $id;
+              //设置名字
+              $name = rand(1,99).time();
+              //后缀
+              $suffix = $v->getClientOriginalExtension();
+              //移动
+              $v->move('./uploads/goods', $name.'.'.$suffix);
 
-                $ar['gid'] = $id;
+              $ar['gimg'] = '/uploads/goods/'.$name.'.'.$suffix;
 
-                //设置名字
-                $name = rand(1,99).time();
+              $arr[] = $ar;
 
-                //后缀
-                $suffix = $v->getClientOriginalExtension();
+              //第二种方式
+              // $sd = [];
 
-                //移动
-                $v->move('./uploads', $name.'.'.$suffix);
+              // $sd=['gid'=>$id,'gimd'=>'/uploads/'.$name.'.'.$suffix];
 
-                $ar['gimg'] = '/uploads/'.$name.'.'.$suffix;
-
-                $arr[] = $ar;
-
-                //这是第二种方式
-                // $sd = [];
-
-                // $sd=['gid'=>$id,'gimd'=>'/uploads/'.$name.'.'.$suffix];
-
-                // array_push($arr,$sd);
+              // array_push($arr,$sd);
             }
         }
             // dd($arr);
@@ -147,25 +130,19 @@ class GoodsController extends Controller
             // 一对多
 
             $data = Goods::find($id);
-
-
             try{
 
             $gs = $data->gis()->createMany($arr);
             // $data = User::create($res);
                 
-                if($gs){
-                    return redirect('/admin/goods')->with('success','添加成功');
-                }
+            if($gs){
+              return redirect('/admin/goods')->with('success','添加成功');
+            }
 
             }catch(\Exception $e){
 
                 return back()->with('error','添加失败');
             }
-
-        
-
-
     }
 
     /**
@@ -176,7 +153,7 @@ class GoodsController extends Controller
      */
     public function show($id)
     {
-        //
+        // $res = Gpic::destroy($id);
         $res = Gpic::where('id',$id)->delete();
 
         if($res){
@@ -196,7 +173,6 @@ class GoodsController extends Controller
     public function edit($id)
     {
         //
-
         $rs = Cate::select(DB::raw('*,CONCAT(path,id) as paths'))->
         orderBy('paths')->
         get();
@@ -230,49 +206,54 @@ class GoodsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        //
+    {   
+        // $rs = Gpic::where('gid',$id)->get();
+        //修改主表的信息
         $res = $request->except('_token','_method','gimg');
 
-
-        $data = Goods::where('id',$id)->update($res);
-
-        //关联标的信息//关联表
-        if($request->hasFile('gimg')){
-
-            $file = $request->file('gimg'); //$_FILES
-
-            $arr = [];
-            foreach($file as $k => $v){
-
+        // $data = Goods::where('id',$id)->update($res);
+        try{
+                       
+          // if($data){
+          //   redirect('/admin/goods')->with('success','修改成功');
+          // }
+        //关联表的信息//关联表
+             if($request->hasFile('gimg')){
+              $file = $request->file('gimg'); //*****$_FILES
+              $arr = [];
+              foreach($file as $k => $v){
+                //先定义一个数组
                 $ar = [];
-
                 $ar['gid'] = $id;
-
                 //设置名字
                 $name = rand(1,99).time();
-
                 //后缀
                 $suffix = $v->getClientOriginalExtension();
-
                 //移动
-                $v->move('./uploads', $name.'.'.$suffix);
-
-                $ar['gimg'] = '/uploads/'.$name.'.'.$suffix;
-
+                $v->move('./uploads/goods', $name.'.'.$suffix);
+                $ar['gimg'] = '/uploads/goods/'.$name.'.'.$suffix;
                 $arr[] = $ar;
+
+                $rs = Gpic::where('gid',$id)->insert($arr);
+                
+                }
+            } 
+              $data = Goods::where('id',$id)->update($res);
+              // dd($data);
+              /*if($data){
+                return redirect('/admin/goods')->with('success','修改成功');
+              }else if($rs){
+                return redirect('/admin/goods')->with('success','修改成功');
+              }*/
+            }catch(\Exception $e){
+
+                return back()->with('error','修改失败');
             }
-        }
+               return redirect('/admin/goods')->with('success','修改成功');
 
-        $arr = [];
-        $rs = Gpic::where('gid',$id)->insert($arr);
-
-         if($rs){
-
-            return redirect('/admin/goods')->with('success','修改成功');
-        }
-
-        
+        // if($data){
+        //   return redirect('/admin/goods')->with('success','修改成功');
+        // }       
     }
 
     /**
@@ -283,6 +264,20 @@ class GoodsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //删除图片
+      // $data = Goods::find($id)->gis()->get();
+      try{
+      $goods =Goods::find($id);
+      //先删父表信息
+      $goods->delete();
+      //再删子表的信息
+      $rs = $goods->gis()->delete();            
+          if($rs){
+            return redirect('/admin/goods')->with('success','删除成功');
+          }
+        }catch(\Exception $e){
+
+          return back()->with('error','删除失败');
+      }
     }
 }
