@@ -113,7 +113,7 @@
 
     var ue = UE.getEditor('editor');
 
-        var gname = $('input[name = gname]').blur(function(){
+    /*    var gname = $('input[name = gname]').blur(function(){
 
             // alert(123);
             var uv = $(this).val().trim();
@@ -124,6 +124,6 @@
 
             return;
         }
-    });
+    });*/
 </script>
 @stop

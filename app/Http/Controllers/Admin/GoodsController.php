@@ -234,9 +234,10 @@ class GoodsController extends Controller
                 $ar['gimg'] = '/uploads/goods/'.$name.'.'.$suffix;
                 $arr[] = $ar;
 
-                $rs = Gpic::where('gid',$id)->insert($arr);
                 
                 }
+                $rs = Gpic::where('gid',$id)->insert($arr);
+                
             } 
               $data = Goods::where('id',$id)->update($res);
               // dd($data);
