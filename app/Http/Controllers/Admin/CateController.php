@@ -104,16 +104,17 @@ class CateController extends Controller
         
         try{
 
-        $data = Cate::create($res);
-            
-            if($data){
-                return redirect('/admin/cate')->with('success','添加成功');
+            $data = Cate::create($res);
+                
+                if($data){
+                    return redirect('/admin/cate')->with('success','添加成功');
+                }
+
+            }catch(\Exception $e){
+
+                return back()->with('error','添加失败');
             }
 
-        }catch(\Exception $e){
-
-            return back()->with('error','添加失败');
-        }
     }
 
     /**
@@ -232,14 +233,23 @@ class CateController extends Controller
         // if(in_array($id,$pid)){
 
         // }
+        $cate = Cate::find($id);
+        //是否有二级类
+        // dd($cate);
+       $count = Cate::where('pid',$id)->count();
+ 
          try{
-            $res = Cate::destroy($id);
+
+            if($count == 0){
+                $res = Cate::destroy($id);
+            }
+            
             if($res){
                 return redirect('/admin/cate')->with('success','删除成功');
             }
         }catch(\Exception $e){
 
-            return back()->with('error','删除失败');
+            return back()->with('/admin/cate')->with('error','父级分类不允许删除');
         }
     }
 }

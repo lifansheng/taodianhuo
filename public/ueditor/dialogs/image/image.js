@@ -159,7 +159,7 @@
                 'height': $G('height'),
                 'border': $G('border'),
                 'vhSpace': $G('vhSpace'),
-                'title': $G('title'),
+                // 'title': $G('title'),
                 'align': $G('align')
             };
             var img = editor.selection.getRange().getClosedNode();
@@ -174,7 +174,7 @@
             /* 改变url */
             domUtils.on($G("url"), 'keyup', updatePreview);
             domUtils.on($G("border"), 'keyup', updatePreview);
-            domUtils.on($G("title"), 'keyup', updatePreview);
+            // domUtils.on($G("title"), 'keyup', updatePreview);
 
             domUtils.on($G("width"), 'keyup', function(){
                 updatePreview();
@@ -209,11 +209,11 @@
                 locker = $G('lock');
             if(width && height && width == parseInt(width) && height == parseInt(height)) {
                 locker.disabled = false;
-                locker.title = '';
+                // locker.title = '';
             } else {
                 locker.checked = false;
                 locker.disabled = 'disabled';
-                locker.title = lang.remoteLockError;
+                // locker.title = lang.remoteLockError;
             }
         },
         setImage: function(img){
@@ -232,7 +232,7 @@
                 $G("height").value = img.height || '';
                 $G("border").value = img.getAttribute("border") || '0';
                 $G("vhSpace").value = img.getAttribute("vspace") || '0';
-                $G("title").value = img.title || img.alt || '';
+                // $G("title").value = img.title || img.alt || '';
                 setAlign(align);
                 this.setPreview();
                 this.updateLocker();
@@ -250,20 +250,20 @@
                 ow = parseInt($G('width').value, 10) || 0,
                 oh = parseInt($G('height').value, 10) || 0,
                 border = parseInt($G('border').value, 10) || 0,
-                title = $G('title').value,
+                // title = $G('title').value,
                 preview = $G('preview'),
                 width,
                 height;
 
             url = utils.unhtmlForUrl(url);
-            title = utils.unhtml(title);
+            // title = utils.unhtml(title);
 
             width = ((!ow || !oh) ? preview.offsetWidth:Math.min(ow, preview.offsetWidth));
             width = width+(border*2) > preview.offsetWidth ? width:(preview.offsetWidth - (border*2));
             height = (!ow || !oh) ? '':width*oh/ow;
 
             if(url) {
-                preview.innerHTML = '<img src="' + url + '" width="' + width + '" height="' + height + '" border="' + border + 'px solid #000" title="' + title + '" />';
+                preview.innerHTML = '<img src="' + url + '" width="' + width + '" height="' + height + '" border="' + border + 'px solid #000"  />';
             }
         },
         getInsertList: function () {
@@ -277,8 +277,8 @@
                     border: data['border'] || '',
                     floatStyle: data['align'] || '',
                     vspace: data['vhSpace'] || '',
-                    title: data['title'] || '',
-                    alt: data['title'] || '',
+                    // title: data['title'] || '',
+                    // alt: data['title'] || '',
                     style: "width:" + data['width'] + "px;height:" + data['height'] + "px;"
                 }];
             } else {
@@ -368,7 +368,7 @@
                     label: lang.uploadSelectFile
                 },
                 accept: {
-                    title: 'Images',
+                    // title: 'Images',
                     extensions: acceptExtensions,
                     mimeTypes: 'image/*'
                 },
@@ -403,7 +403,7 @@
             // 当有文件添加进来时执行，负责view的创建
             function addFile(file) {
                 var $li = $('<li id="' + file.id + '">' +
-                        '<p class="title">' + file.name + '</p>' +
+                        // '<p class="title">' + file.name + '</p>' +
                         '<p class="imgWrap"></p>' +
                         '<p class="progress"><span></span></p>' +
                         '</li>'),
@@ -778,8 +778,8 @@
                 list.push({
                     src: prefix + data.url,
                     _src: prefix + data.url,
-                    title: data.title,
-                    alt: data.original,
+                    // title: data.title,
+                    // alt: data.original,
                     floatStyle: align
                 });
             }
@@ -957,7 +957,7 @@
                     list.push({
                         src: src,
                         _src: src,
-                        alt: src.substr(src.lastIndexOf('/') + 1),
+                        // alt: src.substr(src.lastIndexOf('/') + 1),
                         floatStyle: align
                     });
                 }
@@ -1070,7 +1070,7 @@
                         for(var i = 0; i < json.data.length; i++) {
                             if(json.data[i].objURL) {
                                 list.push({
-                                    title: json.data[i].fromPageTitleEnc,
+                                    // title: json.data[i].fromPageTitleEnc,
                                     src: json.data[i].objURL,
                                     url: json.data[i].fromURL
                                 });
@@ -1105,8 +1105,8 @@
 
                     link.href = list[i].url;
                     link.target = '_blank';
-                    link.title = list[i].title;
-                    link.innerHTML = list[i].title;
+                    // link.title = list[i].title;
+                    // link.innerHTML = list[i].title;
 
                     p.appendChild(img);
                     item.appendChild(p);
@@ -1130,7 +1130,7 @@
                     list.push({
                         src: src,
                         _src: src,
-                        alt: src.substr(src.lastIndexOf('/') + 1),
+                        // alt: src.substr(src.lastIndexOf('/') + 1),
                         floatStyle: align
                     });
                 }

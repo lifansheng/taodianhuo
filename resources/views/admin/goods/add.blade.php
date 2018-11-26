@@ -44,7 +44,7 @@
                 <div class="mws-form-row">
                     <label class="mws-form-label">商品名</label>
                     <div class="mws-form-item">
-                        <input class="small" type="text" name="gname">
+                        <input class="small" type="text" name="gname"><span></span>
                     </div>
                 </div>
 
@@ -111,6 +111,19 @@
 <script>
     $('.mws-form-message').delay(2000).fadeOut(2000);
 
-     var ue = UE.getEditor('editor');
+    var ue = UE.getEditor('editor');
+
+        var gname = $('input[name = gname]').blur(function(){
+
+            // alert(123);
+            var uv = $(this).val().trim();
+            if(uv == ''){
+            $(this).next().text(' *商品名不能为空').css('color','#e53e41');
+
+            $(this).css('border','solid 1px #e53e41');
+
+            return;
+        }
+    });
 </script>
 @stop

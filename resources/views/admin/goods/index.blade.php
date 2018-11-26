@@ -63,7 +63,7 @@
                             价格
                         </th>
                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
-                        rowspan="1" colspan="1" style="width: 133px;" aria-label="Engine version: activate to sort column ascending">
+                        rowspan="1" colspan="1" style="width: 90px;" aria-label="Engine version: activate to sort column ascending">
                             颜色
                         </th>
                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
@@ -74,6 +74,10 @@
                          <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
                         rowspan="1" colspan="1" style="width: 97px;" aria-label="CSS grade: activate to sort column ascending">
                             库存
+                        </th>
+                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
+                        rowspan="1" colspan="1" style="width: 97px;" aria-label="CSS grade: activate to sort column ascending">
+                            商品图片详情 
                         </th>
                          <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
                         rowspan="1" colspan="1" style="width: 40px;" aria-label="CSS grade: activate to sort column ascending">
@@ -114,7 +118,9 @@
                         <td class=" ">
                             {{$v->stock}}
                         </td>
-                       
+                         <td class=" ">
+                            {!!$v->content!!}
+                        </td>
                         <td class=" ">
                         	@if($v->status== 1)
 
