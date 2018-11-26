@@ -823,8 +823,7 @@
 						</ul>
 						
 						<a href="create_account.html" title="Register" class="btn-reg-popup">Create an account</a>
-					</div
-	</div>>
+					</div>
 				</div>
 			</form>
 			<div class="clear"></div>
