@@ -436,7 +436,7 @@
 
   @section('content')
 
-            @show
+   @show
 
 
 
