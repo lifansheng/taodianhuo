@@ -23,7 +23,7 @@ Route::any("admin/captcha", "Admin\LoginController@captcha");
 
 //后台的修改已登录管理员的头像
 Route::any("admin/pic", "Admin\LoginController@pic");
-Route::any("admin/upload", "Admin\LoginController@upload");
+Route::any("admin/uploads", "Admin\LoginController@uploads");
 
 //改密码
 Route::any("admin/changepass", "Admin\LoginController@changepass");
