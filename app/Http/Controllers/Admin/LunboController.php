@@ -69,9 +69,9 @@ class LunboController extends Controller
             //获取后缀
             $suffix = $request->file('pic')->getClientOriginalExtension();
 
-            $request->file('pic')->move('./admins/lunbo',$name.'.'.$suffix);
+            $request->file('pic')->move('./admins/lunboimg',$name.'.'.$suffix);
 
-            $data['pic'] = '/admins/lunbo/'.$name.'.'.$suffix;
+            $data['pic'] = '/admins/lunboimg/'.$name.'.'.$suffix;
         }
 
         $data['addtime'] = date('Y-m-d H:i:s',time());
