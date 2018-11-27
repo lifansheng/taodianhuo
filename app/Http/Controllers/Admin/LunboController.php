@@ -69,9 +69,9 @@ class LunboController extends Controller
             //获取后缀
             $suffix = $request->file('pic')->getClientOriginalExtension();
 
-            $request->file('pic')->move('./admin/imglunbo',$name.'.'.$suffix);
+            $request->file('pic')->move('./admins/lunbo',$name.'.'.$suffix);
 
-            $data['pic'] = '/admin/imglunbo/'.$name.'.'.$suffix;
+            $data['pic'] = '/admins/lunbo/'.$name.'.'.$suffix;
         }
 
         $data['addtime'] = date('Y-m-d H:i:s',time());
@@ -128,9 +128,9 @@ class LunboController extends Controller
             //修改名字
             $newName = date('YmdHis').mt_rand(1000,9999).'.'.$entension;
             //移动文件
-            $path = $file->move('./admin/imglunbo',$newName);
+            $path = $file->move('./admins/lunboimg',$newName);
 
-            $filepath = '/admin/imglunbo/'.$newName;
+            $filepath = '/admins/lunboimg/'.$newName;
 
             //返回文件的路径
             return  $filepath;
@@ -157,9 +157,9 @@ class LunboController extends Controller
             //获取后缀
             $suffix = $request->file('pic')->getClientOriginalExtension();
 
-            $request->file('pic')->move('./admin/imglunbo',$name.'.'.$suffix);
+            $request->file('pic')->move('./admins/lunboimg',$name.'.'.$suffix);
 
-            $data['pic'] = '/admin/imglunbo/'.$name.'.'.$suffix;
+            $data['pic'] = '/admins/lunboimg/'.$name.'.'.$suffix;
             //执行上传
  
             try{

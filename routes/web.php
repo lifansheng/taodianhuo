@@ -1,4 +1,4 @@
-`<?php
+<?php
 
 /*
 |--------------------------------------------------------------------------
@@ -38,7 +38,7 @@ Route::group(["middleware" => "login"], function(){
  
 	//后台的首页
 
-	Route::get('/admin', 'Admin\IndexController@indexs');
+	Route::get('/admin', 'Admin\IndexController@index');
 	Route::get('/admin/index', 'Admin\IndexController@index');
 
 	//后台的用户管理
