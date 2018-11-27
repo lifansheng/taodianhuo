@@ -137,8 +137,9 @@
 												<div class="div-logined">
 													<ul>
 														<li>
-															<a href="javascript:void(0);" data-toggle="modal" data-target="#login_form">
-																<span>Login</span>
+															<a class="item-link" href="/home/login">
+																<span class="menu-title">	登录
+																</span>
 															</a>
 															<span class="wg">Welcome Guest</span>
 														</li>
@@ -185,7 +186,9 @@
 										<div class="topsearch-entry">
 											<form method="get" action="">
 												<div>
-												   <input type="text" value="" name="s" placeholder="Enter your keyword...">	
+													<!-- 搜索 -->
+												   <input type="text" value="" name="s" placeholder="Enter your keyword...">
+
 													<div class="cat-wrapper">
 														<label class="label-search">
 															<select name="search_category" class="s1_option">
@@ -205,6 +208,7 @@
 															</select>
 														</label>
 													</div>
+													<!-- 搜索尾部 -->
 													
 													<button type="submit" title="Search" class="fa fa-search button-search-pro form-button"></button>
 												</div>
@@ -213,17 +217,16 @@
 									</div>
 								</div>
 							</div>
-							
+							<!-- 购物车 -->
 							<div class="widget sw_top-3 sw_top pull-left">
 								<div class="widget-inner">
 									<div class="top-form top-form-minicart etrostore-minicart pull-right">
 										<div class="top-minicart-icon pull-right">
 											<i class="fa fa-shopping-cart"></i>
-											<a class="cart-contents" href="cart.html" title="View your shopping cart">
+											<a class="cart-contents" href="/home/carts" title="View your shopping cart">
 												<span class="minicart-number">2</span>
 											</a>
 										</div>
-										
 										<div class="wrapp-minicart">
 											<div class="minicart-padding">
 												<div class="number-item">
@@ -336,7 +339,10 @@
 									</div>
 								</div>
 							</div>
+							<!-- 购物车尾部 -->
 							
+
+							<!-- 我的收藏 -->
 							<div class="widget nav_menu-3 widget_nav_menu pull-left">
 								<div class="widget-inner">
 									<ul id="menu-wishlist" class="menu">
@@ -354,6 +360,7 @@
 									</ul>
 								</div>
 							</div>
+							<!-- 我的收藏尾部 -->
 						</div>
 					</div>
 				</div>
@@ -778,56 +785,59 @@
 			</form>
 		</div>
 	</div>
-	
-   <div class="modal fade" id="login_form" tabindex="-1" role="dialog" aria-hidden="true">
+	<!-- 原模板登录页面 -->
+   <!-- <div class="modal fade" id="login_form" tabindex="-1" role="dialog" aria-hidden="true">
 		<div class="modal-dialog block-popup-login">
 			<a href="javascript:void(0)" title="Close" class="close close-login" data-dismiss="modal">Close</a>
          
 			<div class="tt_popup_login">
-				<strong>Sign in Or Register</strong>
+				<strong>登录|注册</strong>
 			</div>
          
 			<form action="" method="post" class="login">
 				<div class="block-content">
 					<div class="col-reg registered-account">
 						<div class="email-input">
-							<input type="text" class="form-control input-text username" name="username" id="username" placeholder="Username" />
+							<input type="text" class="form-control input-text username" name="username" id="username" placeholder="请输入用户名" />
 						</div>
 						
 						<div class="pass-input">
-							<input class="form-control input-text password" type="password" placeholder="Password" name="password" id="password" />
+							<input class="form-control input-text password" type="password" placeholder="请输入密码" name="password" id="password" />
 						</div>
 						
 						<div class="ft-link-p">
-							<a href="#" title="Forgot your password">Forgot your password?</a>
+							<a href="#" title="Forgot your password">忘记密码?</a>
 						</div>
 						
 						<div class="actions">
 							<div class="submit-login">
-								<input type="submit" class="button btn-submit-login" name="login" value="Login" />
+								<input type="submit" class="button btn-submit-login" name="login" value="登录" />
 							</div>
 						</div>
 					</div>
 					
 					<div class="col-reg login-customer">
-						<h2>NEW HERE?</h2>
+						<h2>新来的？</h2>
 						
-						<p class="note-reg">Registration is free and easy!</p>
+						<p class="note-reg">注册是免费的，很容易！</p>
 						
 						<ul class="list-log">
-							<li>Faster checkout</li>
+							<li>更快结账</li>
 							
-							<li>Save multiple shipping addresses</li>
+							<li>保存多个送货地址</li>
 							
-							<li>View and track orders and more</li>
+							<li>查看和跟踪订单等</li>
 						</ul>
 						
-						<a href="create_account.html" title="Register" class="btn-reg-popup">Create an account</a>
+						<a href="create_account.html" title="Register" class="btn-reg-popup">快来注册吧</a>
 					</div>
 				</div>
 			</form>
 			<div class="clear"></div>
 		</div>
+
+	</div> -->
+
 	
 	<a id="etrostore-totop" href="#"></a>	
 	
@@ -935,7 +945,7 @@
       	// The customizer requires postMessage and CORS (if the site is cross domain)
       	b[c] += ( window.postMessage && request ? ' ' : ' no-' ) + cs;
    </script>
-     @section('js')
+    @section('js')
 
 
     @show

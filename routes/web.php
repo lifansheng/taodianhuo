@@ -1,4 +1,4 @@
-`<?php
+<?php
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +23,7 @@ Route::any("admin/captcha", "Admin\LoginController@captcha");
 
 //后台的修改已登录管理员的头像
 Route::any("admin/pic", "Admin\LoginController@pic");
-Route::any("admin/upload", "Admin\LoginController@upload");
+Route::any("admin/uploads", "Admin\LoginController@uploads");
 
 //改密码
 Route::any("admin/changepass", "Admin\LoginController@changepass");
@@ -37,7 +37,9 @@ Route::any("admin/logout", "Admin\LoginController@logout");
 Route::group(["middleware" => "login"], function(){
  
 	//后台的首页
-	Route::get('/admin', 'Admin\IndexController@indexs');
+
+	Route::get('/admin', 'Admin\IndexController@index');
+	Route::get('/admin/index', 'Admin\IndexController@index');
 
 	//后台的用户管理
 	Route::resource('admin/user',"Admin\UserController");
@@ -65,13 +67,40 @@ Route::group(["middleware" => "login"], function(){
 	//网站配置
 	// Route::get('admin/')
 
+	//后台的新闻
+	route::resource('admin/news','Admin\NewsController');
+
 	
 });
 
 //前台
-		Route::get('/',function(){
-			return view('home.index');
-		});
+Route::get('/',function(){
+	return view('home.index');
+});
 
-		// 列表页
-	Route::get('home/details','Home\HomeController@details');
+
+// 列表页
+Route::get('home/details','Home\HomeController@details');
+// 前台登录、注册页面
+
+
+Route::any("home/login", "Home\LoginController@login");
+Route::any("home/register", "Home\LoginController@register");
+Route::any("home/dologin", "Home\LoginController@dologin");
+Route::any("home/signup", "Home\LoginController@signup");
+Route::any("home/captcha", "Home\LoginController@captcha");
+Route::post("home/ajaxhname", "Home\LoginController@ajaxhname");
+Route::post("home/ajaxemails", "Home\LoginController@ajaxemail");
+Route::post("home/ajaxphone", "Home\LoginController@ajaxphone");
+Route::post("home/ajaxcode", "Home\LoginController@ajaxcode");
+
+// 前台购物车
+Route::resource("home/carts","Home\CartsController");
+
+
+// 前台
+Route::group(["middleware" => "login"], function(){
+	// ajax验证注册用户名
+	
+});
+
