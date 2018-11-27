@@ -89,6 +89,7 @@ Route::any("home/register", "Home\LoginController@register");
 Route::any("home/dologin", "Home\LoginController@dologin");
 Route::any("home/signup", "Home\LoginController@signup");
 Route::any("home/captcha", "Home\LoginController@captcha");
+Route::get("home/tixing", "Home\LoginController@tixing");
 Route::post("home/ajaxhname", "Home\LoginController@ajaxhname");
 Route::post("home/ajaxemails", "Home\LoginController@ajaxemail");
 Route::post("home/ajaxphone", "Home\LoginController@ajaxphone");
