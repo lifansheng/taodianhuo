@@ -94,6 +94,9 @@ Route::post("home/ajaxemails", "Home\LoginController@ajaxemail");
 Route::post("home/ajaxphone", "Home\LoginController@ajaxphone");
 Route::post("home/ajaxcode", "Home\LoginController@ajaxcode");
 
+// 前台购物车
+Route::any
+
 
 // 前台
 Route::group(["middleware" => "login"], function(){

@@ -16,7 +16,7 @@
 							<div class="wrapp-minicart">
 								<div class="minicart-padding">
 									<div class="number-item">
-										There are <span>items</span> in your cart
+										<span>我的购物车</span>
 									</div>
 									
 									<ul class="minicart-content">
