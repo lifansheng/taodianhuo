@@ -67,6 +67,9 @@ Route::group(["middleware" => "login"], function(){
 	//网站配置
 	// Route::get('admin/')
 
+	//后台的新闻
+	route::resource('admin/news','Admin\NewsController');
+
 	
 });
 
