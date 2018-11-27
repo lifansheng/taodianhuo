@@ -54,38 +54,57 @@ class LoginController extends Controller
     	// echo false; exit;
     	$res = $request -> except("_token", "code", "confirm_password");
 
+
     	// dd($res);
     	//网数据表里面添加数据  hash加密
         $res["password"] = Hash::make($request->password);
         
 
     	// 存数据
-   //      try{
-   //      	// 存数据
-			// $data = Homes::create($res);
-			// // 获取当前用户的id
-   //      	$ids = Homes::where("hname", $res["hname"])->value("hid");
+		// $data = Homes::create($res);
+		// 获取当前用户的id
+    	// $ids = Homes::where("username", $res["username"])->value("hid");
+        $rs = DB::table('homes')->insertGetId($res);
+        // dd($rs);
+        $res['token'] = str_random(40);
+        session(["token"=>$res["token"]]);
+            if($rs){
+            	// 发送邮件
+            	Mail::send('home.remind', ['hid'=>$rs,'token'=>$res['token'],'email'=>$res['email'],'username'=>$res['username']], function ($m) use ($res) {
 
-   //          if($data){
-   //          	// 发送邮件
-   //          	Mail::send('home.remind', ['hid'=>$ids,'token'=>$res['token'],'email'=>$res['email']], function ($m) use ($res) {
-		            
-		 //            $m->from(Config::get("app.email"), '淘点货官方网站');
 
-		 //            $m->to($res["email"], $res["hname"])->subject('注册信息');
-		 //        });
+		            $m->from(Config::get("app.email"), '淘点货官方网站');
 
-   //              return redirect("/")->with("success", "注册成功");
-   //          }
-   //      }catch(\Exception $e){
-   //          return back()->with("error","注册失败");
-   //      }
-        $data = Homes::create($res);
+		            $m->to($res["email"], $res["username"])->subject('注册信息');
 
-        if ($data) {
-            echo "添加成功";
-        } else {
-            echo "添加失败";
+		        });
+
+            return view('/home/tixing',['title'=>'新注册用户提醒邮件']);
+        }
+    }
+
+    public function tixing(Request $request)
+    {
+        //获取信息
+
+        //把status 0 => 1
+        $id = $request->id;
+
+        $rs = DB::table('homes')->where('hid',$id)->first();
+
+        $token = $request->token;
+        // dd(session("token"));
+
+        if(session("token") == $token){
+
+            $res['status'] = "1";
+
+            $data = DB::table('homes')->where('hid',$id)->update($res);
+
+            if($data){
+
+                return redirect('/home/login');
+            }
         }
     }
 
