@@ -84,10 +84,11 @@ class LoginController extends Controller
     }
 
     // 修改头像方法
-    public function upload(Request $request)
+    public function uploads(Request $request)
     {
         //获取上传的文件对象
         $file = $request->file('pic');
+        // dd($file);
         //判断文件是否有效
         if($file->isValid()){
             //上传文件的后缀名
@@ -100,7 +101,9 @@ class LoginController extends Controller
             $filepath = '/uploads/'.$newName;
 
             $res['pic'] = $filepath;
+            // dd($res);
             DB::table('user')->where('id',session('uid'))->update($res);
+            // var_dump($data);
             //返回文件的路径
             return  $filepath;
         }

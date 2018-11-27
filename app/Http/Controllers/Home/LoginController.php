@@ -54,7 +54,7 @@ class LoginController extends Controller
     	// echo false; exit;
     	$res = $request -> except("_token", "code", "confirm_password");
 
-    	dd($res);
+    	// dd($res);
     	//网数据表里面添加数据  hash加密
         $res["password"] = Hash::make($request->password);
         

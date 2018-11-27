@@ -64,11 +64,12 @@
 	        
 	        $.ajax({
 	            type: "POST",
-	            url: "/admin/upload",
+	            url: "/admin/uploads",
 	            data: formData,
 	            contentType: false,
 	            processData: false,
 	            success: function(data) {
+                    console.log(data);
 	                $('#img1').attr('src', data);
 	                // $('#art_thumb').val(data);
 
