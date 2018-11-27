@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 class IndexController extends Controller
 {
     //
-    public function indexs()
+    public function index()
     {
     	return view('admin.index',['title'=>'lamp210小网站后台首页']);
     }

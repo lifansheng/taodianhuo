@@ -829,10 +829,9 @@
 			</form>
 			<div class="clear"></div>
 		</div>
-<<<<<<< HEAD
-=======
+
 	</div> -->
->>>>>>> origin/guozhen
+
 	
 	<a id="etrostore-totop" href="#"></a>	
 	
