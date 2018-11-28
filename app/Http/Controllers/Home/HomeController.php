@@ -32,7 +32,7 @@ class HomeController extends Controller
 
     public function details()
     {
-        return view('home.goods.details');
+        return view('home.goods.details',['title'=>'淘点货']);
     }
 
 }

@@ -1,6 +1,9 @@
 @extends('layout.homes')
 
+@section('title',$title)
+
 @section('content')
+	        			
 	        				
 						<!--侧边导航 -->
 						<div id="nav" class="navfull">

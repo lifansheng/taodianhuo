@@ -75,7 +75,7 @@ Route::group(["middleware" => "login"], function(){
 
 //前台
 Route::get('/',function(){
-	return view('home.index');
+	return view('/home/index',['title'=>'淘点货']);
 });
 
 
