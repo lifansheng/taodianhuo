@@ -1,863 +1,1085 @@
 
-
 @extends('layout.homes')
 
+
+
+		<link href="/homes/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css" />
+		<link href="/homes/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css" />
+		<link href="/homes/basic/css/demo.css" rel="stylesheet" type="text/css" />
+		<link type="text/css" href="/hoems/css/optstyle.css" rel="stylesheet" />
+		<link type="text/css" href="/homes/css/style.css" rel="stylesheet" />
+
+		<script type="text/javascript" src="/homes/basic/js/jquery-1.7.min.js"></script>
+		<script type="text/javascript" src="/homes/basic/js/quick_links.js"></script>
+
+		<script type="text/javascript" src="/homes/AmazeUI-2.4.2/assets/js/amazeui.js"></script>
+		<script type="text/javascript" src="/homes/js/jquery.imagezoom.min.js"></script>
+		<script type="text/javascript" src="/homes/js/jquery.flexslider.js"></script>
+		<script type="text/javascript" src="/homes/js/list.js"></script>
 @section('content')
-						<!-- /Primary navbar -->
 
+				<ol class="am-breadcrumb am-breadcrumb-slash">
+					<li><a href="#">首页</a></li>
+					<li><a href="#">分类</a></li>
+					<li class="am-active">内容</li>
+				</ol>
+				<script type="text/javascript">
+					$(function() {});
+					$(window).load(function() {
+						$('.flexslider').flexslider({
+							animation: "slide",
+							start: function(slider) {
+								$('body').removeClass('loading');
+							}
+						});
+					});
+				</script>
+				<div class="scoll">
+					<section class="slider">
+						<div class="flexslider">
+							<ul class="slides">
+								<li>
+									<img src="/homes/images/01.jpg" title="pic" />
+								</li>
+								<li>
+									<img src="/homes/images/02.jpg" />
+								</li>
+								<li>
+									<img src="/homes/images/03.jpg" />
+								</li>
+							</ul>
+						</div>
+					</section>
+				</div>
 
-				  
-						<div class="top-form top-form-minicart etrostore-minicart pull-right">
-							<div class="top-minicart-icon pull-right">
-								<i class="fa fa-shopping-cart"></i>
-								<a class="cart-contents" href="cart.html" title="View your shopping cart">
-									<span class="minicart-number">2</span>
-								</a>
+				<!--放大镜-->
+
+				<div class="item-inform">
+					<div class="clearfixLeft" id="clearcontent">
+
+						<div class="box">
+							<script type="text/javascript">
+								$(document).ready(function() {
+									$(".jqzoom").imagezoom();
+									$("#thumblist li a").click(function() {
+										$(this).parents("li").addClass("tb-selected").siblings().removeClass("tb-selected");
+										$(".jqzoom").attr('src', $(this).find("img").attr("mid"));
+										$(".jqzoom").attr('rel', $(this).find("img").attr("big"));
+									});
+								});
+							</script>
+
+							<div class="tb-booth tb-pic tb-s310">
+								<a href="/homes/images/01.jpg"><img src="/homes/images/01_mid.jpg" alt="细节展示放大镜特效" rel="/homes/images/01.jpg" class="jqzoom" /></a>
 							</div>
-						 
-							<div class="wrapp-minicart">
-								<div class="minicart-padding">
-									<div class="number-item">
-										There are <span>items</span> in your cart
+							<ul class="tb-thumb" id="thumblist">
+								<li class="tb-selected">
+									<div class="tb-pic tb-s40">
+										<a href="#"><img src="/homes/images/01_small.jpg" mid="../images/01_mid.jpg" big="/homes/images/01.jpg"></a>
 									</div>
-									
-									<ul class="minicart-content">
-										<li>
-											<a href="simple_product.html" class="product-image">
-												<img 	width="100" height="100" src="images/1903/45-150x150.jpg" class="attachment-100x100 size-100x100 wp-post-image" alt="" 
-														srcset="images/1903/45-150x150.jpg 150w, images/1903/45-300x300.jpg 300w, images/1903/45-180x180.jpg 180w, images/1903/45.jpg 600w" 
-														sizes="(max-width: 100px) 100vw, 100px" />
-											</a>
-											
-											<div class="detail-item">
-												<div class="product-details">
-													<h4>
-														<a class="title-item" href="simple_product.html">Veniam Dolore</a>
-													</h4>
-													
-													<div class="product-price">
-														<span class="price">														
-															<span class="woocommerce-Price-amount amount">
-																<span class="woocommerce-Price-currencySymbol">$</span>190.00
-															</span>
-														</span>	      
-														
-														<div class="qty">
-															<span class="qty-number">1</span>									
-														</div>
+								</li>
+								<li>
+									<div class="tb-pic tb-s40">
+										<a href="#"><img src="/homes/images/02_small.jpg" mid="../images/02_mid.jpg" big="../images/02.jpg"></a>
+									</div>
+								</li>
+								<li>
+									<div class="tb-pic tb-s40">
+										<a href="#"><img src="/homes/images/03_small.jpg" mid="../images/03_mid.jpg" big="../images/03.jpg"></a>
+									</div>
+								</li>
+							</ul>
+						</div>
+
+						<div class="clear"></div>
+					</div>
+
+					<div class="clearfixRight">
+
+						<!--规格属性-->
+						<!--名称-->
+						<div class="tb-detail-hd">
+							<h1>	
+				 良品铺子 手剥松子218g 坚果炒货 巴西松子
+	          </h1>
+						</div>
+						<div class="tb-detail-list">
+							<!--价格-->
+							<div class="tb-detail-price">
+								<li class="price iteminfo_price">
+									<dt>促销价</dt>
+									<dd><em>¥</em><b class="sys_item_price">56.90</b>  </dd>                                 
+								</li>
+								<li class="price iteminfo_mktprice">
+									<dt>原价</dt>
+									<dd><em>¥</em><b class="sys_item_mktprice">98.00</b></dd>									
+								</li>
+								<div class="clear"></div>
+							</div>
+
+							<!--地址-->
+							<dl class="iteminfo_parameter freight">
+								<dt>配送至</dt>
+								<div class="iteminfo_freprice">
+									<div class="am-form-content address">
+										<select data-am-selected>
+											<option value="a">浙江省</option>
+											<option value="b">湖北省</option>
+										</select>
+										<select data-am-selected>
+											<option value="a">温州市</option>
+											<option value="b">武汉市</option>
+										</select>
+										<select data-am-selected>
+											<option value="a">瑞安区</option>
+											<option value="b">洪山区</option>
+										</select>
+									</div>
+									<div class="pay-logis">
+										快递<b class="sys_item_freprice">10</b>元
+									</div>
+								</div>
+							</dl>
+							<div class="clear"></div>
+
+							<!--销量-->
+							<ul class="tm-ind-panel">
+								<li class="tm-ind-item tm-ind-sellCount canClick">
+									<div class="tm-indcon"><span class="tm-label">月销量</span><span class="tm-count">1015</span></div>
+								</li>
+								<li class="tm-ind-item tm-ind-sumCount canClick">
+									<div class="tm-indcon"><span class="tm-label">累计销量</span><span class="tm-count">6015</span></div>
+								</li>
+								<li class="tm-ind-item tm-ind-reviewCount canClick tm-line3">
+									<div class="tm-indcon"><span class="tm-label">累计评价</span><span class="tm-count">640</span></div>
+								</li>
+							</ul>
+							<div class="clear"></div>
+
+							<!--各种规格-->
+							<dl class="iteminfo_parameter sys_item_specpara">
+								<dt class="theme-login"><div class="cart-title">可选规格<span class="am-icon-angle-right"></span></div></dt>
+								<dd>
+									<!--操作页面-->
+
+									<div class="theme-popover-mask"></div>
+
+									<div class="theme-popover">
+										<div class="theme-span"></div>
+										<div class="theme-poptit">
+											<a href="javascript:;" title="关闭" class="close">×</a>
+										</div>
+										<div class="theme-popbod dform">
+											<form class="theme-signin" name="loginform" action="" method="post">
+
+												<div class="theme-signin-left">
+
+													<div class="theme-options">
+														<div class="cart-title">口味</div>
+														<ul>
+															<li class="sku-line selected">原味<i></i></li>
+															<li class="sku-line">奶油<i></i></li>
+															<li class="sku-line">炭烧<i></i></li>
+															<li class="sku-line">咸香<i></i></li>
+														</ul>
 													</div>
-													
-													<div class="product-action clearfix">
-														<a href="#" class="btn-remove" title="Remove this item">
-															<span class="fa fa-trash-o"></span>
-														</a>
-														
-														<a class="btn-edit" href="cart.html" title="View your shopping cart">
-															<span class="fa fa-pencil"></span>
-														</a>    
+													<div class="theme-options">
+														<div class="cart-title">包装</div>
+														<ul>
+															<li class="sku-line selected">手袋单人份<i></i></li>
+															<li class="sku-line">礼盒双人份<i></i></li>
+															<li class="sku-line">全家福礼包<i></i></li>
+														</ul>
+													</div>
+													<div class="theme-options">
+														<div class="cart-title number">数量</div>
+														<dd>
+															<input id="min" class="am-btn am-btn-default" name="" type="button" value="-" />
+															<input id="text_box" name="" type="text" value="1" style="width:30px;" />
+															<input id="add" class="am-btn am-btn-default" name="" type="button" value="+" />
+															<span id="Stock" class="tb-hidden">库存<span class="stock">1000</span>件</span>
+														</dd>
+
+													</div>
+													<div class="clear"></div>
+
+													<div class="btn-op">
+														<div class="btn am-btn am-btn-warning">确认</div>
+														<div class="btn close am-btn am-btn-warning">取消</div>
 													</div>
 												</div>
-											</div>
-										</li>
-									  
-										<li>
-											<a href="simple_product.html" class="product-image">
-												<img	 width="100" height="100" src="images/1903/22-150x150.jpg" class="attachment-100x100 size-100x100 wp-post-image" alt="" 
-														srcset="images/1903/22-150x150.jpg 150w, images/1903/22-300x300.jpg 300w, images/1903/22-180x180.jpg 180w, images/1903/22.jpg 600w" 
-														sizes="(max-width: 100px) 100vw, 100px" />
-											</a>
-											
-											<div class="detail-item">
-												<div class="product-details">
-													<h4>
-														<a class="title-item" href="simple_product.html">Cleaner with bag</a>
-													</h4>
-													
-													<div class="product-price">
-														<span class="price">
-															<span class="woocommerce-Price-amount amount">
-																<span class="woocommerce-Price-currencySymbol">$</span>350.00
-															</span>
-														</span>
-														
-														<div class="qty">
-															<span class="qty-number">1</span>									
-														</div>
+												<div class="theme-signin-right">
+													<div class="img-info">
+														<img src="/homes/images/songzi.jpg" />
 													</div>
-													
-													<div class="product-action clearfix">
-														<a href="#" class="btn-remove" title="Remove this item">
-															<span class="fa fa-trash-o"></span>
-														</a>           
-														
-														<a class="btn-edit" href="cart.html" title="View your shopping cart">
-															<span class="fa fa-pencil"></span>
-														</a>
+													<div class="text-info">
+														<span class="J_Price price-now">¥39.00</span>
+														<span id="Stock" class="tb-hidden">库存<span class="stock">1000</span>件</span>
 													</div>
 												</div>
-											</div>
-										</li>
-									</ul>
-									
-									<div class="cart-checkout">
-										<div class="price-total">
-											<span class="label-price-total">Total</span>
-											
-											<span class="price-total-w">
-												<span class="price">
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>540.00
-													</span>
-												</span>
-											</span>			
+
+											</form>
 										</div>
-										
-										<div class="cart-links clearfix">
-											<div class="cart-link">
-												<a href="cart.html" title="Cart">View Cart</a>
-											</div>
-											
-											<div class="checkout-link">
-												<a href="checkout.html" title="Check Out">Check Out</a>
-											</div>
-										</div>
+									</div>
+
+								</dd>
+							</dl>
+							<div class="clear"></div>
+							<!--活动	-->
+							<div class="shopPromotion gold">
+								<div class="hot">
+									<dt class="tb-metatit">店铺优惠</dt>
+									<div class="gold-list">
+										<p>购物满2件打8折，满3件7折<span>点击领券<i class="am-icon-sort-down"></i></span></p>
+									</div>
+								</div>
+								<div class="clear"></div>
+								<div class="coupon">
+									<dt class="tb-metatit">优惠券</dt>
+									<div class="gold-list">
+										<ul>
+											<li>125减5</li>
+											<li>198减10</li>
+											<li>298减20</li>
+										</ul>
 									</div>
 								</div>
 							</div>
 						</div>
-				  
-						<div class="mid-header pull-right">
-							<div class="widget sw_top">
-								<span class="stick-sr">
-									<i class="fa fa-search" aria-hidden="true"></i>
-								</span>
-								
-								<div class="top-form top-search">
-									<div class="topsearch-entry">
-										<form role="search" method="get" class="form-search searchform" action="">
-											<label class="hide"></label>
-											<input type="text" value="" name="s" class="search-query" placeholder="Keyword here..." />
-											<button type="submit" class="button-search-pro form-button">Search</button>
-										</form>
-									</div>
-								</div>
+
+						<div class="pay">
+							<div class="pay-opt">
+							<a href="home.html"><span class="am-icon-home am-icon-fw">首页</span></a>
+							<a><span class="am-icon-heart am-icon-fw">收藏</span></a>
+							
 							</div>
+							<li>
+								<div class="clearfix tb-btn tb-btn-buy theme-login">
+									<a id="LikBuy" title="点此按钮到下一步确认购买信息" href="#">立即购买</a>
+								</div>
+							</li>
+							<li>
+								<div class="clearfix tb-btn tb-btn-basket theme-login">
+									<a id="LikBasket" title="加入购物车" href="#"><i></i>加入购物车</a>
+								</div>
+							</li>
 						</div>
+
+					</div>
+
+					<div class="clear"></div>
+
+				</div>
+
+				<!--优惠套装-->
+				<div class="match">
+					<div class="match-title">优惠套装</div>
+					<div class="match-comment">
+						<ul class="like_list">
+							<li>
+								<div class="s_picBox">
+									<a class="s_pic" href="#"><img src="/homes/images/cp.jpg"></a>
+								</div> <a class="txt" target="_blank" href="#">萨拉米 1+1小鸡腿</a>
+								<div class="info-box"> <span class="info-box-price">¥ 29.90</span> <span class="info-original-price">￥ 199.00</span> </div>
+							</li>
+							<li class="plus_icon"><i>+</i></li>
+							<li>
+								<div class="s_picBox">
+									<a class="s_pic" href="#"><img src="/homes/images/cp2.jpg"></a>
+								</div> <a class="txt" target="_blank" href="#">ZEK 原味海苔</a>
+								<div class="info-box"> <span class="info-box-price">¥ 8.90</span> <span class="info-original-price">￥ 299.00</span> </div>
+							</li>
+							<li class="plus_icon"><i>=</i></li>
+							<li class="total_price">
+								<p class="combo_price"><span class="c-title">套餐价:</span><span>￥35.00</span> </p>
+								<p class="save_all">共省:<span>￥463.00</span></p> <a href="#" class="buy_now">立即购买</a> </li>
+							<li class="plus_icon"><i class="am-icon-angle-right"></i></li>
+						</ul>
 					</div>
 				</div>
-			</div>
-		</header>
-		
-		<div class="listings-title">
-			<div class="container">
-				<div class="wrap-title">
-					<h1>Turkey Qui</h1>
-					<div class="bread">
-						<div class="breadcrumbs theme-clearfix">
-							<div class="container">
-								<ul class="breadcrumb">
-									<li><a href="#">Home</a><span class="go-page"></span></li>
-									<li><a href="group_product.html">Group Product</a><span class="go-page"></span></li>
-									<li class="active"><span>Turkey Qui</span></li>
-								</ul>
-							</div>
-						</div>
+				<div class="clear"></div>
+				
+							
+				<!-- introduce-->
+
+				<div class="introduce">
+					<div class="browse">
+					    <div class="mc"> 
+						     <ul>					    
+						     	<div class="mt">            
+						            <h2>看了又看</h2>        
+					            </div>
+						     	
+							      <li class="first">
+							      	<div class="p-img">                    
+							      		<a  href="#"> <img class="" src="/homes/images/browse1.jpg"> </a>               
+							      	</div>
+							      	<div class="p-name"><a href="#">
+							      		【三只松鼠_开口松子】零食坚果特产炒货东北红松子原味
+							      	</a>
+							      	</div>
+							      	<div class="p-price"><strong>￥35.90</strong></div>
+							      </li>
+							      <li>
+							      	<div class="p-img">                    
+							      		<a  href="#"> <img class="" src="/homes/images/browse1.jpg"> </a>               
+							      	</div>
+							      	<div class="p-name"><a href="#">
+							      		【三只松鼠_开口松子】零食坚果特产炒货东北红松子原味
+							      	</a>
+							      	</div>
+							      	<div class="p-price"><strong>￥35.90</strong></div>
+							      </li>
+							      <li>
+							      	<div class="p-img">                    
+							      		<a  href="#"> <img class="" src="/homes/images/browse1.jpg"> </a>               
+							      	</div>
+							      	<div class="p-name"><a href="#">
+							      		【三只松鼠_开口松子】零食坚果特产炒货东北红松子原味
+							      	</a>
+							      	</div>
+							      	<div class="p-price"><strong>￥35.90</strong></div>
+							      </li>							      
+							      <li>
+							      	<div class="p-img">                    
+							      		<a  href="#"> <img class="" src="/homes/images/browse1.jpg"> </a>               
+							      	</div>
+							      	<div class="p-name"><a href="#">
+							      		【三只松鼠_开口松子】零食坚果特产炒货东北红松子原味
+							      	</a>
+							      	</div>
+							      	<div class="p-price"><strong>￥35.90</strong></div>
+							      </li>							      
+							      <li>
+							      	<div class="p-img">                    
+							      		<a  href="#"> <img class="" src="/homes/images/browse1.jpg"> </a>               
+							      	</div>
+							      	<div class="p-name"><a href="#">
+							      		【三只松鼠_开口松子218g】零食坚果特产炒货东北红松子原味
+							      	</a>
+							      	</div>
+							      	<div class="p-price"><strong>￥35.90</strong></div>
+							      </li>							      
+					      
+						     </ul>					
+					    </div>
 					</div>
-				</div>
-			</div>
-		</div>
-		
-		<div class="container">
-			<div class="row">
-				<div id="contents-detail" class="content col-lg-12 col-md-12 col-sm-12" role="main">
-					<div id="container">
-						<div id="content" role="main">
-							<div class="single-product clearfix">
-								<div id="product-01" class="product type-product status-publish has-post-thumbnail product_cat-accessories product_brand-global-voices first outofstock featured shipping-taxable purchasable product-type-simple">
-									<div class="product_detail row">
-										<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 clear_xs">
-											<div class="slider_img_productd">
-												<!-- woocommerce_show_product_images -->
-												<div id="product_img_01" class="product-images loading" data-rtl="false">
-													<div class="product-images-container clearfix thumbnail-bottom">
-														<!-- Image Slider -->
-														<div class="slider product-responsive">
-															<div class="item-img-slider">
-																<div class="images">					
-																	<a href="images/1903/49.jpg " data-rel="prettyPhoto[product-gallery]" class="zoom">
-																		<img width="600" height="600" src="images/1903/49.jpg" class="attachment-shop_single size-shop_single" alt="" srcset="images/1903/49.jpg 600w, images/1903/49-150x150.jpg 150w, images/1903/49-300x300.jpg 300w, images/1903/49-180x180.jpg 180w" sizes="(max-width: 600px) 100vw, 600px">
-																	</a>
-																</div>
-															</div>
-															
-															<div class="item-img-slider">
-																<div class="images">					
-																	<a href="images/1903/48.jpg " data-rel="prettyPhoto[product-gallery]" class="zoom">
-																		<img width="600" height="600" src="images/1903/48.jpg" class="attachment-shop_single size-shop_single" alt="" srcset="images/1903/48.jpg 600w, images/1903/48-150x150.jpg 150w, images/1903/48-300x300.jpg 300w, images/1903/48-180x180.jpg 180w" sizes="(max-width: 600px) 100vw, 600px">
-																	</a>
-																</div>
-															</div>
-														 
-															<div class="item-img-slider">
-																<div class="images">					
-																	<a href="images/1903/47.jpg " data-rel="prettyPhoto[product-gallery]" class="zoom">
-																		<img width="600" height="600" src="images/1903/47.jpg" class="attachment-shop_single size-shop_single" alt="" srcset="images/1903/47.jpg 600w, images/1903/47-150x150.jpg 150w, images/1903/47-300x300.jpg 300w, images/1903/47-180x180.jpg 180w" sizes="(max-width: 600px) 100vw, 600px">
-																	</a>
-																</div>
-															</div>
-														 
-															<div class="item-img-slider">
-																<div class="images">					
-																	<a href="images/1903/46.jpg " data-rel="prettyPhoto[product-gallery]" class="zoom">
-																		<img width="600" height="600" src="images/1903/46.jpg" class="attachment-shop_single size-shop_single" alt="" srcset="images/1903/46.jpg 600w, images/1903/46-150x150.jpg 150w, images/1903/46-300x300.jpg 300w, images/1903/46-180x180.jpg 180w" sizes="(max-width: 600px) 100vw, 600px">
-																	</a>
-																</div>
-															</div>
-														 
-															<div class="item-img-slider">
-																<div class="images">					
-																	<a href="images/1903/49.jpg " data-rel="prettyPhoto[product-gallery]" class="zoom">
-																		<img width="600" height="600" src="images/1903/49.jpg" class="attachment-shop_single size-shop_single" alt="" srcset="images/1903/49.jpg 600w, images/1903/49-150x150.jpg 150w, images/1903/49-300x300.jpg 300w, images/1903/49-180x180.jpg 180w" sizes="(max-width: 600px) 100vw, 600px">
-																	</a>
-																</div>
-															</div>
-														 
-															<div class="item-img-slider">
-																<div class="images">					
-																	<a href="images/1903/43.jpg " data-rel="prettyPhoto[product-gallery]" class="zoom">
-																		<img width="600" height="600" src="images/1903/43.jpg" class="attachment-shop_single size-shop_single" alt="" srcset="images/1903/43.jpg 600w, images/1903/43-150x150.jpg 150w, images/1903/43-300x300.jpg 300w, images/1903/43-180x180.jpg 180w" sizes="(max-width: 600px) 100vw, 600px">
-																	</a>
-																</div>
-															</div>
-														</div>
-														
-														<!-- Thumbnail Slider -->
-														<div class="slider product-responsive-thumbnail" id="product_thumbnail_247">
-															<div class="item-thumbnail-product">
-																<div class="thumbnail-wrapper">
-																	<img width="180" height="180" src="images/1903/49-180x180.jpg" class="attachment-shop_thumbnail size-shop_thumbnail" alt="" srcset="images/1903/49-180x180.jpg 180w, images/1903/49-150x150.jpg 150w, images/1903/49-300x300.jpg 300w, images/1903/49.jpg 600w" sizes="(max-width: 180px) 100vw, 180px">
-																</div>
-															</div>
-															
-															<div class="item-thumbnail-product">
-																<div class="thumbnail-wrapper">
-																	<img width="180" height="180" src="images/1903/48-180x180.jpg" class="attachment-shop_thumbnail size-shop_thumbnail" alt="" srcset="images/1903/48-180x180.jpg 180w, images/1903/48-150x150.jpg 150w, images/1903/48-300x300.jpg 300w, images/1903/48.jpg 600w" sizes="(max-width: 180px) 100vw, 180px">			
-																</div>
-															</div>
-															
-															<div class="item-thumbnail-product">
-																<div class="thumbnail-wrapper">
-																	<img width="180" height="180" src="images/1903/47-180x180.jpg" class="attachment-shop_thumbnail size-shop_thumbnail" alt="" srcset="images/1903/47-180x180.jpg 180w, images/1903/47-150x150.jpg 150w, images/1903/47-300x300.jpg 300w, images/1903/47.jpg 600w" sizes="(max-width: 180px) 100vw, 180px">			
-																</div>
-															</div>
-															
-															<div class="item-thumbnail-product">
-																<div class="thumbnail-wrapper">
-																	<img width="180" height="180" src="images/1903/46-180x180.jpg" class="attachment-shop_thumbnail size-shop_thumbnail" alt="" srcset="images/1903/46-180x180.jpg 180w, images/1903/46-150x150.jpg 150w, images/1903/46-300x300.jpg 300w, images/1903/46.jpg 600w" sizes="(max-width: 180px) 100vw, 180px">			
-																</div>
-															</div>
-															
-															<div class="item-thumbnail-product">
-																<div class="thumbnail-wrapper">
-																	<img width="180" height="180" src="images/1903/49-180x180.jpg" class="attachment-shop_thumbnail size-shop_thumbnail" alt="" srcset="images/1903/49-180x180.jpg 180w, images/1903/49-150x150.jpg 150w, images/1903/49-300x300.jpg 300w, images/1903/49.jpg 600w" sizes="(max-width: 180px) 100vw, 180px">			
-																</div>
-															</div>
-															
-															<div class="item-thumbnail-product">
-																<div class="thumbnail-wrapper">
-																<img width="180" height="180" src="images/1903/43-180x180.jpg" class="attachment-shop_thumbnail size-shop_thumbnail" alt="" srcset="images/1903/43-180x180.jpg 180w, images/1903/43-150x150.jpg 150w, images/1903/43-300x300.jpg 300w, images/1903/43.jpg 600w" sizes="(max-width: 180px) 100vw, 180px">			
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
+					<div class="introduceMain">
+						<div class="am-tabs" data-am-tabs>
+							<ul class="am-avg-sm-3 am-tabs-nav am-nav am-nav-tabs">
+								<li class="am-active">
+									<a href="#">
+
+										<span class="index-needs-dt-txt">宝贝详情</span></a>
+
+								</li>
+
+								<li>
+									<a href="#">
+
+										<span class="index-needs-dt-txt">全部评价</span></a>
+
+								</li>
+
+								<li>
+									<a href="#">
+
+										<span class="index-needs-dt-txt">猜你喜欢</span></a>
+								</li>
+							</ul>
+
+							<div class="am-tabs-bd">
+
+								<div class="am-tab-panel am-fade am-in am-active">
+									<div class="J_Brand">
+
+										<div class="attr-list-hd tm-clear">
+											<h4>产品参数：</h4></div>
+										<div class="clear"></div>
+										<ul id="J_AttrUL">
+											<li title="">产品类型:&nbsp;烘炒类</li>
+											<li title="">原料产地:&nbsp;巴基斯坦</li>
+											<li title="">产地:&nbsp;湖北省武汉市</li>
+											<li title="">配料表:&nbsp;进口松子、食用盐</li>
+											<li title="">产品规格:&nbsp;210g</li>
+											<li title="">保质期:&nbsp;180天</li>
+											<li title="">产品标准号:&nbsp;GB/T 22165</li>
+											<li title="">生产许可证编号：&nbsp;QS4201 1801 0226</li>
+											<li title="">储存方法：&nbsp;请放置于常温、阴凉、通风、干燥处保存 </li>
+											<li title="">食用方法：&nbsp;开袋去壳即食</li>
+										</ul>
+										<div class="clear"></div>
+									</div>
+
+									<div class="details">
+										<div class="attr-list-hd after-market-hd">
+											<h4>商品细节</h4>
 										</div>
-										
-										<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 clear_xs">
-											<div class="content_product_detail">
-												<h1 class="product_title entry-title">Turkey Qui</h1>
-												
-												<div class="reviews-content">
-													<div class="star"></div>
-													<a href="#reviews" class="woocommerce-review-link" rel="nofollow"><span class="count">0</span> Review(s)</a>
-												</div>
-												
-												<div>
-													<p class="price"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>300.00</span></p>
-												</div>
-												
-												<div class="product-info clearfix">
-													<div class="product-stock pull-left out-stock">
-														<span>Out stock</span>
-													</div>
-												</div>
-												
-												<div class="description" itemprop="description">
-													<p>Proin nunc nibh, adipiscing eu nisi id, ultrices suscipit augue. Sed rhoncus hendrerit lacus, et venenatis felis. Donec ut fringilla magna ultrices suscipit augue. Proin nunc nibh, adipiscing eu nisi id, ultrices suscipit augue. Sed rhoncus hendrerit lacus, et venenatis felis. Donec ut fringilla magna ultrices suscipit augue.</p>
-												</div>
-												
-												<p class="stock out-of-stock">Out of stock</p>
-												
-												<div class="social-share">
-													<div class="title-share">Share</div>
-													<div class="wrap-content">
-														<a href="#" onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"><i class="fa fa-facebook"></i></a>
-														<a href="http://twitter.com/" onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"><i class="fa fa-twitter"></i></a>
-														<a href="#" onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"><i class="fa fa-google-plus"></i></a>
-														<a href="#"><i class="fa fa-dribbble"></i></a>
-														<a href="#"><i class="fa fa-instagram"></i></a>
-													</div>
-												</div>
-											</div>
+										<div class="twlistNews">
+											<img src="/homes/images/tw1.jpg" />
+											<img src="/homes/images/tw2.jpg" />
+											<img src="/homes/images/tw3.jpg" />
+											<img src="/homes/images/tw4.jpg" />
+											<img src="/homes/images/tw5.jpg" />
+											<img src="/homes/images/tw6.jpg" />
+											<img src="/homes/images/tw7.jpg" />
 										</div>
 									</div>
+									<div class="clear"></div>
+
 								</div>
-								
-								<div class="tabs clearfix">
-									<div class="tabbable">
-										<ul class="nav nav-tabs">
-											<li class="description_tab active">
-												<a href="#tab-description" data-toggle="tab">Description</a>
+
+								<div class="am-tab-panel am-fade">
+									
+                                    <div class="actor-new">
+                                    	<div class="rate">                
+                                    		<strong>100<span>%</span></strong><br> <span>好评度</span>            
+                                    	</div>
+                                        <dl>                    
+                                            <dt>买家印象</dt>                    
+                                            <dd class="p-bfc">
+                                            			<q class="comm-tags"><span>味道不错</span><em>(2177)</em></q>
+                                            			<q class="comm-tags"><span>颗粒饱满</span><em>(1860)</em></q>
+                                            			<q class="comm-tags"><span>口感好</span><em>(1823)</em></q>
+                                            			<q class="comm-tags"><span>商品不错</span><em>(1689)</em></q>
+                                            			<q class="comm-tags"><span>香脆可口</span><em>(1488)</em></q>
+                                            			<q class="comm-tags"><span>个个开口</span><em>(1392)</em></q>
+                                            			<q class="comm-tags"><span>价格便宜</span><em>(1119)</em></q>
+                                            			<q class="comm-tags"><span>特价买的</span><em>(865)</em></q>
+                                            			<q class="comm-tags"><span>皮很薄</span><em>(831)</em></q> 
+                                            </dd>                                           
+                                         </dl> 
+                                    </div>	
+                                    <div class="clear"></div>
+									<div class="tb-r-filter-bar">
+										<ul class=" tb-taglist am-avg-sm-4">
+											<li class="tb-taglist-li tb-taglist-li-current">
+												<div class="comment-info">
+													<span>全部评价</span>
+													<span class="tb-tbcr-num">(32)</span>
+												</div>
 											</li>
-											
-											<li class="reviews_tab ">
-												<a href="#tab-reviews" data-toggle="tab">Reviews (0)</a>
+
+											<li class="tb-taglist-li tb-taglist-li-1">
+												<div class="comment-info">
+													<span>好评</span>
+													<span class="tb-tbcr-num">(32)</span>
+												</div>
+											</li>
+
+											<li class="tb-taglist-li tb-taglist-li-0">
+												<div class="comment-info">
+													<span>中评</span>
+													<span class="tb-tbcr-num">(32)</span>
+												</div>
+											</li>
+
+											<li class="tb-taglist-li tb-taglist-li--1">
+												<div class="comment-info">
+													<span>差评</span>
+													<span class="tb-tbcr-num">(32)</span>
+												</div>
 											</li>
 										</ul>
-										
-										<div class="clear"></div>
-										
-										<div class=" tab-content">
-											<div class="tab-pane active" id="tab-description">
-												<h2>Product Description</h2>
-												<p>Proident adipisicing laborum beef ribs tri-tip dolore meatball tempor rump flank prosciutto elit do. Duis tenderloin culpa excepteur. Fugiat irure est cupim dolor, ut nulla id andouille chicken spare ribs eiusmod brisket biltong. Eiusmod minim tail cupim labore ad filet mignon, andouille esse enim. Sausage salami dolor ex adipisicing consequat. Ground round nostrud ut fatback voluptate consequat in minim drumstick culpa dolore. Ea beef prosciutto in sirloin fatback enim velit consectetur in pork belly pancetta culpa shank.</p>
-												<p>Shank quis in duis, id officia nulla. Pancetta sunt filet mignon porchetta doner turkey occaecat. Meatball corned beef elit ut fugiat. Hamburger biltong tail beef in cupim proident turducken picanha. Sausage chicken incididunt ad occaecat porchetta pancetta corned beef ham hock laborum nisi ullamco pork loin kielbasa aliqua.</p>
-												<p>In jerky minim chicken duis ground round nostrud pork belly occaecat pastrami commodo adipisicing tongue doner short loin. Officia est do, filet mignon shank pork loin anim esse quis kevin corned beef enim. Magna sint sirloin ham hock cupidatat laboris. Boudin spare ribs kevin meatloaf id short loin swine flank brisket aute. Reprehenderit turkey qui, boudin swine voluptate ipsum fugiat.</p>
-												<p>Salami in ball tip pig eiusmod occaecat pork chop, consequat excepteur incididunt. Ground round picanha ut boudin exercitation jerky meatball strip steak ipsum labore spare ribs turducken ribeye ut aliquip. Id ipsum esse nisi ball tip chuck adipisicing sint culpa t-bone brisket bresaola mollit. Enim eu kevin, tail in nisi nulla sirloin adipisicing veniam dolore.</p>
-											</div>
-											
-											<div class="tab-pane " id="tab-reviews">
-												<div id="reviews">
-													<div id="comments">
-														<h2>Reviews</h2>
-														<p class="woocommerce-noreviews">There are no reviews yet.</p>
-													</div>
-													
-													<div id="review_form_wrapper">
-														<div id="review_form">
-															<div id="respond" class="comment-respond">
-																<h3 id="reply-title" class="comment-reply-title">
-																	Be the first to review "turkey qui" 
-																	<small><a rel="nofollow" id="cancel-comment-reply-link" href="#" style="display:none;">Cancel reply</a></small>
-																</h3>
-																
-																<form action="" method="post" id="commentform" class="comment-form">
-																	<p class="comment-form-rating">
-																		<label for="rating">Your Rating</label>
-																		<select name="rating" id="rating">
-																			<option value="">Rate ...</option>
-																			<option value="5">Perfect</option>
-																			<option value="4">Good</option>
-																			<option value="3">Average</option>
-																			<option value="2">Not that bad</option>
-																			<option value="1">Very Poor</option>
-																		</select>
-																	</p>
-																	
-																	<p class="comment-form-comment">
-																		<label for="comment">Your Review</label>
-																		<textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea>
-																	</p>
-																	
-																	<p class="form-submit">
-																		<input name="submit" type="submit" id="submit" class="submit" value="Submit">
-																	</p>
-																</form>
-															</div>
-														</div>
-													</div>
-													
-													<div class="clear"></div>
-												</div>
-											</div>
-										</div>
 									</div>
-								</div>
-								
-								<div class="bottom-single-product theme-clearfix">
-									<div class="widget-1 widget-first widget sw_related_upsell_widget-2 sw_related_upsell_widget" data-scroll-reveal="enter bottom move 20px wait 0.2s">
-										<div class="widget-inner">
-											<div id="slider_sw_related_upsell_widget-2" class="sw-woo-container-slider related-products responsive-slider clearfix loading" data-lg="4" data-md="3" data-sm="2" data-xs="2" data-mobile="1" data-speed="1000" data-scroll="1" data-interval="5000" data-autoplay="false">
-												<div class="resp-slider-container">
-													<div class="box-slider-title">
-														<h2><span>Related Products</span></h2>
-													</div>
-													
-													<div class="slider responsive">
-														<div class="item ">
-															<div class="item-wrap">
-																<div class="item-detail">
-																	<div class="item-img products-thumb">
-																		<a href="simple_product.html">
-																			<div class="product-thumb-hover">
-																				<img width="300" height="300" src="images/1903/49-300x300.jpg" class="attachment-shop_catalog size-shop_catalog wp-post-image" alt="" srcset="images/1903/49-300x300.jpg 300w, images/1903/49-150x150.jpg 150w, images/1903/49-180x180.jpg 180w, images/1903/49.jpg 600w" sizes="(max-width: 300px) 100vw, 300px">
-																			</div>
-																		</a>																
-																				
-																		<!-- add to cart, wishlist, compare -->
-																		<div class="item-bottom clearfix">
-																			<a rel="nofollow" href="#" class="button product_type_simple add_to_cart_button ajax_add_to_cart" title="Add to Cart">Add to cart</a>
-																			
-																			<a href="javascript:void(0)" class="compare button" rel="nofollow" title="Add to Compare">Compare</a>
-																			
-																			<div class="yith-wcwl-add-to-wishlist add-to-wishlist-248">
-																				<div class="yith-wcwl-add-button show" style="display:block">
-																					<a href="#" rel="nofollow" class="add_to_wishlist">Add to Wishlist</a>
-																					<img src="images/wpspin_light.gif" class="ajax-loading" alt="loading" width="16" height="16" style="visibility:hidden" />
-																				</div>
-																			   
-																				<div class="yith-wcwl-wishlistaddedbrowse hide" style="display:none;">
-																					<span class="feedback">Product added!</span>
-																					<a href="#" rel="nofollow">Browse Wishlist</a>
-																				</div>
-																				
-																				<div class="yith-wcwl-wishlistexistsbrowse hide" style="display:none">
-																					<span class="feedback">The product is already in the wishlist!</span>
-																					<a href="#" rel="nofollow">Browse Wishlist</a>
-																				</div>
-																				
-																				<div style="clear:both"></div>
-																				<div class="yith-wcwl-wishlistaddresponse"></div>
-																			</div>
-																			
-																			<div class="clear"></div>
-																			<a href="#" data-fancybox-type="ajax" class="sm_quickview_handler-list fancybox fancybox.ajax">Quick View </a>
-																		</div>
-																	</div>
-																	
-																	<div class="item-content">
-																		<!-- rating  -->
-																		<div class="reviews-content">
-																			<div class="star"></div>
-																			<div class="item-number-rating">
-																				0 Review(s)				
-																			</div>
-																		</div>
-																		<!-- end rating  -->
-																		
-																		<h4><a href="simple_product.html" title="turkey qui">Turkey Qui</a></h4>
-																		
-																		<!-- price -->
-																		<div class="item-price">
-																			<span>
-																				<span class="woocommerce-Price-amount amount">
-																					<span class="woocommerce-Price-currencySymbol">$</span>300.00
-																				</span>
-																			</span>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-														 
-														<div class="item ">
-															<div class="item-wrap">
-																<div class="item-detail">
-																	<div class="item-img products-thumb">
-																		<span class="onsale">Sale!</span>
-																		<a href="simple_product.html">
-																			<div class="product-thumb-hover">
-																				<img width="300" height="300" src="images/1903/39-300x300.jpg" class="attachment-shop_catalog size-shop_catalog wp-post-image" alt="" srcset="images/1903/39-300x300.jpg 300w, images/1903/39-150x150.jpg 150w, images/1903/39-180x180.jpg 180w, images/1903/39.jpg 600w" sizes="(max-width: 300px) 100vw, 300px">
-																			</div>
-																		</a>
-																				
-																		<!-- add to cart, wishlist, compare -->
-																		<div class="item-bottom clearfix">
-																			<a rel="nofollow" href="#" class="button product_type_simple add_to_cart_button ajax_add_to_cart" title="Add to Cart">Add to cart</a>
-																			
-																			<a href="javascript:void(0)" class="compare button" rel="nofollow" title="Add to Compare">Compare</a>
-																			
-																			<div class="yith-wcwl-add-to-wishlist add-to-wishlist-248">
-																				<div class="yith-wcwl-add-button show" style="display:block">
-																					<a href="#" rel="nofollow" class="add_to_wishlist">Add to Wishlist</a>
-																					<img src="images/wpspin_light.gif" class="ajax-loading" alt="loading" width="16" height="16" style="visibility:hidden" />
-																				</div>
-																			   
-																				<div class="yith-wcwl-wishlistaddedbrowse hide" style="display:none;">
-																					<span class="feedback">Product added!</span>
-																					<a href="#" rel="nofollow">Browse Wishlist</a>
-																				</div>
-																				
-																				<div class="yith-wcwl-wishlistexistsbrowse hide" style="display:none">
-																					<span class="feedback">The product is already in the wishlist!</span>
-																					<a href="#" rel="nofollow">Browse Wishlist</a>
-																				</div>
-																				
-																				<div style="clear:both"></div>
-																				<div class="yith-wcwl-wishlistaddresponse"></div>
-																			</div>
-																			
-																			<div class="clear"></div>
-																			<a href="#" data-fancybox-type="ajax" class="sm_quickview_handler-list fancybox fancybox.ajax">Quick View </a>
-																		</div>
-																	</div>
-																	
-																	<div class="item-content">
-																		<!-- rating  -->
-																		<div class="reviews-content">
-																			<div class="star"></div>
-																			<div class="item-number-rating">
-																				0 Review(s)				
-																			</div>
-																		</div>
-																		<!-- end rating  -->
-																		
-																		<h4><a href="simple_product.html" title="iPad Mini 2 Retina">iPad Mini 2 Retina</a></h4>
-																		
-																		<!-- price -->
-																		<div class="item-price">
-																			<span>
-																				<del>
-																					<span class="woocommerce-Price-amount amount">
-																						<span class="woocommerce-Price-currencySymbol">$</span>300.00
-																					</span>
-																				</del> 
-																				
-																				<ins>
-																					<span class="woocommerce-Price-amount amount">
-																						<span class="woocommerce-Price-currencySymbol">$</span>290.00
-																					</span>
-																				</ins>
-																			</span>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-														
-														<div class="item ">
-															<div class="item-wrap">
-																<div class="item-detail">
-																	<div class="item-img products-thumb">
-																		<a href="simple_product.html">
-																			<div class="product-thumb-hover">
-																				<img width="300" height="300" src="images/1903/22-300x300.jpg" class="attachment-shop_catalog size-shop_catalog wp-post-image" alt="" srcset="images/1903/22-300x300.jpg 300w, images/1903/22-150x150.jpg 150w, images/1903/22-180x180.jpg 180w, images/1903/22.jpg 600w" sizes="(max-width: 300px) 100vw, 300px">
-																			</div>
-																		</a>
-																				
-																		<!-- add to cart, wishlist, compare -->
-																		<div class="item-bottom clearfix">
-																			<a rel="nofollow" href="#" class="button product_type_simple add_to_cart_button ajax_add_to_cart" title="Add to Cart">Add to cart</a>
-																			
-																			<a href="javascript:void(0)" class="compare button" rel="nofollow" title="Add to Compare">Compare</a>
-																			
-																			<div class="yith-wcwl-add-to-wishlist add-to-wishlist-248">
-																				<div class="yith-wcwl-add-button show" style="display:block">
-																					<a href="#" rel="nofollow" class="add_to_wishlist">Add to Wishlist</a>
-																					<img src="images/wpspin_light.gif" class="ajax-loading" alt="loading" width="16" height="16" style="visibility:hidden" />
-																				</div>
-																			   
-																				<div class="yith-wcwl-wishlistaddedbrowse hide" style="display:none;">
-																					<span class="feedback">Product added!</span>
-																					<a href="#" rel="nofollow">Browse Wishlist</a>
-																				</div>
-																				
-																				<div class="yith-wcwl-wishlistexistsbrowse hide" style="display:none">
-																					<span class="feedback">The product is already in the wishlist!</span>
-																					<a href="#" rel="nofollow">Browse Wishlist</a>
-																				</div>
-																				
-																				<div style="clear:both"></div>
-																				<div class="yith-wcwl-wishlistaddresponse"></div>
-																			</div>
-																			
-																			<div class="clear"></div>
-																			<a href="#" data-fancybox-type="ajax" class="sm_quickview_handler-list fancybox fancybox.ajax">Quick View </a>
-																		</div>
-																	</div>
-																	
-																	<div class="item-content">
-																		<!-- rating  -->
-																		<div class="reviews-content">
-																			<div class="star"></div>
-																			<div class="item-number-rating">
-																				0 Review(s)				
-																			</div>
-																		</div>
-																		<!-- end rating  -->
-																		
-																		<h4><a href="simple_product.html" title="Philips HR2195">Philips HR2195</a></h4>
-																		
-																		<!-- price -->
-																		<div class="item-price">
-																			<span>
-																				<span class="woocommerce-Price-amount amount">
-																					<span class="woocommerce-Price-currencySymbol">$</span>200.00
-																				</span>
-																			</span>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-														
-														<div class="item ">
-															<div class="item-wrap">
-																<div class="item-detail">
-																	<div class="item-img products-thumb">
-																		<a href="simple_product.html">
-																			<div class="product-thumb-hover">
-																				<img width="300" height="300" src="images/1903/14-300x300.jpg" class="attachment-shop_catalog size-shop_catalog wp-post-image" alt="" srcset="images/1903/14-300x300.jpg 300w, images/1903/14-150x150.jpg 150w, images/1903/14-180x180.jpg 180w, images/1903/14.jpg 600w" sizes="(max-width: 300px) 100vw, 300px">
-																			</div>
-																		</a>
-																				
-																		<!-- add to cart, wishlist, compare -->
-																		<div class="item-bottom clearfix">
-																			<a rel="nofollow" href="#" class="button product_type_simple add_to_cart_button ajax_add_to_cart" title="Add to Cart">Add to cart</a>
-																			
-																			<a href="javascript:void(0)" class="compare button" rel="nofollow" title="Add to Compare">Compare</a>
-																			
-																			<div class="yith-wcwl-add-to-wishlist add-to-wishlist-248">
-																				<div class="yith-wcwl-add-button show" style="display:block">
-																					<a href="#" rel="nofollow" class="add_to_wishlist">Add to Wishlist</a>
-																					<img src="images/wpspin_light.gif" class="ajax-loading" alt="loading" width="16" height="16" style="visibility:hidden" />
-																				</div>
-																			   
-																				<div class="yith-wcwl-wishlistaddedbrowse hide" style="display:none;">
-																					<span class="feedback">Product added!</span>
-																					<a href="#" rel="nofollow">Browse Wishlist</a>
-																				</div>
-																				
-																				<div class="yith-wcwl-wishlistexistsbrowse hide" style="display:none">
-																					<span class="feedback">The product is already in the wishlist!</span>
-																					<a href="#" rel="nofollow">Browse Wishlist</a>
-																				</div>
-																				
-																				<div style="clear:both"></div>
-																				<div class="yith-wcwl-wishlistaddresponse"></div>
-																			</div>
-																			
-																			<div class="clear"></div>
-																			<a href="#" data-fancybox-type="ajax" class="sm_quickview_handler-list fancybox fancybox.ajax">Quick View </a>
-																		</div>
-																	</div>
-																	
-																	<div class="item-content">
-																		<!-- rating  -->
-																		<div class="reviews-content">
-																			<div class="star"></div>
-																			<div class="item-number-rating">
-																				0 Review(s)				
-																			</div>
-																		</div>
-																		<!-- end rating  -->
-																	 
-																		<h4><a href="simple_product.html" title="sony xperia s">sony xperia s</a></h4>
-																		
-																		<!-- price -->
-																		<div class="item-price">
-																			<span>
-																				<span class="woocommerce-Price-amount amount">
-																					<span class="woocommerce-Price-currencySymbol">$</span>300.00
-																				</span>
-																			</span>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-														
-														<div class="item ">
-															<div class="item-wrap">
-																<div class="item-detail">
-																	<div class="item-img products-thumb">
-																		<a href="simple_product.html">
-																			<div class="product-thumb-hover">
-																				<img width="300" height="300" src="images/1903/58-300x300.jpg" class="attachment-shop_catalog size-shop_catalog wp-post-image" alt="" srcset="images/1903/58-300x300.jpg 300w, images/1903/58-150x150.jpg 150w, images/1903/58-180x180.jpg 180w, images/1903/58.jpg 600w" sizes="(max-width: 300px) 100vw, 300px">
-																			</div>
-																		</a>
-																				
-																		<!-- add to cart, wishlist, compare -->
-																		<div class="item-bottom clearfix">
-																			<a rel="nofollow" href="#" class="button product_type_simple add_to_cart_button ajax_add_to_cart" title="Add to Cart">Add to cart</a>
-																			
-																			<a href="javascript:void(0)" class="compare button" rel="nofollow" title="Add to Compare">Compare</a>
-																			
-																			<div class="yith-wcwl-add-to-wishlist add-to-wishlist-248">
-																				<div class="yith-wcwl-add-button show" style="display:block">
-																					<a href="#" rel="nofollow" class="add_to_wishlist">Add to Wishlist</a>
-																					<img src="images/wpspin_light.gif" class="ajax-loading" alt="loading" width="16" height="16" style="visibility:hidden" />
-																				</div>
-																			   
-																				<div class="yith-wcwl-wishlistaddedbrowse hide" style="display:none;">
-																					<span class="feedback">Product added!</span>
-																					<a href="#" rel="nofollow">Browse Wishlist</a>
-																				</div>
-																				
-																				<div class="yith-wcwl-wishlistexistsbrowse hide" style="display:none">
-																					<span class="feedback">The product is already in the wishlist!</span>
-																					<a href="#" rel="nofollow">Browse Wishlist</a>
-																				</div>
-																				
-																				<div style="clear:both"></div>
-																				<div class="yith-wcwl-wishlistaddresponse"></div>
-																			</div>
-																			
-																			<div class="clear"></div>
-																			<a href="#" data-fancybox-type="ajax" class="sm_quickview_handler-list fancybox fancybox.ajax">Quick View </a>
-																		</div>
-																	</div>
-																	
-																	<div class="item-content">
-																		<!-- rating  -->
-																			<div class="reviews-content">
-																			<div class="star"></div>
-																			<div class="item-number-rating">
-																				0 Review(s)				
-																			</div>
-																		</div>
-																		<!-- end rating  -->
-																		
-																		<h4><a href="simple_product.html" title="nikon d7000">nikon d7000</a></h4>
-																	
-																		<!-- price -->
-																		<div class="item-price">
-																			<span>
-																				<span class="woocommerce-Price-amount amount">
-																					<span class="woocommerce-Price-currencySymbol">$</span>300.00
-																				</span>
-																			</span>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								   
-									<div class="widget-2 widget-last widget sw_related_upsell_widget-3 sw_related_upsell_widget" data-scroll-reveal="enter bottom move 20px wait 0.2s">
-										<div class="widget-inner"></div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		
-		<footer id="footer" class="footer default theme-clearfix">
-			<!-- Content footer -->
-			<div class="container">
-				<div class="vc_row wpb_row vc_row-fluid">
-					<div class="wpb_column vc_column_container vc_col-sm-12">
-						<div class="vc_column-inner ">
-							<div class="wpb_wrapper">
-								<div id="sw_testimonial01" class="testimonial-slider client-wrapper-b carousel slide " data-interval="0">
-									<div class="carousel-cl nav-custom">
-										<a class="prev-test fa fa-angle-left" href="#sw_testimonial01" role="button" data-slide="prev"><span></span></a>
-										<a class="next-test fa fa-angle-right" href="#sw_testimonial01" role="button" data-slide="next"><span></span></a>
-									</div>
-									
-									<div class="carousel-inner">
-										<div class="item active">
-											<div class="item-inner">
-												<div class="image-client pull-left">
-													<a href="#" title="">
-														<img width="127" height="127" src="images/1903/tm3.jpg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" />
-													</a>
-												</div>
-												
-												<div class="client-say-info">
-													<div class="client-comment">
-														In auctor ex id urna faucibus porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit.�						
-													</div>
-													
-													<div class="name-client">
-														<h2><a href="#" title="">Jerry</a></h2>
-														<p>Web Developer</p>
-													</div>
-												</div>
-											</div>
-											
-											<div class="item-inner">
-												<div class="image-client pull-left">
-													<a href="#" title="">
-														<img width="127" height="127" src="images/1903/tm1.png" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" />
-													</a>
-												</div>
-											
-												<div class="client-say-info">
-													<div class="client-comment">
-														In auctor ex id urna faucibus porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit.�						
-													</div>
-													
-													<div class="name-client">
-														<h2>
-															<a href="#" title="">David Gand</a>
-														</h2>
-														
-														<p>Designer</p>
-													</div>
-												</div>
-											</div>
-										</div>
-										
-										<div class="item ">
-											<div class="item-inner">
-												<div class="image-client pull-left">
-													<a href="#" title="">
-														<img width="127" height="127" src="images/1903/tm2.png" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" />
-													</a>
-												</div>
-												
-												<div class="client-say-info">
-													<div class="client-comment">
-														In auctor ex id urna faucibus porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit.�						
-													</div>
-													
-													<div class="name-client">
-														<h2>
-															<a href="#" title="">Taylor Hill</a>
-														</h2>
-														
-														<p>Developer</p>
-													</div>
-												</div>
-											</div>
-											
-											<div class="item-inner">
-												<div class="image-client pull-left">
-													<a href="#" title="">
-														<img width="127" height="127" src="images/1903/tm3.jpg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" />
-													</a>
-												</div>
-												
-												<div class="client-say-info">
-													<div class="client-comment">
-														In auctor ex id urna faucibus porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit.�						
-													</div>
-													
-													<div class="name-client">
-														<h2>
-															<a href="#" title="">JOHN DOE</a>
-														</h2>
-														
-														<p>Designer</p>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-@stop			
-				
+									<div class="clear"></div>
 
+									<ul class="am-comments-list am-comments-list-flip">
+										<li class="am-comment">
+											<!-- 评论容器 -->
+											<a href="">
+												<img class="am-comment-avatar" src="/homes/images/hwbn40x40.jpg" />
+												<!-- 评论者头像 -->
+											</a>
+
+											<div class="am-comment-main">
+												<!-- 评论内容容器 -->
+												<header class="am-comment-hd">
+													<!--<h3 class="am-comment-title">评论标题</h3>-->
+													<div class="am-comment-meta">
+														<!-- 评论元数据 -->
+														<a href="#link-to-user" class="am-comment-author">b***1 (匿名)</a>
+														<!-- 评论者 -->
+														评论于
+														<time datetime="">2015年11月02日 17:46</time>
+													</div>
+												</header>
+
+												<div class="am-comment-bd">
+													<div class="tb-rev-item " data-id="255776406962">
+														<div class="J_TbcRate_ReviewContent tb-tbcr-content ">
+															摸起来丝滑柔软，不厚，没色差，颜色好看！买这个衣服还接到诈骗电话，我很好奇他们是怎么知道我买了这件衣服，并且还知道我的电话的！
+														</div>
+														<div class="tb-r-act-bar">
+															颜色分类：柠檬黄&nbsp;&nbsp;尺码：S
+														</div>
+													</div>
+
+												</div>
+												<!-- 评论内容 -->
+											</div>
+										</li>
+										<li class="am-comment">
+											<!-- 评论容器 -->
+											<a href="">
+												<img class="am-comment-avatar" src="/homes/images/hwbn40x40.jpg" />
+												<!-- 评论者头像 -->
+											</a>
+
+											<div class="am-comment-main">
+												<!-- 评论内容容器 -->
+												<header class="am-comment-hd">
+													<!--<h3 class="am-comment-title">评论标题</h3>-->
+													<div class="am-comment-meta">
+														<!-- 评论元数据 -->
+														<a href="#link-to-user" class="am-comment-author">l***4 (匿名)</a>
+														<!-- 评论者 -->
+														评论于
+														<time datetime="">2015年10月28日 11:33</time>
+													</div>
+												</header>
+
+												<div class="am-comment-bd">
+													<div class="tb-rev-item " data-id="255095758792">
+														<div class="J_TbcRate_ReviewContent tb-tbcr-content ">
+															没有色差，很暖和……美美的
+														</div>
+														<div class="tb-r-act-bar">
+															颜色分类：蓝调灰&nbsp;&nbsp;尺码：2XL
+														</div>
+													</div>
+
+												</div>
+												<!-- 评论内容 -->
+											</div>
+										</li>
+										<li class="am-comment">
+											<!-- 评论容器 -->
+											<a href="">
+												<img class="am-comment-avatar" src="/homes/images/hwbn40x40.jpg" />
+												<!-- 评论者头像 -->
+											</a>
+
+											<div class="am-comment-main">
+												<!-- 评论内容容器 -->
+												<header class="am-comment-hd">
+													<!--<h3 class="am-comment-title">评论标题</h3>-->
+													<div class="am-comment-meta">
+														<!-- 评论元数据 -->
+														<a href="#link-to-user" class="am-comment-author">b***1 (匿名)</a>
+														<!-- 评论者 -->
+														评论于
+														<time datetime="">2015年11月02日 17:46</time>
+													</div>
+												</header>
+
+												<div class="am-comment-bd">
+													<div class="tb-rev-item " data-id="255776406962">
+														<div class="J_TbcRate_ReviewContent tb-tbcr-content ">
+															摸起来丝滑柔软，不厚，没色差，颜色好看！买这个衣服还接到诈骗电话，我很好奇他们是怎么知道我买了这件衣服，并且还知道我的电话的！
+														</div>
+														<div class="tb-r-act-bar">
+															颜色分类：柠檬黄&nbsp;&nbsp;尺码：S
+														</div>
+													</div>
+
+												</div>
+												<!-- 评论内容 -->
+											</div>
+										</li>
+										<li class="am-comment">
+											<!-- 评论容器 -->
+											<a href="">
+												<img class="am-comment-avatar" src="/homes/images/hwbn40x40.jpg" />
+												<!-- 评论者头像 -->
+											</a>
+
+											<div class="am-comment-main">
+												<!-- 评论内容容器 -->
+												<header class="am-comment-hd">
+													<!--<h3 class="am-comment-title">评论标题</h3>-->
+													<div class="am-comment-meta">
+														<!-- 评论元数据 -->
+														<a href="#link-to-user" class="am-comment-author">h***n (匿名)</a>
+														<!-- 评论者 -->
+														评论于
+														<time datetime="">2015年11月25日 12:48</time>
+													</div>
+												</header>
+
+												<div class="am-comment-bd">
+													<div class="tb-rev-item " data-id="258040417670">
+														<div class="J_TbcRate_ReviewContent tb-tbcr-content ">
+															式样不错，初冬穿
+														</div>
+														<div class="tb-r-act-bar">
+															颜色分类：柠檬黄&nbsp;&nbsp;尺码：L
+														</div>
+													</div>
+												</div>
+												<!-- 评论内容 -->
+											</div>
+										</li>
+
+										<li class="am-comment">
+											<!-- 评论容器 -->
+											<a href="">
+												<img class="am-comment-avatar" src="/homes/images/hwbn40x40.jpg" />
+												<!-- 评论者头像 -->
+											</a>
+
+											<div class="am-comment-main">
+												<!-- 评论内容容器 -->
+												<header class="am-comment-hd">
+													<!--<h3 class="am-comment-title">评论标题</h3>-->
+													<div class="am-comment-meta">
+														<!-- 评论元数据 -->
+														<a href="#link-to-user" class="am-comment-author">b***1 (匿名)</a>
+														<!-- 评论者 -->
+														评论于
+														<time datetime="">2015年11月02日 17:46</time>
+													</div>
+												</header>
+
+												<div class="am-comment-bd">
+													<div class="tb-rev-item " data-id="255776406962">
+														<div class="J_TbcRate_ReviewContent tb-tbcr-content ">
+															摸起来丝滑柔软，不厚，没色差，颜色好看！买这个衣服还接到诈骗电话，我很好奇他们是怎么知道我买了这件衣服，并且还知道我的电话的！
+														</div>
+														<div class="tb-r-act-bar">
+															颜色分类：柠檬黄&nbsp;&nbsp;尺码：S
+														</div>
+													</div>
+
+												</div>
+												<!-- 评论内容 -->
+											</div>
+										</li>
+										<li class="am-comment">
+											<!-- 评论容器 -->
+											<a href="">
+												<img class="am-comment-avatar" src="/homes/images/hwbn40x40.jpg" />
+												<!-- 评论者头像 -->
+											</a>
+
+											<div class="am-comment-main">
+												<!-- 评论内容容器 -->
+												<header class="am-comment-hd">
+													<!--<h3 class="am-comment-title">评论标题</h3>-->
+													<div class="am-comment-meta">
+														<!-- 评论元数据 -->
+														<a href="#link-to-user" class="am-comment-author">l***4 (匿名)</a>
+														<!-- 评论者 -->
+														评论于
+														<time datetime="">2015年10月28日 11:33</time>
+													</div>
+												</header>
+
+												<div class="am-comment-bd">
+													<div class="tb-rev-item " data-id="255095758792">
+														<div class="J_TbcRate_ReviewContent tb-tbcr-content ">
+															没有色差，很暖和……美美的
+														</div>
+														<div class="tb-r-act-bar">
+															颜色分类：蓝调灰&nbsp;&nbsp;尺码：2XL
+														</div>
+													</div>
+
+												</div>
+												<!-- 评论内容 -->
+											</div>
+										</li>
+										<li class="am-comment">
+											<!-- 评论容器 -->
+											<a href="">
+												<img class="am-comment-avatar" src="/homes/images/hwbn40x40.jpg" />
+												<!-- 评论者头像 -->
+											</a>
+
+											<div class="am-comment-main">
+												<!-- 评论内容容器 -->
+												<header class="am-comment-hd">
+													<!--<h3 class="am-comment-title">评论标题</h3>-->
+													<div class="am-comment-meta">
+														<!-- 评论元数据 -->
+														<a href="#link-to-user" class="am-comment-author">b***1 (匿名)</a>
+														<!-- 评论者 -->
+														评论于
+														<time datetime="">2015年11月02日 17:46</time>
+													</div>
+												</header>
+
+												<div class="am-comment-bd">
+													<div class="tb-rev-item " data-id="255776406962">
+														<div class="J_TbcRate_ReviewContent tb-tbcr-content ">
+															摸起来丝滑柔软，不厚，没色差，颜色好看！买这个衣服还接到诈骗电话，我很好奇他们是怎么知道我买了这件衣服，并且还知道我的电话的！
+														</div>
+														<div class="tb-r-act-bar">
+															颜色分类：柠檬黄&nbsp;&nbsp;尺码：S
+														</div>
+													</div>
+
+												</div>
+												<!-- 评论内容 -->
+											</div>
+										</li>
+										<li class="am-comment">
+											<!-- 评论容器 -->
+											<a href="">
+												<img class="am-comment-avatar" src="/homes/images/hwbn40x40.jpg" />
+												<!-- 评论者头像 -->
+											</a>
+
+											<div class="am-comment-main">
+												<!-- 评论内容容器 -->
+												<header class="am-comment-hd">
+													<!--<h3 class="am-comment-title">评论标题</h3>-->
+													<div class="am-comment-meta">
+														<!-- 评论元数据 -->
+														<a href="#link-to-user" class="am-comment-author">h***n (匿名)</a>
+														<!-- 评论者 -->
+														评论于
+														<time datetime="">2015年11月25日 12:48</time>
+													</div>
+												</header>
+
+												<div class="am-comment-bd">
+													<div class="tb-rev-item " data-id="258040417670">
+														<div class="J_TbcRate_ReviewContent tb-tbcr-content ">
+															式样不错，初冬穿
+														</div>
+														<div class="tb-r-act-bar">
+															颜色分类：柠檬黄&nbsp;&nbsp;尺码：L
+														</div>
+													</div>
+												</div>
+												<!-- 评论内容 -->
+											</div>
+										</li>
+										<li class="am-comment">
+											<!-- 评论容器 -->
+											<a href="">
+												<img class="am-comment-avatar" src="/homes/images/hwbn40x40.jpg" />
+												<!-- 评论者头像 -->
+											</a>
+
+											<div class="am-comment-main">
+												<!-- 评论内容容器 -->
+												<header class="am-comment-hd">
+													<!--<h3 class="am-comment-title">评论标题</h3>-->
+													<div class="am-comment-meta">
+														<!-- 评论元数据 -->
+														<a href="#link-to-user" class="am-comment-author">b***1 (匿名)</a>
+														<!-- 评论者 -->
+														评论于
+														<time datetime="">2015年11月02日 17:46</time>
+													</div>
+												</header>
+
+												<div class="am-comment-bd">
+													<div class="tb-rev-item " data-id="255776406962">
+														<div class="J_TbcRate_ReviewContent tb-tbcr-content ">
+															摸起来丝滑柔软，不厚，没色差，颜色好看！买这个衣服还接到诈骗电话，我很好奇他们是怎么知道我买了这件衣服，并且还知道我的电话的！
+														</div>
+														<div class="tb-r-act-bar">
+															颜色分类：柠檬黄&nbsp;&nbsp;尺码：S
+														</div>
+													</div>
+
+												</div>
+												<!-- 评论内容 -->
+											</div>
+										</li>
+										<li class="am-comment">
+											<!-- 评论容器 -->
+											<a href="">
+												<img class="am-comment-avatar" src="/homes/images/hwbn40x40.jpg" />
+												<!-- 评论者头像 -->
+											</a>
+
+											<div class="am-comment-main">
+												<!-- 评论内容容器 -->
+												<header class="am-comment-hd">
+													<!--<h3 class="am-comment-title">评论标题</h3>-->
+													<div class="am-comment-meta">
+														<!-- 评论元数据 -->
+														<a href="#link-to-user" class="am-comment-author">l***4 (匿名)</a>
+														<!-- 评论者 -->
+														评论于
+														<time datetime="">2015年10月28日 11:33</time>
+													</div>
+												</header>
+
+												<div class="am-comment-bd">
+													<div class="tb-rev-item " data-id="255095758792">
+														<div class="J_TbcRate_ReviewContent tb-tbcr-content ">
+															没有色差，很暖和……美美的
+														</div>
+														<div class="tb-r-act-bar">
+															颜色分类：蓝调灰&nbsp;&nbsp;尺码：2XL
+														</div>
+													</div>
+
+												</div>
+												<!-- 评论内容 -->
+											</div>
+										</li>
+										<li class="am-comment">
+											<!-- 评论容器 -->
+											<a href="">
+												<img class="am-comment-avatar" src="/homes/images/hwbn40x40.jpg" />
+												<!-- 评论者头像 -->
+											</a>
+
+											<div class="am-comment-main">
+												<!-- 评论内容容器 -->
+												<header class="am-comment-hd">
+													<!--<h3 class="am-comment-title">评论标题</h3>-->
+													<div class="am-comment-meta">
+														<!-- 评论元数据 -->
+														<a href="#link-to-user" class="am-comment-author">b***1 (匿名)</a>
+														<!-- 评论者 -->
+														评论于
+														<time datetime="">2015年11月02日 17:46</time>
+													</div>
+												</header>
+
+												<div class="am-comment-bd">
+													<div class="tb-rev-item " data-id="255776406962">
+														<div class="J_TbcRate_ReviewContent tb-tbcr-content ">
+															摸起来丝滑柔软，不厚，没色差，颜色好看！买这个衣服还接到诈骗电话，我很好奇他们是怎么知道我买了这件衣服，并且还知道我的电话的！
+														</div>
+														<div class="tb-r-act-bar">
+															颜色分类：柠檬黄&nbsp;&nbsp;尺码：S
+														</div>
+													</div>
+
+												</div>
+												<!-- 评论内容 -->
+											</div>
+										</li>
+										<li class="am-comment">
+											<!-- 评论容器 -->
+											<a href="">
+												<img class="am-comment-avatar" src="/homes/images/hwbn40x40.jpg" />
+												<!-- 评论者头像 -->
+											</a>
+
+											<div class="am-comment-main">
+												<!-- 评论内容容器 -->
+												<header class="am-comment-hd">
+													<!--<h3 class="am-comment-title">评论标题</h3>-->
+													<div class="am-comment-meta">
+														<!-- 评论元数据 -->
+														<a href="#link-to-user" class="am-comment-author">h***n (匿名)</a>
+														<!-- 评论者 -->
+														评论于
+														<time datetime="">2015年11月25日 12:48</time>
+													</div>
+												</header>
+
+												<div class="am-comment-bd">
+													<div class="tb-rev-item " data-id="258040417670">
+														<div class="J_TbcRate_ReviewContent tb-tbcr-content ">
+															式样不错，初冬穿
+														</div>
+														<div class="tb-r-act-bar">
+															颜色分类：柠檬黄&nbsp;&nbsp;尺码：L
+														</div>
+													</div>
+												</div>
+												<!-- 评论内容 -->
+											</div>
+										</li>
+
+									</ul>
+
+									<div class="clear"></div>
+
+									<!--分页 -->
+									<ul class="am-pagination am-pagination-right">
+										<li class="am-disabled"><a href="#">&laquo;</a></li>
+										<li class="am-active"><a href="#">1</a></li>
+										<li><a href="#">2</a></li>
+										<li><a href="#">3</a></li>
+										<li><a href="#">4</a></li>
+										<li><a href="#">5</a></li>
+										<li><a href="#">&raquo;</a></li>
+									</ul>
+									<div class="clear"></div>
+
+									<div class="tb-reviewsft">
+										<div class="tb-rate-alert type-attention">购买前请查看该商品的 <a href="#" target="_blank">购物保障</a>，明确您的售后保障权益。</div>
+									</div>
+
+								</div>
+
+								<div class="am-tab-panel am-fade">
+									<div class="like">
+										<ul class="am-avg-sm-2 am-avg-md-3 am-avg-lg-4 boxes">
+											<li>
+												<div class="i-pic limit">
+													<img src="/homes/images/imgsearch1.jpg" />
+													<p>【良品铺子_开口松子】零食坚果特产炒货
+														<span>东北红松子奶油味</span></p>
+													<p class="price fl">
+														<b>¥</b>
+														<strong>298.00</strong>
+													</p>
+												</div>
+											</li>
+											<li>
+												<div class="i-pic limit">
+													<img src="/homes/images/imgsearch1.jpg" />
+													<p>【良品铺子_开口松子】零食坚果特产炒货
+														<span>东北红松子奶油味</span></p>
+													<p class="price fl">
+														<b>¥</b>
+														<strong>298.00</strong>
+													</p>
+												</div>
+											</li>
+											<li>
+												<div class="i-pic limit">
+													<img src="/homes/images/imgsearch1.jpg" />
+													<p>【良品铺子_开口松子】零食坚果特产炒货
+														<span>东北红松子奶油味</span></p>
+													<p class="price fl">
+														<b>¥</b>
+														<strong>298.00</strong>
+													</p>
+												</div>
+											</li>
+											<li>
+												<div class="i-pic limit">
+													<img src="/homes/images/imgsearch1.jpg" />
+													<p>【良品铺子_开口松子】零食坚果特产炒货
+														<span>东北红松子奶油味</span></p>
+													<p class="price fl">
+														<b>¥</b>
+														<strong>298.00</strong>
+													</p>
+												</div>
+											</li>
+											<li>
+												<div class="i-pic limit">
+													<img src="/homes/images/imgsearch1.jpg" />
+													<p>【良品铺子_开口松子】零食坚果特产炒货
+														<span>东北红松子奶油味</span></p>
+													<p class="price fl">
+														<b>¥</b>
+														<strong>298.00</strong>
+													</p>
+												</div>
+											</li>
+											<li>
+												<div class="i-pic limit">
+													<img src="/homes/images/imgsearch1.jpg" />
+													<p>【良品铺子_开口松子】零食坚果特产炒货
+														<span>东北红松子奶油味</span></p>
+													<p class="price fl">
+														<b>¥</b>
+														<strong>298.00</strong>
+													</p>
+												</div>
+											</li>
+											<li>
+												<div class="i-pic limit">
+													<img src="/homes/images/imgsearch1.jpg" />
+													<p>【良品铺子_开口松子】零食坚果特产炒货
+														<span>东北红松子奶油味</span></p>
+													<p class="price fl">
+														<b>¥</b>
+														<strong>298.00</strong>
+													</p>
+												</div>
+											</li>
+											<li>
+												<div class="i-pic limit">
+													<img src="/homes/images/imgsearch1.jpg" />
+													<p>【良品铺子_开口松子】零食坚果特产炒货
+														<span>东北红松子奶油味</span></p>
+													<p class="price fl">
+														<b>¥</b>
+														<strong>298.00</strong>
+													</p>
+												</div>
+											</li>
+											<li>
+												<div class="i-pic limit">
+													<img src="/homes/images/imgsearch1.jpg" />
+													<p>【良品铺子_开口松子】零食坚果特产炒货
+														<span>东北红松子奶油味</span></p>
+													<p class="price fl">
+														<b>¥</b>
+														<strong>298.00</strong>
+													</p>
+												</div>
+											</li>
+											<li>
+												<div class="i-pic limit">
+													<img src="/homes/images/imgsearch1.jpg" />
+													<p>【良品铺子_开口松子】零食坚果特产炒货
+														<span>东北红松子奶油味</span></p>
+													<p class="price fl">
+														<b>¥</b>
+														<strong>298.00</strong>
+													</p>
+												</div>
+											</li>
+											<li>
+												<div class="i-pic limit">
+													<img src="/homes/images/imgsearch1.jpg" />
+													<p>【良品铺子_开口松子】零食坚果特产炒货
+														<span>东北红松子奶油味</span></p>
+													<p class="price fl">
+														<b>¥</b>
+														<strong>298.00</strong>
+													</p>
+												</div>
+											</li>
+											<li>
+												<div class="i-pic limit">
+													<img src="/homes/images/imgsearch1.jpg" />
+													<p>【良品铺子_开口松子】零食坚果特产炒货
+														<span>东北红松子奶油味</span></p>
+													<p class="price fl">
+														<b>¥</b>
+														<strong>298.00</strong>
+													</p>
+												</div>
+											</li>
+										</ul>
+									</div>
+									<div class="clear"></div>
+
+									<!--分页 -->
+									<ul class="am-pagination am-pagination-right">
+										<li class="am-disabled"><a href="#">&laquo;</a></li>
+										<li class="am-active"><a href="#">1</a></li>
+										<li><a href="#">2</a></li>
+										<li><a href="#">3</a></li>
+										<li><a href="#">4</a></li>
+										<li><a href="#">5</a></li>
+										<li><a href="#">&raquo;</a></li>
+									</ul>
+									<div class="clear"></div>
+
+								</div>
+
+							</div>
+
+						</div>
+
+						<div class="clear"></div>
+
+	@stop
+
+	@section('js')
+
+	@stop
+
+
+	</body>
+
+</html>

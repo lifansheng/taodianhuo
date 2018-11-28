@@ -31,6 +31,7 @@ class GoodsController extends Controller
               
             })
         ->paginate($request->input('num', 10));
+        // dump($res);
         return view('admin.goods.index',[
             'title'=>'商品的列表页面',
             'res'=>$res,
@@ -75,10 +76,22 @@ class GoodsController extends Controller
     {
         //
        // $res = $request->all();
-       $res = $request->except('_token','gimg');
+       $res = $request->except('_token','gimg','imgs');
+       // dd($res);
        //添加数据到goods表里面
        // $rs = Goods::create($res);
-
+       //主图片的信息
+       if($request->hasFile('imgs')){
+          //自定义名字
+          $name = rand(111,999).time();
+          //获取后缀
+          $suffix = $request->file('imgs')->getClientOriginalExtension();
+          //移动/拼接路径
+          $request->file('imgs')->move('./uploads/goods',$name.'.'.$suffix);
+          //添加到数组
+          $res['imgs'] = '/uploads/goods/'.$name.'.'.$suffix;
+        }
+        // dd($res);
         try{
 
             $rs = Goods::create($res);
@@ -209,35 +222,40 @@ class GoodsController extends Controller
     {   
         // $rs = Gpic::where('gid',$id)->get();
         //修改主表的信息
-        $res = $request->except('_token','_method','gimg');
+        $res = $request->except('_token','_method','gimg','imgs');
+        // dd($res);
 
         // $data = Goods::where('id',$id)->update($res);
         try{
-                       
-          // if($data){
-          //   redirect('/admin/goods')->with('success','修改成功');
-          // }
-        //关联表的信息//关联表
-             if($request->hasFile('gimg')){
-              $file = $request->file('gimg'); //*****$_FILES
-              $arr = [];
-              foreach($file as $k => $v){
-                //先定义一个数组
-                $ar = [];
-                $ar['gid'] = $id;
-                //设置名字
-                $name = rand(1,99).time();
-                //后缀
-                $suffix = $v->getClientOriginalExtension();
-                //移动
-                $v->move('./uploads/goods', $name.'.'.$suffix);
-                $ar['gimg'] = '/uploads/goods/'.$name.'.'.$suffix;
-                $arr[] = $ar;
-
-                
-                }
-                $rs = Gpic::where('gid',$id)->insert($arr);
-                
+          //主图片的信息-张   
+          if($request->hasFile('imgs')){
+            //自定义名字
+            $name = rand(111,999).time();
+            //获取后缀
+            $suffix = $request->file('imgs')->getClientOriginalExtension();
+            //移动/拼接路径
+            $request->file('imgs')->move('./uploads/goods',$name.'.'.$suffix);
+            //添加到数组
+            $res['imgs'] = '/uploads/goods/'.$name.'.'.$suffix;
+          }
+        //关联表的图片信息
+           if($request->hasFile('gimg')){
+            $file = $request->file('gimg'); //*****$_FILES
+            $arr = [];
+            foreach($file as $k => $v){
+              //先定义一个数组
+              $ar = [];
+              $ar['gid'] = $id;
+              //设置名字
+              $name = rand(1,99).time();
+              //后缀
+              $suffix = $v->getClientOriginalExtension();
+              //移动
+              $v->move('./uploads/goods', $name.'.'.$suffix);
+              $ar['gimg'] = '/uploads/goods/'.$name.'.'.$suffix;
+              $arr[] = $ar;
+              }
+              $rs = Gpic::where('gid',$id)->insert($arr);  
             } 
               $data = Goods::where('id',$id)->update($res);
               // dd($data);

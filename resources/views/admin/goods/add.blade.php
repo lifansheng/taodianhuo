@@ -62,7 +62,7 @@
                     </div>
                 </div>
                <div class="mws-form-row">
-                    <label class="mws-form-label">尺寸</label>
+                    <label class="mws-form-label">规格</label>
                     <div class="mws-form-item">
                         <input class="small" type="text" name="size">
                     </div>
@@ -71,6 +71,14 @@
                     <label class="mws-form-label">库存</label>
                     <div class="mws-form-item">
                         <input class="small" type="text" name="stock">
+                    </div>
+                </div>
+                <div class="mws-form-row">
+                    <label class="mws-form-label">商品主图片</label>
+                    <div class="mws-form-item">
+                        <div style="position: relative;" class="fileinput-holder">
+                            <input type="file" name="imgs" style="position: absolute; top: 0px; right: 0px; margin: 0px; cursor: pointer; font-size: 999px; opacity: 0; z-index: 999;">
+                        </div>
                     </div>
                 </div>
                 <div class="mws-form-row">
