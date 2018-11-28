@@ -6,28 +6,30 @@
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	<!-- GOOGLE WEB FONTS -->
-	<link rel="stylesheet" href="homes/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/homes/css/font-awesome.min.css">
 	
 	<!-- BOOTSTRAP 3.3.7 CSS -->
-	<link rel="stylesheet" href="homes/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="/homes/css/bootstrap.min.css" />
 	
 	<!-- SLICK v1.6.0 CSS -->
-	<link rel="stylesheet" href="homes/css/slick-1.6.0/slick.css" />
+	<link rel="stylesheet" href="/homes/css/slick-1.6.0/slick.css" />
 	
-	<link rel="stylesheet" href="homes/css/jquery.fancybox.css" />
-	<link rel="stylesheet" href="homes/css/yith-woocommerce-compare/colorbox.css" />
-	<link rel="stylesheet" href="homes/css/owl-carousel/owl.carousel.min.css" />
-	<link rel="stylesheet" href="homes/css/owl-carousel/owl.theme.default.min.css" />
-	<link rel="stylesheet" href="homes/css/js_composer/js_composer.min.css" />
-	<link rel="stylesheet" href="homes/css/woocommerce/woocommerce.css" />
-	<link rel="stylesheet" href="homes/css/yith-woocommerce-wishlist/style.css" />
+	<link rel="stylesheet" href="/homes/css/jquery.fancybox.css" />
+	<link rel="stylesheet" href="/homes/css/yith-woocommerce-compare/colorbox.css" />
+	<link rel="stylesheet" href="/homes/css/owl-carousel/owl.carousel.min.css" />
+	<link rel="stylesheet" href="/homes/css/owl-carousel/owl.theme.default.min.css" />
+	<link rel="stylesheet" href="/homes/css/js_composer/js_composer.min.css" />
+	<link rel="stylesheet" href="/homes/css/woocommerce/woocommerce-layout.css" />
+	<link rel="stylesheet" href="/homes/css/woocommerce/woocommerce-smallscreen.css" />
+	<link rel="stylesheet" href="/homes/css/woocommerce/woocommerce.css" />
+	<link rel="stylesheet" href="/homes/css/yith-woocommerce-wishlist/style.css" />
 	
 	
-	<link rel="stylesheet" href="homes/css/yith-woocommerce-wishlist/style.css" />
-	<link rel="stylesheet" href="homes/css/custom.css" />
-	<link rel="stylesheet" href="homes/css/app-orange.css" id="theme_color" />
+	<link rel="stylesheet" href="/homes/css/yith-woocommerce-wishlist/style.css" />
+	<link rel="stylesheet" href="/homes/css/custom.css" />
+	<link rel="stylesheet" href="/homes/css/app-orange.css" id="theme_color" />
 	<link rel="stylesheet" href="" id="rtl" />
-	<link rel="stylesheet" href="homes/css/app-responsive.css" /> 
+	<link rel="stylesheet" href="/homes/css/app-responsive.css" /> 
 </head>
 
 <body class="page page-id-6 home-style1">
@@ -57,18 +59,18 @@
 											<ul class="nav">
 												<li>
 													<a class="lang_sel_sel icl-en">
-														<img class="iclflag" title="English" alt="en" src="homes/images/icons/en.png" width="18" height="12" /> English
+														<img class="iclflag" title="English" alt="en" src="/homes/images/icons/en.png" width="18" height="12" /> English
 													</a>
 													<ul>
 														<li class="icl-en">
 															<a href="#">
-																<img class="iclflag" title="English" alt="en" src="homes/images/icons/en.png" width="18" height="12" /> English
+																<img class="iclflag" title="English" alt="en" src="/homes/images/icons/en.png" width="18" height="12" /> English
 															</a>
 														</li>
 														
 														<li class="icl-ar">
 															<a href="#">
-																<img class="iclflag" title="Arabic" alt="ar" src="homes/images/icons/ar.png" width="18" height="12" /> Arabic
+																<img class="iclflag" title="Arabic" alt="ar" src="/homes/images/icons/ar.png" width="18" height="12" /> Arabic
 															</a>
 														</li>
 													</ul>
@@ -175,7 +177,7 @@
 						<!-- LOGO -->
 						<div class="etrostore-logo pull-left">
 							<a href="#">
-								<img src="homes/images/icons/logo-orange.png" alt="Shoopy">
+								<img src="/homes/images/icons/logo-orange.png" alt="Shoopy">
 							</a>
 						</div>
 						
@@ -222,119 +224,10 @@
 								<div class="widget-inner">
 									<div class="top-form top-form-minicart etrostore-minicart pull-right">
 										<div class="top-minicart-icon pull-right">
-											<i class="fa fa-shopping-cart"></i>
+											<i class="fa fa-shopping-cart carturl"></i>
 											<a class="cart-contents" href="/home/carts" title="View your shopping cart">
 												<span class="minicart-number">2</span>
 											</a>
-										</div>
-										<div class="wrapp-minicart">
-											<div class="minicart-padding">
-												<div class="number-item">
-													There are <span>items</span> in your cart
-												</div>
-												
-												<ul class="minicart-content">
-													<li>
-														<a href="simple_product.html" class="product-image">
-															<img 	width="100" height="100" src="homes/images/1903/45-150x150.jpg" class="attachment-100x100 size-100x100 wp-post-image" alt="" 
-																	srcset="/homes/images/1903/45-150x150.jpg 150w, images/1903/45-300x300.jpg 300w, images/1903/45-180x180.jpg 180w, images/1903/45.jpg 600w" 
-																	sizes="(max-width: 100px) 100vw, 100px" />
-														</a>
-														
-														<div class="detail-item">
-															<div class="product-details">
-																<h4>
-																	<a class="title-item" href="simple_product.html">Veniam Dolore</a>
-																</h4>
-																
-																<div class="product-price">
-																	<span class="price">
-																		<span class="woocommerce-Price-amount amount">
-																			<span class="woocommerce-Price-currencySymbol">$</span>190.00
-																		</span>
-																	</span>
-																	
-																	<div class="qty">
-																		<span class="qty-number">1</span>									
-																	</div>
-																</div>
-																
-																<div class="product-action clearfix">
-																	<a href="#" class="btn-remove" title="Remove this item">
-																		<span class="fa fa-trash-o"></span>
-																	</a>
-																	
-																	<a class="btn-edit" href="cart.html" title="View your shopping cart">
-																		<span class="fa fa-pencil"></span>
-																	</a>    
-																</div>
-															</div>
-														</div>
-													</li>
-													
-													<li>
-														<a href="simple_product.html" class="product-image">
-															<img 	width="100" height="100" src="homes/images/1903/22.jpg" class="attachment-100x100 size-100x100 wp-post-image" alt=""  
-																	srcset="/homes/images/1903/22-150x150.jpg 150w, images/1903/22-300x300.jpg 300w, images/1903/22-180x180.jpg 180w, images/1903/22.jpg 600w" 
-																	sizes="(max-width: 100px) 100vw, 100px" />
-														</a>
-														
-														<div class="detail-item">
-															<div class="product-details">
-																<h4>
-																	<a class="title-item" href="simple_product.html">Cleaner with bag</a>
-																</h4>
-																
-																<div class="product-price">
-																	<span class="price">
-																		<span class="woocommerce-Price-amount amount">
-																			<span class="woocommerce-Price-currencySymbol">$</span>350.00
-																		</span>
-																	</span>
-																	
-																	<div class="qty">
-																		<span class="qty-number">1</span>									
-																	</div>
-																</div>
-																
-																<div class="product-action clearfix">
-																	<a href="#" class="btn-remove" title="Remove this item">
-																		<span class="fa fa-trash-o"></span>
-																	</a>
-																	
-																	<a class="btn-edit" href="cart.html" title="View your shopping cart">
-																		<span class="fa fa-pencil"></span>
-																	</a>
-																</div>
-															</div>
-														</div>
-													</li>
-												</ul>
-												
-												<div class="cart-checkout">
-													<div class="price-total">
-														<span class="label-price-total">Total</span>
-														
-														<span class="price-total-w">
-															<span class="price">
-																<span class="woocommerce-Price-amount amount">
-																	<span class="woocommerce-Price-currencySymbol">$</span>540.00
-																</span>
-															</span>
-														</span>			
-													</div>
-													
-													<div class="cart-links clearfix">
-														<div class="cart-link">
-															<a href="cart.html" title="Cart">View Cart</a>
-														</div>
-														
-														<div class="checkout-link">
-															<a href="checkout.html" title="Check Out">Check Out</a>
-														</div>
-													</div>
-												</div>
-											</div>
 										</div>
 									</div>
 								</div>
@@ -530,7 +423,7 @@
 													<div class="wpb_wrapper">
 														<div class="ya-logo">
 															<a href="#">
-																<img src="homes/images/icons/logo-footer.png" alt="logo" />
+																<img src="/homes/images/icons/logo-footer.png" alt="logo" />
 															</a>
 														</div>
 													</div>
@@ -553,11 +446,11 @@
 															
 															<div class="store">
 																<a href="#">
-																	<img src="homes/images/1903/app-store.png" alt="store" title="store" />
+																	<img src="/homes/images/1903/app-store.png" alt="store" title="store" />
 																</a>
 																
 																<a href="#">
-																	<img src="homes/images/1903/google-store.png" alt="store" title="store" />
+																	<img src="/homes/images/1903/google-store.png" alt="store" title="store" />
 																</a>
 															</div>
 														</div>
@@ -689,7 +582,7 @@
 																<h2>find a store</h2>
 															</div>
 															
-															<img src="homes/images/1903/map.jpg" alt="map" title="map" />
+															<img src="/homes/images/1903/map.jpg" alt="map" title="map" />
 															
 															<a href="#" class="link-map">Store locator</a>
 														</div>
@@ -761,7 +654,7 @@
 								<div class="textwidget">
 									<div class="payment">
 										<a href="#">
-											<img src="homes/images/1903/paypal.png" alt="payment" title="payment" />
+											<img src="/homes/images/1903/paypal.png" alt="payment" title="payment" />
 										</a>
 									</div>
 								</div>
@@ -889,25 +782,27 @@
 			</div>
 		</div>
 	</div>
-	<script type="text/javascript" src="homes/js/jquery/jquery.min.js"></script>
-	<script type="text/javascript" src="homes/js/jquery/jquery-migrate.min.js"></script>
-	<script type="text/javascript" src="homes/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="homes/js/jquery/js.cookie.min.js"></script>
+	<script type="text/javascript" src="/homes/js/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="/homes/js/jquery/jquery-migrate.min.js"></script>
+	<script type="text/javascript" src="/homes/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/homes/js/jquery/js.cookie.min.js"></script>
 	
 	<!-- OPEN LIBS JS -->
-	<script type="text/javascript" src="homes/js/owl-carousel/owl.carousel.min.js"></script>
-	<script type="text/javascript" src="homes/js/slick-1.6.0/slick.min.js"></script>
+	<script type="text/javascript" src="/homes/js/owl-carousel/owl.carousel.min.js"></script>
+	<script type="text/javascript" src="/homes/js/slick-1.6.0/slick.min.js"></script>
 	
-	<script type="text/javascript" src="homes/js/yith-woocommerce-compare/jquery.colorbox-min.js"></script>
-	<script type="text/javascript" src="homes/js/sw_core/isotope.js"></script>
-	<script type="text/javascript" src="homes/js/sw_core/jquery.fancybox.pack.js"></script>
-	<script type="text/javascript" src="homes/js/sw_woocommerce/category-ajax.js"></script>
-	<script type="text/javascript" src="homes/js/sw_woocommerce/jquery.countdown.min.js"></script>
-	<script type="text/javascript" src="homes/js/js_composer/js_composer_front.min.js"></script>
+	<script type="text/javascript" src="/homes/js/yith-woocommerce-compare/jquery.colorbox-min.js"></script>
+	<script type="text/javascript" src="/homes/js/sw_core/isotope.js"></script>
+	<script type="text/javascript" src="/homes/js/sw_core/jquery.fancybox.pack.js"></script>
+	<script type="text/javascript" src="/homes/js/sw_woocommerce/category-ajax.js"></script>
+	<script type="text/javascript" src="/homes/js/sw_woocommerce/jquery.countdown.min.js"></script>
+	<script type="text/javascript" src="/homes/js/wc-quantity-increment.min.js"></script>
+	<script type="text/javascript" src="/homes/js/woocommerce/cart.min.js"></script>
+	<script type="text/javascript" src="/homes/js/js_composer/js_composer_front.min.js"></script>
 	
-	<script type="text/javascript" src="homes/js/plugins.js"></script>
-	<script type="text/javascript" src="homes/js/megamenu.min.js"></script>
-	<script type="text/javascript" src="homes/js/main.min.js"></script>
+	<script type="text/javascript" src="/homes/js/plugins.js"></script>
+	<script type="text/javascript" src="/homes/js/megamenu.min.js"></script>
+	<script type="text/javascript" src="/homes/js/main.min.js"></script>
    
 	<script type="text/javascript">
 		var sticky_navigation_offset_top = $("#header .header-bottom").offset().top;
@@ -944,6 +839,13 @@
       	b[c] = b[c].replace( rcs, ' ' );
       	// The customizer requires postMessage and CORS (if the site is cross domain)
       	b[c] += ( window.postMessage && request ? ' ' : ' no-' ) + cs;
+
+      	// 购物车跳转链接
+      	$('.carturl').bind('click',function(){
+      		location.href='/home/carts';
+      	})
+
+
    </script>
     @section('js')
 
