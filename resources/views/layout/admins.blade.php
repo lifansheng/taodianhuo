@@ -144,7 +144,7 @@
 
                     </li>
                     <li>
-                        <a href="#"><i class="icon-lollipop"></i>新闻管理</a>
+                        <a href="#"><i class="icon-television"></i>新闻管理</a>
                         <ul class='closed'>
                             <li><a href="/admin/news/create">新闻添加</a></li>
                             <li><a href="/admin/news">浏览新闻</a></li>

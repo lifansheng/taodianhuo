@@ -88,7 +88,19 @@
                         </ul>
                     </div>
                 </div>
-                 <div class="mws-form-row">
+                <div class="mws-form-row">
+                    <label class="mws-form-label">商品主图片</label>
+                    <div class="mws-form-item">
+                        <div style="position: relative;" class="fileinput-holder">
+                           
+                            <img src="{{$res->imgs}}" class='imgs' " alt="" style='width:100px;height:100px' name="imgs">
+                            
+                            <input type="file" name="imgs" style="position: absolute; top: 0px; right: 0px; margin: 0px; cursor: pointer; font-size: 999px; opacity: 0; z-index: 999;">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="mws-form-row">
                     <label class="mws-form-label">商品图片</label>
                     <div class="mws-form-item">
                         <div style="position: relative;" class="fileinput-holder">
