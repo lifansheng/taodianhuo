@@ -1,7 +1,5 @@
 @extends('layout.homes')
 
-@section('title',$title)
-
 @section('content')
 	        				
 						<!--侧边导航 -->
@@ -1114,7 +1112,7 @@
 						</ul>
 
 					</div>
-@show
+@stop
 
 @section('js')
 
