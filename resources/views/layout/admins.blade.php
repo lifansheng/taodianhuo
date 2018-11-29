@@ -126,7 +126,15 @@
                             <li><a href="/admin/cate">浏览分类</a></li>
                         </ul>
                     </li>
+                    
+                    <li>
+                        <a href="#"><i class="icon-lollipop"></i>商品管理</a>
+                        <ul class='closed'>
+                            <li><a href="/admin/goods/create">商品添加</a></li>
+                            <li><a href="/admin/goods">浏览商品</a></li>
 
+                        </ul>
+                    </li>
                     <li>
                         <a href="#"><i class="icon-pictures"></i>轮播图管理</a>
                         <ul class='closed'>
@@ -135,7 +143,13 @@
                         </ul>
 
                     </li>
-
+                    <li>
+                        <a href="#"><i class="icon-lollipop"></i>新闻管理</a>
+                        <ul class='closed'>
+                            <li><a href="/admin/news/create">新闻添加</a></li>
+                            <li><a href="/admin/news">浏览新闻</a></li>
+                        </ul>
+                    </li>
                     <li>
                         <a href="#"><i class="icon-users"></i>友情链接管理</a>
                         <ul class='closed'>
@@ -146,15 +160,18 @@
                     </li>
 
                     <li>
-                        <a href="#"><i class="icon-lollipop"></i>商品管理</a>
-                        <ul class='closed'>
-                            <li><a href="/admin/goods/create">商品添加</a></li>
-                            <li><a href="/admin/goods">浏览商品</a></li>
+                        <a href="/admin/site"><i class="icon-users"></i>网站配置</a>
+                        <!-- <ul class='closed'>
+                            <li><a href="/admin/link/create">添加链接</a></li>
+                            <li><a href="/admin/link">查看链接</a></li>
 
-                        </ul>
+                        </ul> -->
                     </li>
-                   
-                   
+
+
+
+
+                
                 </ul>
             </div>         
         </div>

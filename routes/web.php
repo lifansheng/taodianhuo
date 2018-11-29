@@ -1,7 +1,5 @@
 <?php
 
-
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,7 +37,9 @@ Route::any("admin/logout", "Admin\LoginController@logout");
 Route::group(["middleware" => "login"], function(){
  
 	//后台的首页
-	Route::get('/admin', 'Admin\IndexController@indexs');
+
+	Route::get('/admin', 'Admin\IndexController@index');
+	Route::get('/admin/index', 'Admin\IndexController@index');
 
 	//后台的用户管理
 	Route::resource('admin/user',"Admin\UserController");
@@ -66,14 +66,47 @@ Route::group(["middleware" => "login"], function(){
 
 	
 
+	//后台的新闻
+	route::resource('admin/news','Admin\NewsController');
+
+
+	//网站配置
+	Route::resource('admin/site','Admin\SiteController');
+	// Route::any('admin/site:id','Admin\SiteController@show');
+
+
 	
 });
-//网站配置
-	Route::get('admin/site','Admin\SiteController@index');
-//前台
-		Route::get('/',function(){
-			return view('home.index');
-		});
 
-		// 列表页
-	Route::get('home/details','Home\HomeController@details');
+//前台
+Route::get('/',function(){
+	return view('home.index');
+});
+
+
+// 列表页
+Route::get('home/details','Home\HomeController@details');
+// 前台登录、注册页面
+
+
+Route::any("home/login", "Home\LoginController@login");
+Route::any("home/register", "Home\LoginController@register");
+Route::any("home/dologin", "Home\LoginController@dologin");
+Route::any("home/signup", "Home\LoginController@signup");
+Route::any("home/captcha", "Home\LoginController@captcha");
+Route::post("home/ajaxhname", "Home\LoginController@ajaxhname");
+Route::post("home/ajaxemails", "Home\LoginController@ajaxemail");
+Route::post("home/ajaxphone", "Home\LoginController@ajaxphone");
+Route::post("home/ajaxcode", "Home\LoginController@ajaxcode");
+
+
+// 前台
+Route::group(["middleware" => "login"], function(){
+	// ajax验证注册用户名
+	
+});
+
+
+
+//个人中心
+Route::get('home/person','Home\PersonController@index');

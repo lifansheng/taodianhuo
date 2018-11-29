@@ -1,6 +1,6 @@
 @extends("layout.admins")
 
-@section("title", $title);
+@section("title", $title)
 
 @section("content")
 <div class="mws-panel grid_8">
