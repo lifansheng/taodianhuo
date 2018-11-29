@@ -3,6 +3,44 @@
 @section('title',$title)
 
 @section('content')
+<style>
+		.cart-empty{
+			height: 98px;
+		    padding: 80px 0 120px;
+		    color: #333;
+
+		}
+
+		.cart-empty .message{
+			height: 98px;
+		    padding-left: 341px;
+		    background: url(/homes/gwc/no-login-icon.png) 250px 22px no-repeat;
+		}
+
+		.cart-empty .message .txt {
+		    font-size: 14px;
+		}
+		.cart-empty .message li {
+		    line-height: 38px;
+		}
+
+		ol, ul {
+		    list-style: outside none none;
+		}
+
+		.ftx-05, .ftx05 {
+			color: #005ea7;
+		}
+		
+		a {
+		    color: #666;
+		    text-decoration: none;
+		    margin:0px;
+		    padding:0px;
+		    font-size:14px;
+		}
+		
+	</style>
 <!--购物车 -->
 <div style="margin-top: 40px;border-top: 2px solid #d2364c"></div>
 			<div class="concent">
@@ -41,7 +79,7 @@
 								<ul class="item-content clearfix">
 									<li class="td td-chk">
 										<div class="cart-checkbox ">
-											<input class="check" id="J_CheckBox_170037950254" name="items[]" value="170037950254" type="checkbox">
+											<input class="check" id="J_CheckBox_170037950254" gid="{{$v->gid}}" type="checkbox">
 											<label for="J_CheckBox_170037950254"></label>
 										</div>
 									</li>
@@ -92,7 +130,7 @@
 									<li class="td td-op">
 										<div class="td-inner">
 											<a title="移入收藏夹" class="btn-fav" href="#">移入收藏夹</a>
-											<a href="javascript:;" data-point-url="#" class="delete">删除</a>
+											<a href="javascript:void(0)" data-point-url="#" class="delete">删除</a>
 										</div>
 									</li>
 								</ul>
@@ -101,16 +139,15 @@
 						</div>
 					</tr>
 					<div class="clear"></div>
-				<div class="float-bar-wrapper">
+				<div class="float-bar-wrapper alls">
 					<div id="J_SelectAll2" class="select-all J_SelectAll">
 						<div class="cart-checkbox">
-							<input class="check-all check" id="J_SelectAllCbx2" name="select-all" type="checkbox">
 							<label for="J_SelectAllCbx2"></label>
 						</div>
-						<span>全选</span>
+						<a href="javascript:void(0)" class="quan">全选</a>
 					</div>
 					<div class="operations">
-						<a href="#" hidefocus="true" class="deleteAll">删除</a>
+						<a href="javascript:void(0)" hidefocus="true" class="deleteAll">删除</a>
 						<a href="#" hidefocus="true" class="J_BatchFav">移入收藏夹</a>
 					</div>
 					<div class="float-bar-right">
@@ -124,7 +161,7 @@
 						</div>
 						<div class="price-sum">
 							<span class="txt">合计:</span>
-							<strong class="price">¥<em id="J_Total">0.00</em></strong>
+							<strong class="price">¥<span id="J_Total">0</span></strong>
 						</div>
 						<div class="btn-area">
 							<a href="pay.html" id="J_Go" class="submit-btn submit-btn-disabled" aria-label="请注意如果没有选择宝贝，将无法结算">
@@ -132,6 +169,21 @@
 						</div>
 					</div>
 
+				</div>
+				<div class="cart-empty" style='display:none'>
+					    <div class="message">
+					        <ul>
+					            <li class="txt">
+					                购物车空空的哦~，去看看心仪的商品吧~
+					            </li>
+					            <li class="mt10">
+					                <a href="/" class="ftx-05">
+					                    去购物&gt;
+					                </a>
+					            </li>
+					            
+					        </ul>
+					    </div>
 				</div>
 
 @stop
@@ -238,11 +290,45 @@
 		}
 
 		// 全选
-		$('.check-all').click(function(){
+		$('.quan').click(function(){
 			$('.check').attr('checked',true);
-			
+
 			totals()
 		})
+
+		// 删除
+		$('.delete').click(function(){
+			var rs = confirm('删除商品?');
+			if(!rs) return;
+
+			// 参数发送到控制器中ID
+			// 获取参数
+			var gid = $(this).parents('ul').find('.check').attr('gid');
+			var rem = $(this);
+			$.get('/home/shopcart',{gid:gid},function(data){
+				if(data == 1){
+					rem.parents('ul').remove();
+
+					// 刷新
+					nums()
+				}
+			})
+		})
+
+		function nums(){
+			//获取tr 的数量
+			var rs = $('.clearfix').length;
+			if(rs == 0){
+				// location.reload();
+				// location.href='/home/cart';
+
+				$('.cart-empty').show();
+				$('.alls').hide();
+				$('.cart-table-th').hide();
+			}
+			
+		}
+		nums()
 	</script>
 
 @stop

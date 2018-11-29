@@ -4,11 +4,8 @@ namespace App\Http\Controllers\Home;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Model\Admin\Goods;
-use App\Model\Home\Carts;
-use DB;
 
-class CartsController extends Controller
+class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,32 +15,7 @@ class CartsController extends Controller
     public function index()
     {
         //
-        // $res = Carts::find(1)->goodcar()->where('hid',27)->first();
-        $res = Carts::where('hid',27)->pluck('gid');
-        // dd($res);
-        $rs = Carts::with('goodcar')->where('hid',27)->get();
-        // dd($rs);
-        return view('home.carts.index',[
-            'title'=>'购物车',
-            'rs'=>$rs
-        ]);
-    }
-
-    public function shopcart(Request $request)
-    {   
-        $gid = $request->gid;
-
-        $res = DB::table('shopcar')->where('gid',$gid)->delete();
-
-        // $count = DB::table('cart')->count();
-
-        if($res){
-
-            echo 1;
-        } else {
-
-            echo 0;
-        }
+        
     }
 
     /**

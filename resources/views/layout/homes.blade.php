@@ -88,6 +88,8 @@
 @section('content')		        				
 						
 @show
+				</div>
+			</div>
 					<div class="footer ">
 						<div class="footer-hd ">
 							<p>
@@ -110,10 +112,6 @@
 							</p>
 						</div>
 					</div>
-				</div>
-			</div>
-		</div>
-		</div>
 		<!--引导 -->
 
 		<div class="navCir">
