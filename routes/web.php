@@ -41,10 +41,17 @@ Route::group(["middleware" => "login"], function(){
 	Route::get('/admin', 'Admin\IndexController@index');
 	Route::get('/admin/index', 'Admin\IndexController@index');
 
-	//后台的用户管理
+	//后台的管理员管理
 	Route::resource('admin/user',"Admin\UserController");
 	Route::get('/admin/usajax','Admin\UserController@ajaxupdate');
 
+	// 前台的用户管理
+	Route::resource('admin/homeuser',"Admin\HomeuserController");
+	// ajax
+	Route::post("admin/ajaxhomeusername", "Admin\HomeuserController@ajaxhomeusername");
+	Route::post("admin/ajaxhomephone", "Admin\HomeuserController@ajaxhomephone");
+	Route::post("admin/ajaxhomeemail", "Admin\HomeuserController@ajaxhomeemail");
+	Route::get('admin/homeuserajax','Admin\HomeuserController@homeuserajax');
 
 	//友情链接
 	Route::resource('admin/link', 'Admin\LinkController');
@@ -69,6 +76,9 @@ Route::group(["middleware" => "login"], function(){
 
 	//后台的新闻
 	route::resource('admin/news','Admin\NewsController');
+
+	// 广告管理
+	Route::resource("admin/advertisement", "Admin\AdverController");
 
 	
 });
