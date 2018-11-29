@@ -178,7 +178,14 @@
                             <li><a href="/admin/link">查看广告</a></li>
                         </ul>
                     </li>
-                
+                    <li>
+                        <a href="/admin/site"><i class="icon-users"></i>网站配置</a>
+                        <!-- <ul class='closed'>
+                            <li><a href="/admin/link/create">添加链接</a></li>
+                            <li><a href="/admin/link">查看链接</a></li>
+
+                        </ul> -->
+                    </li>          
                 </ul>
             </div>         
         </div>

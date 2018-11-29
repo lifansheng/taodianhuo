@@ -77,13 +77,20 @@ Route::group(["middleware" => "login"], function(){
 	//后台的新闻
 	route::resource('admin/news','Admin\NewsController');
 
+
 	// 广告管理
 	Route::resource("admin/advertisement", "Admin\AdverController");
 
+
+	//网站配置
+	Route::resource('admin/site','Admin\SiteController');
+	// Route::any('admin/site:id','Admin\SiteController@show');
+
+
+
 	
 });
-//网站配置
-	Route::get('admin/site','Admin\SiteController@index');
+
 //前台
 Route::get('/',function(){
 	return view('home.index',['title'=>'淘点货']);
@@ -116,3 +123,7 @@ Route::group(["middleware" => "login"], function(){
 	
 });
 
+
+
+//个人中心
+Route::get('home/person','Home\PersonController@index');
