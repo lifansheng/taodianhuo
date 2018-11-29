@@ -65,7 +65,7 @@
                 @endphp
             	<!-- User Photo -->
             	<div id="mws-user-photo">
-                	<img src="{{$user->pic}}" alt="User Photo">
+                	<img src='{{$user->pic}}' alt="User Photo">
                 </div>
                 
                 <!-- Username and Functions -->

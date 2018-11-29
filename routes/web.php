@@ -1,5 +1,6 @@
 <?php
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -71,8 +72,7 @@ Route::group(["middleware" => "login"], function(){
 	//ajax
 	Route::get('admin/lkajax','Admin\LinkController@ajaxupdate');
 
-	//网站配置
-	// Route::get('admin/')
+	
 
 	//后台的新闻
 	route::resource('admin/news','Admin\NewsController');
@@ -82,7 +82,8 @@ Route::group(["middleware" => "login"], function(){
 
 	
 });
-
+//网站配置
+	Route::get('admin/site','Admin\SiteController@index');
 //前台
 Route::get('/',function(){
 	return view('home.index',['title'=>'淘点货']);
