@@ -8,6 +8,7 @@
 
 <!-- Viewport Metatag -->
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="csrf-token" content="{{ csrf_token() }}">
 
 <!-- Plugin Stylesheets first to ease overrides -->
 <link rel="stylesheet" type="text/css" href="/admins/plugins/colorpicker/colorpicker.css" media="screen">
@@ -114,8 +115,15 @@
                     <li>
                         <a href="#"><i class="icon-users"></i>管理员管理</a>
                         <ul class='closed'>
-                            <li><a href="/admin/user/create">用户添加</a></li>
-                            <li><a href="/admin/user">浏览用户</a></li>
+                            <li><a href="/admin/user/create">管理员添加</a></li>
+                            <li><a href="/admin/user">浏览管理员</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="icon-users"></i>用户管理</a>
+                        <ul class='closed'>
+                            <li><a href="/admin/homeuser/create">用户添加</a></li>
+                            <li><a href="/admin/homeuser">浏览用户</a></li>
                         </ul>
                     </li>
 
@@ -155,10 +163,15 @@
                         <ul class='closed'>
                             <li><a href="/admin/link/create">添加链接</a></li>
                             <li><a href="/admin/link">查看链接</a></li>
-
                         </ul>
                     </li>
-
+                    <li>
+                        <a href="#"><i class="icon-users"></i>广告管理</a>
+                        <ul class='closed'>
+                            <li><a href="/admin/link/create">添加广告</a></li>
+                            <li><a href="/admin/link">查看广告</a></li>
+                        </ul>
+                    </li>
                 
                 </ul>
             </div>         

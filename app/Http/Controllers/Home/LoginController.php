@@ -30,6 +30,11 @@ class LoginController extends Controller
     	// 获取当前想要登录的用户的数据库里的密码
     	$rs = Homes::where("username", $res["username"]) -> first();
 
+        session([
+            'hid'=>$rs->hid,
+            'huname'=>$rs->username
+        ]);
+
     	// dd($rs->password);                    
     	//判断密码
         //hash
@@ -39,7 +44,9 @@ class LoginController extends Controller
             return back()->with('error','用户名或者密码错误');
         }
 
-    	// 获取用户输入的值  与 数据库作比对  如果成功  返回1
+    	//存点信息  session
+        
+        session(['uname'=>$rs->username]);
     }
 
     // 注册的页面
@@ -83,6 +90,7 @@ class LoginController extends Controller
         }
     }
 
+    // 邮件的提醒方法
     public function tixing(Request $request)
     {
         //获取信息
@@ -141,7 +149,7 @@ class LoginController extends Controller
     	// 获取用户输入的用户名
     	$hname = $request -> get("hname");		// var_dump($hname); exit;
 
-    	// 与数据库里的名字做比对 如果存在为真返回1  如果不存在为假返回0
+    	// 与数据库里的名字做比对 如果存在为真返回0  如果不存在为假返回1
     	$res = Homes::where("username", $hname)->first();
 
     	if ($res) {

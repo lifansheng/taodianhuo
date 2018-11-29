@@ -13,7 +13,7 @@
     </div>
     <div class="mws-panel-body no-padding">
         <div id="DataTables_Table_1_wrapper" class="dataTables_wrapper" role="grid">
-            <form action="/admin/user" method='get'>
+            <form action="/admin/homeuser" method='get'>
             <div id="DataTables_Table_1_length" class="dataTables_length">
                 <label>
                     显示
@@ -99,7 +99,7 @@
 
                     <tr class='@if($k % 2 == 0) odd @else even @endif'>
                         <td class="">
-                            {{$v->id}}
+                            {{$v->hid}}
                         </td>
                         <td class="uname">
                             {{$v->username}}
@@ -108,7 +108,7 @@
                             {{$v->age}}
                         </td>
                         <td class=" ">
-                            {{$v->tel}}
+                            {{$v->phone_number}}
                         </td>
                         <td class=" ">
                             @if($v->sex == 'w')
@@ -124,7 +124,7 @@
                             <img src="{{$v->pic}}" alt="" width='80px'>
                         </td>
                         <td class=" ">
-                            @if($v->auth == '1')
+                            @if($v->status == '1')
                             开启
                             @else
                             关闭
@@ -132,14 +132,12 @@
                         </td>
                         
                         <td class=" ">
-                            <a href="/admin/user/{{$v->id}}/edit" class='btn btn-info'>修改</a>
+                            <a href="/admin/homeuser/{{$v->hid}}/edit" class='btn btn-info'>修改</a>
 
-                            <form action="/admin/user/{{$v->id}}" method='post' style='display:inline'>
+                            <form id="del" action="/admin/homeuser/{{$v->hid}}" method='post' style='display:inline'>
                                 {{csrf_field()}}
-
                                 {{method_field("DELETE")}}
-                                <button class='btn btn-danger'>删除</button>
-
+                                <button class='btn btn-danger' id="dell" type="submit">删除</button>
                             </form>
                         </td>
                     </tr>
@@ -233,7 +231,7 @@
             var ids = $(this).parents('tr').find('td').eq(0).text().trim();
 
             // console.log(id);
-            $.get('/admin/usajax',{uv:uv,ids:ids},function(data){
+            $.get('/admin/homeuserajax',{uv:uv,ids:ids},function(data){
 
                 // console.log(data);
                 if(data == 1){
@@ -246,6 +244,15 @@
                 }
             })
         })
+    })
+
+    // 确认是否删除
+    // console.log(".btn btn-danger");
+    $("#dell").click(function(){
+        //提示信息
+        var res = confirm('你确定删除吗??');
+
+        if(!res) return;
     })
 </script>
 

@@ -4,12 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\UserRequest;
-use App\Http\Requests\UserupdateRequest;
+use App\Model\Admin\Homeuser;
 use Hash;
-use App\Model\Admin\User;
 
-class UserController extends Controller
+class HomeuserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,7 +18,7 @@ class UserController extends Controller
     {
         //
         //多个条件的搜索
-        $res = User::orderBy("id","asc")
+        $res = Homeuser::orderBy("hid","asc")
             ->where(function($query) use($request){
                 //检测关键字
                 $username = $request->input("username");
@@ -36,8 +34,7 @@ class UserController extends Controller
             })
         ->paginate($request->input("num", 10));
 
-
-        return view("admin/user/index", [
+        return view("admin/homeuser/index", [
             "title" => "管理员列表页面",
             "res" => $res,
             "request" => $request
@@ -52,9 +49,10 @@ class UserController extends Controller
     public function create()
     {
         //
-        return view("admin/user/add", [
-            "title" => "管理员添加"
+        return view("admin/homeuser/add", [
+            "title" => "用户添加"
         ]);
+
     }
 
     /**
@@ -63,11 +61,10 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UserRequest $request)
+    public function store(Request $request)
     {
         // 获取表单提交结果
         $res = $request -> except("_token", "pic", "repass");
-
         // dd($res);
 
         // 头像
@@ -81,27 +78,23 @@ class UserController extends Controller
             $request->file("pic")->move("./uploads",$name.".".$suffix);
 
             $res["pic"] = "/uploads/".$name.".".$suffix;
-
         }
 
         //网数据表里面添加数据  hash加密
         $res["password"] = Hash::make($request->password);
-        
-        //加密 解密
-        // $res["password"] = encrypt($request->password);
-
-        // dump($res);exit;
+        // dd($res);
 
         // 存数据
         try{
-            $data = User::create($res);
+            $data = Homeuser::create($res);
             if($data){
-                return redirect("/admin/user")->with("success", "添加成功");
+                return redirect("/admin/homeuser")->with("success", "添加成功");
             }
         }catch(\Exception $e){
             return back()->with("error","添加失败");
         }
-        /*$data = User::create($res);
+
+        /*$data = Homeuser::create($res);
 
         if ($data) {
             echo "添加成功";
@@ -109,7 +102,6 @@ class UserController extends Controller
             echo "添加失败";
         }*/
     }
-    
 
     /**
      * Display the specified resource.
@@ -132,12 +124,11 @@ class UserController extends Controller
     {
         //
         // 根据id获取数据
-        $res = User::find($id);
-
-        return view("admin.user.edit",[
-            "title"=>"管理员的修改页面",
-            "res"=>$res
-        ]);
+        $res = Homeuser::find($id);
+        return view("admin/homeuser/edit", [
+            "title" => "用户的修改页面",
+            "res" => $res
+         ]);
     }
 
     /**
@@ -147,40 +138,13 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UserupdateRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        //
+        // 获取用户提交的数据
         $res = $request->except("_token","pic","_method");
-
         // dd($res);
 
-        // if($request->hasFile("pic")){
-        //     //自定义名字
-        //     $name = rand(111,999).time();
-
-        //     //获取后缀
-        //     $suffix = $request->file("pic")->getClientOriginalExtension();
-
-        //     $request->file("pic")->move("./uploads",$name.".".$suffix);
-
-        //     $res["pic"] = "/uploads/".$name.".".$suffix;
-
-        // }
-
-        // //数据表修改数据
-        // try{
-
-        //     $data = User::where("id", $id)->update($res);
-            
-        //     if($data){
-        //         return redirect("/admin/user")->with("success","修改成功");
-        //     }
-
-        // }catch(\Exception $e){
-
-        //     return back()->with("error","修改失败");
-        // }$res = $request->except("_token","pic","_method");
-
+        // 修改头像
         if($request->hasFile("pic")){
             //自定义名字
             $name = rand(111,999).time();
@@ -197,10 +161,10 @@ class UserController extends Controller
         // 数据表修改数据
         try{
 
-            $data = User::where("id", $id)->update($res);
+            $data = Homeuser::where("hid", $id)->update($res);
             
             if($data){
-                return redirect("/admin/user")->with("success","修改成功");
+                return redirect("/admin/homeuser")->with("success","修改成功");
             }
 
         }catch(\Exception $e){
@@ -208,12 +172,6 @@ class UserController extends Controller
             return back()->with("error","修改失败");
         }
 
-        // $data = User::where("id", $id)->update($res);
-        // if ($data) {
-        //     echo "修改成功";
-        // } else {
-        //     echo "修改失败";
-        // }
     }
 
     /**
@@ -224,16 +182,14 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
-        //删除图片  头像
-        //unlink
-
+        echo 1; exit;
+        // 删除
         try{
 
-            $res = User::destroy($id);
+            $res = Homeuser::destroy($id);
             
             if($res){
-                return redirect("/admin/user")->with("success","删除成功");
+                return redirect("/admin/homeuser")->with("success","删除成功");
             }
 
         }catch(\Exception $e){
@@ -242,32 +198,66 @@ class UserController extends Controller
         }
     }
 
-        public function ajaxupdate(Request $request)
+    // ajax
+    // 用户名
+    public function ajaxhomeusername(Request $request)
     {
-        //判断空 
+        // 获取用户输入的用户名
+        $hname = $request -> get("hname");   
 
-        //判断管理员名是否一样
+        // 与数据库里的名字做比对 如果存在为真返回0  如果不存在为假返回1
+        $res = Homeuser::where("username", $hname)->first();
 
-        //判断位数 6~16
+        if ($res) {
+            echo "0";
+        } else {
+            echo "1";
+        }
+    }
 
-        // dd($request);
-        // $this->validate($request, [
-        //     "username" => "required|regex:/^\w{6,16}$/",
-        //     "username"=>"different:username"
-        // ],[
-        //     "username.required" => "管理员名不能为空",
-        //     "username.regex"=>"管理员名格式不正确",
-        //     "username.different"=>"修改的管理员名一致"
-        // ]);
+    // 手机号码
+    public function ajaxhomephone(Request $request)
+    {
+        // 获取用户输入的手机号码
+        $phone = $request -> get("phone");   
 
+        // 与数据库里的名字做比对 如果存在为真返回0  如果不存在为假返回1
+        $res = Homeuser::where("phone_number", $phone)->first();
+
+        if ($res) {
+            echo "0";
+        } else {
+            echo "1";
+        }
+    }
+
+    // email
+    public function ajaxhomeemail(Request $request)
+    {
+        // 获取用户输入的手机号码
+        $email = $request -> get("email");   
+
+        // 与数据库里的名字做比对 如果存在为真返回0  如果不存在为假返回1
+        $res = Homeuser::where("email", $email)->first();
+
+        if ($res) {
+            echo "0";
+        } else {
+            echo "1";
+        }
+    }
+
+    public function homeuserajax(Request $request)
+    {
         $res = [];
+        // var_dump($res); exit;
 
         $id = $request->ids;
 
         $res["username"] = $request->uv;
 
         //修改数据
-        $data = User::where("id",$id)->update($res);
+        $data = Homeuser::where("hid",$id)->update($res);
 
         if($data){
 
