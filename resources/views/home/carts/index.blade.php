@@ -14,14 +14,8 @@
 									
 								</div>
 							</div>
-							<div class="th th-price">
-								<div class="td-inner">商品图片</div>
-							</div>
-							<div class="th th-price">
-								<div class="td-inner">商品名称</div>
-							</div>
-							<div class="th th-price">
-								<div class="td-inner">产品规格</div>
+							<div class="th th-item">
+								<div class="td-inner">商品信息</div>
 							</div>
 							<div class="th th-price">
 								<div class="td-inner">单价</div>
@@ -30,7 +24,7 @@
 								<div class="td-inner">数量</div>
 							</div>
 							<div class="th th-sum">
-								<div class="td-inner">合计</div>
+								<div class="td-inner">金额</div>
 							</div>
 							<div class="th th-op">
 								<div class="td-inner">操作</div>
@@ -43,6 +37,7 @@
 						<div class="bundle  bundle-last ">
 							<div class="bundle-hd">
 							<div class="bundle-main">
+								@foreach($rs as $k => $v)
 								<ul class="item-content clearfix">
 									<li class="td td-chk">
 										<div class="cart-checkbox ">
@@ -52,31 +47,28 @@
 									</li>
 									<li class="td td-item">
 										<div class="item-pic">
-											<a href="#" target="_blank" data-title="美康粉黛醉美东方唇膏口红正品 持久保湿滋润防水不掉色护唇彩妆" class="J_MakePoint" data-point="tbcart.8.12">
-												<img src="/homes/images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg"></a>
+											<a href="#" target="_blank" class="J_MakePoint" data-point="tbcart.8.12">
+												<img src="{{$v['goodcar']->imgs}}" class="itempic J_ItemImg"></a>
 										</div>
 										<div class="item-info">
 											<div class="item-basic-info">
-												<a href="#" target="_blank" title="美康粉黛醉美唇膏 持久保湿滋润防水不掉色" class="item-title J_MakePoint" data-point="tbcart.8.11">美康粉黛醉美唇膏 持久保湿滋润防水不掉色</a>
+												<a href="#" target="_blank" class="item-title J_MakePoint" data-point="tbcart.8.11">{{$v['goodcar']->gname}}</a>
 											</div>
 										</div>
 									</li>
 									<li class="td td-info">
-										<div class="item-props item-props-can">
-											<span class="sku-line">颜色：12#川南玛瑙</span>
-											<span class="sku-line">包装：裸装</span>
-											<span tabindex="0" class="btn-edit-sku theme-login">修改</span>
-											<i class="theme-login am-icon-sort-desc"></i>
+										<div class="item-props"><!-- item-props-can class样式-->
+											<span class="sku-line">{{$v['goodcar']->size}}</span>
+											<span class="sku-line">{{$v['goodcar']->color}}</span>
+											<!-- <span tabindex="0" class="btn-edit-sku theme-login">修改</span>
+											<i class="theme-login am-icon-sort-desc"></i> -->
 										</div>
 									</li>
 									<li class="td td-price">
 										<div class="item-price price-promo-promo">
 											<div class="price-content">
 												<div class="price-line">
-													<em class="price-original">78.00</em>
-												</div>
-												<div class="price-line">
-													<em class="J_Price price-now" tabindex="0">39.00</em>
+													<span class="J_Price price">{{$v['goodcar']->price}}</span> 
 												</div>
 											</div>
 										</div>
@@ -85,113 +77,34 @@
 										<div class="amount-wrapper ">
 											<div class="item-amount ">
 												<div class="sl">
-													<input class="min am-btn" name="" type="button" value="-" />
-													<input class="text_box" name="" type="text" value="3" style="width:30px;" />
-													<input class="add am-btn" name="" type="button" value="+" />
+													<input class="minus am-btn" name="" type="button" value="-" />
+													<input class="text_box" name="" type="text" value="1" style="width:30px;" />
+													<input class="plus am-btn" name="" type="button" value="+" />
 								  				</div>
 											</div>
 										</div>
 									</li>
 									<li class="td td-sum">
 										<div class="td-inner">
-											<em tabindex="0" class="J_ItemSum number">117.00</em>
+											<span tabindex="0" class="J_ItemSum number">{{$v['goodcar']->price}}</span> 
 										</div>
 									</li>
 									<li class="td td-op">
 										<div class="td-inner">
-											<a title="移入收藏夹" class="btn-fav" href="#">
-                  移入收藏夹</a>
-											<a href="javascript:;" data-point-url="#" class="delete">
-                  删除</a>
+											<a title="移入收藏夹" class="btn-fav" href="#">移入收藏夹</a>
+											<a href="javascript:;" data-point-url="#" class="delete">删除</a>
 										</div>
 									</li>
 								</ul>
-							
-													
-								
-								
-								
+								@endforeach
 							</div>
 						</div>
 					</tr>
 					<div class="clear"></div>
-
-					<tr class="item-list">
-						<div class="bundle  bundle-last ">
-							<div class="bundle-main">
-								<ul class="item-content clearfix">
-									<li class="td td-chk">
-										<div class="cart-checkbox ">
-											<input class="check" id="J_CheckBox_170769542747" name="items[]" value="170769542747" type="checkbox">
-											<label for="J_CheckBox_170769542747"></label>
-										</div>
-									</li>
-									<li class="td td-item">
-										<div class="item-pic">
-											<a href="#" target="_blank" data-title="美康粉黛醉美东方唇膏口红正品 持久保湿滋润防水不掉色护唇彩妆" class="J_MakePoint" data-point="tbcart.8.12">
-												<img src="/homes/images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg"></a>
-										</div>
-										<div class="item-info">
-											<div class="item-basic-info">
-												<a href="#" target="_blank" title="美康粉黛醉美唇膏 持久保湿滋润防水不掉色" class="item-title J_MakePoint" data-point="tbcart.8.11">美康粉黛醉美唇膏 持久保湿滋润防水不掉色</a>
-											</div>
-										</div>
-									</li>
-									<li class="td td-info">
-										<div class="item-props item-props-can">
-											<span class="sku-line">颜色：10#蜜橘色</span>
-											<span class="sku-line">包装：两支手袋装（送彩带）</span>
-											<span tabindex="0" class="btn-edit-sku theme-login">修改</span>
-											<i class="theme-login am-icon-sort-desc"></i>
-										</div>
-									</li>
-									<li class="td td-price">
-										<div class="item-price price-promo-promo">
-											<div class="price-content">
-												<div class="price-line">
-													<em class="price-original">78.00</em>
-												</div>
-												<div class="price-line">
-													<em class="J_Price price-now" tabindex="0">39.00</em>
-												</div>
-											</div>
-										</div>
-									</li>
-									<li class="td td-amount">
-										<div class="amount-wrapper ">
-											<div class="item-amount ">
-												<div class="sl">
-													<input class="min am-btn" name="" type="button" value="-" />
-													<input class="text_box" name="" type="text" value="3" style="width:30px;" />
-													<input class="add am-btn" name="" type="button" value="+" />
-												</div>
-											</div>
-										</div>
-									</li>
-									<li class="td td-sum">
-										<div class="td-inner">
-											<em tabindex="0" class="J_ItemSum number">117.00</em>
-										</div>
-									</li>
-									<li class="td td-op">
-										<div class="td-inner">
-											<a title="移入收藏夹" class="btn-fav" href="#">
-                  移入收藏夹</a>
-											<a href="javascript:;" data-point-url="#" class="delete">
-                  删除</a>
-										</div>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</tr>
-				</div>
-				<div class="clear"></div>
-
 				<div class="float-bar-wrapper">
 					<div id="J_SelectAll2" class="select-all J_SelectAll">
 						<div class="cart-checkbox">
-							<input class="check-all check" id="J_SelectAllCbx2" name="select-all" value="true" type="checkbox">
+							<input class="check-all check" id="J_SelectAllCbx2" name="select-all" type="checkbox">
 							<label for="J_SelectAllCbx2"></label>
 						</div>
 						<span>全选</span>
@@ -224,6 +137,113 @@
 @stop
 
 @section('js')
+
+	<script type="text/javascript">
+		// 加
+		$('.plus').click(function(){
+			// 获取数量的值
+			var pv = $(this).prev().val();
+			// console.log(pv);
+
+			pv++;
+			$(this).prev().val(pv);
+
+			// 库存问题
+
+			// 获取单价
+			var prc = $(this).parents('ul').find('.price').text().trim();
+			// console.log(prc);
+
+			// 封装一个函数
+			function accMul(arg1, arg2){
+				var m = 0, s1 = arg1.toString(), s2 = arg2.toString();
+
+				try {m += s1.split(".")[1].length } catch (e) { }
+				try { m += s2.split(".")[1].length } catch (e) { }
+				return Number(s1.replace(".","")) * Number(s2.replace(".","")) / Math.pow(10,m)
+			}
+
+			// 小计 单价 * pv
+			$(this).parents('ul').find('.number').text(accMul(pv , prc));
+
+			totals()
+		})
+
+		// 减
+		$('.minus').click(function(){
+
+			//获取值
+			var pv = $(this).next().val();
+
+			pv--;
+
+			if(pv <= 1){
+
+				pv =1;
+			}
+
+			$(this).next().val(pv);
+
+
+			//获取单价
+			var prc = $(this).parents('ul').find('.price').text().trim();
+
+			function accMul(arg1, arg2) {
+
+		        var m = 0, s1 = arg1.toString(), s2 = arg2.toString();
+
+		        try { m += s1.split(".")[1].length } catch (e) { }
+
+		        try { m += s2.split(".")[1].length } catch (e) { }
+
+		        return Number(s1.replace(".", "")) * Number(s2.replace(".", "")) / Math.pow(10, m)
+
+			}
+
+			//让小计发生改变
+			$(this).parents('ul').find('.number').text(accMul(prc, pv));
+
+			totals()
+
+		})
+
+		// 选择
+		$('.check').click(function(){
+			totals()
+		})
+
+		function totals()
+		{
+			function accAdd(arg1,arg2){
+				var r1,r2,m;  
+			    try{r1=arg1.toString().split(".")[1].length}catch(e){r1=0}  
+			    try{r2=arg2.toString().split(".")[1].length}catch(e){r2=0}  
+			    m=Math.pow(10,Math.max(r1,r2))  
+			    return (arg1*m+arg2*m)/m 
+			}
+
+			var pcr = 0;
+			var sum = 0;
+
+			// 遍历
+			$(':checkbox:checked').each(function(){
+				// 获取小计
+				pcr = parseFloat($(this).parents('ul').find('.number').text());
+
+				sum = accAdd(sum, pcr);
+			})
+
+			// 让总计发生改变
+			$('#J_Total').text(sum);
+		}
+
+		// 全选
+		$('.check-all').click(function(){
+			$('.check').attr('checked',true);
+			
+			totals()
+		})
+	</script>
 
 @stop
 

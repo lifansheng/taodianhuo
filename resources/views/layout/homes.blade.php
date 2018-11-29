@@ -146,8 +146,8 @@
 						</div>
 
 					</div>
-					<div id="shopCart " class="item ">
-						<a href="# ">
+					<div id="shopCart " class="item cartss">
+						<a href="/home/carts">
 							<span class="message "></span>
 						</a>
 						<p>
@@ -286,8 +286,13 @@
 		</script>
 		<script type="text/javascript " src="/homes/basic/js/quick_links.js "></script>
 		<script type="text/javascript" src="/homes/js/jquery.js"></script>
+		<script type="text/javascript">
+			$('.cartss').bind('click',function(){
+				location.href="/home/carts";
+			})
+		</script>
 @section('js')
-		
+
 
 @show
 	</body>	
