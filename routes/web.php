@@ -74,9 +74,13 @@ Route::group(["middleware" => "login"], function(){
 });
 
 //前台
-Route::get('/',function(){
-	return view('home.index',['title'=>'淘点货']);
-});
+// Route::get('/',function(){
+// 	return view('home.index',['title'=>'淘点货']);
+// });
+route::any('/','Home\HomeController@index');
+
+//前台分类
+// route::get('')
 
 
 // 列表页

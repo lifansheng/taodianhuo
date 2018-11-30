@@ -62,11 +62,11 @@
                         </th>
                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
                         rowspan="1" colspan="1" style="width: 80px;" aria-label="Engine version: activate to sort column ascending">
-                            颜色
+                            口味
                         </th>
                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
                         rowspan="1" colspan="1" style="width: 97px;" aria-label="CSS grade: activate to sort column ascending">
-                            尺寸
+                            规格
                         </th>
 
                          <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"

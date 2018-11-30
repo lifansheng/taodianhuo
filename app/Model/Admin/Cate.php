@@ -18,4 +18,9 @@ class Cate extends Model
 	 * @var array
 	 */
 	protected $guarded = [];
+
+	public function cate()
+	{
+		return $this->hasMany('App\Model\Admin\Goods','cid');
+	}
 }
