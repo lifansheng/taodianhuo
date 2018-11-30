@@ -120,7 +120,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="#"><i class="icon-users"></i>用户管理</a>
+                        <a href="#"><i class="icon-add-contact"></i>用户管理</a>
                         <ul class='closed'>
                             <li><a href="/admin/homeuser/create">用户添加</a></li>
                             <li><a href="/admin/homeuser">浏览用户</a></li>
@@ -172,14 +172,14 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="#"><i class="icon-users"></i>广告管理</a>
+                        <a href="#"><i class="icon-calendar"></i>广告管理</a>
                         <ul class='closed'>
-                            <li><a href="/admin/link/create">添加广告</a></li>
-                            <li><a href="/admin/link">查看广告</a></li>
+                            <li><a href="/admin/advert/create">添加广告</a></li>
+                            <li><a href="/admin/advert">查看广告</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a href="/admin/site"><i class="icon-users"></i>网站配置</a>
+                        <a href="/admin/site"><i class="icon-tools"></i>网站配置</a>
                         <!-- <ul class='closed'>
                             <li><a href="/admin/link/create">添加链接</a></li>
                             <li><a href="/admin/link">查看链接</a></li>

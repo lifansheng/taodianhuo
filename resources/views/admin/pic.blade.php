@@ -28,7 +28,7 @@
                 <div class="mws-form-row">
                         <label class="mws-form-label">头像</label>
                         <div class="mws-form-item">
-                        	<img src="{{$user->pic}}" id='img1' alt="上传后显示图片" >
+                        	<img src="{{$user->pic}}" id='img1' alt="上传后显示图片" width="150px">
                             <div class="fileinput-holder" style="position: relative;">
                                 <input id="file_upload" name="pic" type="file" style="position: absolute; top: 0px; right: 0px; margin: 0px; cursor: pointer; font-size: 999px; opacity: 0; z-index: 999;" type="file">
                             </div>

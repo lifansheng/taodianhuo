@@ -79,7 +79,10 @@ Route::group(["middleware" => "login"], function(){
 
 
 	// 广告管理
-	Route::resource("admin/advertisement", "Admin\AdverController");
+	Route::resource("admin/advert", "Admin\AdvertController");
+	Route::get('/admin/advajax','Admin\AdvertController@ajaxupdate');
+	Route::any("admin/advuploads", "Admin\AdvertController@uploads");
+
 
 
 	//网站配置
@@ -103,9 +106,9 @@ route::any('/','Home\HomeController@index');
 
 // 列表页
 Route::get('home/details','Home\HomeController@details');
+Route::get('home/advert','Admin\AdvertController@homeadvert');
+
 // 前台登录、注册页面
-
-
 Route::any("home/login", "Home\LoginController@login");
 Route::any("home/register", "Home\LoginController@register");
 Route::any("home/dologin", "Home\LoginController@dologin");

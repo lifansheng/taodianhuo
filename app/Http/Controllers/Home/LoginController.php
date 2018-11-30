@@ -30,6 +30,7 @@ class LoginController extends Controller
     	// 获取当前想要登录的用户的数据库里的密码
     	$rs = Homes::where("username", $res["username"]) -> first();
 
+        // session 存入登录的ID和用户名信息
         session([
             'hid'=>$rs->hid,
             'huname'=>$rs->username

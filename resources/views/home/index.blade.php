@@ -197,7 +197,7 @@
 								<h4>开年福利篇</h4>
 							</div>
 							<div class="recommendationMain ">
-								<img src="/homes/images/tj.png "></img>
+								<a href=""><img src="/homes/images/tj.png "></a>
 							</div>
 						</div>						
 						<div class="am-u-sm-4 am-u-lg-3 ">
