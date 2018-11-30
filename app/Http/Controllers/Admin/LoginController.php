@@ -61,7 +61,7 @@ class LoginController extends Controller
         // 生成验证码图片的Builder对象，配置相应属性
         $builder = new CaptchaBuilder($code, $phrase);
         // 设置背景颜色
-        $builder->setBackgroundColor(76, 95, 110);
+        $builder->setBackgroundColor(0, 150, 230); // 76 95 110
         $builder->setMaxAngle(15);
         $builder->setMaxBehindLines(0);
         $builder->setMaxFrontLines(0);
