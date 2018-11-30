@@ -44,7 +44,7 @@
 					<div class="menu-hd MyShangcheng"><a href="#" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a></div>
 				</div>
 				<div class="topMessage mini-cart">
-					<div class="menu-hd"><a id="mc-menu-hd" href="#" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong id="J_MiniCartNum" class="h">0</strong></a></div>
+					<div class="menu-hd"><a id="mc-menu-hd" href="/home/carts" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong id="J_MiniCartNum" class="h">0</strong></a></div>
 				</div>
 				<div class="topMessage favorite">
 					<div class="menu-hd"><a href="#" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>收藏夹</span></a></div>
@@ -247,7 +247,7 @@
 														<div class="cart-title">口味</div>
 														<ul>
 															@foreach( $arr as $v)
-															<li class="sku-line ">{{$v}}<i></i></li>
+															<li class="sku-line" id=""><input class="sku-line" type="radio" name="leixing" value="{{$v}}">{{$v}}<i></i></li>
 															@endforeach
 														</ul>
 													</div>
@@ -261,10 +261,11 @@
 														@endphp
 														<ul>
 															@foreach($arr as $v)
-															<li class="sku-line ">{{$v}}<i></i></li>
+															<li class="sku-line "><input class="sku-line" type="radio" name="size" value="{{$v}}">{{$v}}<i></i></li>
 															@endforeach
 														</ul>
 													</div>
+								
 													<div class="theme-options">
 														<div class="cart-title number">库存</div>
 														<li>
@@ -394,11 +395,42 @@
 							</li>
 							<li>
 								<div class="clearfix tb-btn tb-btn-basket theme-login">
-									<a id="LikBasket" title="加入购物车" href="#"><i></i>加入购物车</a>
+									<a id="LikBasket" title="加入购物车" href="javascript:void(0)"><i></i>加入购物车</a>
+									<input type="hidden" name="id" value="{{$goods->id}}">
 								</div>
 							</li>
 						</div>
+						<script type="text/javascript" language="javascript">
+							// 获取类型
+							$("input[name=leixing]").click(function(){
+								leixing = $(this).val();
+							})
 
+							// 获取size大小
+							$("input[name=size]").click(function(){
+								size = $(this).val();
+							})
+
+							// 读取商品ID
+							var id = $("#LikBasket").click(function(){
+								
+								var id = $("input[name=id]").val();
+								// alert(id);
+								// 获取商品库存
+								var num = $("#text_box").val();
+								// alert(num);
+
+								// 使用ajax get方式加入购物车
+								$.get('/home/addCar',{id:id,num:num,leixing:leixing,size:size},function(data){
+									if (data == 1) {
+										alert('添加成功,快去购物车看看吧');
+									}else{
+										alert('添加失败,请重新选择商品');
+									}
+								})
+								// window.location.href="/home/addCar?id="+id+"&num="+num+"&leixing="+leixing+"&size="+size;
+							})
+						</script>
 					</div>
 
 					<div class="clear"></div>
@@ -1252,10 +1284,10 @@
 
 						</div>
 						<div id="shopCart" class="item">
-							<a href="#">
+							<a href="/home/carts">
 								<span class="message"></span>
 							</a>
-							<p>
+							<p class="cartss">
 								购物车
 							</p>
 							<p class="cart_num">0</p>
@@ -1390,3 +1422,8 @@
 	</body>
 
 </html>
+<script type="text/javascript">
+	$('.cartss').bind('click',function(){
+		location.href="/home/carts";
+	})
+</script>

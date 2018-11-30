@@ -80,25 +80,25 @@
 								<ul class="item-content clearfix">
 									<li class="td td-chk">
 										<div class="cart-checkbox ">
-											<input class="check" id="J_CheckBox_170037950254" gid="{{$v->gid}}" name="carid[]" type="checkbox">
+											<input class="check" id="J_CheckBox_170037950254" gid="{{$v->id}}" name="carid[]" type="checkbox" value="{{$v->id}}">
 											<label for="J_CheckBox_170037950254"></label>
 										</div>
 									</li>
 									<li class="td td-item">
 										<div class="item-pic">
 											<a href="#" target="_blank" class="J_MakePoint" data-point="tbcart.8.12">
-												<img src="{{$v['goodcar']->imgs}}" class="itempic J_ItemImg"></a>
+												<img src="{{$v->shopimg}}" class="itempic J_ItemImg"></a>
 										</div>
 										<div class="item-info">
 											<div class="item-basic-info">
-												<a href="#" target="_blank" class="item-title J_MakePoint" data-point="tbcart.8.11">{{$v['goodcar']->gname}}</a>
+												<a href="#" target="_blank" class="item-title J_MakePoint" data-point="tbcart.8.11">{{$v->shopname}}</a>
 											</div>
 										</div>
 									</li>
 									<li class="td td-info">
 										<div class="item-props"><!-- item-props-can class样式-->
-											<span class="sku-line">{{$v['goodcar']->size}}</span>
-											<span class="sku-line">{{$v['goodcar']->color}}</span>
+											<span class="sku-line">{{$v->size}}</span>
+											<span class="sku-line">{{$v->leixing}}</span>
 											<!-- <span tabindex="0" class="btn-edit-sku theme-login">修改</span>
 											<i class="theme-login am-icon-sort-desc"></i> -->
 										</div>
@@ -107,7 +107,7 @@
 										<div class="item-price price-promo-promo">
 											<div class="price-content">
 												<div class="price-line">
-													<span class="J_Price price">{{$v['goodcar']->price}}</span> 
+													<span class="J_Price price">{{$v->shopprice-2}}</span> 
 												</div>
 											</div>
 										</div>
@@ -115,9 +115,9 @@
 									<li class="td td-amount">
 										<div class="amount-wrapper ">
 											<div class="item-amount ">
-												<div class="sl">
+												<div class="sl" name="{{$v->id}}">
 													<input class="minus am-btn" name="" type="button" value="-" />
-													<input class="text_box" name="" type="text" value="1" style="width:30px;" />
+													<input class="text_box" name="" type="text" value="{{$v->cnt}}" style="width:30px;" />
 													<input class="plus am-btn" name="" type="button" value="+" />
 								  				</div>
 											</div>
@@ -125,7 +125,7 @@
 									</li>
 									<li class="td td-sum">
 										<div class="td-inner">
-											<span tabindex="0" class="J_ItemSum number">{{$v['goodcar']->price}}</span> 
+											<span tabindex="0" class="J_ItemSum number">{{($v->shopprice-2)*$v->cnt}}</span> 
 										</div>
 									</li>
 									<li class="td td-op">
@@ -195,72 +195,95 @@
 @section('js')
 
 	<script type="text/javascript">
-
 		// 加
 		$('.plus').click(function(){
-			// 获取数量的值
-			var pv = $(this).prev().val();
+			// 获取点击加的商品ID
+			var jia = $(this).parent().attr('name');
+
+			var th = $(this);
 			// console.log(pv);
+			$.get('/home/carAdd',{jia:jia},function(data){
 
-			pv++;
-			$(this).prev().val(pv);
+		        // console.log(data);
+		        if (data == 1) {
+		        	// alert(data);
+		          // 获取数量的值
+				  var pv = th.prev().val();
+		          pv++;
+				  th.prev().val(pv);
 
-			// 库存问题
+		          function accMul(arg1, arg2) {
 
-			// 获取单价
-			var prc = $(this).parents('ul').find('.price').text().trim();
-			// console.log(prc);
+		                var m = 0, s1 = arg1.toString(), s2 = arg2.toString();
 
-			// 封装一个函数
-			function accMul(arg1, arg2){
-				var m = 0, s1 = arg1.toString(), s2 = arg2.toString();
+		                try { m += s1.split(".")[1].length } catch (e) { }
 
-				try {m += s1.split(".")[1].length } catch (e) { }
-				try { m += s2.split(".")[1].length } catch (e) { }
-				return Number(s1.replace(".","")) * Number(s2.replace(".","")) / Math.pow(10,m)
-			}
+		                try { m += s2.split(".")[1].length } catch (e) { }
 
-			// 小计 单价 * pv
-			$(this).parents('ul').find('.number').text(accMul(pv , prc));
+		                return Number(s1.replace(".", "")) * Number(s2.replace(".", "")) / Math.pow(10, m)
+		          }
 
-			totals()
+		          	// 获取单价
+					var prc = th.parents('ul').find('.price').text().trim();
+					// console.log(prc);
+
+					// 小计 单价 * pv
+					th.parents('ul').find('.number').text(accMul(pv , prc));
+		        
+		            totals();
+		        } else {
+		          alsert('网络错误');
+		        }
+
+		    })
 		})
 
 		// 减
 		$('.minus').click(function(){
 
-			//获取值
-			var pv = $(this).next().val();
+			// 获取点击减的商品ID
+			var jian = $(this).parent().attr('name');
 
-			pv--;
+			var thh = $(this);
+			// console.log(pc);
+			$.get('/home/carJian',{jian:jian},function(data){
 
-			if(pv <= 1){
+		        // console.log(data);
+		        if (data == 1) {
+		        	// alert(data);
+		          // 获取数量的值
+				  var pc = thh.next().val();
+		          pc--;
+		          if(pc <= 1){
+		          	pc = 1;
+		          }
 
-				pv =1;
-			}
+				  thh.next().val(pc);
 
-			$(this).next().val(pv);
+		          function accMul(arg1, arg2) {
 
+		                var m = 0, s1 = arg1.toString(), s2 = arg2.toString();
 
-			//获取单价
-			var prc = $(this).parents('ul').find('.price').text().trim();
+		                try { m += s1.split(".")[1].length } catch (e) { }
 
-			function accMul(arg1, arg2) {
+		                try { m += s2.split(".")[1].length } catch (e) { }
 
-		        var m = 0, s1 = arg1.toString(), s2 = arg2.toString();
+		                return Number(s1.replace(".", "")) * Number(s2.replace(".", "")) / Math.pow(10, m)
+		          }
 
-		        try { m += s1.split(".")[1].length } catch (e) { }
+		          	// 获取单价
+					var prc = thh.parents('ul').find('.price').text().trim();
+					// console.log(prc);
 
-		        try { m += s2.split(".")[1].length } catch (e) { }
+					// 小计 单价 * pc
+					thh.parents('ul').find('.number').text(accMul(pc , prc));
+		        
+		            totals();
+		        } else {
+		          alsert('网络错误');
+		        }
 
-		        return Number(s1.replace(".", "")) * Number(s2.replace(".", "")) / Math.pow(10, m)
-
-			}
-
-			//让小计发生改变
-			$(this).parents('ul').find('.number').text(accMul(prc, pv));
-
-			totals()
+		    })
 
 		})
 

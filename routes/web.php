@@ -120,13 +120,20 @@ Route::post("home/ajaxemails", "Home\LoginController@ajaxemail");
 Route::post("home/ajaxphone", "Home\LoginController@ajaxphone");
 Route::post("home/ajaxcode", "Home\LoginController@ajaxcode");
 
-// 前台购物车
+// 前台购物车的添加
+Route::get("home/addCar","Home\CartsController@addCar");
+// 购物车的显示
 Route::get("home/carts","Home\CartsController@shopcar");
+// 购物车的加运算
+Route::get("home/carAdd","Home\CartsController@carAdd");
+// 购物车的减运算
+Route::get("home/carJian","Home\CartsController@carJian");
 Route::get("home/shopcart","Home\CartsController@shopcart");
 
 // 订单结算页面
 Route::post("home/jiesuan","Home\CartsController@index");
-
+// 订单结算成功页面
+Route::get("home/cheng","Home\CartsController@cheng");
 
 // 前台
 Route::group(["middleware" => "login"], function(){
