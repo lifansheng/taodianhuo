@@ -35,7 +35,7 @@
 						    	<i class="am-icon-angle-right" style="padding-left: 10px;"></i>
 						    </div>
 						</div>
-
+						<!-- 引入静态方法 -->
 	        			@php
 
 							use App\Http\Controllers\Home\HomeController;
@@ -46,6 +46,7 @@
 						@endphp
 
 						<!--侧边导航 -->
+						<!-- 遍历分类 -->
 						<div id="nav" class="navfull">
 							<div class="area clearfix">
 								<div class="category-content" id="guide_2">						
@@ -54,7 +55,7 @@
 											@foreach($res as $v )
 											<li class="appliance js_toggle relative first">
 												<div class="category-info">
-													<h3 class="category-name b-category-name"><i><img src="/homes/images/cake.png"></i><a class="ml-22" title="点心">{{$v->title}}</a></h3>
+													<h3 class="category-name b-category-name"><i><img src="/homes/images/bamboo.png"></i><a class="ml-22" title="点心">{{$v->title}}</a></h3>
 													<em>&gt;</em></div>
 												<div class="menu-item menu-in top">
 													<div class="area-in">
@@ -68,7 +69,7 @@
 																	<dl class="dl-sort">
 																		<dt><span title={{$vv->title}}>{{$vv->title}}</span></dt>
 																		@foreach($vv->sub as $vvv)
-																		<dd><a title="{{$vvv->title}}" href="#"><span>{{$vvv->title}}</span></a></dd>
+																		<dd><a title="{{$vvv->title}}" href="/homes/search?cid={{$vvv->id}}"><span>{{$vvv->title}}</span></a></dd>
 																		@endforeach
 																	</dl>
 																	@endforeach
@@ -282,15 +283,12 @@
 					<div class="clear "></div>
 
 					<!-- 遍历 分类表 -->
-                 	@foreach($res as $vv)
+                 	
 					<div class="am-container ">
 						<div class="shopTitle ">
-							<h4>{{$vv->title}}</h4>
+							<h4>小店的存货都在这....</h4>
 							<h3>你是我的优乐美么？不，我是你小鱼干</h3>
-							<div class="today-brands ">
-								@foreach($vv->sub as $c)
-								<a href="# ">{{$c->title}}</a>
-								@endforeach
+							<div class="today-brands ">								
 							</div>
 							<span class="more ">
                     <a class="more-link " href="# ">更多美味</a>
@@ -314,7 +312,7 @@
 						</ul>
 
 					</div>
-					@endforeach
+					
 					
 @stop
 

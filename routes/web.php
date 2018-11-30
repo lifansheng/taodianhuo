@@ -104,9 +104,16 @@ route::any('/','Home\HomeController@index');
 // route::get('')
 
 
-// 列表页
+// 详情页面
 Route::get('home/details','Home\HomeController@details');
+
 Route::get('home/advert','Admin\AdvertController@homeadvert');
+
+//搜索后出来的页面
+route::get('home/search','Home\HomeController@search');
+
+route::get('homes/search','Home\HomeController@list');
+
 
 // 前台登录、注册页面
 Route::any("home/login", "Home\LoginController@login");
