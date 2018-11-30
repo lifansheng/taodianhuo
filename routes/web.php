@@ -114,11 +114,11 @@ Route::post("home/ajaxphone", "Home\LoginController@ajaxphone");
 Route::post("home/ajaxcode", "Home\LoginController@ajaxcode");
 
 // 前台购物车
-Route::resource("home/carts","Home\CartsController");
+Route::get("home/carts","Home\CartsController@shopcar");
 Route::get("home/shopcart","Home\CartsController@shopcart");
 
 // 订单结算页面
-Route::any("home/jiesuan","Home\CartsController@index");
+Route::post("home/jiesuan","Home\CartsController@index");
 
 
 // 前台

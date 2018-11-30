@@ -43,6 +43,7 @@
 	</style>
 <!--购物车 -->
 <div style="margin-top: 40px;border-top: 2px solid #d2364c"></div>
+		<form action="/home/jiesuan" method="post">
 			<div class="concent">
 				<div id="cartTable">
 					<div class="cart-table-th">
@@ -79,7 +80,7 @@
 								<ul class="item-content clearfix">
 									<li class="td td-chk">
 										<div class="cart-checkbox ">
-											<input class="check" id="J_CheckBox_170037950254" gid="{{$v->gid}}" type="checkbox">
+											<input class="check" id="J_CheckBox_170037950254" gid="{{$v->gid}}" name="carid[]" type="checkbox">
 											<label for="J_CheckBox_170037950254"></label>
 										</div>
 									</li>
@@ -163,13 +164,16 @@
 							<span class="txt">合计:</span>
 							<strong class="price">¥<span id="J_Total">0</span></strong>
 						</div>
-						<div class="btn-area">
-							<a href="pay.html" id="J_Go" class="submit-btn submit-btn-disabled" aria-label="请注意如果没有选择宝贝，将无法结算">
-								<span>结&nbsp;算</span></a>
+						<div class="">
+							{{csrf_field()}}
+							<!-- <a href="javascript:void(0)"  > -->
+								<input type="submit" id="J_Go" class="submit-btn submit-btn-disabled btn-area" name="" style="background:red;border-color:red">
+							
 						</div>
 					</div>
-
 				</div>
+				</div>
+			</form>
 				<div class="cart-empty" style='display:none'>
 					    <div class="message">
 					        <ul>
@@ -191,6 +195,7 @@
 @section('js')
 
 	<script type="text/javascript">
+
 		// 加
 		$('.plus').click(function(){
 			// 获取数量的值
@@ -313,6 +318,11 @@
 					nums()
 				}
 			})
+		})
+
+		$('jiesuan').click(function(){
+			var duo = $('input[type=checkbox]').val();
+			console.log(duo);
 		})
 
 		function nums(){

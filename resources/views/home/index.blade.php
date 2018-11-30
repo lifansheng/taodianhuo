@@ -2,21 +2,39 @@
 
 @section('title',$title)
 
-				<div class="banner">
-                      <!--轮播 -->
-						<div class="am-slider am-slider-default scoll" data-am-flexslider id="demo-slider-0">
-							<ul class="am-slides">
-								<li class="banner1"><a href="introduction.html"><img src="/homes/images/ad1.jpg" /></a></li>
-								<li class="banner2"><a><img src="/homes/images/ad2.jpg" /></a></li>
-								<li class="banner3"><a><img src="/homes/images/ad3.jpg" /></a></li>
-								<li class="banner4"><a><img src="/homes/images/ad4.jpg" /></a></li>
-
-							</ul>
-						</div>
-						<div class="clear"></div>	
-				</div>
-
 @section('content')
+	
+			<div class="banner">
+              <!--轮播 -->
+				<div class="am-slider am-slider-default scoll" data-am-flexslider id="demo-slider-0">
+					<ul class="am-slides">
+						<li class="banner1"><a href="introduction.html"><img src="/homes/images/ad1.jpg" /></a></li>
+						<li class="banner2"><a><img src="/homes/images/ad2.jpg" /></a></li>
+						<li class="banner3"><a><img src="/homes/images/ad3.jpg" /></a></li>
+						<li class="banner4"><a><img src="/homes/images/ad4.jpg" /></a></li>
+
+					</ul>
+				</div>
+				<div class="clear"></div>	
+			</div>						
+			
+			<div class="shopNav">
+				<div class="slideall">
+			        
+					   <div class="long-title"><span class="all-goods">全部分类</span></div>
+					   <div class="nav-cont">
+							<ul>
+								<li class="index"><a href="#">首页</a></li>
+                                <li class="qc"><a href="#">闪购</a></li>
+                                <li class="qc"><a href="#">限时抢</a></li>
+                                <li class="qc"><a href="#">团购</a></li>
+                                <li class="qc last"><a href="#">大包装</a></li>
+							</ul>
+						    <div class="nav-extra">
+						    	<i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>我的福利
+						    	<i class="am-icon-angle-right" style="padding-left: 10px;"></i>
+						    </div>
+						</div>
 	        				
 						<!--侧边导航 -->
 						<div id="nav" class="navfull">

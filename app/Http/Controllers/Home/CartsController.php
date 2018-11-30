@@ -11,11 +11,11 @@ use DB;
 class CartsController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * 购物车
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function shopcar()
     {
         //
         // $res = Carts::find(1)->goodcar()->where('hid',27)->first();
@@ -29,9 +29,10 @@ class CartsController extends Controller
         ]);
     }
 
+    // 删除选中的商品
     public function shopcart(Request $request)
     {   
-        $gid = $request->gid;
+        $gid = $request->gid; 
 
         $res = DB::table('shopcar')->where('gid',$gid)->delete();
 
@@ -44,6 +45,20 @@ class CartsController extends Controller
 
             echo 0;
         }
+    }
+
+    /**
+     * 结算页
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index(Request $request)
+    {
+        
+
+        return view('home.carts.jiesuan',[
+            'title'=>'订单结算'
+        ]);
     }
 
     /**
