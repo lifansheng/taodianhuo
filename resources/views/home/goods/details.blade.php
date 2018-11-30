@@ -130,7 +130,7 @@
 						<div class="box">
 							<script type="text/javascript">
 								$(document).ready(function() {
-									$(".jqzoom").imagezoom();
+									// $(".jqzoom").imagezoom();
 									$("#thumblist li a").click(function() {
 										$(this).parents("li").addClass("tb-selected").siblings().removeClass("tb-selected");
 										$(".jqzoom").attr('src', $(this).find("img").attr("mid"));
@@ -138,13 +138,13 @@
 									});
 								});
 							</script>
-							<div class="tb-booth tb-pic tb-s310">
-								<a href="{{$goods->gimg}}"><img src="/homes/images/01_mid.jpg" alt="细节展示放大镜特效" rel="/homes/images/01.jpg" class="jqzoom" /></a>
-							</div>
-
 							<!-- <div class="tb-booth tb-pic tb-s310">
-								<a href="{{$goods->gimg}}"><img src="{{$goods->gimg}}" alt="细节展示放大镜特效" rel="{{$goods->gimg}}" class="jqzoom" /></a>
+								<a href="{{$goods->imgs}}"><img src="/homes/images/01_mid.jpg" alt="细节展示放大镜特效" rel="/homes/images/01.jpg" class="jqzoom" /></a>
 							</div> -->
+
+							<div class="tb-booth tb-pic tb-s310">
+								<a href="{{$goods->imgs}}"><img src="{{$goods->imgs}}" alt="细节展示放大镜特效" rel="{{$goods->gims}}" class="jqzoom" /></a>
+							</div>
 							<ul class="tb-thumb" id="thumblist">
 								
 								@foreach($gimg as $v)
@@ -269,7 +269,7 @@
 														<div class="cart-title number">库存</div>
 														<li>
 															<input id="min" class="am-btn am-btn-default" name="" type="button" value="-" />
-															<input id="text_box" name="" type="text" value="1" style="width:30px;" />
+															<input id="text_box" name="" type="text" value="1" style="width:45px;" />
 															<input id="add" class="am-btn am-btn-default" name="" type="button" value="+" />
 															<span id="Stock" class="tb-hidden"><span class="stock" value="{{$goods->stock}}">{{$goods->stock}}</span>件</span>
 														</li>
@@ -372,9 +372,10 @@
 									<dt class="tb-metatit">优惠券</dt>
 									<div class="gold-list">
 										<ul>
-											<li>125减5</li>
-											<li>198减10</li>
-											<li>298减20</li>
+											<li>不好意思.....</li>
+											<!-- <li>敬请期待</li> -->
+											<li>程序员正在努力</li>
+											
 										</ul>
 									</div>
 								</div>
@@ -395,6 +396,11 @@
 							<li>
 								<div class="clearfix tb-btn tb-btn-basket theme-login">
 									<a id="LikBasket" title="加入购物车" href="#"><i></i>加入购物车</a>
+								</div>
+							</li>
+							<li>
+								<div class="clearfix tb-btn tb-btn-buy theme-login">
+									<a id="LikBuy" title="点此加入收藏" href="#">加入收藏</a>
 								</div>
 							</li>
 						</div>

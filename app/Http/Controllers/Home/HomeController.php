@@ -8,6 +8,7 @@ use App\Model\Admin\Cate;
 use App\Model\Admin\Goods;
 use App\Model\Admin\Gpic;
 use App\Model\Admin\News;
+use DB;
 
 
 class HomeController extends Controller
@@ -68,13 +69,14 @@ class HomeController extends Controller
         // exit;
         $gpic = Gpic::all();
         // dd($gpic);
+        // dd($goods);
 
         return view('home.index',[
             'title'=>'淘点货',
             'goods'=>$goods,
             //'imgs'=>$imgs 
             'news'=>$news,
-            'gpic'=>$gpic     
+            'gpic'=>$gpic   
         ]);
     }
 
@@ -114,8 +116,63 @@ class HomeController extends Controller
         // dd($gimg);
 
         return view('home/goods/details',[
+            'title'=>'详情页',
             'goods'=>$goods,
             'gimg'=>$gimg
+        ]);
+    }
+
+    public function search(Request $request)
+    {
+        // dd($_GET['gname']);
+        // $res = $request->only('gname');
+        $res = $_GET['gname'];
+        // dd($res);
+        // exit;
+        // select * form goods where gname("gname",'like',"%".$res."%");
+        // $data = DB::select('select * form goods where ("gname","like","%".$res."%")');
+        $data = Goods::where('gname','like','%'.$res.'%')->get();
+        // dd($data);
+
+        // dd($data);
+           /*$res = News::orderBy("id","asc")
+            ->where(function($query) use($request){
+                //检测关键字
+                $title = $request->input("title");
+                $author = $request->input("author");
+                //如果用户名不为空
+                if(!empty($title)) {
+                    $query->where("title","like","%".$title."%");
+                }
+                //如果邮箱不为空
+                if(!empty($author)) {
+                    $query->where("author","like","%".$author."%");
+                }
+            })
+        ->paginate($request->input("num", 10));
+        //显示页面
+        return view('admin.news.index',[
+            'title'=>'新闻的浏览',
+            'res'=>$res,
+            'request'=>$request,
+
+        ]);*/
+        return view('home.goods.search',[
+            'title'=>'列表页面',
+            'data'=>$data
+        ]);
+    }
+
+    public function list(){
+        //打印cid
+        // dd($_GET['cid']);
+        $cid = $_GET['cid'];
+        // dd($cid);
+         $res = Goods::where('cid',$cid)->get();
+         // dd($res);
+         return view('home/goods/list',[
+            'title'=>'查询页',
+            'res'=>$res,
         ]);
     }
 

@@ -6,6 +6,11 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 		
+		
+
+		<!-- xiangqiang -->
+
+		<title>@yield('title')</title>
 		<link href="/homes/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css" />
 		<link href="/homes/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css" />
 
@@ -16,7 +21,8 @@
 		<link href="/homes/css/hmstyle.css" rel="stylesheet" type="text/css" />
 		<script src="/homes/AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
 		<script src="/homes/AmazeUI-2.4.2/assets/js/amazeui.min.js"></script>
-		<title>@yield('title')</title>
+
+		<script type="text/javascript" src="/homes/basic/js/jquery-1.7.min.js"></script>
 
 
 	</head>
@@ -57,9 +63,9 @@
 				</div>
 
 				<div class="search-bar pr">
-					<a name="index_none_header_sysc" href="#"></a>
-					<form>
-						<input id="searchInput" name="index_none_header_sysc" type="text" placeholder="搜索" autocomplete="off">
+					<a name="index_none_header_sysc" href="home/search"></a>
+					<form action="/home/search">
+						<input id="searchInput" name="gname" type="text" placeholder="只要小店有的,都给你" autocomplete="off">
 						<input id="ai-topsearch" class="submit am-btn" value="搜索" index="1" type="submit">
 					</form>
 				</div>
