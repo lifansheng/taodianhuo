@@ -56,7 +56,7 @@
                 </div>
 
                 <div class="mws-form-row">
-                    <label class="mws-form-label">颜色</label>
+                    <label class="mws-form-label">口味</label>
                     <div class="mws-form-item">
                         <input class="small" type="text" name="color">
                     </div>

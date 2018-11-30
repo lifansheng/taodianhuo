@@ -62,13 +62,13 @@
                 </div>
 
                 <div class="mws-form-row">
-                    <label class="mws-form-label">颜色</label>
+                    <label class="mws-form-label">口味</label>
                     <div class="mws-form-item">
                         <input class="small" type="text" name="color" value="{{$res->color}}">
                     </div>
                 </div>
                <div class="mws-form-row">
-                    <label class="mws-form-label">尺寸</label>
+                    <label class="mws-form-label">规格</label>
                     <div class="mws-form-item">
                         <input class="small" type="text" name="size" value="{{$res->size}}">
                     </div>
