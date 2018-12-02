@@ -152,10 +152,10 @@
 						<div class="demo">
 
 							<ul>
-								<li class="title-first"><a target="_blank" href="#">
+								<!-- <li class="title-first"><a target="_blank" href="#">
 									<img src="/homes/images/TJ2.jpg"></img>
 									<span>[特惠]</span>商城爆品1分秒								
-								</a></li>
+								</a></li> -->
 								@foreach($news as $news_v)							    
 								<li><a target="_blank" href="#"><span>[{{$news_v->title}}]</span>{{$news_v->content}}</a></li>
 								@endforeach
@@ -291,7 +291,7 @@
 							<div class="today-brands ">								
 							</div>
 							<span class="more ">
-                    <a class="more-link " href="# ">更多美味</a>
+                    <a class="more-link " href="# ">就这些啦......^_^</a>
                         </span>
 						</div>
 					</div>
@@ -299,7 +299,7 @@
 						<ul class="am-thumbnails ">
 							<!-- 遍历商品表 -->
 							@foreach($goods as $v)								
-									<li style="margin-left: 35px">
+									<li style="margin-left: 35px;margin-top: 6px;">
 										<div class="list " >
 											<a href="home/details?id={{$v->id}}">
 												<img src="{{$v->imgs}}"  width="188px" height="188px"  / >

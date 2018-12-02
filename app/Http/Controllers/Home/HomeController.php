@@ -92,12 +92,15 @@ class HomeController extends Controller
       public function details()
     {
         //
+        //得到url地址栏得的id
         $id = $_GET['id'];
         // dd($id);
         // $goods = Goods::find($id);
         // dd($goods);
+        //关联查询 goods表和gpic  商品表和商品图片表
          $good = Goods::with('gis')->where('id',$id)->get();
          // dd($good[0]);
+         //商品表的一维数组  在HTML页面直接取就行啦
          $goods = $good[0];
          // dd($goods);
         // ........先遍历  4/3维数组
@@ -107,6 +110,7 @@ class HomeController extends Controller
             dump($v['typec'][1]->childname);//子表的信息
         }*/
         // dd($goods->id);
+        //遍历商品 ** 取 商品的图片表
         foreach($good as $k=>$v){
             // dd($v->content);
             // dd($v['gis']);
@@ -114,11 +118,19 @@ class HomeController extends Controller
             // dd($gimg);
         }
         // dd($gimg);
+        // dd($goods['cid']);
+        $cid = $goods['cid'];
+        // dd($likes);
+        //通过cid取goods表里的相关所有数据
+        $likes = Goods::where('cid',$cid)->get();
+        // dd($likes);
+
 
         return view('home/goods/details',[
-            'title'=>'详情页',
+            'title'=>'商品详情页',
             'goods'=>$goods,
-            'gimg'=>$gimg
+            'gimg'=>$gimg,
+            'likes'=>$likes
         ]);
     }
 
@@ -163,6 +175,7 @@ class HomeController extends Controller
         ]);
     }
 
+    //通过主页的分类 到 list列表页
     public function list(){
         //打印cid
         // dd($_GET['cid']);
