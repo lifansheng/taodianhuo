@@ -185,6 +185,14 @@
                             <li><a href="/admin/news">浏览新闻</a></li>
                         </ul>
                     </li>
+                     <li>
+                        <a href="#"><i class="icon-pictures"></i>收货信息管理</a>
+                        <ul class='closed'>
+                            <li><a href="/admin/address/create">添加收货信息</a></li>
+                            <li><a href="/admin/address">浏览收货信息</a></li>
+                        </ul>
+
+                    </li>
                     <li>
                         <a href="#"><i class="icon-users"></i>友情链接管理</a>
                         <ul class='closed'>

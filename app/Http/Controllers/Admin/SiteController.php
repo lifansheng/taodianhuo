@@ -12,15 +12,15 @@ class SiteController extends Controller
     //
     public function index(){
 
-    	$res = Site::find(1);
-    	$user = User::select();
-    	
+        $res = Site::find(1);
+        $user = User::select();
+        
     
     return view('admin.site.index',['title'=>'网站配置','res' => $res,'user'=> $user]);
 }
 
 
-	public function update(Request $request, $id)
+    public function update(Request $request, $id)
     {
 
         $res =$request ->except('_token','logo','_method');

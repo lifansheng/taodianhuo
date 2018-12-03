@@ -48,7 +48,7 @@
 						<div class="menu-hd"><a href="#" target="_top" class="h">商城首页</a></div>
 					</div>
 					<div class="topMessage my-shangcheng">
-						<div class="menu-hd MyShangcheng"><a href="#" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a></div>
+						<div class="menu-hd MyShangcheng"><a href="/home/person" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a></div>
 					</div>
 					<div class="topMessage mini-cart">
 						<div class="menu-hd"><a id="mc-menu-hd" href="/home/carts" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong id="J_MiniCartNum" class="h">0</strong></a></div>
@@ -63,8 +63,19 @@
 			<div class="nav white">
 				<div class="logo"><img src="/homes/images/logo.png" /></div>
 				<div class="logoBig">
-					<li><img src="/homes/images/logobig.png" /></li>
+
+							@php use App\Http\Controllers\Home\HomeController;
+									$sites  = HomeController::fulei();
+									
+						   			
+							@endphp
+
+
+							@foreach($sites as $v)
+					<li><img src="{{$v -> logo}}" /></li>
+					@endforeach
 				</div>
+					
 
 				<div class="search-bar pr">
 					<a name="index_none_header_sysc" href="home/search"></a>
@@ -85,14 +96,18 @@
 			</div>
 					<div class="footer ">
 						<div class="footer-hd ">
+								@php
+									$links  = HomeController::fulei2();
+									
+									
+							@endphp
+
+							
 							<p>
-								<a href="# ">恒望科技</a>
+								@foreach($links as $v)
+								<a href="{{$v -> lurl}}">{{$v-> lname}}</a>
 								<b>|</b>
-								<a href="# ">商城首页</a>
-								<b>|</b>
-								<a href="# ">支付宝</a>
-								<b>|</b>
-								<a href="# ">物流</a>
+								@endforeach
 							</p>
 						</div>
 						<div class="footer-bd ">
