@@ -84,7 +84,7 @@ class HomeController extends Controller
             'gpic'=>$gpic,   
             'lunbo'=>$lunbo,
             'gpic'=>$gpic,
-            "homeadv" => $homeadv   
+            "homeadv" => $homeadv
         ]);
     }
 

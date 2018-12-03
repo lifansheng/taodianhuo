@@ -41,14 +41,13 @@ class LoginController extends Controller
         if (!Hash::check($request->password, $rs->password)) {
             return back()->with('error','用户名或者密码错误');            
         } else {            
+            // session 存入登录的ID和用户名信息
+            session([
+                'hid'=>$rs->hid,
+                'huname'=>$rs->username
+            ]);
             return redirect("/");            
         }
-
-        // session 存入登录的ID和用户名信息
-        session([
-            'hid'=>$rs->hid,
-            'huname'=>$rs->username
-        ]);
     }
 
     // 注册的页面

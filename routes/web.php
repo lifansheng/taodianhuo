@@ -111,19 +111,6 @@ Route::group(["middleware" => "login"], function(){
 // });
 route::any('/','Home\HomeController@index');
 
-//前台分类
-// route::get('')
-
-
-// 详情页面
-Route::get('home/details','Home\HomeController@details');
-
-Route::get('home/advert','Admin\AdvertController@homeadvert');
-
-//搜索后出来的页面
-route::get('home/search','Home\HomeController@search');
-
-route::get('homes/search','Home\HomeController@list');
 
 
 // 前台登录、注册页面
@@ -139,29 +126,40 @@ Route::post("home/ajaxphone", "Home\LoginController@ajaxphone");
 Route::post("home/ajaxcode", "Home\LoginController@ajaxcode");
 Route::post("home/ajaxcontrastname", "Home\LoginController@ajaxcontrastname");
 
-// 前台购物车的添加
-Route::get("home/addCar","Home\CartsController@addCar");
-// 购物车的显示
-Route::get("home/carts","Home\CartsController@shopcar");
-// 购物车的加运算
-Route::get("home/carAdd","Home\CartsController@carAdd");
-// 购物车的减运算
-Route::get("home/carJian","Home\CartsController@carJian");
-Route::get("home/shopcart","Home\CartsController@shopcart");
-// 立即购买
-Route::get("home/liGo","Home\CartsController@liGo");
-// 订单结算页面
-Route::any("home/jiesuan2","Home\CartsController@index2");
-
-// 订单结算页面
-Route::post("home/jiesuan","Home\CartsController@index");
-// 订单结算成功页面
-Route::get("home/cheng","Home\CartsController@cheng");
 
 // 前台
 Route::group(["middleware" => "login"], function(){
 	// ajax验证注册用户名
 	
+
+	// 详情页面
+	Route::get('home/details','Home\HomeController@details');
+
+	Route::get('home/advert','Admin\AdvertController@homeadvert');
+
+	//搜索后出来的页面
+	route::get('home/search','Home\HomeController@search');
+
+	route::get('homes/search','Home\HomeController@list');
+
+		// 前台购物车的添加
+	Route::get("home/addCar","Home\CartsController@addCar");
+	// 购物车的显示
+	Route::get("home/carts","Home\CartsController@shopcar");
+	// 购物车的加运算
+	Route::get("home/carAdd","Home\CartsController@carAdd");
+	// 购物车的减运算
+	Route::get("home/carJian","Home\CartsController@carJian");
+	Route::get("home/shopcart","Home\CartsController@shopcart");
+	// 立即购买
+	Route::get("home/liGo","Home\CartsController@liGo");
+	// 订单结算页面
+	Route::any("home/jiesuan2","Home\CartsController@index2");
+
+	// 订单结算页面
+	Route::post("home/jiesuan","Home\CartsController@index");
+	// 订单结算成功页面
+	Route::get("home/cheng","Home\CartsController@cheng");
 });
 
 

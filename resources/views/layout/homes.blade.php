@@ -34,8 +34,12 @@
 				<ul class="message-l">
 					<div class="topMessage">
 						<div class="menu-hd">
+							@if(session('hid')) 
+							<a href="/home/person">您好: {{session('huname')}}</a>
+							@else 
 							<a href="/home/login" target="_top" class="h">亲，请登录</a>
 							<a href="/home/register" target="_top">免费注册</a>
+							@endif
 						</div>
 					</div>
 				</ul>
