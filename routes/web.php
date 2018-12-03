@@ -61,6 +61,8 @@ Route::group(["middleware" => "login"], function(){
 	route::resource('admin/cate','Admin\CateController');
 	//商品的管理
 	route::resource('admin/goods','Admin\GoodsController');
+	//商品的评论管理
+	route::resource('admin/comment','Admin\CommentController');
 
 	// 后台的轮播图管理
 	Route::resource('admin/lunbo','Admin\LunboController');
