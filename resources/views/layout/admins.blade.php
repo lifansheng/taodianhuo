@@ -131,7 +131,7 @@
                         <a href="#"><i class="icon-list"></i>商品分类管理</a>
                         <ul class='closed'>
                             <li><a href="/admin/cate/create">分类添加</a></li>
-                            <li><a href="/admin/cate">浏览分类</a></li>
+                            <li><a href="/admin/cate">分类浏览</a></li>
                         </ul>
                     </li>
                     
@@ -139,7 +139,15 @@
                         <a href="#"><i class="icon-lollipop"></i>商品管理</a>
                         <ul class='closed'>
                             <li><a href="/admin/goods/create">商品添加</a></li>
-                            <li><a href="/admin/goods">浏览商品</a></li>
+                            <li><a href="/admin/goods">商品浏览</a></li>
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="icon-comments"></i>商品评论管理</a>
+                        <ul class='closed'>
+                            <li><a href="JavaScript:void(0)">商品评论添加</a></li>
+                            <li><a href="/admin/comment">商品评论浏览</a></li>
 
                         </ul>
                     </li>
