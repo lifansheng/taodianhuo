@@ -41,8 +41,11 @@ class HomeController extends Controller
     public function index()
     {   
         // $res = Goods::with('gis')->get();
+        //遍历得到商品表的所有数据
         $goods = Goods::all();
+        //便利得到新闻表的所有信息
         $news = News::all();
+        //便利得到所有轮播表的所有信息
         $lunbo = Lunbo::all();
         // dd($lunbo);
         // $cate = 
@@ -72,10 +75,11 @@ class HomeController extends Controller
         // }
 
         // exit;
+        //没有用到 商品图片详情表
         $gpic = Gpic::all();
         // dd($gpic);
         // dd($goods);
-
+        //得到广告表的所有信息
         $homeadv = Advert::all();
         // dd($homeadv);
         return view('home.index',[
@@ -90,15 +94,14 @@ class HomeController extends Controller
         ]);
     }
 
-    
-
-
-
     // public function details()
     // {   
 
     //     return view('home.goods.details',['title'=>'详情页面']);
     // }
+
+
+    //到详情页的方法
       public function details()
     {
         //
@@ -134,8 +137,6 @@ class HomeController extends Controller
         //通过cid取goods表里的相关所有数据
         $likes = Goods::where('cid',$cid)->get();
         // dd($likes);
-
-
         return view('home/goods/details',[
             'title'=>'商品详情页',
             'goods'=>$goods,
@@ -144,6 +145,7 @@ class HomeController extends Controller
         ]);
     }
 
+    //搜索的方法
     public function search(Request $request)
     {
         // dd($_GET['gname']);
