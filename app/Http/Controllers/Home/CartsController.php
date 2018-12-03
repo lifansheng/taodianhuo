@@ -24,13 +24,12 @@ class CartsController extends Controller
         // 通过商品id查询数据
         $data = Goods::where('id',$id)->first();
         // dd($data);
-
         $res = Carts::insert($arr[] = array(
             "gid"=>$id,
-            "hid"=>1,
-            "shopname"=>$data['gname'],
-            "shopprice"=>$data['price'],
-            "shopimg"=>$data['imgs'],
+            "hid"=>session('hid'),
+            "gname"=>$data['gname'],
+            "price"=>$data['price'],
+            "imgs"=>$data['imgs'],
             "size"=>$_GET['size'],
             "leixing"=>$_GET['leixing'],
             "stock" => $data['stock'],
@@ -53,7 +52,7 @@ class CartsController extends Controller
     public function shopcar()
     {
         // 从数据库中取出数据
-        $rs = Carts::where('hid',1)->get();
+        $rs = Carts::where('hid',session('hid'))->get();
         // dd($rs);
         return view('home.carts.index',[
             'title'=>'购物车',
@@ -176,7 +175,7 @@ class CartsController extends Controller
             for ($i=0; $i <count($id['carid']) ; $i++) { 
                 Orders::insert($arr[] = array(
                     'oid'=>time().rand(111,999),
-                    'hid'=>1,
+                    'hid'=>session('hid'),
                     'name'=>$data[$i]['gname'],
                     'imgs'=>$data[$i]['imgs'],
                     'addr'=>1,
@@ -194,7 +193,7 @@ class CartsController extends Controller
             // dd($data);
             Orders::insert($arr[] = array(
                 'oid'=>time().rand(111,999),
-                'hid'=>11,
+                'hid'=>session('hid'),
                 'name'=>$data[0]['gname'],
                 'imgs'=>$data[0]['imgs'],
                 'addr'=>1,

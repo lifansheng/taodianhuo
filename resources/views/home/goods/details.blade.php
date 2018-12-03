@@ -405,12 +405,12 @@
 							// 获取类型
 							$("input[name=leixing]").click(function(){
 								leixing = $(this).val();
-							})
+							});
 
 							// 获取size大小
 							$("input[name=size]").click(function(){
 								size = $(this).val();
-							})
+							});
 
 							id = $("input[name=id]").val();
 
@@ -427,9 +427,9 @@
 									}else{
 										alert('添加失败,请重新选择商品');
 									}
-								})
+								});
 								// window.location.href="/home/addCar?id="+id+"&num="+num+"&leixing="+leixing+"&size="+size;
-							})
+							});
 
 							// 拿到商品信息立即购买进入付款页面
 							$("#LikBuy").click(function(){
