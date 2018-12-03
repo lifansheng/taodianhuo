@@ -82,7 +82,7 @@ class HomeController extends Controller
             //'imgs'=>$imgs 
             'news'=>$news,
             'gpic'=>$gpic,   
-            'lunbo'=>$lunbo   
+            'lunbo'=>$lunbo,
             'gpic'=>$gpic,
             "homeadv" => $homeadv   
         ]);
