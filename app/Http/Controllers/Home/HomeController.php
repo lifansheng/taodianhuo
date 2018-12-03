@@ -8,6 +8,7 @@ use App\Model\Admin\Cate;
 use App\Model\Admin\Goods;
 use App\Model\Admin\Gpic;
 use App\Model\Admin\News;
+use App\Model\Admin\Lunbo;
 use DB;
 
 
@@ -39,7 +40,8 @@ class HomeController extends Controller
         // $res = Goods::with('gis')->get();
         $goods = Goods::all();
         $news = News::all();
-        // dd($news);
+        $lunbo = Lunbo::all();
+        // dd($lunbo);
         // $cate = 
         // dd($res);
         // var_dump($res);
@@ -76,7 +78,8 @@ class HomeController extends Controller
             'goods'=>$goods,
             //'imgs'=>$imgs 
             'news'=>$news,
-            'gpic'=>$gpic   
+            'gpic'=>$gpic,   
+            'lunbo'=>$lunbo   
         ]);
     }
 

@@ -87,11 +87,11 @@
 									<li class="td td-item">
 										<div class="item-pic">
 											<a href="#" target="_blank" class="J_MakePoint" data-point="tbcart.8.12">
-												<img src="{{$v->shopimg}}" class="itempic J_ItemImg"></a>
+												<img src="{{$v->imgs}}" class="itempic J_ItemImg"></a>
 										</div>
 										<div class="item-info">
 											<div class="item-basic-info">
-												<a href="#" target="_blank" class="item-title J_MakePoint" data-point="tbcart.8.11">{{$v->shopname}}</a>
+												<a href="#" target="_blank" class="item-title J_MakePoint" data-point="tbcart.8.11">{{$v->gname}}</a>
 											</div>
 										</div>
 									</li>
@@ -107,7 +107,7 @@
 										<div class="item-price price-promo-promo">
 											<div class="price-content">
 												<div class="price-line">
-													<span class="J_Price price">{{$v->shopprice-2}}</span> 
+													<span class="J_Price price">{{$v->price-2}}</span> 
 												</div>
 											</div>
 										</div>
@@ -125,7 +125,7 @@
 									</li>
 									<li class="td td-sum">
 										<div class="td-inner">
-											<span tabindex="0" class="J_ItemSum number">{{($v->shopprice-2)*$v->cnt}}</span> 
+											<span tabindex="0" class="J_ItemSum number">{{($v->price-2)*$v->cnt}}</span> 
 										</div>
 									</li>
 									<li class="td td-op">

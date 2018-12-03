@@ -136,6 +136,10 @@ Route::get("home/carAdd","Home\CartsController@carAdd");
 // 购物车的减运算
 Route::get("home/carJian","Home\CartsController@carJian");
 Route::get("home/shopcart","Home\CartsController@shopcart");
+// 立即购买
+Route::get("home/liGo","Home\CartsController@liGo");
+// 订单结算页面
+Route::any("home/jiesuan2","Home\CartsController@index2");
 
 // 订单结算页面
 Route::post("home/jiesuan","Home\CartsController@index");

@@ -412,14 +412,13 @@
 								size = $(this).val();
 							})
 
-							// 读取商品ID
-							var id = $("#LikBasket").click(function(){
-								
-								var id = $("input[name=id]").val();
-								// alert(id);
-								// 获取商品库存
+							id = $("input[name=id]").val();
+
+							// 拿到商品信息加入购物车
+							$("#LikBasket").click(function(){
+
+								// 获取购买的数量
 								var num = $("#text_box").val();
-								// alert(num);
 
 								// 使用ajax get方式加入购物车
 								$.get('/home/addCar',{id:id,num:num,leixing:leixing,size:size},function(data){
@@ -430,6 +429,15 @@
 									}
 								})
 								// window.location.href="/home/addCar?id="+id+"&num="+num+"&leixing="+leixing+"&size="+size;
+							})
+
+							// 拿到商品信息立即购买进入付款页面
+							$("#LikBuy").click(function(){
+
+								// 获取购买的数量
+								var num = $("#text_box").val();
+
+								window.location.href="/home/liGo?id="+id+"&num="+num+"&leixing="+leixing+"&size="+size;
 							})
 						</script>
 					</div>

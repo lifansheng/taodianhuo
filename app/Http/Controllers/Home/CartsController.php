@@ -118,6 +118,31 @@ class CartsController extends Controller
     }
 
     /**
+     * 
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function liGo(Request $request)
+    {
+
+        $id = $_GET['id'];
+        // dd($id);
+        $data = Goods::where('id',$id) -> get();
+        // dd($data);
+
+        $data[0]['size'] = $_GET['size'];
+        $data[0]['leixing'] = $_GET['leixing'];
+        $data[0]['cnt'] = $_GET['num'];
+        // dd($data);
+        $request->session()->put('liGO',$data);
+        return view('home.carts.jiesuan',[
+            'title'=>'订单结算',
+            'data'=>$data
+        ]);
+    }
+
+
+    /**
      * 结算页
      *
      * @return \Illuminate\Http\Response
@@ -125,6 +150,7 @@ class CartsController extends Controller
     public function index(Request $request)
     {
         $id = $request -> all();
+        // dd($id);
         session(['id'=>$id]);
         $data = Carts::find($id) -> all();
         // dd($data);
@@ -141,20 +167,41 @@ class CartsController extends Controller
      */
     public function cheng(Request $request)
     {
-        $id = session('id');
-        $data = Carts::find($id) -> all();
-        // dd($data);
-        for ($i=0; $i <count($id) ; $i++) { 
+
+        if(!session('liGO')){
+            $id = session('id');
+            // dd($id);
+            $data = Carts::find($id) -> all();
+            // dd($data);
+            for ($i=0; $i <count($id['carid']) ; $i++) { 
+                Orders::insert($arr[] = array(
+                    'oid'=>time().rand(111,999),
+                    'hid'=>1,
+                    'name'=>$data[$i]['gname'],
+                    'imgs'=>$data[$i]['imgs'],
+                    'addr'=>1,
+                    'tel'=>1234567,
+                    'cnt'=>$data[$i]['cnt'],
+                    'addtime'=>time(),
+                    'price'=>$data[$i]['price'],
+                    'message'=>$_GET['liuyan'],
+                    'status'=>1,
+                ));
+                // echo $i;
+            }
+        }else{
+            $data = session('liGO');
+            // dd($data);
             Orders::insert($arr[] = array(
                 'oid'=>time().rand(111,999),
-                'hid'=>1,
-                'name'=>$data[$i]['shopname'],
-                'imgs'=>$data[$i]['shopimg'],
+                'hid'=>11,
+                'name'=>$data[0]['gname'],
+                'imgs'=>$data[0]['imgs'],
                 'addr'=>1,
-                'tel'=>1234567,
-                'cnt'=>$data[$i]['cnt'],
+                'tel'=>1234567890,
+                'cnt'=>$data[0]['cnt'],
                 'addtime'=>time(),
-                'price'=>$data[$i]['shopprice'],
+                'price'=>$data[0]['price'],
                 'message'=>$_GET['liuyan'],
                 'status'=>1,
             ));
