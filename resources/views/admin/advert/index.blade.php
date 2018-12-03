@@ -13,7 +13,7 @@
     </div>
     <div class="mws-panel-body no-padding">
         <div id="DataTables_Table_1_wrapper" class="dataTables_wrapper" role="grid">
-            <form action="/admin/user" method='get'>
+            <form action="/admin/advert" method='get'>
             <div id="DataTables_Table_1_length" class="dataTables_length">
                 <label>
                     显示
@@ -33,7 +33,7 @@
             </div>
             <div class="dataTables_filter" id="DataTables_Table_1_filter">
                 <label>
-                    用户名:
+                    广告标题:
                     <!-- <input type="text" name='username' value="{{isset($_GET['username']) ? $_GET['username'] : ''}}" aria-controls="DataTables_Table_1"> -->
 
                     <input type="text" name='title' value="{{$request->title}}" aria-controls="DataTables_Table_1">

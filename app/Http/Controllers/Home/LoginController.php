@@ -23,6 +23,7 @@ class LoginController extends Controller
     // 登录的方法
     public function dologin(Request $request)
     {
+        // echo 1; exit;
     	$res = $request -> except("_token", "code");
 
     	// dd($res);
@@ -30,24 +31,24 @@ class LoginController extends Controller
     	// 获取当前想要登录的用户的数据库里的密码
     	$rs = Homes::where("username", $res["username"]) -> first();
 
+        if (!$rs) {
+            return back()->with("error", "用户名或者密码错误");
+        }
+        // dd($rs);
+    	// dd($rs->password);                    
+    	//判断密码
+        //hash
+        if (!Hash::check($request->password, $rs->password)) {
+            return back()->with('error','用户名或者密码错误');            
+        } else {            
+            return redirect("/");            
+        }
+
         // session 存入登录的ID和用户名信息
         session([
             'hid'=>$rs->hid,
             'huname'=>$rs->username
         ]);
-
-    	// dd($rs->password);                    
-    	//判断密码
-        //hash
-        if (!Hash::check($request->password, $rs->password)) {
-            return redirect("/");
-        } else {
-            return back()->with('error','用户名或者密码错误');
-        }
-
-    	//存点信息  session
-        
-        session(['uname'=>$rs->username]);
     }
 
     // 注册的页面
@@ -59,7 +60,7 @@ class LoginController extends Controller
     // 注册的方法
     public function signup(Request $request)
     {
-    	// echo false; exit;
+    	// echo 1; exit;
     	$res = $request -> except("_token", "code", "confirm_password");
 
 
@@ -76,20 +77,19 @@ class LoginController extends Controller
         // dd($rs);
         $res['token'] = str_random(40);
         session(["token"=>$res["token"]]);
-            if($rs){
-            	// 发送邮件
-            	Mail::send('home.remind', ['hid'=>$rs,'token'=>$res['token'],'email'=>$res['email'],'username'=>$res['username']], function ($m) use ($res) {
+          //   if($rs){
+    	// 发送邮件
+        	Mail::send('home.remind', ['hid'=>$rs,'token'=>$res['token'],'email'=>$res['email'],'username'=>$res['username']], function ($m) use ($res) {
 
 
-		            $m->from(Config::get("app.email"), '淘点货官方网站');
+                $m->from(Config::get("app.email"), '淘点货官方网站');
 
-		            $m->to($res["email"], $res["username"])->subject('注册信息');
+                $m->to($res["email"], $res["username"])->subject('注册信息');
 
-		        });
+            });
 
             return view('/home/tixing',['title'=>'新注册用户提醒邮件']);
         }
-    }
 
     // 邮件的提醒方法
     public function tixing(Request $request)
@@ -213,4 +213,79 @@ class LoginController extends Controller
     		echo "0";
     	}
     }
+
+
+    public function ajaxcontrastname(Request $request){
+        // 获取用户所输入的用户名和密码
+        $username = $request -> get("username");
+
+        // 与数据库里的用户名做比对
+        $res = Homes::where("username", $username)->first(); 
+
+        if (!$res) {
+            echo 0;
+        } else {
+            echo 1;
+        }
+    }
+    
+
+    // public function ajaxcontrast(Request $request)
+    // {
+    //     // 获取用户所输入的用户名和密码
+    //     $username = $request -> get("username");
+    //     $password = $request -> get("password");
+
+    //     // 与数据库里的用户名和密码做比对
+    //     $res = Homes::where("username", $username)->first(); 
+
+
+    //     if (!$res) {
+    //         // 为假没有这个人
+    //         echo "没这个人";
+    //         // return ;
+    //         // return back() -> with('error', '0');
+    //     } else {
+    //         // 为真查这个人的密码 与用户所输入的密码作比对 
+    //         $rs = Homes::where("username", $username)->value("password");
+
+    //         //hash
+    //         if (!Hash::check($password, $rs)) {                 
+    //             echo "有这个人但是密码不对";
+    //             // return back(); 
+    //         } else {  
+    //             // session 存入登录的ID和用户名信息
+    //             session([
+    //                 'hid'=>$res->hid,
+    //                 'huname'=>$res->username
+    //             ]);          
+    //             echo "都对了";  
+    //             return redirect("/");          
+    //         }
+    //     }
+
+        // $res = $request -> except("_token", "code");
+
+        // // dd($res);
+
+        // // 获取当前想要登录的用户的数据库里的密码
+        // $rs = Homes::where("username", $res["username"]) -> first();
+
+        
+
+        // // dd($rs->password);                    
+        // //判断密码
+        // //hash
+        // if (!Hash::check($request->password, $rs->password)) {
+        //     return back()->with('error','用户名或者密码错误');            
+        // } else {            
+        //     return redirect("/");            
+        // }
+
+        // session 存入登录的ID和用户名信息
+        // session([
+        //     'hid'=>$res->hid,
+        //     'huname'=>$res->username
+        // ]);
+    // }
 }

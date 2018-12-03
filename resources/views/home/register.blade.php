@@ -67,10 +67,10 @@
 			<img src="/home/captcha" alt="" onclick='this.src = this.src+="?1"' style="float:right; margin-top:26px; border-radius:8px;">
 		</div>
 
-		<!-- <button id="submit" type="submit">注 册</button> -->
-		<div>
-			<input type="submit"  id="submit"/>
-		</div>
+		<button id="submit" type="submit">注 册</button>
+		<!-- <div>
+			<input type="submit"  id="submit" value="注 册"/>
+		</div> -->
 	</form>
 	<a href="/home/login">
 		<button type="button" class="register-tis">已经有账号？</button>
@@ -189,7 +189,7 @@
 		    
 		    // 发送ajax与数据库做比对
 		    $.post("/home/ajaxcode", {code:pv}, function(data){
-		    	// console.log(data);
+		    	console.log(data);
 		    	if (data == 0) {
 		    		$(".errors:eq(3)").removeAttr("style").delay(1500).fadeOut(1500);
 		    		CS = false;
@@ -205,24 +205,22 @@
 	// 按钮点击事件
 	$("#submit").click(function(){
 
+		// 触发失去焦点事件判断ajax
 		$('input[name=code]').trigger('blur');
 		$('input[name=phone_number]').trigger('blur');
 		$('input[name=email]').trigger('blur');
 		$('input[name=username]').trigger('blur');
 
-		if (US && PS && ES && CS) {
-			return true;
-		} else {
+		if (!(US && PS && ES && CS)) {
+			// 如果有为假的 执行一次ajax
 			regerror();
 			return false;
+		} else {
+			// 如果都为真
+			return true;				
 		}
 	})
 	
 </script>
 </body>
 </html>
-<!--
-本代码由js代码收集并编辑整理;
-尊重他人劳动成果;
-转载请保留js代码链接 - www.jsdaima.com
--->

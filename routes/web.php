@@ -54,6 +54,17 @@ Route::group(["middleware" => "login"], function(){
 	Route::post("admin/ajaxhomeemail", "Admin\HomeuserController@ajaxhomeemail");
 	Route::get('admin/homeuserajax','Admin\HomeuserController@homeuserajax');
 
+	// 角色管理
+	Route::resource("admin/role", "Admin\RoleController");
+	// 添加角色
+	Route::any("admin/user_role", "Admin\UserController@user_role");
+	Route::any("admin/do_user_role", "Admin\UserController@do_user_role");
+	// 添加权限
+	Route::any("admin/role_per", "Admin\RoleController@role_per");
+
+	// 权限管理
+	Route::resource("admin/permission", "Admin\PermissionController");
+
 	//友情链接
 	Route::resource('admin/link', 'Admin\LinkController');
 
@@ -126,6 +137,7 @@ Route::post("home/ajaxhname", "Home\LoginController@ajaxhname");
 Route::post("home/ajaxemails", "Home\LoginController@ajaxemail");
 Route::post("home/ajaxphone", "Home\LoginController@ajaxphone");
 Route::post("home/ajaxcode", "Home\LoginController@ajaxcode");
+Route::post("home/ajaxcontrastname", "Home\LoginController@ajaxcontrastname");
 
 // 前台购物车的添加
 Route::get("home/addCar","Home\CartsController@addCar");

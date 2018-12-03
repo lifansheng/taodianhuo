@@ -143,8 +143,8 @@
 								</em>
 							</div>
 							<div class="member-logout">
-								<a class="am-btn-warning btn" href="login.html">登录</a>
-								<a class="am-btn-warning btn" href="register.html">注册</a>
+								<a class="am-btn-warning btn" href="/home/login">登录</a>
+								<a class="am-btn-warning btn" href="/home/register">注册</a>
 							</div>
 							<span class="marqueen-title">商城头条</span>
 						<div class="demo">
@@ -230,53 +230,21 @@
                               <a class="more-link " href="# ">全部活动</a>
                             </span>
 						</div>
-					
+					 	
 					  <div class="am-g am-g-fixed ">
+						 @foreach ($homeadv as $k => $v)
 						<div class="am-u-sm-3 ">
-							<div class="icon-sale one "></div>	
-								<h4>秒杀</h4>							
-							<div class="activityMain ">
-								<img src="/homes/images/activity1.jpg "></img>
+							<div class="icon-sale one " ></div>
+								<h4 style="font-weight:900;"> {{$v->title}} </h4>							
+							<div class="activityMain">
+								<img src="{{$v->pic}}"></img>
 							</div>
-							<div class="info ">
-								<h3>春节送礼优选</h3>
-							</div>														
+							<!-- <div class="info " style="background:orange;">
+								<h3 >春节送礼优选</h3>
+							</div>	 -->													
 						</div>
-						
-						<div class="am-u-sm-3 ">
-						  <div class="icon-sale two "></div>	
-							<h4>特惠</h4>
-							<div class="activityMain ">
-								<img src="/homes/images/activity2.jpg "></img>
-							</div>
-							<div class="info ">
-								<h3>春节送礼优选</h3>								
-							</div>							
-						</div>						
-						
-						<div class="am-u-sm-3 ">
-							<div class="icon-sale three "></div>
-							<h4>团购</h4>
-							<div class="activityMain ">
-								<img src="/homes/images/activity3.jpg "></img>
-							</div>
-							<div class="info ">
-								<h3>春节送礼优选</h3>
-							</div>							
-						</div>						
-
-						<div class="am-u-sm-3 last ">
-							<div class="icon-sale "></div>
-							<h4>超值</h4>
-							<div class="activityMain ">
-								<img src="/homes/images/activity.jpg "></img>
-							</div>
-							<div class="info ">
-								<h3>春节送礼优选</h3>
-							</div>													
-						</div>
-
-					  </div>
+						@endforeach													
+					  </div> 
                    </div>
 					<div class="clear "></div>
 

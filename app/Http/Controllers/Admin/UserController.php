@@ -7,7 +7,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
 use App\Http\Requests\UserupdateRequest;
 use Hash;
+use DB;
 use App\Model\Admin\User;
+use App\Model\Admin\Role;
 
 class UserController extends Controller
 {
@@ -276,5 +278,71 @@ class UserController extends Controller
 
             echo 0;
         }
+    }
+
+
+    // 用户角色的添加
+    public function user_role(Request $request)
+    {   
+        // 根据用户的ID查出用户名
+        $id = $request->id;
+
+        $res = User::find($id);
+        // dd($res->username);
+
+        // 获取当前用户的角色id
+        $info = [];
+        foreach($res->roles as $k=>$v){
+            $info[] = $v->id;
+        }
+        // dd($info);
+
+        // 查出所有的角色
+        $roles = Role::all();
+        // dd($roles);
+
+        return view("admin/user/user_role", [
+            "title" => "用户角色的添加页面",
+            "res" => $res,
+            "roles" => $roles,
+            "info"=>$info
+        ]);
+    }
+
+    // 处理方法
+    public function do_user_role(Request $request)
+    {
+        // 获取管理员ID
+        $id = $request->id;
+
+        // 获取role_id
+        $res = $request->role_id;
+
+        // dd($res);
+
+        //删除原来的角色
+        DB::table('user_role')->where('user_id',$id)->delete();
+
+        $arr = [];
+        foreach($res as $k => $v){
+            $rs = [];
+
+            $rs['user_id'] = $id;
+            $rs['role_id'] = $v;
+            
+            $arr[] = $rs;
+        }
+        // dd($arr);
+
+        //往数据表里面插入数据
+        $data = DB::table('user_role')->insert($arr);
+
+        if($data){
+            return redirect('/admin/user')->with('success','添加成功');
+        } else {
+            return back() -> with("error", "添加失败");
+        }
+
+        
     }
 }

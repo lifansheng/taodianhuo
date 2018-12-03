@@ -10,6 +10,7 @@ use App\Model\Admin\Gpic;
 use App\Model\Admin\News;
 use App\Model\Admin\Lunbo;
 use DB;
+use App\Model\Admin\Advert;
 
 
 class HomeController extends Controller
@@ -73,6 +74,8 @@ class HomeController extends Controller
         // dd($gpic);
         // dd($goods);
 
+        $homeadv = Advert::all();
+        // dd($homeadv);
         return view('home.index',[
             'title'=>'淘点货',
             'goods'=>$goods,
@@ -80,6 +83,8 @@ class HomeController extends Controller
             'news'=>$news,
             'gpic'=>$gpic,   
             'lunbo'=>$lunbo   
+            'gpic'=>$gpic,
+            "homeadv" => $homeadv   
         ]);
     }
 
