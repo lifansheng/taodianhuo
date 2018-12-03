@@ -10,6 +10,6 @@ class PersonController extends Controller
     //
     public function index(){
 
-    	return view('home.person.index');
+    	return view('home.person.sy');
     }
 }

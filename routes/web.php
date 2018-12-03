@@ -100,7 +100,8 @@ Route::group(["middleware" => "login"], function(){
 	Route::resource('admin/site','Admin\SiteController');
 	// Route::any('admin/site:id','Admin\SiteController@show');
 
-
+//收货信息
+	Route::resource('admin/address','Admin\AddressController');
 
 	
 });
@@ -162,9 +163,11 @@ Route::get("home/cheng","Home\CartsController@cheng");
 Route::group(["middleware" => "login"], function(){
 	// ajax验证注册用户名
 	
+
+
+	//个人中心
+Route::get('home/person','Home\PersonController@index');
 });
 
 
 
-//个人中心
-Route::get('home/person','Home\PersonController@index');

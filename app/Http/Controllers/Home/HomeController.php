@@ -11,6 +11,8 @@ use App\Model\Admin\News;
 use App\Model\Admin\Lunbo;
 use DB;
 use App\Model\Admin\Advert;
+use App\Model\Admin\Link;
+use App\Model\Admin\Site;
 
 
 class HomeController extends Controller
@@ -195,6 +197,28 @@ class HomeController extends Controller
             'title'=>'查询页',
             'res'=>$res,
         ]);
+    }
+
+
+      public static function fulei()
+    {
+
+        $sites = Site::all();
+        // $links = Link::all();
+     
+         return $sites; 
+          // return view('layout.index',['site' => $site, 
+    }
+
+
+     public static function fulei2()
+    {
+
+        // $sites = Site::all();
+        $links = Link::all();
+     
+         return $links; 
+          // return view('layout.index',['site' => $site, 
     }
 
 }
