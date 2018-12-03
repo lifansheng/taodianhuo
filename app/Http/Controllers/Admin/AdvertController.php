@@ -201,15 +201,4 @@ class AdvertController extends Controller
             echo 0;
         }
     }
-
-    // 遍历到前台页面
-    public function homeadvert()
-    {
-        $homeadv = Advert::all();
-        dd($homeadv);
-
-        return view("home/index",[
-            "homeadv" => $homeadv
-        ]);
-    }
 }

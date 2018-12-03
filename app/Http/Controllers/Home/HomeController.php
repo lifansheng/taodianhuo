@@ -8,6 +8,7 @@ use App\Model\Admin\Cate;
 use App\Model\Admin\Goods;
 use App\Model\Admin\Gpic;
 use App\Model\Admin\News;
+use App\Model\Admin\Advert;
 
 
 class HomeController extends Controller
@@ -69,12 +70,15 @@ class HomeController extends Controller
         $gpic = Gpic::all();
         // dd($gpic);
 
+        $homeadv = Advert::all();
+        // dd($homeadv);
         return view('home.index',[
             'title'=>'淘点货',
             'goods'=>$goods,
             //'imgs'=>$imgs 
             'news'=>$news,
-            'gpic'=>$gpic     
+            'gpic'=>$gpic,
+            "homeadv" => $homeadv   
         ]);
     }
 

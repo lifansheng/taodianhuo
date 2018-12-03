@@ -126,7 +126,20 @@
                             <li><a href="/admin/homeuser">浏览用户</a></li>
                         </ul>
                     </li>
-
+                    <li>
+                        <a href="#"><i class="icon-accessibility-2"></i>角色管理</a>
+                        <ul class='closed'>
+                            <li><a href="/admin/role/create">角色添加</a></li>
+                            <li><a href="/admin/role">浏览角色</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="icon-key"></i>权限管理</a>
+                        <ul class='closed'>
+                            <li><a href="/admin/permission/create">权限添加</a></li>
+                            <li><a href="/admin/permission">浏览权限</a></li>
+                        </ul>
+                    </li>
                     <li>
                         <a href="#"><i class="icon-list"></i>商品分类管理</a>
                         <ul class='closed'>

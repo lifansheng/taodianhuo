@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -40,9 +40,17 @@
 	<div class="connect">
 		<p>Link the world. Share to world.</p>
 	</div>
-	
+	<br>
+	@if(session('error'))
+    <div class="mws-form-message">
+        <li style="list-style: none;display: block; -webkit-transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out; transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out; border-radius: 0px 0px 5px 5px; width: 300px; height: 34px; border: 1px solid rgba(255,255,255,.15); line-height: 31px; box-shadow: 0 2px 3px 0 rgba(0,0,0,.1) inset; text-shadow: 0 1px 2px rgba(0,0,0,.1); background: rgba(245, 26, 26, 0.81); -moz-border-radius: 6px; margin: 0 auto; border-radius:15px;">{{session('error')}}</li>
+    </div>
+	@endif
+	<!-- <label id="codeerror" class="errorsss" for="code">用户名或密码错误</label> -->
+	<label id="codeerror" class="errorssss" for="code">您尚未注册，请前往注册页面</label>
 	<form action="/home/dologin" method="post" id="loginForm">
 		{{csrf_field()}}
+		
 		<div>
 			<input type="text" name="username" class="username" placeholder="用户名" autocomplete="off"/>
 		</div>
@@ -59,7 +67,7 @@
 		</div>
 		<!-- <button id="submit" type="submit">登 录</button> -->
 		<div>
-			<input type="submit"  id="submit"/>
+			<input type="submit"  id="submit" value="登 录"/>
 		</div>
 	</form>
 
@@ -84,12 +92,18 @@
 	});
 
 	var CS = true;
+	var US = true;
+	var PS = true;
 
 	//  设置提示信息隐藏
     $(".errors").css("display", "none");
     $(".errorss").css("display", "none");
+    // $(".errorsss").css("display", "none");
+    $(".errorssss").css("display", "none");
 
     
+    $('.mws-form-message').delay(2000).fadeOut(2000);
+
     function regerror()
 	{
 	    // 验证码
@@ -112,23 +126,90 @@
 		    $.post("/home/ajaxcode", {code:pv}, function(data){
 		    	// console.log(data);
 		    	if (data == 0) {
-		    		$(".errors").removeAttr("style").delay(1500).fadeOut(1500);
+		    		$(".errors").removeAttr("style");
 		    		CS = false;
 		    	} else if (data == 1) {
-		    		$(".errors").css("display", "none");
+		    		$(".errors").css("display", "none").delay(1500).fadeOut(1500);
 		    		CS = true;
 		    	}
 		    })
 		})
+
+		
+	
+
+		// 发送用户名
+		$("input[name=username]").blur(function(){
+			var uv = $("input[name=username]").val();	// console.log(uv);
+
+			// 发送ajax
+			if (uv == ''){
+    			$(".errorssss").css("display", "none");
+			} else {
+				$.post("/home/ajaxcontrastname", {username:uv}, function(data){
+					console.log(data);
+
+					if (data == 0) {
+						$(".errorssss").removeAttr("style").delay(1500).fadeOut(1500);
+						US = false;
+					} else if (data == 1) {
+						$(".errorssss").css("display", "none");
+				    	US = true;
+					}
+				})
+			}
+			
+		})
 	}
 	regerror();
 
+	/*// 发送密码
+	$("input[name=password]").blur(function(data){
+		var pv = $("input[name=password]").val();	// console.log(pv);
+
+		// 发送ajax
+		$.post("/home/ajaxcontrast", {password:pv}, function(data){
+			console.log(data);
+
+			if (data == "有这个人但是密码不对") {
+				$(".errorsss").removeAttr("style").delay(1500).fadeOut(1500);
+				PS = false;
+			} else if (data == "都对了") {
+				$(".errorsss").css("display", "none");
+				PS = true;
+			}
+		})
+	})*/
+
+	/*// 验证用户名和密码
+	$("#loginForm").submit(function(){
+		// 获取用户输入的用户名和密码
+		var uv = $("input[name=username]").val();	// console.log(uv);
+		var pv = $("input[name=password]").val();	// console.log(pv);
+
+		// 发送ajax 传参username password 
+		$.post("/home/ajaxcontrast", {username:uv,password:pv}, function(data){
+			// console.log(data);
+			// alert(1);
+			if (data == 0) {
+				$(".errorsss").removeAttr("style").delay(1500).fadeOut(1500);
+				XX = false;
+			} else if (data == 1) {
+				$(".errorsss").css("display", "none");
+		    	XX = true;
+			}
+		})
+	})*/
+
 	// 按钮点击事件
-	$("#submit").click(function(){
+	$("#loginForm").submit(function(){
 
 		$('input[name=code]').trigger('blur');
+		// $("#loginForm").trigger("submit");
+		$("input[name=username]").trigger("blur");
 
-		if (CS) {
+
+		if (CS && US) {
 			return true;
 		} else {
 			regerror();

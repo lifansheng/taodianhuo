@@ -13,7 +13,7 @@
     </div>
     <div class="mws-panel-body no-padding">
         <div id="DataTables_Table_1_wrapper" class="dataTables_wrapper" role="grid">
-            <form action="/admin/user" method='get'>
+            <form action="/admin/role" method='get'>
             <div id="DataTables_Table_1_length" class="dataTables_length">
                 <label>
                     显示
@@ -33,14 +33,10 @@
             </div>
             <div class="dataTables_filter" id="DataTables_Table_1_filter">
                 <label>
-                    用户名:
+                    角色名称:
                     <!-- <input type="text" name='username' value="{{isset($_GET['username']) ? $_GET['username'] : ''}}" aria-controls="DataTables_Table_1"> -->
 
-                    <input type="text" name='username' value="{{$request->username}}" aria-controls="DataTables_Table_1">
-
-                    邮箱:
-                    <input type="text" name='email' value='{{$request->email}}'>
-
+                    <input type="text" name='role_name' value="{{$request->role_name}}" aria-controls="DataTables_Table_1">
                 </label>
 
                 <button class='btn btn-info'>搜索</button>
@@ -55,35 +51,23 @@
                             ID
                         </th>
                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
+                        rowspan="1" colspan="1" style="width: 40px;" aria-label="Browser: activate to sort column ascending">
+                            角色名
+                        </th>
+                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
                         rowspan="1" colspan="1" style="width: 20px;" aria-label="Browser: activate to sort column ascending">
-                            用户名
+                            角色描述
                         </th>
                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
                         rowspan="1" colspan="1" style="width: 50px;" aria-label="Browser: activate to sort column ascending">
-                            年龄
+                            创建时间
                         </th>
                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
-                        rowspan="1" colspan="1" style="width: 100px;" aria-label="Platform(s): activate to sort column ascending">
-                            手机号
-                        </th>
-                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
-                        rowspan="1" colspan="1" style="width: 50px;" aria-label="CSS grade: activate to sort column ascending">
-                            性别
-                        </th>
-                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
-                        rowspan="1" colspan="1" style="width: 133px;" aria-label="Engine version: activate to sort column ascending">
-                            邮箱
-                        </th>
-                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
-                        rowspan="1" colspan="1" style="width: 57px;" aria-label="CSS grade: activate to sort column ascending">
-                            头像
-                        </th>
-                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
-                        rowspan="1" colspan="1" style="width: 40px;" aria-label="CSS grade: activate to sort column ascending">
-                            状态
+                        rowspan="1" colspan="1" style="width: 50px;" aria-label="Platform(s): activate to sort column ascending">
+                            修改时间
                         </th>
                          <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
-                        rowspan="1" colspan="1" style="width: 397px;" aria-label="CSS grade: activate to sort column ascending">
+                        rowspan="1" colspan="1" style="width: 197px;" aria-label="CSS grade: activate to sort column ascending">
                             操作
                         </th>
                     </tr>
@@ -96,51 +80,32 @@
                     @else 
                         <tr class="even">
                     @endif -->
-
                     <tr class='@if($k % 2 == 0) odd @else even @endif'>
                         <td class="">
                             {{$v->id}}
                         </td>
-                        <td class="uname">
-                            {{$v->username}}
+                        <td class="role_name">
+                            {{$v->role_name}}
                         </td>
                         <td class=" ">
-                            {{$v->age}}
+                            {{$v->description}}
                         </td>
                         <td class=" ">
-                            {{$v->tel}}
+                            {{$v->created_at}}
                         </td>
                         <td class=" ">
-                            @if($v->sex == 'w')
-                            女
-                            @else
-                            男
-                            @endif
+                            {{$v->updated_at}}
                         </td>
                         <td class=" ">
-                            {{$v->email}}
-                        </td>
-                        <td class=" ">
-                            <img src="{{$v->pic}}" alt="" width='80px'>
-                        </td>
-                        <td class=" ">
-                            @if($v->auth == '1')
-                            开启
-                            @else
-                            关闭
-                            @endif
-                        </td>
-                        
-                        <td class=" ">
-                            <a href="/admin/user_role?id={{$v->id}}" class='btn btn-warning'>添加角色</a>
+                            <a href="/admin/role_per?id={{$v->id}}" class='btn btn-success'>添加权限</a>
+                            <a href="/admin/role/{{$v->id}}/edit" class='btn btn-info icon-pencil' style="width:30px;height:20px;text-align:center;"></a>
 
-                            <a href="/admin/user/{{$v->id}}/edit" class='btn btn-info icon-pencil' style="width:30px;height:20px;text-align:center;"></a>
-
-                            <form action="/admin/user/{{$v->id}}" method='post' style='display:inline;'>
+                            <form action="/admin/role/{{$v->id}}" method='post' style='display:inline'>
                                 {{csrf_field()}}
 
                                 {{method_field("DELETE")}}
                                 <button class='btn btn-danger icon-trash' style="width:60px;height:30px;"></button>
+
                             </form>
                         </td>
                     </tr>
