@@ -130,7 +130,9 @@ class CartsController extends Controller
         $hid = session('hid');
         // dd($hid);
         $addrs = Address::where('hid',$hid)->orderBy('status','desc') -> get();
-        // dd($addrs);
+        $addr = Address::where('status','1')->first();
+        $request->session()->put('addr',$addr);
+        // dd($addr);
         $data = Goods::where('id',$id) -> get();
         // dd($data);
 
@@ -158,10 +160,16 @@ class CartsController extends Controller
         // dd($id);
         session(['id'=>$id]);
         $data = Carts::find($id) -> all();
+        $hid = session('hid');
+        $addrs = Address::where('hid',$hid)->orderBy('status','desc') -> get();
+        $addr = Address::where('status','1')->first();
+        $request->session()->put('addr',$addr);
+
         // dd($data);
         return view('home.carts.jiesuan',[
             'title'=>'订单结算',
-            'data'=>$data
+            'data'=>$data,
+            'addrs'=>$addrs
         ]);
     }
 
@@ -184,8 +192,8 @@ class CartsController extends Controller
                     'hid'=>session('hid'),
                     'name'=>$data[$i]['gname'],
                     'imgs'=>$data[$i]['imgs'],
-                    'addr'=>1,
-                    'tel'=>1234567,
+                    'addr'=>session('addr')['id'],
+                    'tel'=>session('addr')['phone'],
                     'cnt'=>$data[$i]['cnt'],
                     'addtime'=>time(),
                     'price'=>$data[$i]['price'],
@@ -202,8 +210,8 @@ class CartsController extends Controller
                 'hid'=>session('hid'),
                 'name'=>$data[0]['gname'],
                 'imgs'=>$data[0]['imgs'],
-                'addr'=>1,
-                'tel'=>1234567890,
+                'addr'=>session('addr')['id'],
+                'tel'=>session('addr')['phone'],
                 'cnt'=>$data[0]['cnt'],
                 'addtime'=>time(),
                 'price'=>$data[0]['price'],
