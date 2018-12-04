@@ -9,7 +9,7 @@ use App\Model\Admin\Address;
 class OrderController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * 订单管理
      *
      * @return \Illuminate\Http\Response
      */
@@ -22,16 +22,17 @@ class OrderController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * 付款页ajax修改默认地址
      *
      * @return \Illuminate\Http\Response
      */
     public function addrdefault(Request $request)
     {
         $aid = $request ->aid;
-        $aa = Address::where('status',1)->update(['status'=>0]);
-        $bb = Address::where('id',$aid) -> update(['status'=>1]);
-        if($aa && $bb){
+        $aa = Address::where('status','1')->update(['status'=>'0']);
+        $bb = Address::where('id',$aid) -> update(['status'=>'1']);
+        // dump($aa);
+        if($bb){
             echo 1;
         }else{
             echo 0;

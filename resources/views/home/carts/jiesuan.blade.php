@@ -15,7 +15,7 @@
 						<ul>
 							@foreach($addrs as $k => $v)
 							<div class="per-border"></div>
-							<li class="user-addresslist defaultAddr">
+							<li class="user-addresslist @if($v->status== 1) defaultAddr @endif">
 
 								<div class="address-left">
 									<div class="user DefaultAddr">
@@ -49,11 +49,7 @@
 									<span class="new-addr-bar hidden">|</span>
 									@else
 									<a href="javascript:void(0);" class="addrdefault" aid="{{$v->id}}">设为默认</a>
-									<span class="new-addr-bar">|</span>
 									@endif
-									<a href="#">编辑</a>
-									<span class="new-addr-bar">|</span>
-									<a href="javascript:void(0);" onclick="delClick(this);">删除</a>
 								</div>
 
 							</li>
@@ -64,9 +60,7 @@
 								var aid = $(this).attr('aid');
 								$.get('/home/addrdefault',{aid:aid},function(data){
 									if(data == 1){
-										alert('设置成功');
-									}else{
-										alert('设置失败...');
+										location.reload(true);
 									}
 								})
 							})
@@ -209,6 +203,8 @@
 								$money = $v->cnt*($v->price-2);
 								$zong += $money;
 								$zong += 10;
+
+								session(['zong'=>$zong]);
 							@endphp
 
 							@endforeach
@@ -252,20 +248,17 @@
 
 											<p class="buy-footer-address">
 												<span class="buy-line-title buy-line-title-type">寄送至：</span>
-												<span class="buy--address-detail">
-								   <span class="province">湖北</span>省
-												<span class="city">武汉</span>市
-												<span class="dist">洪山</span>区
-												<span class="street">雄楚大道666号(中南财经政法大学)</span>
-												</span>
-												</span>
+												<span class="street">{{session("addr")['address']}}</span>
 											</p>
 											<p class="buy-footer-address">
 												<span class="buy-line-title">收货人：</span>
 												<span class="buy-address-detail">   
-                                         <span class="buy-user">艾迪 </span>
-												<span class="buy-phone">15871145629</span>
+                                         <span class="buy-user">{{session("addr")['name']}}</span>
 												</span>
+											</p>
+											<p class="buy-footer-address">
+												<span class="buy-line-title buy-line-title-type">联系电话：</span>
+												<span class="buy-phone">{{session("addr")['phone']}}</span>
 											</p>
 										</div>
 									</div>
