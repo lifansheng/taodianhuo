@@ -46,8 +46,9 @@ class LoginController extends Controller
                 'hid'=>$rs->hid,
                 'huname'=>$rs->username
             ]);
-            return redirect("/");            
+            return redirect("/");  
         }
+
     }
 
     // 注册的页面
