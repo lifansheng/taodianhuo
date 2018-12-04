@@ -151,6 +151,9 @@ Route::post("home/ajaxemails", "Home\LoginController@ajaxemail");
 Route::post("home/ajaxphone", "Home\LoginController@ajaxphone");
 Route::post("home/ajaxcode", "Home\LoginController@ajaxcode");
 
+//退出登录
+Route::any("home/logout", "Home\LoginController@logout");
+
 // 前台购物车的添加
 Route::get("home/addCar","Home\CartsController@addCar");
 // 购物车的显示
@@ -185,7 +188,8 @@ Route::resource('home/person','Home\PersonController');
 //个人信息
 Route::get('home/personinformation','Home\PersonController@informationindex');
 // 前台
-// Route::group(["middleware" => "login"], function(){});
+
+Route::group(["middleware" => "login"], function(){});
 	// ajax验证注册用户名
 
 

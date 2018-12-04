@@ -118,7 +118,7 @@
 		    $.post("/home/ajaxhname", {hname:pv}, function(data){
 		    	// console.log(data);
 		    	if (data == 0) {
-		    		$(".errors:eq(0)").removeAttr("style").delay(1500).fadeOut(1500);
+		    		$(".errors:eq(0)").removeAttr("style").delay(2000).fadeOut(2000);
 		    		US = false;
 		    	} else if (data == 1) {
 		    		$(".errors:eq(0)").css("display", "none");
@@ -140,7 +140,7 @@
 		    $.post("/home/ajaxphone", {phone:pv}, function(data){
 		    	// console.log(data);
 		    	if (data == 0) {
-		    		$(".errors:eq(1)").removeAttr("style").delay(1500).fadeOut(1500);
+		    		$(".errors:eq(1)").removeAttr("style").delay(2000).fadeOut(2000);
 		    		PS = false;
 		    	} else if (data == 1) {
 		    		$(".errors:eq(1)").css("display", "none");
@@ -162,7 +162,7 @@
 		    $.post("/home/ajaxemails", {emails:pv}, function(data){
 		    	// console.log(data);
 		    	if (data == 0) {
-		    		$(".errors:eq(2)").removeAttr("style").delay(1500).fadeOut(1500);
+		    		$(".errors:eq(2)").removeAttr("style").delay(2000).fadeOut(2000);
 		    		ES = false;
 		    	} else {
 		    		$(".errors:eq(2)").css("display", "none");
@@ -182,7 +182,7 @@
 
 		    // 验证码不能为空
 		    if (pv == "") {
-		     	$(".errorss").removeAttr("style").delay(1500).fadeOut(1500);
+		     	$(".errorss").removeAttr("style").delay(2000).fadeOut(2000);
 		     	CS = false; 
 		     	return;
 		    }
@@ -191,10 +191,10 @@
 		    $.post("/home/ajaxcode", {code:pv}, function(data){
 		    	console.log(data);
 		    	if (data == 0) {
-		    		$(".errors:eq(3)").removeAttr("style").delay(1500).fadeOut(1500);
+		    		$(".errors:eq(3)").removeAttr("style").delay(2000).fadeOut(2000);
 		    		CS = false;
 		    	} else if (data == 1) {
-		    		$(".errors:eq(3)").css("display", "none");
+		    		// $(".errors:eq(3)").css("display", "none");
 		    		CS = true;
 		    	}
 		    })
@@ -211,13 +211,13 @@
 		$('input[name=email]').trigger('blur');
 		$('input[name=username]').trigger('blur');
 
-		if (!(US && PS && ES && CS)) {
-			// 如果有为假的 执行一次ajax
-			regerror();
-			return false;
-		} else {
+		if (US && PS && ES && CS) {
 			// 如果都为真
-			return true;				
+			return true;
+		} else {
+			// 如果有为假的 执行一次ajax
+			// regerror();
+			return false;				
 		}
 	})
 	

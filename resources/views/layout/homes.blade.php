@@ -31,18 +31,27 @@
 		<div class="hmtop">
 			<!--顶部导航条 -->
 			<div class="am-container header">
-				<ul class="message-l">
-					<div class="topMessage">
-						<div class="menu-hd">
-							@if(session('hid')) 
-							<a href="/home/person">您好: {{session('huname')}}</a>
-							@else 
-							<a href="/home/login" target="_top" class="h">亲，请登录</a>
-							<a href="/home/register" target="_top">免费注册</a>
-							@endif
+				@php 
+        		$user = DB::table("homes") -> where("hid", session("hid")) -> first();
+    			@endphp
+				@if($user)
+					<ul class="message-l">
+						<div class="topMessage">
+							<div class="menu-hd">
+								<a href="/home/person" target="_top" class="h">欢迎您,{{$user->username}}</a>&nbsp;&nbsp;<a href="/home/logout" target="_top">退出</a>
+							</div>
 						</div>
-					</div>
-				</ul>
+					</ul>
+    			@else
+					<ul class="message-l">
+						<div class="topMessage">
+							<div class="menu-hd">
+								<a href="/home/login" target="_top" class="h">亲，请登录</a>
+								<a href="/home/register" target="_top">免费注册</a>
+							</div>
+						</div>
+					</ul>
+				@endif
 				<ul class="message-r">
 					<div class="topMessage home">
 						<div class="menu-hd"><a href="/" target="_top" class="h">商城首页</a></div>
