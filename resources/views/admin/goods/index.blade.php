@@ -121,11 +121,11 @@
                         </td>
                         <td class=" ">
                         	@if($v->status== 1)
-
                         		上架
-                        	@else 
+                        	@elseif($v->status== 0) 
                         		下架
-
+                            @else
+                                促销
                         	@endif
                         </td>
                         <td class=" ">

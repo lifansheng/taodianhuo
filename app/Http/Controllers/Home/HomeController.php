@@ -13,6 +13,7 @@ use DB;
 use App\Model\Admin\Advert;
 use App\Model\Admin\Link;
 use App\Model\Admin\Site;
+use App\Model\Admin\Comment;
 
 
 class HomeController extends Controller
@@ -82,6 +83,7 @@ class HomeController extends Controller
         //得到广告表的所有信息
         $homeadv = Advert::all();
         // dd($homeadv);
+
         return view('home.index',[
             'title'=>'淘点货',
             'goods'=>$goods,
@@ -134,14 +136,30 @@ class HomeController extends Controller
         // dd($goods['cid']);
         $cid = $goods['cid'];
         // dd($likes);
-        //通过cid取goods表里的相关所有数据
+        //通过cid取goods表里的相关所有数据 猜您喜欢
         $likes = Goods::where('cid',$cid)->get();
         // dd($likes);
+        //得到友情链接的所有信息
+        $link = Link::all();
+        // dump($link);
+        //促销商品
+        $cuxiao = Goods::all();
+
+        //comment 评论表
+        $comment = Comment::all();
+        // dd($comment);
+        //用户
+        $user = DB::table('homes')->get();
+        // dd($user);
         return view('home/goods/details',[
             'title'=>'商品详情页',
             'goods'=>$goods,
             'gimg'=>$gimg,
-            'likes'=>$likes
+            'likes'=>$likes,
+            'link'=>$link,
+            'cuxiao'=>$cuxiao,
+            'comment'=>$comment,
+            'user'=>$user
         ]);
     }
 

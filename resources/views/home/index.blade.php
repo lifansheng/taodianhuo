@@ -264,7 +264,8 @@
 					<div class="am-g am-g-fixed flood method3 ">
 						<ul class="am-thumbnails ">
 							<!-- 遍历商品表 -->
-							@foreach($goods as $v)								
+							@foreach($goods as $v)
+								@if($v->status == 1)								
 									<li style="margin-left: 35px;margin-top: 6px;">
 										<div class="list " >
 											<a href="home/details?id={{$v->id}}">
@@ -273,7 +274,8 @@
 												<span class="e-price ">￥{{$v->price}}</span>	
 											</a>
 										</div>
-									</li>									
+									</li>
+								@endif									
 							@endforeach
 						</ul>
 

@@ -120,7 +120,7 @@
 									<li>
 										<div class="i-pic limit">
 											<a href="/home/details?id={{$v->id}}">
-											<img src="{{$v->imgs}}" />											
+											<img src="{{$v->imgs}}" width="218px" height="218px"/>											
 											<p class="title fl">{{$v->gname}}</p>
 											<p class="price fl">
 												<b>¥</b>
