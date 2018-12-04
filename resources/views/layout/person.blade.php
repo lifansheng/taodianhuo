@@ -24,9 +24,13 @@
 						<ul class="message-l">
 							<div class="topMessage">
 								<div class="menu-hd">
-									<a href="#" target="_top" class="h">亲，请登录</a>
-									<a href="#" target="_top">免费注册</a>
-								</div>
+							@if(session('hid')) 
+							<a href="/home/person">您好: {{session('huname')}}</a>
+							@else 
+							<a href="/home/login" target="_top" class="h">亲，请登录</a>
+							<a href="/home/register" target="_top">免费注册</a>
+							@endif
+						</div>
 							</div>
 						</ul>
 						<ul class="message-r">
@@ -47,9 +51,20 @@
 						<!--悬浮搜索框-->
 
 						<div class="nav white">
-							<div class="logoBig">
-								<li><img src="../images/logobig.png" /></li>
-							</div>
+				<div class="logo"><img src="/homes/images/logo.png" /></div>
+				<div class="logoBig">
+
+							@php use App\Http\Controllers\Home\HomeController;
+									$sites  = HomeController::fulei();
+									
+						   			
+							@endphp
+
+
+							@foreach($sites as $v)
+					<li><img src="{{$v -> logo}}" /></li>
+					@endforeach
+				</div>
 
 							<div class="search-bar pr">
 								<a name="index_none_header_sysc" href="#"></a>
@@ -97,18 +112,22 @@
 
 
 				<!--底部-->
-				<div class="footer">
-					<div class="footer-hd">
-						<p>
-							<a href="#">恒望科技</a>
-							<b>|</b>
-							<a href="#">商城首页</a>
-							<b>|</b>
-							<a href="#">支付宝</a>
-							<b>|</b>
-							<a href="#">物流</a>
-						</p>
-					</div>
+				<div class="footer ">
+						<div class="footer-hd ">
+								@php
+									$links  = HomeController::fulei2();
+									
+									
+							@endphp
+
+							
+							<p>
+								@foreach($links as $v)
+								<a href="{{$v -> lurl}}">{{$v-> lname}}</a>
+								<b>|</b>
+								@endforeach
+							</p>
+						</div>
 					<div class="footer-bd">
 						<p>
 							<a href="#">关于恒望</a>
@@ -125,12 +144,12 @@
 			<aside class="menu">
 				<ul>
 					<li class="person active">
-						<a href="index.html">个人中心</a>
+						<a href="">个人中心</a>
 					</li>
 					<li class="person">
 						<a href="#">个人资料</a>
 						<ul>
-							<li> <a href="information.html">个人信息</a></li>
+							<li> <a href="/home/personinformation">个人信息</a></li>
 							<li> <a href="safety.html">安全设置</a></li>
 							<li> <a href="address.html">收货地址</a></li>
 						</ul>
