@@ -133,19 +133,39 @@
 					<div class="marqueen">
 						
 						<div class="mod-vip">
-							<div class="m-baseinfo">
-								<a href="../person/index.html">
-									<img src="/homes/images/getAvatar.do.jpg">
-								</a>
-								<em>
-									Hi,<span class="s-name">小叮当</span>
-									<a href="#"><p>点击更多优惠活动</p></a>									
-								</em>
-							</div>
-							<div class="member-logout">
+						@php 
+    					$user = DB::table("homes") -> where("hid", session("hid")) -> first();
+						@endphp
+						@if($user)
+						<div class="m-baseinfo">
+							<a href="/home/person">
+								<img src="{{$user->pic}}">
+							</a>
+							<em>
+								Hi,<span class="s-name">{{$user->username}}</span>
+								<a href="#"><p>点击更多优惠活动</p></a>									
+							</em>
+						</div>
+						
+						
+						<div class="member-logout">
+							<a class="am-btn-warning btn" style="width:200px;" href="/home/person">欢迎您,{{$user->username}}</a>
+						</div>
+    					@else
+    					<div class="m-baseinfo">
+							<a href="#">
+								<img src="/homes/images/getAvatar.do.jpg">
+							</a>
+							<em>
+								Hi,<span class="s-name">请登录~</span>
+								<a href="#"><p>点击更多优惠活动</p></a>									
+							</em>
+						</div>
+						<div class="member-logout">
 								<a class="am-btn-warning btn" href="/home/login">登录</a>
 								<a class="am-btn-warning btn" href="/home/register">注册</a>
-							</div>
+						</div>
+						@endif
 							<span class="marqueen-title">商城头条</span>
 						<div class="demo">
 

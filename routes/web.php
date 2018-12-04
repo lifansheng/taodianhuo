@@ -142,6 +142,9 @@ Route::post("home/ajaxphone", "Home\LoginController@ajaxphone");
 Route::post("home/ajaxcode", "Home\LoginController@ajaxcode");
 Route::post("home/ajaxcontrastname", "Home\LoginController@ajaxcontrastname");
 
+//退出登录
+Route::any("home/logout", "Home\LoginController@logout");
+
 // 前台购物车的添加
 Route::get("home/addCar","Home\CartsController@addCar");
 // 购物车的显示
@@ -163,7 +166,7 @@ Route::get("home/cheng","Home\CartsController@cheng");
 
 // 前台
 Route::group(["middleware" => "login"], function(){
-	// ajax验证注册用户名
+	
 	
 });
 

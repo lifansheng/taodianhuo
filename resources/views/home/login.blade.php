@@ -59,16 +59,17 @@
 		</div>
 		<div>
 			<input type="text" name="code" class="code" placeholder="输入验证码" oncontextmenu="return false" onpaste="return false" />
-			<label id="codeerror" class="errors" for="code">验证码错误</label>
 			<label id="codeerror" class="errorss" for="code">验证码不能为空</label>
+			<label id="codeerror" class="errors" for="code">验证码错误</label>
+			
 		</div>
 		<div>
 			<img src="/home/captcha" alt="" onclick='this.src = this.src+="?1"' style="float:right; margin-top:26px; border-radius:8px;">
 		</div>
-		<!-- <button id="submit" type="submit">登 录</button> -->
-		<div>
+		<button id="submit" type="submit">登 录</button>
+		<!-- <div>
 			<input type="submit"  id="submit" value="登 录"/>
-		</div>
+		</div> -->
 	</form>
 
 	<a href="/home/register">
@@ -93,7 +94,6 @@
 
 	var CS = true;
 	var US = true;
-	var PS = true;
 
 	//  设置提示信息隐藏
     $(".errors").css("display", "none");
@@ -117,7 +117,7 @@
 		    
 		    // 验证码不能为空
 	        if (pv == "") {
-		     	$(".errorss").removeAttr("style").delay(1500).fadeOut(1500);
+		     	$(".errorss").removeAttr("style").delay(2000).fadeOut(2000);
 		     	CS = false; 
 		     	return;
 	        }
@@ -126,10 +126,10 @@
 		    $.post("/home/ajaxcode", {code:pv}, function(data){
 		    	// console.log(data);
 		    	if (data == 0) {
-		    		$(".errors").removeAttr("style");
-		    		CS = false;
+		    		$(".errors").removeAttr("style").delay(2000).fadeOut(2000);
+					CS = false;
 		    	} else if (data == 1) {
-		    		$(".errors").css("display", "none").delay(1500).fadeOut(1500);
+		    		// $(".errors").css("display", "none");
 		    		CS = true;
 		    	}
 		    })
@@ -147,13 +147,13 @@
     			$(".errorssss").css("display", "none");
 			} else {
 				$.post("/home/ajaxcontrastname", {username:uv}, function(data){
-					console.log(data);
+					// console.log(data);
 
 					if (data == 0) {
-						$(".errorssss").removeAttr("style").delay(1500).fadeOut(1500);
+						$(".errorssss").removeAttr("style").delay(2000).fadeOut(2000);
 						US = false;
 					} else if (data == 1) {
-						$(".errorssss").css("display", "none");
+						// $(".errorssss").css("display", "none");
 				    	US = true;
 					}
 				})
@@ -172,7 +172,7 @@
 			console.log(data);
 
 			if (data == "有这个人但是密码不对") {
-				$(".errorsss").removeAttr("style").delay(1500).fadeOut(1500);
+				$(".errorsss").removeAttr("style").delay(2000).fadeOut(2000);
 				PS = false;
 			} else if (data == "都对了") {
 				$(".errorsss").css("display", "none");
@@ -192,7 +192,7 @@
 			// console.log(data);
 			// alert(1);
 			if (data == 0) {
-				$(".errorsss").removeAttr("style").delay(1500).fadeOut(1500);
+				$(".errorsss").removeAttr("style").delay(2000).fadeOut(2000);
 				XX = false;
 			} else if (data == 1) {
 				$(".errorsss").css("display", "none");
@@ -202,19 +202,23 @@
 	})*/
 
 	// 按钮点击事件
-	$("#loginForm").submit(function(){
+	$("#submit").click(function(){
 
-		$('input[name=code]').trigger('blur');
-		// $("#loginForm").trigger("submit");
+		$("input[name=code]").trigger("blur");
 		$("input[name=username]").trigger("blur");
 
 
 		if (CS && US) {
+			console.log(CS);
+			alert(1);
 			return true;
-		} else {
-			regerror();
-			return false;
+			
 		}
+			// regerror();
+			console.log(CS);
+			alert(0);
+			return false;
+		
 	})
 </script>
 

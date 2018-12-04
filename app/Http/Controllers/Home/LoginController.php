@@ -23,10 +23,13 @@ class LoginController extends Controller
     // 登录的方法
     public function dologin(Request $request)
     {
-        // echo 1; exit;
+        echo 1; exit;
     	$res = $request -> except("_token", "code");
+        // dd($res["username"]);
+    
+        $status = DB::table("homes")->where("username",$res["username"])->first();
+    	// dd($status->status);
 
-    	// dd($res);
 
     	// 获取当前想要登录的用户的数据库里的密码
     	$rs = Homes::where("username", $res["username"]) -> first();
@@ -39,8 +42,13 @@ class LoginController extends Controller
     	//判断密码
         //hash
         if (!Hash::check($request->password, $rs->password)) {
-            return back()->with('error','用户名或者密码错误');            
+            return back()->with('error','用户名或者密码错误');           
         } else {  
+
+            if (!$status->status == "1") {
+                return back()->with('error','您尚未激活账号'); 
+            }
+
             // session 存入登录的ID和用户名信息
             session([
                 'hid'=>$rs->hid,
@@ -62,7 +70,7 @@ class LoginController extends Controller
     // 注册的方法
     public function signup(Request $request)
     {
-    	// echo 1; exit;
+    	echo 1; exit;
     	$res = $request -> except("_token", "code", "confirm_password");
 
 
@@ -156,9 +164,9 @@ class LoginController extends Controller
     	$res = Homes::where("username", $hname)->first();
 
     	if ($res) {
-    		echo "0";
+    		echo 0;
     	} else {
-    		echo "1";
+    		echo 1;
     	}
     }
 
@@ -177,9 +185,9 @@ class LoginController extends Controller
     	$res = Homes::where("email", $emails)->first();
 
     	if ($res) {
- 			echo "0";
+ 			echo 0;
     	} else {
-    		echo "1";
+    		echo 1;
     	}
     }
 
@@ -193,9 +201,9 @@ class LoginController extends Controller
     	$res = Homes::where("phone_number", $phone)->first(); // var_dump($res); exit;
 
     	if ($res) {
-    		echo "0";
+    		echo 0;
     	} else {
-    		echo "1";
+    		echo 1;
     	}
     }
 
@@ -210,9 +218,9 @@ class LoginController extends Controller
 
     	// 作比对
     	if ($codes == $codess) {
-    		echo "1";
+    		echo 1;
     	} else {
-    		echo "0";
+    		echo 0;
     	}
     }
 
@@ -290,4 +298,13 @@ class LoginController extends Controller
         //     'huname'=>$res->username
         // ]);
     // }
+    
+    //退出
+    public function logout()
+    {
+        //清空session
+        session(['hid'=>'']);
+
+        return redirect('/');
+    }
 }
