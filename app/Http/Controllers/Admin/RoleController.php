@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Admin\Role;
+use App\Model\Admin\Permission;
+use DB;
 
 class RoleController extends Controller
 {
@@ -16,7 +18,7 @@ class RoleController extends Controller
     public function index(Request $request)
     {
         //一个条件的搜索
-        $res = Role::where('role_name','like','%'.$request->role_name.'%')->paginate($request->input('num',10));
+        $res = Role::where("role_name","like","%".$request->role_name."%")->paginate($request->input("num",10));
 
         return view("admin/role/index", [
             "title" => "角色管理页面",
@@ -142,8 +144,58 @@ class RoleController extends Controller
     // 角色添加权限的页面
     public function role_per(Request $request)
     {
-        return view("admin/role/role_per", [
-            "title" => "角色添加权限的页面"
+        //获取角色名
+        $id = $request->id;
+        $res = Role::find($id);
+        // dd($res);
+
+        $info = [];
+        foreach($res->pers as $k => $v){
+            $info[] = $v->id;
+
+        }
+
+        // 查询所有的路径
+        $per = Permission::all();
+        // dd($per);
+
+        return view("admin/role/role_per",[
+            "title" => "角色添加权限的页面",
+            "res" => $res,
+            "per" => $per,
+            "info"=>$info
         ]);
+    }
+
+    // 处理角色权限的方法
+    public function do_role_per(Request $request)
+    {
+        // 角色id
+        $id = $request ->id;
+
+        // 删除之前已有的
+        DB::table('role_permission')->where('role_id',$id)->delete();
+
+
+        //权限路径id
+        $per_id = $request->per_id;
+        // dd($per_id, $id);
+
+        $pers = [];
+        foreach($per_id as $k => $v){
+            $rs = [];
+            $rs['role_id'] = $id;
+            $rs['per_id'] = $v;
+            $pers[] = $rs;
+        }
+
+        //插入数据
+        $data = DB::table('role_permission')->insert($pers);
+
+        if($data){
+            return redirect('admin/role')->with('success','添加成功');
+        } else {
+            return back() ->with("error", "添加失败");
+        }
     }
 }

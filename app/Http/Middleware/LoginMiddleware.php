@@ -16,6 +16,8 @@ class LoginMiddleware
     public function handle($request, Closure $next)
     {
         $uid = session("uid");
+        /*$active = \Route::current()->getActionName();
+        dump($active);*/ // exit;
         if ($uid) {
             return $next($request);
         } else {

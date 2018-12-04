@@ -342,7 +342,10 @@ class UserController extends Controller
         } else {
             return back() -> with("error", "添加失败");
         }
+    }
 
-        
+    public function remind()
+    {
+        return view("admin/user/remind",["title" => "用户权限提示页面"]);
     }
 }

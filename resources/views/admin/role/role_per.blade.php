@@ -22,24 +22,25 @@
             {{csrf_field()}}
             <div class="mws-form-inline">
                 <div class="mws-form-row">
-                    <label class="mws-form-label">用户名</label>
+                    <label class="mws-form-label">角色名：</label>
                     <div class="mws-form-item">
-                        <input class="small" type="text" name="username" value="{{$res->username}}">
+                        <input class="small" type="text" name="role_name" value="{{$res->role_name}}">
                     </div>
                 </div>
             </div>
+            <!-- <button id="all">全选</button> -->
             <div class="mws-form-row bordered">
-                <label class="mws-form-label">角色名称:</label>
+                <label class="mws-form-label">权限路径名：</label>
                 <div class="mws-form-item clearfix">
                     <ul class="mws-form-list inline">
-                        @foreach($roles as $k=>$v)
+                        @foreach($per as $k=>$v)
                             @if(in_array($v->id,$info))
                             <li>
-                                <label><input type="checkbox" name='role_id[]' value='{{$v->id}}' checked> {{$v->role_name}}</label>
+                                <label><input type="checkbox" name='per_id[]' value='{{$v->id}}' checked>{{$v->url_name}}&nbsp;&nbsp;&nbsp;|||&nbsp;&nbsp;&nbsp;</label>
                             </li>
                             @else
-                             <li>
-                                <label><input type="checkbox" name='role_id[]' value='{{$v->id}}'> {{$v->role_name}}</label>
+                            <li>
+                                <label><input type="checkbox" name='per_id[]' value='{{$v->id}}'>{{$v->url_name}}&nbsp;&nbsp;&nbsp;|||&nbsp;&nbsp;&nbsp;</label>
                             </li>
                             @endif
                         @endforeach
@@ -57,5 +58,10 @@
 @section('js')
 <script>
     $('.mws-form-message').delay(2000).fadeOut(2000);
+
+    /*$("#all").click(function{
+        // $("input[type=checkbox]").attr("checked", true);
+        alert($);
+    })*/
 </script>
 @stop

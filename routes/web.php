@@ -35,7 +35,7 @@ Route::any("admin/logout", "Admin\LoginController@logout");
 
 
 //后台
-Route::group(["middleware" => "login"], function(){
+Route::group(["middleware" => ["login", "userper"]], function(){
  
 	//后台的首页
 
@@ -61,6 +61,8 @@ Route::group(["middleware" => "login"], function(){
 	Route::any("admin/do_user_role", "Admin\UserController@do_user_role");
 	// 添加权限
 	Route::any("admin/role_per", "Admin\RoleController@role_per");
+	Route::any("admin/do_role_per", "Admin\RoleController@do_role_per");
+	
 
 	// 权限管理
 	Route::resource("admin/permission", "Admin\PermissionController");
@@ -99,11 +101,12 @@ Route::group(["middleware" => "login"], function(){
 	//网站配置
 	Route::resource('admin/site','Admin\SiteController');
 	// Route::any('admin/site:id','Admin\SiteController@show');
-
-
-
 	
 });
+	// 没有权限时的跳转页面
+	Route::get("admin/remind", "Admin\UserController@remind");
+
+
 
 //前台
 // Route::get('/',function(){
