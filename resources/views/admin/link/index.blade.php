@@ -107,7 +107,7 @@
                             {{$v->lname}}
                         </td>
                         <td class=" ">
-                           <img src="{{$v->lpic}}">
+                           <img src="{{$v->lpic}}" width="100px" height="100px">
                         </td>
                         <td class="lurl">
                             {{$v->lurl}}

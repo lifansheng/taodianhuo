@@ -38,7 +38,7 @@
 			</ul>
 			<ul class="message-r">
 				<div class="topMessage home">
-					<div class="menu-hd"><a href="#" target="_top" class="h">商城首页</a></div>
+					<div class="menu-hd"><a href="/" target="_top" class="h">商城首页</a></div>
 				</div>
 				<div class="topMessage my-shangcheng">
 					<div class="menu-hd MyShangcheng"><a href="#" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a></div>
@@ -187,30 +187,6 @@
 								<div class="clear"></div>
 							</div>
 
-							<!--地址-->
-							<!-- <dl class="iteminfo_parameter freight">
-								<dt>配送至</dt>
-								<div class="iteminfo_freprice">
-									<div class="am-form-content address">
-										<select data-am-selected>
-											<option value="a">浙江省</option>
-											<option value="b">湖北省</option>
-										</select>
-										<select data-am-selected>
-											<option value="a">温州市</option>
-											<option value="b">武汉市</option>
-										</select>
-										<select data-am-selected>
-											<option value="a">瑞安区</option>
-											<option value="b">洪山区</option>
-										</select>
-									</div>
-									<div class="pay-logis">
-										快递<b class="sys_item_freprice">10</b>元
-									</div>
-								</div>
-							</dl> -->
-							<!-- <div class="clear"></div> -->
 
 							<!--销量-->
 							<ul class="tm-ind-panel">
@@ -285,7 +261,7 @@
 														var b = $(".jianshu").text();
 														// $('#add').removeAttr('disabled');
 														// console.log(b);
-														$("#text_box").blur(function(){
+														$("#text_box").change(function(){
 															// console.log(b)
 															a = $(this).val()
 															// console.log(a);
@@ -296,7 +272,7 @@
 															if(c > d){
 																// alert(123);
 																$(this).val(d);
-																alert('小店的库存满足不了你的要求');
+																alert('小店的库存可能不够啦');
 																$('#add').attr('disabled',true);
 																// $('#min').removeAttr('disabled');
 															}
@@ -451,24 +427,28 @@
 					<div class="match-title">优惠套装</div>
 					<div class="match-comment">
 						<ul class="like_list">
-							<li>
+							@foreach($cuxiao as $v)
+							@if($v->status == 2)
+							<li style="margin: 15px">
 								<div class="s_picBox">
-									<a class="s_pic" href="#"><img src="/homes/images/cp.jpg"></a>
-								</div> <a class="txt" target="_blank" href="#">萨拉米 1+1小鸡腿</a>
-								<div class="info-box"> <span class="info-box-price">¥ 29.90</span> <span class="info-original-price">￥ 199.00</span> </div>
+									<a class="s_pic" href="/home/details?id={{$v->id}}"><img src="{{$v->imgs}}" width="160px" height="160px"></a>
+								</div> <a class="txt" target="_blank" href="/home/details?id={{$v->id}}">风味特产小吃</a>
+								<div class="info-box"> <span class="info-box-price">¥ {{$v->price}}</span> <span class="info-original-price">￥ 199.00</span> </div>
 							</li>
-							<li class="plus_icon"><i>+</i></li>
-							<li>
+							@endif
+							@endforeach
+							<!-- <li class="plus_icon"><i>+</i></li> -->
+							<!-- <li>
 								<div class="s_picBox">
 									<a class="s_pic" href="#"><img src="/homes/images/cp2.jpg"></a>
 								</div> <a class="txt" target="_blank" href="#">ZEK 原味海苔</a>
 								<div class="info-box"> <span class="info-box-price">¥ 8.90</span> <span class="info-original-price">￥ 299.00</span> </div>
-							</li>
-							<li class="plus_icon"><i>=</i></li>
+							</li> -->
+							<!-- <li class="plus_icon"><i>=</i></li>
 							<li class="total_price">
 								<p class="combo_price"><span class="c-title">套餐价:</span><span>￥35.00</span> </p>
 								<p class="save_all">共省:<span>￥463.00</span></p> <a href="#" class="buy_now">立即购买</a> </li>
-							<li class="plus_icon"><i class="am-icon-angle-right"></i></li>
+							<li class="plus_icon"><i class="am-icon-angle-right"></i></li> -->
 						</ul>
 					</div>
 				</div>
@@ -480,7 +460,7 @@
 				<div class="introduce">
 					<div class="browse">
 					    <div class="mc"> 
-						    <ul>					    
+						    <ul >					    
 						     	<div class="mt">            
 						            <h2>看了又看</h2>        
 					            </div>
@@ -566,9 +546,7 @@
 										</div>
 									</div>
 									<div class="clear"></div>
-
 								</div>
-
 								<div class="am-tab-panel am-fade">
 									
                                     <div class="actor-new">
@@ -626,76 +604,64 @@
 
 									<ul class="am-comments-list am-comments-list-flip">
 
+										<!-- 遍历评论表 -->
+										<!-- 如果商品的id == 评论的uid 显示数据 -->
+										
+										@foreach($comment as $cv)
+									
+										@if($goods->id == $cv->gid)
+
 										<li class="am-comment">
 											<!-- 评论容器 -->
-											<a href="">
-												<img class="am-comment-avatar" src="/homes/images/hwbn40x40.jpg" />
-												<!-- 评论者头像 -->
-											</a>
-
+											<!-- <a href="">
+												<img class="am-comment-avatar" src="/homes/images/hwbn40x40.jpg" />											
+											</a> -->
+											<!-- 遍历用户表 -->
+											@foreach($user as $uv)
+												@if($uv->hid == $cv->uid)
+													<a href="">
+													<img class="am-comment-avatar" src="{{$uv->pic}}" />
+													<!-- 评论者头像 -->
+												</a>
+												@endif
+											@endforeach
 											<div class="am-comment-main">
 												<!-- 评论内容容器 -->
 												<header class="am-comment-hd">
 													<!--<h3 class="am-comment-title">评论标题</h3>-->
 													<div class="am-comment-meta">
 														<!-- 评论元数据 -->
-														<a href="#link-to-user" class="am-comment-author">b***1 (匿名)</a>
-														<!-- 评论者 -->
+														<!-- 遍历用户表 -->
+														@foreach($user as $uv)
+															 @if($uv->hid == $cv->uid)
+																<a href="#link-to-user" class="am-comment-author">{{$uv->username}}(匿名)</a>
+																<!-- 评论者 -->
+															@endif
+														@endforeach
 														评论于
-														<time datetime="">2015年11月02日 17:46</time>
+														<time datetime="">{{$cv->addtime}}</time>
 													</div>
 												</header>
-
+												<!-- 评论内容 -->
+												
 												<div class="am-comment-bd">
 													<div class="tb-rev-item " data-id="255776406962">
-														<div class="J_TbcRate_ReviewContent tb-tbcr-content ">
-															摸起来丝滑柔软，不厚，没色差，颜色好看！买这个衣服还接到诈骗电话，我很好奇他们是怎么知道我买了这件衣服，并且还知道我的电话的！
+														<div class="J_TbcRate_ReviewContent tb-tbcr-content" style="font-size: 20px;">
+															{{$cv->content}}
 														</div>
-														<div class="tb-r-act-bar">
-															颜色分类：柠檬黄&nbsp;&nbsp;尺码：S
-														</div>
-													</div>
-
-												</div>
-												<!-- 评论内容 -->
-											</div>
-										</li>
-										<li class="am-comment">
-											<!-- 评论容器 -->
-											<a href="">
-												<img class="am-comment-avatar" src="/homes/images/hwbn40x40.jpg" />
-												<!-- 评论者头像 -->
-											</a>
-
-											<div class="am-comment-main">
-												<!-- 评论内容容器 -->
-												<header class="am-comment-hd">
-													<!--<h3 class="am-comment-title">评论标题</h3>-->
-													<div class="am-comment-meta">
-														<!-- 评论元数据 -->
-														<a href="#link-to-user" class="am-comment-author">h***n (匿名)</a>
-														<!-- 评论者 -->
-														评论于
-														<time datetime="">2015年11月25日 12:48</time>
-													</div>
-												</header>
-
-												<div class="am-comment-bd">
-													<div class="tb-rev-item " data-id="258040417670">
-														<div class="J_TbcRate_ReviewContent tb-tbcr-content ">
-															式样不错，初冬穿
-														</div>
-														<div class="tb-r-act-bar">
-															颜色分类：柠檬黄&nbsp;&nbsp;尺码：L
+														<div class="tb-r-act-bar" style="color:skyblue;margin-top: 20px;">
+															口味:柠檬黄&nbsp;&nbsp;规格：  <br>
+															商品名称: {{$goods->gname}}
 														</div>
 													</div>
 												</div>
-												<!-- 评论内容 -->
 											</div>
 										</li>
 
+										@endif
+										@endforeach
 									</ul>
-
+									<!-- <img src="/homes/comment/comment.gif" alt=""> -->
 									<div class="clear"></div>
 									<!-- 评价的分页 -->
 									<!--分页 -->
@@ -709,17 +675,13 @@
 										<li><a href="#">&raquo;</a></li>
 									</ul> -->
 									<div class="clear"></div>
-
 									<div class="tb-reviewsft">
 										<div class="tb-rate-alert type-attention">购买前请查看该商品的 <a href="#" target="_blank">购物保障</a>，明确您的售后保障权益。</div>
 									</div>
-
 								</div>
-
 								<div class="am-tab-panel am-fade">
 									<div class="like">
 										<ul class="am-avg-sm-2 am-avg-md-3 am-avg-lg-4 boxes">
-											
 											@foreach($likes as $v)
 											<li style="margin: 10px;">
 												<div class="i-pic limit">
@@ -736,7 +698,6 @@
 										</ul>
 									</div>
 									<div class="clear"></div>
-
 									<!--分页 -->
 									<!-- <ul class="am-pagination am-pagination-right">
 										<li class="am-disabled"><a href="#">&laquo;</a></li>
@@ -748,26 +709,21 @@
 										<li><a href="#">&raquo;</a></li>
 									</ul>
 									<div class="clear"></div> -->
-
 								</div>
-
 							</div>
-
 						</div>
-
 						<div class="clear"></div>
-
 						<div class="footer">
 							<div class="footer-hd">
 								<p>
-									<a href="#">恒望科技</a>
+									@foreach($link as $v)
+									<a href="{{$v->lurl}}" title="">
+									<img src="{{$v->lpic}}" alt="" width="23px" height="23px" title="{{$v->lname}}">
+									{{$v->lname}}</a>
 									<b>|</b>
-									<a href="#">商城首页</a>
-									<b>|</b>
-									<a href="#">支付宝</a>
-									<b>|</b>
-									<a href="#">物流</a>
+									@endforeach
 								</p>
+
 							</div>
 							<div class="footer-bd">
 								<p>

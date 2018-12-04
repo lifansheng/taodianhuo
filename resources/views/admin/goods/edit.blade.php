@@ -85,6 +85,8 @@
                         <ul class="mws-form-list inline">
                             <li><label><input type="radio" name='status' value="1" @if($res->status == 1) checked @endif>上架</label></li>
                             <li><label><input type="radio" name='status' value="0" @if($res->status == 0) checked @endif>下架</label></li>
+                            <li><label><input type="radio" name='status' value="2" @if($res->status == 2) checked @endif>促销</label></li>
+
                         </ul>
                     </div>
                 </div>
