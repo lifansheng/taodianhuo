@@ -171,18 +171,27 @@ Route::get("home/addrdefault","Home\OrderController@addrdefault");
 
 // 订单结算成功页面
 Route::get("home/cheng","Home\CartsController@cheng");
+
 // 订单中心
 Route::any("home/order","Home\OrderController@index");
 
-	//个人中心
-Route::get('home/person','Home\PersonController@index');
+//个人中心
+Route::resource('home/person','Home\PersonController');
+// Route::post('ho/person','Home\PersonController@upload');
 
+
+
+
+//个人信息
+Route::get('home/personinformation','Home\PersonController@informationindex');
 // 前台
-Route::group(["middleware" => "login"], function(){
+// Route::group(["middleware" => "login"], function(){});
 	// ajax验证注册用户名
-	
+
 
 });
 
+
+	
 
 
