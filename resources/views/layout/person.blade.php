@@ -81,10 +81,6 @@
                                 <li class="qc"><a href="#">团购</a></li>
                                 <li class="qc last"><a href="#">大包装</a></li>
 							</ul>
-						    <div class="nav-extra">
-						    	<i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>我的福利
-						    	<i class="am-icon-angle-right" style="padding-left: 10px;"></i>
-						    </div>
 						</div>
 			</div>
 
@@ -138,7 +134,7 @@
 					<li class="person">
 						<a href="#">我的交易</a>
 						<ul>
-							<li><a href="order.html">订单管理</a></li>
+							<li><a href="/home/order">订单管理</a></li>
 							<li> <a href="change.html">退款售后</a></li>
 						</ul>
 					</li>

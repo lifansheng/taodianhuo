@@ -175,7 +175,7 @@
                     <li>
                         <a href="#"><i class="icon-folder-close"></i>订单管理</a>
                         <ul class='closed'>
-                            <li><a href="/admin/orders/index">订单列表</a></li>
+                            <li><a href="/admin/order">订单列表</a></li>
                         </ul>
                     </li>
                     <li>

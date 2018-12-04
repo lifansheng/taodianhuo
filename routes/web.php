@@ -68,6 +68,9 @@ Route::group(["middleware" => "login"], function(){
 	Route::resource('admin/lunbo','Admin\LunboController');
 	Route::any('/admin/upload','Admin\LunboController@upload');
 
+	// 后台订单管理
+	Route::any('admin/order','Admin\OrderController@index');
+
 	//友情链接
 	Route::resource('admin/link', 'Admin\LinkController');
 
@@ -144,17 +147,23 @@ Route::get("home/liGo","Home\CartsController@liGo");
 
 // 订单结算页面
 Route::post("home/jiesuan","Home\CartsController@index");
+// 点击设置默认地址
+Route::get("home/addrdefault","Home\OrderController@addrdefault");
+
+
 // 订单结算成功页面
 Route::get("home/cheng","Home\CartsController@cheng");
+// 订单中心
+Route::any("home/order","Home\OrderController@index");
+
+	//个人中心
+Route::get('home/person','Home\PersonController@index');
 
 // 前台
 Route::group(["middleware" => "login"], function(){
 	// ajax验证注册用户名
 	
 
-
-	//个人中心
-Route::get('home/person','Home\PersonController@index');
 });
 
 

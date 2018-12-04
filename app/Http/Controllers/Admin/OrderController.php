@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Home;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Model\Admin\Address;
+use App\Model\Home\Orders;
+
 
 class OrderController extends Controller
 {
@@ -13,11 +14,29 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
-        return view('home.orders.index',[
-            'title'=>'订单管理'
+        
+        $res = Orders::orderBy('hid','ace')
+            ->where(function($query) use($request){
+                 //按照订单号查询
+                $id = $request->input('oid');
+
+                //如果订单号不为空
+                if(!empty($id)) {
+                    $query->where('oid','like','%'.$id.'%');
+                }
+                //如果收货人不为空
+                // if(!empty($name)) {
+                //     $query->where('name','like','%'.$name.'%');
+                // }
+            })
+            ->paginate($request->input('num', 3));
+
+        return view('admin.a_order.index',[
+            'title'=>'订单管理',
+            'res'=>$res,
+            'request'=>$request
         ]);
     }
 
@@ -26,16 +45,9 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function addrdefault(Request $request)
+    public function create()
     {
-        $aid = $request ->aid;
-        $aa = Address::where('status',1)->update(['status'=>0]);
-        $bb = Address::where('id',$aid) -> update(['status'=>1]);
-        if($aa && $bb){
-            echo 1;
-        }else{
-            echo 0;
-        }
+        //
     }
 
     /**

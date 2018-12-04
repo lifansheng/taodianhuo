@@ -13,6 +13,7 @@
 					<div class="address">
 						<h3>确认收货地址 </h3>
 						<ul>
+							@foreach($addrs as $k => $v)
 							<div class="per-border"></div>
 							<li class="user-addresslist defaultAddr">
 
@@ -20,22 +21,21 @@
 									<div class="user DefaultAddr">
 
 										<span class="buy-address-detail">   
-                   							<span class="buy-user">艾迪 </span>
-										<span class="buy-phone">15888888888</span>
+                   							<span class="buy-user">{{$v->name}}</span>
+										<span class="buy-phone">{{$v->phone}}</span>
 										</span>
 									</div>
 									<div class="default-address DefaultAddr">
 										<span class="buy-line-title buy-line-title-type">收货地址：</span>
 										<span class="buy--address-detail">
-								   <span class="province">湖北</span>省
-										<span class="city">武汉</span>市
-										<span class="dist">洪山</span>区
-										<span class="street">雄楚大道666号(中南财经政法大学)</span>
+										<span class="street">{{$v->address}}</span>
 										</span>
 
 										</span>
 									</div>
+									@if ($v->status == 1)
 									<ins class="deftip">默认地址</ins>
+									@endif
 								</div>
 								<div class="address-right">
 									<a href="../person/address.html">
@@ -44,52 +44,34 @@
 								<div class="clear"></div>
 
 								<div class="new-addr-btn">
+									@if($v->status == 1)
 									<a href="#" class="hidden">设为默认</a>
 									<span class="new-addr-bar hidden">|</span>
+									@else
+									<a href="javascript:void(0);" class="addrdefault" aid="{{$v->id}}">设为默认</a>
+									<span class="new-addr-bar">|</span>
+									@endif
 									<a href="#">编辑</a>
 									<span class="new-addr-bar">|</span>
 									<a href="javascript:void(0);" onclick="delClick(this);">删除</a>
 								</div>
 
 							</li>
-							<div class="per-border"></div>
-							<li class="user-addresslist">
-								<div class="address-left">
-									<div class="user DefaultAddr">
-
-										<span class="buy-address-detail">   
-                  						 <span class="buy-user">艾迪 </span>
-										<span class="buy-phone">15877777777</span>
-										</span>
-									</div>
-									<div class="default-address DefaultAddr">
-										<span class="buy-line-title buy-line-title-type">收货地址：</span>
-										<span class="buy--address-detail">
-								   <span class="province">湖北</span>省
-										<span class="city">武汉</span>市
-										<span class="dist">武昌</span>区
-										<span class="street">东湖路75号众环大厦9栋9层999</span>
-										</span>
-
-										</span>
-									</div>
-									<ins class="deftip hidden">默认地址</ins>
-								</div>
-								<div class="address-right">
-									<span class="am-icon-angle-right am-icon-lg"></span>
-								</div>
-								<div class="clear"></div>
-
-								<div class="new-addr-btn">
-									<a href="#">设为默认</a>
-									<span class="new-addr-bar">|</span>
-									<a href="#">编辑</a>
-									<span class="new-addr-bar">|</span>
-									<a href="javascript:void(0);"  onclick="delClick(this);">删除</a>
-								</div>
-
-							</li>
+							@endforeach
 						</ul>
+						<script type="text/javascript">
+							$('.addrdefault').click(function(){
+								var aid = $(this).attr('aid');
+								$.get('/home/addrdefault',{aid:aid},function(data){
+									if(data == 1){
+										alert('设置成功');
+									}else{
+										alert('设置失败...');
+									}
+								})
+							})
+
+						</script>
 
 						<div class="clear"></div>
 					</div>

@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Model\Admin\Goods;
 use App\Model\Home\Carts;
 use App\Model\Home\Orders;
+use App\Model\Admin\Address;
 use DB;
 
 class CartsController extends Controller
@@ -125,7 +126,11 @@ class CartsController extends Controller
     {
 
         $id = $_GET['id'];
-        // dd($id);
+
+        $hid = session('hid');
+        // dd($hid);
+        $addrs = Address::where('hid',$hid)->orderBy('status','desc') -> get();
+        // dd($addrs);
         $data = Goods::where('id',$id) -> get();
         // dd($data);
 
@@ -136,7 +141,8 @@ class CartsController extends Controller
         $request->session()->put('liGO',$data);
         return view('home.carts.jiesuan',[
             'title'=>'订单结算',
-            'data'=>$data
+            'data'=>$data,
+            'addrs'=>$addrs
         ]);
     }
 
