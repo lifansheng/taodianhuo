@@ -15,9 +15,13 @@ class LoginMiddleware
      */
     public function handle($request, Closure $next)
     {
+        // 获取用户id
         $uid = session("uid");
+
+        // 查看路径
         /*$active = \Route::current()->getActionName();
-        dump($active);*/ // exit;
+        dump($active)*/; // exit;
+
         if ($uid) {
             return $next($request);
         } else {
