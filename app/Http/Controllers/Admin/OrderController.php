@@ -17,7 +17,7 @@ class OrderController extends Controller
     public function index(Request $request)
     {
         
-        $res = Orders::orderBy('hid','ace')
+        $res = Orders::with('orderaddr')->orderBy('hid','ace')
             ->where(function($query) use($request){
                  //按照订单号查询
                 $id = $request->input('oid');
@@ -32,6 +32,8 @@ class OrderController extends Controller
                 // }
             })
             ->paginate($request->input('num', 3));
+
+            // dd($res);
 
         return view('admin.a_order.index',[
             'title'=>'订单管理',

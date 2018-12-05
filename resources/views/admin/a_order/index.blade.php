@@ -91,14 +91,14 @@
                             {{$v->oid}}
                         </td>
                         <td class="name">
-                            
+                            {{$v['orderaddr']->name}}
                         </td>
                         
                         <td class="lurl">
-                            {{$v->phone}}
+                            {{$v['orderaddr']->phone}}
                         </td>
                          <td class="lurl">
-                            {{$v->address}}
+                            {{$v['orderaddr']->address}}
                         </td>
                        
                       

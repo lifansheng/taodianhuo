@@ -193,7 +193,6 @@ Route::group(["middleware" => "login"], function(){});
 	// ajax验证注册用户名
 
 
-});
 
 
 	
