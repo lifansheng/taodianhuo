@@ -22,7 +22,7 @@
      <div class="option">
        <span class="info">您可以: </span>
         <a href="/" class="J_MakePoint"><span>继续逛逛</span></a>
-        <a href="/person/order" class="J_MakePoint"><span>交易详情</span></a>
+        <a href="/home/order" class="J_MakePoint"><span>交易详情</span></a>
      </div>
     </div>
   </div>

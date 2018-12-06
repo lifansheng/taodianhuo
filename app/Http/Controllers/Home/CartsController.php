@@ -199,6 +199,7 @@ class CartsController extends Controller
                 Orders::insert($arr[] = array(
                     'oid'=>time().rand(111,999),
                     'hid'=>session('hid'),
+                    'gid'=>$data[$i]['gid'],
                     'name'=>$data[$i]['gname'],
                     'addrname'=>session('addr')['name'],
                     'imgs'=>$data[$i]['imgs'],
@@ -208,8 +209,10 @@ class CartsController extends Controller
                     'cnt'=>$data[$i]['cnt'],
                     'addtime'=>date('Y-m-d H:i:s',time()),
                     'price'=>$data[$i]['price'],
+                    'leixing'=>$data[$i]['leixing'],
+                    'size'=>$data[$i]['size'],
                     'message'=>$_GET['liuyan'],
-                    'status'=>1,
+                    'status'=>'2',
                 ));
                 // echo $i;
             }
@@ -219,6 +222,7 @@ class CartsController extends Controller
             Orders::insert($arr[] = array(
                 'oid'=>time().rand(111,999),
                 'hid'=>session('hid'),
+                'gid'=>$data[0]['id'],
                 'name'=>$data[0]['gname'],
                 'addrname'=>session('addr')['name'],
                 'imgs'=>$data[0]['imgs'],
@@ -228,8 +232,10 @@ class CartsController extends Controller
                 'cnt'=>$data[0]['cnt'],
                 'addtime'=>date('Y-m-d H:i:s',time()),
                 'price'=>$data[0]['price'],
+                'leixing'=>$data[0]['leixing'],
+                'size'=>$data[0]['size'],
                 'message'=>$_GET['liuyan'],
-                'status'=>1,
+                'status'=>'2',
             ));
         }
 

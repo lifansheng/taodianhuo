@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Home;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Admin\Address;
+use App\Model\Home\Orders;
 
 class OrderController extends Controller
 {
@@ -16,8 +17,12 @@ class OrderController extends Controller
     public function index()
     {
         //
+        $hid = session('hid');
+        $data = Orders::where('hid',$hid)->get();
+        // dd($data);
         return view('home.orders.index',[
-            'title'=>'订单管理'
+            'title'=>'订单管理',
+            'data'=>$data
         ]);
     }
 

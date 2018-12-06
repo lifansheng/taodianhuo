@@ -60,7 +60,7 @@ class OrderController extends Controller
     public function fahuo($oid)
     {
         Orders::where('oid',$oid)->update(['status'=>'1']);
-        return redirect('/admin/order');
+        return redirect('/admin/a_order');
     }
 
     /**
@@ -118,9 +118,22 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $oid)
     {
-        //
+        $data = $request ->except('_token','_method');
+        // dd($data);
+        
+        try{
+            //实例化数据表
+            $res = Orders::where('oid',$oid)->update($data);
+            if($res){
+                return redirect('/admin/a_order')->with('success','修改成功');
+            }
+
+        }catch(\Exception $e){
+
+            return back()->with('error','修改失败');
+        }
     }
 
     /**
@@ -129,8 +142,20 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($oid)
     {
-        //
+        $stat = Orders::where('oid',$oid)->select('status')->first();
+        // dd($stat);
+        
+        if($stat == '0'){
+            //实例化数据表
+            $res =Orders::where('oid',$oid)->delete();
+                if($res){
+                    return redirect('/admin/a_order')->with('success','删除成功');
+                }
+        }else{
+
+            return back()->with('error','删除失败  (该订单还未完成)无法删除!!');
+        }
     }
 }

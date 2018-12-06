@@ -11,6 +11,10 @@
 		<link href="/homes/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
 		<link href="/homes/css/personal.css" rel="stylesheet" type="text/css">
 		<link href="/homes/css/systyle.css" rel="stylesheet" type="text/css">
+		<link href="/homes/css/orstyle.css" rel="stylesheet" type="text/css">
+
+		<script src="/homes/AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
+		<script src="/homes/AmazeUI-2.4.2/assets/js/amazeui.js"></script>
 
 	</head>
 
@@ -51,7 +55,6 @@
 						<!--悬浮搜索框-->
 
 						<div class="nav white">
-				<div class="logo"><img src="/homes/images/logo.png" /></div>
 				<div class="logoBig">
 
 							@php use App\Http\Controllers\Home\HomeController;

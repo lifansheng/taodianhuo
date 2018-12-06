@@ -115,7 +115,8 @@
                        <td>
                            @if ($v->status==2) 买家已付款(待发货)
                            @elseif ($v->status == 1) 已发货(等待买家确认收货)
-                           @else ($v->status == 0) 交易完成
+                           @elseif ($v->status == 0) 交易完成
+                           @else ($v->status == 3) 买家申请退款
                            @endif
                        </td>
                         <td class=" ">

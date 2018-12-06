@@ -204,9 +204,9 @@ class LunboController extends Controller
 	                return redirect('/admin/lunbo')->with('success','删除成功');
 	            }
 
-        	}catch(\Exception $e){
+    	}catch(\Exception $e){
 
-            	return back()->with('error','删除失败');
-        	}
+        	return back()->with('error','删除失败');
+    	}
     }
 }
