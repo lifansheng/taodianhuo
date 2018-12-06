@@ -206,8 +206,8 @@
 													</div>
 												</li>
 												<li class="td td-change">
-													<div class="am-btn am-btn-danger anniu">
-														删除订单</div>
+													<button class="am-btn am-btn-danger anniu shanorder" onclick="window.location='/home/shanorder/{{$res->oid}}'">
+																	删除订单</button>
 												</li>
 												@elseif($res->status == '1')
 												<li class="td td-status">
@@ -252,4 +252,10 @@
 					</div>
 
 				</div>
+				<script type="text/javascript">
+					$('.shanorder').click(function(){
+						confirm('您确定要删除吗');
+						alert('删除成功');
+					});
+				</script>
 @stop
