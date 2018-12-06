@@ -24,7 +24,7 @@
 					   <div class="long-title"><span class="all-goods">全部分类</span></div>
 					   <div class="nav-cont">
 							<ul>
-								<li class="index"><a href="#">首页</a></li>
+								<li class="index"><a href="/">首页</a></li>
                                 <li class="qc"><a href="#">闪购</a></li>
                                 <li class="qc"><a href="#">限时抢</a></li>
                                 <li class="qc"><a href="#">团购</a></li>
@@ -116,6 +116,7 @@
 								<div class="clear"></div>
 
 								<ul class="am-avg-sm-2 am-avg-md-3 am-avg-lg-4 boxes">
+									@if(!is_null($data))
 									@foreach($data as $v)
 									<li>
 										<div class="i-pic limit">
@@ -131,7 +132,10 @@
 											</p>
 										</div>
 									</li>
-									@endforeach	
+									@endforeach
+									@else
+									123
+									@endif
 								</ul>
 					
 	<!--热门活动 -->
@@ -233,47 +237,27 @@
 								<div class="side-title">
 									经典搭配
 								</div>
-
+								@foreach($goods as $v)
+									@if($v->status == 2)
 								<li>
 									<div class="i-pic check">
-										<img src="/homes/images/cp.jpg" />
-										<p class="check-title">萨拉米 1+1小鸡腿</p>
-										<p class="price fl">
-											<b>¥</b>
-											<strong>29.90</strong>
-										</p>
-										<p class="number fl">
-											销量<span>1110</span>
-										</p>
+										<a href="/home/details?id={{$v->id}}">
+											<img src="{{$v->imgs}}" />
+											<h5>{{$v->gname}}</h5>
+											<p class="price fl">
+												<b>¥</b>
+												<strong>{{$v->price}}</strong>
+											</p>
+											<p class="number fl">
+												销量<span>1110</span>
+											</p>
+										</a>
 									</div>
 								</li>
-								<li>
-									<div class="i-pic check">
-										<img src="/homes/images/cp2.jpg" />
-										<p class="check-title">ZEK 原味海苔</p>
-										<p class="price fl">
-											<b>¥</b>
-											<strong>8.90</strong>
-										</p>
-										<p class="number fl">
-											销量<span>1110</span>
-										</p>
-									</div>
-								</li>
-								<li>
-									<div class="i-pic check">
-										<img src="/homes/images/cp.jpg" />
-										<p class="check-title">萨拉米 1+1小鸡腿</p>
-										<p class="price fl">
-											<b>¥</b>
-											<strong>29.90</strong>
-										</p>
-										<p class="number fl">
-											销量<span>1110</span>
-										</p>
-									</div>
-								</li>
-
+	
+									@endif
+								@endforeach
+								
 							</div>
 							<div class="clear"></div>
 							<!--分页 -->

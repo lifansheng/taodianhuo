@@ -137,7 +137,8 @@ Route::get('home/advert','Admin\AdvertController@homeadvert');
 route::get('home/search','Home\HomeController@search');
 
 route::get('homes/search','Home\HomeController@list');
-
+//向导
+route::get('home/leader','Home\HomeController@leader');
 
 // 前台登录、注册页面
 Route::any("home/login", "Home\LoginController@login");
@@ -150,6 +151,7 @@ Route::post("home/ajaxhname", "Home\LoginController@ajaxhname");
 Route::post("home/ajaxemails", "Home\LoginController@ajaxemail");
 Route::post("home/ajaxphone", "Home\LoginController@ajaxphone");
 Route::post("home/ajaxcode", "Home\LoginController@ajaxcode");
+Route::post("home/ajaxcontrastname", "Home\LoginController@ajaxcontrastname");
 
 // 前台购物车的添加
 Route::get("home/addCar","Home\CartsController@addCar");

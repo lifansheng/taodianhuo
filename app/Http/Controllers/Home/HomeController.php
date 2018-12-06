@@ -174,34 +174,19 @@ class HomeController extends Controller
         // select * form goods where gname("gname",'like',"%".$res."%");
         // $data = DB::select('select * form goods where ("gname","like","%".$res."%")');
         $data = Goods::where('gname','like','%'.$res.'%')->get();
-        // dd($data);
+        // dump($data[0]);
+        // if(is_null($data[0])){
+        //     echo 1;
+        // }else{
+        //     echo 0;
+        // }
 
-        // dd($data);
-           /*$res = News::orderBy("id","asc")
-            ->where(function($query) use($request){
-                //检测关键字
-                $title = $request->input("title");
-                $author = $request->input("author");
-                //如果用户名不为空
-                if(!empty($title)) {
-                    $query->where("title","like","%".$title."%");
-                }
-                //如果邮箱不为空
-                if(!empty($author)) {
-                    $query->where("author","like","%".$author."%");
-                }
-            })
-        ->paginate($request->input("num", 10));
-        //显示页面
-        return view('admin.news.index',[
-            'title'=>'新闻的浏览',
-            'res'=>$res,
-            'request'=>$request,
-
-        ]);*/
+        // exit;
+        $goods = Goods::all();
         return view('home.goods.search',[
             'title'=>'列表页面',
-            'data'=>$data
+            'data'=>$data,
+            'goods'=>$goods
         ]);
     }
 
@@ -213,13 +198,22 @@ class HomeController extends Controller
         // dd($cid);
          $res = Goods::where('cid',$cid)->get();
          // dd($res);
+          $goods = Goods::all();
          return view('home/goods/list',[
             'title'=>'查询页',
             'res'=>$res,
+            'goods'=>$goods
         ]);
     }
 
+    //向导***
 
+    public function leader()
+    {
+        return view('/home/leader',['title'=>'淘点货网购小向导']);
+    }
+
+    //网站配置
       public static function fulei()
     {
 
@@ -230,7 +224,7 @@ class HomeController extends Controller
           // return view('layout.index',['site' => $site, 
     }
 
-
+    //友情链接
      public static function fulei2()
     {
 
