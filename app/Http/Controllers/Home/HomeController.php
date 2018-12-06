@@ -235,4 +235,5 @@ class HomeController extends Controller
           // return view('layout.index',['site' => $site, 
     }
 
+
 }
