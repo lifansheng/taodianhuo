@@ -3,6 +3,22 @@
 @section('title',$title)
 
 @section('content')
+			@if(session('success'))
+					
+	                <div class="mws-form-message success">
+	                    <cenetr><li style='list-style:none;font-size:20px;text-align: center;'>{{session('success')}}</li></cneter>
+	                </div>
+
+            @endif
+
+            @if(session('error'))
+                <div class="mws-form-message error">
+                    <li style='list-style:none;font-size:20px;text-align: center;'>{{session('error')}}</li>
+                </div>
+            @endif
+            <script>
+   				 $('.mws-form-message').delay(1000).fadeOut(2000);
+			</script>
 <div class="center">
 			<div class="col-main">
 				<div class="main-wrap">
@@ -429,10 +445,14 @@
 																</div>
 															</li>
 															<li class="td td-change">
-																<a href="commentlist.html">
-																	<div class="am-btn am-btn-danger anniu">
+																<a href="/home/comments?oid={{$v->oid}}">
+																	<div class="am-btn am-btn-danger anniu" id="comment">
 																		评价商品</div>
 																</a>
+																<!-- <a href="#">
+																	<div class="am-btn am-btn-danger anniu" id="comment">
+																		评价商品</div>
+																</a> -->
 															</li>
 														</div>
 													</div>
@@ -451,4 +471,5 @@
 						</div>
 					</div>
 				</div>
+
 @stop

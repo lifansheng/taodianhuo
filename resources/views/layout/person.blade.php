@@ -15,6 +15,7 @@
 
 		<script src="/homes/AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
 		<script src="/homes/AmazeUI-2.4.2/assets/js/amazeui.js"></script>
+		
 
 	</head>
 
@@ -85,11 +86,7 @@
 		</header>
 
 
-
-
-
-
-            <div class="nav-table">
+			<div class="nav-table">
 					   <div class="long-title"><span class="all-goods">全部分类</span></div>
 					   <div class="nav-cont">
 							<ul>
@@ -99,17 +96,18 @@
                                 <li class="qc"><a href="#">团购</a></li>
                                 <li class="qc last"><a href="#">大包装</a></li>
 							</ul>
+						    <div class="nav-extra">
+						    	<i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>我的福利
+						    	<i class="am-icon-angle-right" style="padding-left: 10px;"></i>
+						    </div>
 						</div>
 			</div>
+			<b class="line"></b>
+			
+
 
 @section('content')
 @show
-
-
-
-
-
-
 				<!--底部-->
 				<div class="footer ">
 						<div class="footer-hd ">
@@ -172,10 +170,10 @@
 					<li class="person">
 						<a href="#">我的小窝</a>
 						<ul>
-							<li> <a href="collection.html">收藏</a></li>
-							<li> <a href="foot.html">足迹</a></li>
-							<li> <a href="comment.html">评价</a></li>
-							<li> <a href="news.html">消息</a></li>
+							<li> <a href="#">收藏</a></li>
+							<li> <a href="#">足迹</a></li>
+							<!-- <li> <a href="/home/all">评价</a></li> -->
+							<li> <a href="#">消息</a></li>
 						</ul>
 					</li>
 

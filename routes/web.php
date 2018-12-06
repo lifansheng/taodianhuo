@@ -187,6 +187,13 @@ Route::any("home/order","Home\OrderController@index");
 Route::resource('home/person','Home\PersonController');
 // Route::post('ho/person','Home\PersonController@upload');
 
+//个人中心评价
+route::any('home/comments','Home\CommentController@comment');
+//添加评论
+route::any('home/comment','Home\CommentController@create');
+//查看个人所有的而评论
+// route::any('home/all','Home\CommentController@all');
+
 
 
 
