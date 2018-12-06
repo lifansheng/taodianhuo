@@ -147,6 +147,8 @@ route::get('home/leader','Home\HomeController@leader');
 Route::any("home/login", "Home\LoginController@login");
 Route::any("home/register", "Home\LoginController@register");
 Route::any("home/dologin", "Home\LoginController@dologin");
+Route::any("home/do_fp", "Home\LoginController@do_fp");
+Route::any("home/do_rp", "Home\LoginController@do_rp");
 Route::any("home/signup", "Home\LoginController@signup");
 Route::any("home/captcha", "Home\LoginController@captcha");
 Route::get("home/tixing", "Home\LoginController@tixing");
@@ -154,10 +156,17 @@ Route::post("home/ajaxhname", "Home\LoginController@ajaxhname");
 Route::post("home/ajaxemails", "Home\LoginController@ajaxemail");
 Route::post("home/ajaxphone", "Home\LoginController@ajaxphone");
 Route::post("home/ajaxcode", "Home\LoginController@ajaxcode");
+
+Route::post("home/ajaxpcode", "Home\LoginController@ajaxpcode");
+Route::post("home/ajaxpcodes", "Home\LoginController@ajaxpcodes");
+
 Route::post("home/ajaxcontrastname", "Home\LoginController@ajaxcontrastname");
 
 //退出登录
 Route::any("home/logout", "Home\LoginController@logout");
+
+// 忘记密码
+Route::any("home/forget_password", "Home\LoginController@forget_password");
 
 // 前台购物车的添加
 Route::get("home/addCar","Home\CartsController@addCar");
@@ -206,8 +215,6 @@ Route::get('home/personinformation','Home\PersonController@informationindex');
 
 Route::group(["middleware" => "login"], function(){});
 	// ajax验证注册用户名
-
-
 
 
 

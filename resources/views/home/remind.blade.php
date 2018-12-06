@@ -13,7 +13,7 @@
 			请点击以下链接完成确认：
 		</p>
 		
-        <a href="http://tdh.com/home/tixing?id={{$hid}}&token={{$token}}">http://tdh.com/home/tixing?id={{$hid}}&token={{$token}}</a>
+        <a href="http://tao.cn/home/tixing?id={{$hid}}&token={{$token}}">http://tao.cn/home/tixing?id={{$hid}}&token={{$token}}</a>
 
 		<p>
 			如果链接不能点击，请复制地址到浏览器，然后直接打开。
