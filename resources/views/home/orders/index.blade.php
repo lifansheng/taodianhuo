@@ -22,6 +22,7 @@
 								<li><a href="#tab3">待发货</a></li>
 								<li><a href="#tab4">待收货</a></li>
 								<li><a href="#tab5">待评价</a></li>
+								<li><a href="#tab2">交易完成</a></li>
 							</ul>
 
 							<div class="am-tabs-bd">
@@ -116,13 +117,29 @@
 																	@elseif($v->status == '2')
 																	<p class="Mystatus">等待发货</p>
 																	@endif
-																	<p class="order-info"><a href="orderinfo.html">订单详情</a></p>
+																	<p class="order-info" oid="{{$v->oid}}"><a href="javascript:void(0);">订单详情</a></p>
 																</div>
 															</li>
+															@if($v->status == '0')
+															<li class="td td-change">
+																<button class="am-btn am-btn-danger anniu shanorder" onclick="window.location='/home/shanorder/{{$v->oid}}'">
+																	删除订单</button>
+															</li>
+															@elseif($v->status == '1')
+															<li class="td td-change">
+																<button type="button" onclick="window.location='/home/queren/{{$v->oid}}'" class="am-btn am-btn-danger anniu">确认收货</button>
+															</li>
+															@elseif($v->status == '2')
 															<li class="td td-change">
 																<div class="am-btn am-btn-danger anniu">
-																	删除订单</div>
+																	提醒发货</div>
 															</li>
+															@elseif($v->status == '4')
+															<li class="td td-change">
+																<div class="am-btn am-btn-danger anniu">
+																	我要评价</div>
+															</li>
+															@endif
 														</div>
 													</div>
 												</div>
@@ -219,7 +236,7 @@
 															<li class="td td-status">
 																<div class="item-status">
 																	<p class="Mystatus">买家已付款</p>
-																	<p class="order-info"><a href="orderinfo.html">订单详情</a></p>
+																	<p class="order-info" oid="{{$vv->oid}}"><a href="javascript:void(0);">订单详情</a></p>
 																</div>
 															</li>
 															<li class="td td-change">
@@ -319,14 +336,13 @@
 															<li class="td td-status">
 																<div class="item-status">
 																	<p class="Mystatus">卖家已发货</p>
-																	<p class="order-info"><a href="orderinfo.html">订单详情</a></p>
+																	<p class="order-info" oid="{{$v->oid}}"><a href="javascript:void(0);">订单详情</a></p>
 																	<p class="order-info"><a href="logistics.html">查看物流</a></p>
 																	<p class="order-info"><a href="#">延长收货</a></p>
 																</div>
 															</li>
 															<li class="td td-change">
-																<div class="am-btn am-btn-danger anniu">
-																	确认收货</div>
+																<button type="button" onclick="window.location='/home/queren/{{$v->oid}}'" class="am-btn am-btn-danger anniu">确认收货</button>
 															</li>
 														</div>
 													</div>
@@ -368,7 +384,7 @@
 											<!--不同状态的订单	-->
 											
 											@foreach($data as $k=>$v)
-											@if($v->status == '0')
+											@if($v->status == '4')
 											<div class="order-status4">
 												<div class="order-title">
 													<div class="dd-num">订单编号：<a href="javascript:;">{{$v->oid}}</a></div>
@@ -424,7 +440,7 @@
 															<li class="td td-status">
 																<div class="item-status">
 																	<p class="Mystatus">交易成功</p>
-																	<p class="order-info"><a href="orderinfo.html">订单详情</a></p>
+																	<p class="order-info" oid="{{$v->oid}}"><a href="javascript:void(0);">订单详情</a></p>
 																	<p class="order-info"><a href="logistics.html">查看物流</a></p>
 																</div>
 															</li>
@@ -446,8 +462,121 @@
 									</div>
 
 								</div>
-							</div>
 
+								<div class="am-tab-panel am-fade" id="tab2">
+									<div class="order-top">
+										<div class="th th-item">
+											<td class="td-inner">商品</td>
+										</div>
+										<div class="th th-price">
+											<td class="td-inner">单价</td>
+										</div>
+										<div class="th th-number">
+											<td class="td-inner">数量</td>
+										</div>
+										<div class="th th-operation">
+											<td class="td-inner">商品操作</td>
+										</div>
+										<div class="th th-amount">
+											<td class="td-inner">合计</td>
+										</div>
+										<div class="th th-status">
+											<td class="td-inner">交易状态</td>
+										</div>
+										<div class="th th-change">
+											<td class="td-inner">交易操作</td>
+										</div>
+									</div>
+
+									<div class="order-main">
+										<div class="order-list">
+											@foreach ($data as $kk=>$vv)
+											@if($vv->status == '0')
+											<div class="order-status2">
+												<div class="order-title">
+													<div class="dd-num">订单编号：<a href="javascript:;">{{$vv->oid}}</a></div>
+													<span>成交时间：{{$vv->addtime}}</span>
+													<!--    <em>店铺：小桔灯</em>-->
+												</div>
+												<div class="order-content">
+													<div class="order-left">
+
+														<ul class="item-list">
+															<li class="td td-item">
+																<div class="item-pic">
+																	<a href="#" class="J_MakePoint">
+																		<img src="{{$vv->imgs}}" class="itempic J_ItemImg">
+																	</a>
+																</div>
+																<div class="item-info" style="margin-top:-100px;">
+																	<div class="item-basic-info">
+																		<a href="#">
+																			<p>{{$vv->name}}</p>
+																			<p class="info-little">口味：{{$vv->leixing}}
+																				<br/>规格：{{$vv->size}}</p>
+																			
+																		</a>
+																	</div>
+																</div>
+															</li>
+															<li class="td td-price">
+																<div class="item-price">
+																	{{$vv->price}}
+																</div>
+															</li>
+															<li class="td td-number">
+																<div class="item-number">
+																	<span>×</span>{{$vv->cnt}}
+																</div>
+															</li>
+															<li class="td td-operation">
+																<div class="item-operation">
+																	<a href="refund.html">退款</a>
+																</div>
+															</li>
+														</ul>
+
+													</div>
+													<div class="order-right">
+														<li class="td td-amount">
+															<div class="item-amount">
+																合计：{{$vv->price*$vv->cnt+10}}
+																<p>含运费：<span>10.00</span></p>
+															</div>
+														</li>
+														<div class="move-right">
+															<li class="td td-status">
+																<div class="item-status">
+																	<p class="Mystatus">交易完成</p>
+																	<p class="order-info" oid="{{$vv->oid}}"><a href="javascript:void(0);">订单详情</a></p>
+																</div>
+															</li>
+															<li class="td td-change">
+																<button class="am-btn am-btn-danger anniu shanorder" onclick="window.location='/home/shanorder/{{$vv->oid}}'">
+																	删除订单</button>
+															</li>
+														</div>
+													</div>
+												</div>
+											</div>
+											@endif
+											@endforeach
+										</div>
+									</div>
+								</div>
+							</div>
+							<script type="text/javascript">
+								$('.order-info').click(function(){
+									// alert('1234');
+									var oid = $(this).attr('oid');
+									window.location.href='/home/orderxiang?oid='+oid;
+								});	
+
+								$('.shanorder').click(function(){
+									confirm('您确定要删除吗');
+									alert('删除成功');
+								});
+							</script>
 						</div>
 					</div>
 				</div>

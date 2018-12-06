@@ -99,4 +99,31 @@ class OrderController extends Controller
     {
         //
     }
+
+    // 订单详情
+    public function orderxiang(Request $request)
+    {
+        $oid = $_GET['oid'];
+        // dd($oid);
+        $res = Orders::where('oid',$oid)->first();
+        // dd($res);
+        return view('home.orders.orderxiang',[
+            'title'=>'订单详情',
+            'res'=>$res
+        ]);
+    }
+
+    // 确认收货
+    public function queren($oid)
+    {
+        Orders::where('oid',$oid)->update(['status'=>'4']);
+        return redirect('/home/order');
+    }
+
+    // 删除订单
+    public function shanorder($oid)
+    {
+        Orders::where('oid',$oid)->delete();
+        return redirect('/home/order');
+    }
 }
