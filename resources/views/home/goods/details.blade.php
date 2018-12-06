@@ -41,7 +41,7 @@
 					<div class="menu-hd"><a href="/" target="_top" class="h">商城首页</a></div>
 				</div>
 				<div class="topMessage my-shangcheng">
-					<div class="menu-hd MyShangcheng"><a href="#" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a></div>
+					<div class="menu-hd MyShangcheng"><a href="/home/person" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a></div>
 				</div>
 				<div class="topMessage mini-cart">
 					<div class="menu-hd"><a id="mc-menu-hd" href="/home/carts" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong id="J_MiniCartNum" class="h">0</strong></a></div>
@@ -125,9 +125,8 @@
 						</div>
 					</section>
 				</div>
-
 				<!--放大镜-->
-
+<!-- 
 				<div class="item-inform">
 					<div class="clearfixLeft" id="clearcontent">
 
@@ -142,9 +141,9 @@
 									});
 								});
 							</script>
-							<!-- <div class="tb-booth tb-pic tb-s310">
+							<div class="tb-booth tb-pic tb-s310">
 								<a href="{{$goods->imgs}}"><img src="/homes/images/01_mid.jpg" alt="细节展示放大镜特效" rel="/homes/images/01.jpg" class="jqzoom" /></a>
-							</div> -->
+							</div>
 
 							<div class="tb-booth tb-pic tb-s310">
 								<a href="{{$goods->imgs}}"><img src="{{$goods->imgs}}" alt="细节展示放大镜特效" rel="{{$goods->gims}}" class="jqzoom" /></a>
@@ -162,7 +161,45 @@
 						</div>
 
 						<div class="clear"></div>
-					</div>
+					</div> -->
+					<!-- 放大镜 -->
+						<link rel="stylesheet" type="text/css" href="/homes/fdj/css/normalize.css" /><!--CSS RESET-->
+						<link href="/homes/fdj/src/jquery.exzoom.css" rel="stylesheet" type="text/css"/>
+							<style>
+							    #exzoom {
+							        width: 400px;
+							        /*height: 400px;*/
+							        margin: 20px auto;
+							    }
+							</style>		
+							<div  class="clearfixLeft" id="clearcontent" style="margin-left: 220px"> 
+								<div class="exzoom" id="exzoom">
+								    <!--大图区域-->
+								    <div class="exzoom_img_box">
+								        <ul class='exzoom_img_ul'>
+								        	@foreach($gimg as $v)
+								            	<li><img src="{{$v->gimg}}"/></li>
+								            @endforeach
+								        </ul>
+								    </div>
+								    <!--缩略图导航-->
+								    <center><div class="exzoom_nav"></div></center>
+								    <!--控制按钮-->
+								    <p class="exzoom_btn">
+								        <a href="javascript:void(0);" class="exzoom_prev_btn"> &lt; </a>
+								        <a href="javascript:void(0);" class="exzoom_next_btn"> &gt; </a>
+								    </p>
+								</div>
+								 
+							</div>
+							
+							<script src="/homes/fdj/js/jquery-1.11.0.min.js" type="text/javascript"></script>
+							<script src="/homes/fdj/src/jquery.exzoom.js"></script>
+						    	<script type="text/javascript">
+							    $("#exzoom").exzoom({
+							        autoPlay: false,
+							    });//方法调用，务必在加载完后执行
+							</script>
 
 					<div class="clearfixRight">
 
@@ -465,7 +502,7 @@
 						            <h2>看了又看</h2>        
 					            </div>
 						     	
-							    <li class="first">
+<!-- 							    <li class="first">
 							      	<div class="p-img">                    
 							      		<a  href="#"> <img class="" src="/homes/images/browse1.jpg"> </a>               
 							      	</div>
@@ -474,7 +511,7 @@
 							      	</a>
 							      	</div>
 							      	<div class="p-price"><strong>￥35.90</strong></div>
-							    </li>	
+							    </li>	 -->
 							    @foreach($likes as $v)			      
 							    <li>
 							      	<div class="p-img">                    
@@ -495,25 +532,18 @@
 							<ul class="am-avg-sm-3 am-tabs-nav am-nav am-nav-tabs">
 								<li class="am-active">
 									<a href="#">
-
 										<span class="index-needs-dt-txt">宝贝详情</span></a>
-
 								</li>
 
 								<li>
 									<a href="#">
-
 										<span class="index-needs-dt-txt">全部评价</span></a>
-
 								</li>
-
 								<li>
 									<a href="#">
-
 										<span class="index-needs-dt-txt">猜你喜欢</span></a>
 								</li>
 							</ul>
-
 							<div class="am-tabs-bd">
 
 								<div class="am-tab-panel am-fade am-in am-active">
@@ -608,7 +638,7 @@
 										<!-- 如果商品的id == 评论的uid 显示数据 -->
 										
 										@foreach($comment as $cv)
-									
+
 										@if($goods->id == $cv->gid)
 
 										<li class="am-comment">
@@ -657,7 +687,7 @@
 												</div>
 											</div>
 										</li>
-
+										
 										@endif
 										@endforeach
 									</ul>
@@ -675,9 +705,9 @@
 										<li><a href="#">&raquo;</a></li>
 									</ul> -->
 									<div class="clear"></div>
-									<div class="tb-reviewsft">
+									<!-- <div class="tb-reviewsft">
 										<div class="tb-rate-alert type-attention">购买前请查看该商品的 <a href="#" target="_blank">购物保障</a>，明确您的售后保障权益。</div>
-									</div>
+									</div> -->
 								</div>
 								<div class="am-tab-panel am-fade">
 									<div class="like">
@@ -687,11 +717,8 @@
 												<div class="i-pic limit">
 													<a href="/home/details?id={{$v->id}}">
 													<img src="{{$v->imgs}}" width="212px" height="212px" />											
-													<p class="title fl" style="text-align: center;line-height: 30px;margin-top: 20px;">{{$v->gname}}</p>
-													<p class="price fl" style="text-align: center;line-height: 30px;margin-top: 20px;">
-														<b>¥</b>
-														<strong>{{$v->price}}</strong>
-													</p>
+													<h5>{{$v->gname}}</h5>
+													
 												</div>
 											</li>
 											@endforeach
@@ -723,7 +750,6 @@
 									<b>|</b>
 									@endforeach
 								</p>
-
 							</div>
 							<div class="footer-bd">
 								<p>
@@ -736,7 +762,6 @@
 							</div>
 						</div>
 					</div>
-
 				</div>
 			</div>
 			<!--菜单 -->

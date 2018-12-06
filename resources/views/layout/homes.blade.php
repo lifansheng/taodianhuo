@@ -5,8 +5,6 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		
-		
 
 		<!-- xiangqiang -->
 
@@ -54,8 +52,12 @@
 				@endif
 				<ul class="message-r">
 					<div class="topMessage home">
+						<div class="menu-hd"><a href="/home/leader" target="_top" class="h">购物向导</a></div>
+					</div>
+					<div class="topMessage home">
 						<div class="menu-hd"><a href="/" target="_top" class="h">商城首页</a></div>
 					</div>
+					
 					<div class="topMessage my-shangcheng">
 						<div class="menu-hd MyShangcheng"><a href="/home/person" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a></div>
 					</div>
@@ -78,9 +80,7 @@
 									
 						   			
 							@endphp
-
-
-							@foreach($sites as $v)
+					@foreach($sites as $v)
 					<li><img src="{{$v -> logo}}" /></li>
 					@endforeach
 				</div>
@@ -94,13 +94,12 @@
 					</form>
 				</div>
 			</div>
-
 			<div class="clear"></div>
 		</div>
 
-@section('content')		        				
-						
-@show
+	@section('content')		        				
+							
+	@show
 				</div>
 			</div>
 					<div class="footer ">
@@ -109,13 +108,13 @@
 									$links  = HomeController::fulei2();
 									
 									
-							@endphp
-
-							
+								@endphp							
 							<p>
 								@foreach($links as $v)
-								<a href="{{$v -> lurl}}">{{$v-> lname}}</a>
-								<b>|</b>
+									<a href="{{$v->lurl}}" title="">
+									<!-- <img src="{{$v->lpic}}" alt="" width="23px" height="23px" title="{{$v->lname}}"> -->
+									{{$v->lname}}</a>
+									<b>|</b>
 								@endforeach
 							</p>
 						</div>

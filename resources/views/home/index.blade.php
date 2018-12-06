@@ -35,12 +35,9 @@
 						</div>
 						<!-- 引入静态方法 -->
 	        			@php
-
 							use App\Http\Controllers\Home\HomeController;
 
 							$res = HomeController::getCateMessage(0);
-
-
 						@endphp
 
 						<!--侧边导航 -->
@@ -65,7 +62,7 @@
 																<div class="sort-side">
 																	@foreach($v->sub as $vv)
 																	<dl class="dl-sort">
-																		<dt><span title={{$vv->title}}>{{$vv->title}}</span></dt>
+																		<dt><span title={{$vv->id}}>{{$vv->title}}</span></dt>
 																		@foreach($vv->sub as $vvv)
 																		<dd><a title="{{$vvv->title}}" href="/homes/search?cid={{$vvv->id}}"><span>{{$vvv->title}}</span></a></dd>
 																		@endforeach
@@ -168,19 +165,22 @@
 						@endif
 							<span class="marqueen-title">商城头条</span>
 						<div class="demo">
-
-							<ul>
-								<!-- <li class="title-first"><a target="_blank" href="#">
-									<img src="/homes/images/TJ2.jpg"></img>
-									<span>[特惠]</span>商城爆品1分秒								
-								</a></li> -->
+							<ul id="news">
 								@foreach($news as $news_v)							    
-								<li><a target="_blank" href="#"><span>[{{$news_v->title}}]</span>{{$news_v->content}}</a></li>
+								<li ><a target="_blank" href="#"><span style="color:red">[{{$news_v->title}}]</span>{{$news_v->content}}</a></li>
 								@endforeach
 							</ul>
                         	<div class="advTip"><img src="/homes/images/advTip.jpg"/></div>
 						</div>
 					</div>
+					<!-- 新闻滚动 -->
+					<script>
+						//setinterval
+						setInterval(function(){
+							//最后一个慢慢隐藏插入到第一条 
+							$('#news li').last().hide().slideDown(2000).prependTo('#news');
+						},3500);
+					</script>
 					<div class="clear"></div>
 				</div>
 				<script type="text/javascript">
@@ -207,8 +207,8 @@
 
 					<div class="am-g am-g-fixed recommendation">
 						<div class="clock am-u-sm-3" ">
-							<img src="/homes/images/2016.png "></img>
-							<p>今日<br>推荐</p>
+							<img src="/homes/images/566.png" style="margin-top: -15px;margin-right: 5px;" width="245px" height="145px"></img>
+							<p>今日<br><br>推荐</p>
 						</div>
 						<div class="am-u-sm-4 am-u-lg-3 ">
 							<div class="info ">
@@ -288,7 +288,7 @@
 								@if($v->status == 1)								
 									<li style="margin-left: 35px;margin-top: 6px;">
 										<div class="list " >
-											<a href="home/details?id={{$v->id}}">
+											<a href="/home/details?id={{$v->id}}">
 												<img src="{{$v->imgs}}"  width="188px" height="188px"  / >
 												<div class="pro-title ">{{$v->gname}}</div>
 												<span class="e-price ">￥{{$v->price}}</span>	
