@@ -82,7 +82,10 @@ Route::group(["middleware" => ["login", "userper"]], function(){
 	Route::any('/admin/upload','Admin\LunboController@upload');
 
 	// 后台订单管理
-	Route::any('admin/order','Admin\OrderController@index');
+	Route::resource('admin/a_order','Admin\OrderController');
+	// 后台订单详情
+	Route::get('admin/details/{oid}','Admin\OrderController@details');
+	Route::get('admin/fahuo/{oid}','Admin\OrderController@fahuo');
 
 	//友情链接
 	Route::resource('admin/link', 'Admin\LinkController');

@@ -15,20 +15,20 @@
     <div class="mws-panel-body no-padding">
         <div role="grid" class="dataTables_wrapper" id="DataTables_Table_1_wrapper">
 
-        	<form action="/admin/address" method='get'>
+        	<form action="/admin/order" method='get'>
             <div id="DataTables_Table_1_length" class="dataTables_length">
                 <label>
                     显示
                     <select name="num" size="1" aria-controls="DataTables_Table_1">
 
-                         <option value="5" @if($request->num == 5)  selected="selected" @endif>
-                            5
-                        </option>
-                        <option value="8"  @if($request->num == 8)  selected="selected" @endif>
+                         <option value="8" @if($request->num == 8)  selected="selected" @endif>
                             8
                         </option>
-                        <option value="12"  @if($request->num == 12)  selected="selected" @endif>
-                            12
+                        <option value="15"  @if($request->num == 15)  selected="selected" @endif>
+                            15
+                        </option>
+                        <option value="20"  @if($request->num == 20)  selected="selected" @endif>
+                            20
                         </option>
                     </select>
                     条数据
@@ -53,20 +53,28 @@
                 <thead>
                     <tr role="row">
                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
-                        rowspan="1" colspan="1" style="width: 133px;" aria-label="Engine version: activate to sort column ascending">
+                        rowspan="1" colspan="1" style="width: 60px;" aria-label="Engine version: activate to sort column ascending">
                             订单号
                         </th>
                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
-                        rowspan="1" colspan="1" style="width: 100px;" aria-label="Browser: activate to sort column ascending">
+                        rowspan="1" colspan="1" style="width: 50px;" aria-label="Browser: activate to sort column ascending">
                             收货人
                         </th>
                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
-                        rowspan="1" colspan="1" style="width: 100px;" aria-label="Platform(s): activate to sort column ascending">
+                        rowspan="1" colspan="1" style="width: 70px;" aria-label="Platform(s): activate to sort column ascending">
                         联系方式
                         </th>
                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
                         rowspan="1" colspan="1" style="width: 133px;" aria-label="Engine version: activate to sort column ascending">
                             收货地址
+                        </th>
+                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
+                        rowspan="1" colspan="1" style="width: 90px;" aria-label="Engine version: activate to sort column ascending">
+                            下单时间
+                        </th>
+                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
+                        rowspan="1" colspan="1" style="width: 133px;" aria-label="Engine version: activate to sort column ascending">
+                            订单状态
                         </th>
                          <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
                         rowspan="1" colspan="1" style="width: 133px;" aria-label="Engine version: activate to sort column ascending">
@@ -91,21 +99,34 @@
                             {{$v->oid}}
                         </td>
                         <td class="name">
-                            {{$v['orderaddr']->name}}
+                            {{$v->addrname}}
                         </td>
                         
                         <td class="lurl">
-                            {{$v['orderaddr']->phone}}
+                            {{$v->tel}}
                         </td>
-                         <td class="lurl">
-                            {{$v['orderaddr']->address}}
+                        <td class="lurl">
+                            {{$v->addr.$v->xiangxiaddr}}
                         </td>
-                       
-                      
-                        <td class=" ">
-                            <a href="/admin/address/{{$v->id}}/edit" class='btn btn-info'>修改</a>
 
-                            <form action="/admin/address/{{$v->id}}" method='post' style='display:inline'>
+                        <td class="">
+                            {{$v->addtime}}
+                        </td>
+                       <td>
+                           @if ($v->status==2) 买家已付款(待发货)
+                           @elseif ($v->status == 1) 已发货(等待买家确认收货)
+                           @else ($v->status == 0) 交易完成
+                           @endif
+                       </td>
+                        <td class=" ">
+                            @if($v->status == 2)
+                            <button type="button" class="btn btn-success" onclick="window.location='/admin/fahuo/{{$v->oid}}'">发货</button>
+                            @endif
+                            <a href="/admin/details/{{$v->oid}}" class="btn btn-warning">详情</a>
+
+                            <a href="/admin/a_order/{{$v->oid}}/edit" class='btn btn-info'>修改</a>
+
+                            <form action="/admin/a_order/{{$v->oid}}" method='post' style='display:inline'>
                             	{{csrf_field()}}
 
                             	{{method_field("DELETE")}}
@@ -119,60 +140,58 @@
             </table>
 			
 			<style>
+            .pagination li a{
 
-			.pagination li a{
+                color: #fff;
+            }
+                
+            .pagination li{
+                    float: left;
+                    height: 20px;
+                    padding: 0 10px;
+                    display: block;
+                    font-size: 12px;
+                    line-height: 20px;
+                    text-align: center;
+                    cursor: pointer;
+                    outline: none;
+                    background-color: #444444;
+                    
+                    text-decoration: none;
+                  
+                    border-right: 1px solid rgba(0, 0, 0, 0.5);
+                    border-left: 1px solid rgba(255, 255, 255, 0.15);
+                   
+                    box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.5), inset 0px 1px 0px rgba(255, 255, 255, 0.15);
+                }
 
-				color: #fff;
-			}
-				
-				.pagination li{
-					float: left;
-				    height: 20px;
-				    padding: 0 10px;
-				    display: block;
-				    font-size: 12px;
-				    line-height: 20px;
-				    text-align: center;
-				    cursor: pointer;
-				    outline: none;
-				    background-color: #444444;
-				    
-				    text-decoration: none;
-				  
-				    border-right: 1px solid rgba(0, 0, 0, 0.5);
-				    border-left: 1px solid rgba(255, 255, 255, 0.15);
-				   
-				    box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.5), inset 0px 1px 0px rgba(255, 255, 255, 0.15);
-				}
+            .pagination  .active{
+                color: #323232;
+                border: none;
+                background-image: none;
+                background-color: #88a9eb;
+               
+                box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.25);
+            }
 
-				.pagination  .active{
-					    color: #323232;
-					    border: none;
-					    background-image: none;
-					    background-color: #88a9eb;
-					   
-					    box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.25);
-				}
+            .pagination .disabled{
+                color: #666666;
+                cursor: default;
 
-				.pagination .disabled{
-					color: #666666;
-    				cursor: default;
-
-				}
-				
-				.pagination{
-					margin:0px;
-				}
-				
-			</style>
-
+            }
+                
+            .pagination{
+                margin:0px;
+            }
+            </style>
             <div class="dataTables_info" id="DataTables_Table_1_info">
-             
+                显示当前页码是{{$res->currentPage()}} 从{{$res->firstItem()}} to {{$res->lastItem()}} 一共{{$res->total()}}条数据
             </div>
             <div class="dataTables_paginate paging_full_numbers" id="DataTables_Table_1_paginate">
+                
+                {{$res->appends($request->all())->links()}}
 
-
-            </div>
+            </div>  
         </div>
     </div>
 </div>

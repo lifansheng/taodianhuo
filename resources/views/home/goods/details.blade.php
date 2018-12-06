@@ -43,8 +43,12 @@
 				<div class="topMessage my-shangcheng">
 					<div class="menu-hd MyShangcheng"><a href="#" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a></div>
 				</div>
+				@php
+					$count = DB::table('shopcar') -> where('hid',session('hid')) -> count();
+				@endphp
+
 				<div class="topMessage mini-cart">
-					<div class="menu-hd"><a id="mc-menu-hd" href="/home/carts" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong id="J_MiniCartNum" class="h">0</strong></a></div>
+					<div class="menu-hd"><a id="mc-menu-hd" href="/home/carts" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong id="J_MiniCartNum" class="h">{{$count}}</strong></a></div>
 				</div>
 				<div class="topMessage favorite">
 					<div class="menu-hd"><a href="#" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>收藏夹</span></a></div>
@@ -770,7 +774,7 @@
 							<p class="cartss">
 								购物车
 							</p>
-							<p class="cart_num">0</p>
+							<p class="cart_num">{{$count}}</p>
 						</div>
 						<div id="asset" class="item">
 							<a href="#">

@@ -59,9 +59,21 @@
 					<div class="topMessage my-shangcheng">
 						<div class="menu-hd MyShangcheng"><a href="/home/person" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a></div>
 					</div>
+
+					@if (session('hid'))
+
+
+					@php
+						$count = DB::table('shopcar') -> where('hid',session('hid')) -> count();
+					@endphp
 					<div class="topMessage mini-cart">
-						<div class="menu-hd"><a id="mc-menu-hd" href="/home/carts" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong id="J_MiniCartNum" class="h">0</strong></a></div>
+						<div class="menu-hd" id='haha'><a id="mc-menu-hd" href="javascript:void(0)" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong id="J_MiniCartNum" class="h">{{$count}}</strong></a></div>
 					</div>
+					@else
+					<div class="topMessage mini-cart">
+						<div class="menu-hd" id='hehe'><a id="mc-menu-hd" href="javascript:void(0)" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong id="J_MiniCartNum" class="h">0</strong></a></div>
+					</div>
+					@endif
 					<div class="topMessage favorite">
 						<div class="menu-hd"><a href="#" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>收藏夹</span></a></div>
 				</ul>
@@ -161,8 +173,19 @@
 						</div>
 
 					</div>
+					@if(session('hid'))
 					<div id="shopCart " class="item cartss">
-						<a href="/home/carts">
+						<a href="javascript:void(0)">
+							<span class="message "></span>
+						</a>
+						<p>
+							购物车
+						</p>
+						<p class="cart_num ">{{$count}}</p>
+					</div>
+					@else
+					<div id="shopCart " class="item gologin">
+						<a href="javascript:void(0)">
 							<span class="message "></span>
 						</a>
 						<p>
@@ -170,6 +193,8 @@
 						</p>
 						<p class="cart_num ">0</p>
 					</div>
+
+					@endif
 					<div id="asset " class="item ">
 						<a href="# ">
 							<span class="view "></span>
@@ -304,6 +329,24 @@
 		<script type="text/javascript">
 			$('.cartss').bind('click',function(){
 				location.href="/home/carts";
+			})
+
+			$('#haha').bind('click',function(){
+				location.href="/home/carts";
+			})
+
+			$('.gologin').click(function(){
+				alert('请先去登陆...');
+				setTimeout(function(){
+					location.href="/home/login";
+				},10);
+			})
+
+			$('#hehe').click(function(){
+				alert('请先去登陆...');
+				setTimeout(function(){
+					location.href="/home/login";
+				},10);
 			})
 		</script>
 @section('js')
