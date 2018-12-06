@@ -35,7 +35,12 @@
                         <input class="small" type="hidden" name="uid" value="{{$res->uid}}">
                     </div>
                 </div>
-                
+                <div class="mws-form-row" >
+                    <label class="mws-form-label">订单id</label>
+                    <div class="mws-form-item">
+                        <input class="small" type="text" name="oid" value="{{$res->oid}}" disabled>
+                    </div>
+                </div>
                 <div class="mws-form-row">
                     <label class="mws-form-label">商品名</label>
                     <div class="mws-form-item">
@@ -48,6 +53,7 @@
                         <input class="small" type="text" name="gid" value="{{$res->gid}}">
                     </div>
                 </div>
+
 
                  <div class="mws-form-row">
                     <label class="mws-form-label">商品图片</label>

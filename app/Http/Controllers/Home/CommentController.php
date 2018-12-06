@@ -36,7 +36,7 @@ class CommentController extends Controller
     	// dd($res);
     	// dd($res['oid']);
     	// if($res['oid'] == )
-    	$order = DB::table('order')->where('oid',$res['oid'])->update(['status' => 4]);
+    	$order = DB::table('order')->where('oid',$res['oid'])->update(['status' => '0']);
     		// DB::table('order')->where('oid',$oid)->first();
     	// exit;
     	try{
