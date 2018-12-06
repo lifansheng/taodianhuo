@@ -118,7 +118,7 @@ class CartsController extends Controller
     }
 
     /**
-     * 
+     * 立即购买
      *
      * @return \Illuminate\Http\Response
      */
@@ -130,9 +130,13 @@ class CartsController extends Controller
         $hid = session('hid');
         // dd($hid);
         $addrs = Address::where('hid',$hid)->orderBy('status','desc') -> get();
-        $addr = Address::where('status','1')->first();
-        $request->session()->put('addr',$addr);
+        $addr = Address::where([
+            ['status','=','1'],
+            ['hid','=',session('hid')],
+
+        ])->first();
         // dd($addr);
+        $request->session()->flash('addr',$addr);
         $data = Goods::where('id',$id) -> get();
         // dd($data);
 
@@ -140,7 +144,7 @@ class CartsController extends Controller
         $data[0]['leixing'] = $_GET['leixing'];
         $data[0]['cnt'] = $_GET['num'];
         // dd($data);
-        $request->session()->put('liGO',$data);
+        $request->session()->flash('liGO',$data);
         return view('home.carts.jiesuan',[
             'title'=>'订单结算',
             'data'=>$data,
@@ -162,8 +166,13 @@ class CartsController extends Controller
         $data = Carts::find($id) -> all();
         $hid = session('hid');
         $addrs = Address::where('hid',$hid)->orderBy('status','desc') -> get();
-        $addr = Address::where('status','1')->first();
-        $request->session()->put('addr',$addr);
+        $addr = Address::where([
+            ['status','=','1'],
+            ['hid','=',session('hid')],
+
+        ])->first();
+        // dd($addr);
+        $request->session()->flash('addr',$addr);
 
         // dd($data);
         return view('home.carts.jiesuan',[
@@ -191,11 +200,13 @@ class CartsController extends Controller
                     'oid'=>time().rand(111,999),
                     'hid'=>session('hid'),
                     'name'=>$data[$i]['gname'],
+                    'addrname'=>session('addr')['name'],
                     'imgs'=>$data[$i]['imgs'],
-                    'addr'=>session('addr')['id'],
+                    'addr'=>session('addr')['address'],
+                    'xiangxiaddr'=>session('addr')['xiangxiaddress'],
                     'tel'=>session('addr')['phone'],
                     'cnt'=>$data[$i]['cnt'],
-                    'addtime'=>time(),
+                    'addtime'=>date('Y-m-d H:i:s',time()),
                     'price'=>$data[$i]['price'],
                     'message'=>$_GET['liuyan'],
                     'status'=>1,
@@ -209,11 +220,13 @@ class CartsController extends Controller
                 'oid'=>time().rand(111,999),
                 'hid'=>session('hid'),
                 'name'=>$data[0]['gname'],
+                'addrname'=>session('addr')['name'],
                 'imgs'=>$data[0]['imgs'],
-                'addr'=>session('addr')['id'],
+                'addr'=>session('addr')['address'],
+                'xiangxiaddr'=>session('addr')['xiangxiaddress'],
                 'tel'=>session('addr')['phone'],
                 'cnt'=>$data[0]['cnt'],
-                'addtime'=>time(),
+                'addtime'=>date('Y-m-d H:i:s',time()),
                 'price'=>$data[0]['price'],
                 'message'=>$_GET['liuyan'],
                 'status'=>1,

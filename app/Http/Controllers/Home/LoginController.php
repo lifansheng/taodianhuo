@@ -23,7 +23,7 @@ class LoginController extends Controller
     // 登录的方法
     public function dologin(Request $request)
     {
-        echo 1; exit;
+        // echo 1; exit;
     	$res = $request -> except("_token", "code");
         // dd($res["username"]);
     
@@ -68,7 +68,7 @@ class LoginController extends Controller
     // 注册的方法
     public function signup(Request $request)
     {
-    	echo 1; exit;
+    	// echo 1; exit;
     	$res = $request -> except("_token", "code", "confirm_password");
 
 

@@ -17,7 +17,7 @@ class OrderController extends Controller
     public function index(Request $request)
     {
         
-        $res = Orders::orderBy('hid','ace')
+        $res = Orders::with('orderaddr')->orderBy('hid','ace')
             ->where(function($query) use($request){
                  //按照订单号查询
                 $id = $request->input('oid');
@@ -31,13 +31,36 @@ class OrderController extends Controller
                 //     $query->where('name','like','%'.$name.'%');
                 // }
             })
-            ->paginate($request->input('num', 3));
+            ->paginate($request->input('num', 8));
+
+            // dd($res);
 
         return view('admin.a_order.index',[
             'title'=>'订单管理',
             'res'=>$res,
             'request'=>$request
         ]);
+    }
+
+
+    // 订单详情
+    public function details(Request $request,$oid)
+    {
+        // dd($oid);
+        $data = Orders::where('oid',$oid) -> first();
+        // dd($data);
+        return view('admin.a_order.details',[
+            'title'=>'订单详情',
+            'data'=>$data
+        ]);
+
+    }
+
+    // 发货
+    public function fahuo($oid)
+    {
+        Orders::where('oid',$oid)->update(['status'=>'1']);
+        return redirect('/admin/order');
     }
 
     /**
@@ -78,9 +101,14 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($oid)
     {
-        //
+        $data = Orders::where('oid',$oid) -> first();
+        // dd($data);
+        return view('admin.a_order.edit',[
+            'title'=>'修改订单',
+            'data'=>$data
+        ]);
     }
 
     /**

@@ -27,11 +27,14 @@
 									</div>
 									<div class="default-address DefaultAddr">
 										<span class="buy-line-title buy-line-title-type">收货地址：</span>
+										<span class="buy--address-detail">										
+										<span class="province">{{$v->address}}</span>
+									</div>
+									<div class="default-address DefaultAddr">
+										<span class="buy-line-title buy-line-title-type">详细地址：</span>
 										<span class="buy--address-detail">
-										<span class="street">{{$v->address}}</span>
-										</span>
 
-										</span>
+										<span class="street">{{$v->xiangxiaddress}}</span>
 									</div>
 									@if ($v->status == 1)
 									<ins class="deftip">默认地址</ins>
@@ -248,7 +251,7 @@
 
 											<p class="buy-footer-address">
 												<span class="buy-line-title buy-line-title-type">寄送至：</span>
-												<span class="street">{{session("addr")['address']}}</span>
+												<span class="street">{{session("addr")['xiangxiaddress']}}</span>
 											</p>
 											<p class="buy-footer-address">
 												<span class="buy-line-title">收货人：</span>

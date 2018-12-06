@@ -209,14 +209,14 @@
 
 
 		if (CS && US) {
-			console.log(CS);
-			alert(1);
+			// console.log(CS);
+			// alert(1);
 			return true;
 			
 		}
 			// regerror();
-			console.log(CS);
-			alert(0);
+			// console.log(CS);
+			// alert(0);
 			return false;
 		
 	})
