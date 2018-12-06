@@ -26,9 +26,13 @@ class CommentController extends Controller
                 //检测关键字
                
                 $content = $request->input("content");
+                $oid = $request->input("oid");
                 //如果用户名不为空
                 if(!empty($content)) {
                     $query->where("content","like","%".$content."%");
+                }
+                if(!empty($oid)) {
+                    $query->where("oid","like","%".$oid."%");
                 }
             })
         ->paginate($request->input("num", 10));

@@ -35,9 +35,9 @@
             </div>
             <div class="dataTables_filter" id="DataTables_Table_1_filter">
                 <label>
-                   <!--  标题:
-                    <input type="text" name='title' value="{{$request->title}}" aria-controls="DataTables_Table_1">
-                    作者: -->
+                    订单号:
+                    <input type="text" name='oid' value="{{$request->oid}}" aria-controls="DataTables_Table_1">
+                    <!-- 作者: -->
                     内容：
                     <input type="text" name='content' value="{{$request->content}}" aria-controls="DataTables_Table_1">
               </label>
@@ -66,6 +66,10 @@
                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
                         rowspan="1" colspan="1" style="width: 100px;" aria-label="Platform(s): activate to sort column ascending">
                             商品图片
+                        </th>
+                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
+                        rowspan="1" colspan="1" style="width: 100px;" aria-label="Platform(s): activate to sort column ascending">
+                            订单id
                         </th>
                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
                         rowspan="1" colspan="1" style="width: 100px;" aria-label="Engine version: activate to sort column ascending">
@@ -124,6 +128,9 @@
                                     <img src="{{$gv->imgs}}" alt="">
                                 @endif
                             @endforeach
+                        </td>
+                        <td class=" "  style=" text-align:center; ">
+                            {{$v->oid}}
                         </td>
                         <td class=" "  style=" text-align:center; ">
                             {{$v->addtime}}
