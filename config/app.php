@@ -227,6 +227,6 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
     ],
-        "email" => "497296304@qq.com",
+        "email" => "1526175521@qq.com",
 
 ];

@@ -41,6 +41,11 @@
 		<p>Link the world. Share to world.</p>
 	</div>
 	<br>
+	@if(session('success'))
+        <div class="mws-form-message">
+            <li style="list-style: none;display: block; -webkit-transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out; transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out; border-radius: 0px 0px 5px 5px; width: 300px; height: 34px; border: 1px solid rgba(255,255,255,.15); line-height: 31px; box-shadow: 0 2px 3px 0 rgba(0,0,0,.1) inset; text-shadow: 0 1px 2px rgba(0,0,0,.1); background: green; -moz-border-radius: 6px; margin: 0 auto; border-radius:15px;">{{session('success')}}</li>
+        </div>
+    @endif
 	@if(session('error'))
     <div class="mws-form-message">
         <li style="list-style: none;display: block; -webkit-transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out; transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out; border-radius: 0px 0px 5px 5px; width: 300px; height: 34px; border: 1px solid rgba(255,255,255,.15); line-height: 31px; box-shadow: 0 2px 3px 0 rgba(0,0,0,.1) inset; text-shadow: 0 1px 2px rgba(0,0,0,.1); background: rgba(245, 26, 26, 0.81); -moz-border-radius: 6px; margin: 0 auto; border-radius:15px;">{{session('error')}}</li>
@@ -53,9 +58,11 @@
 		
 		<div>
 			<input type="text" name="username" class="username" placeholder="用户名" autocomplete="off"/>
+			<label id="codeerror" class="errorsss" for="code">用户名不能为空</label>
 		</div>
 		<div>
 			<input type="password" name="password" class="password" placeholder="密码" oncontextmenu="return false" onpaste="return false" />
+			<label id="codeerror" class="errorsssss" for="code">密码不能为空</label>
 		</div>
 		<div>
 			<input type="text" name="code" class="code" placeholder="输入验证码" oncontextmenu="return false" onpaste="return false" />
@@ -63,8 +70,9 @@
 			<label id="codeerror" class="errors" for="code">验证码错误</label>
 			
 		</div>
+		<a href="/home/forget_password" style="float:right;font-size:8px;color:#eee;text-decoration:none;margin-top:5px;">忘记密码?</a>
 		<div>
-			<img src="/home/captcha" alt="" onclick='this.src = this.src+="?1"' style="float:right; margin-top:26px; border-radius:8px;">
+			<img src="/home/captcha" alt="" onclick='this.src = this.src+="?1"' style="float:right; margin-top:20px;margin-left:120px; border-radius:8px;">
 		</div>
 		<button id="submit" type="submit">登 录</button>
 		<!-- <div>
@@ -92,14 +100,16 @@
 	    }
 	});
 
-	var CS = true;
-	var US = true;
+	var CS = false;
+	var US = false;
+	var PS = false;
 
 	//  设置提示信息隐藏
     $(".errors").css("display", "none");
     $(".errorss").css("display", "none");
-    // $(".errorsss").css("display", "none");
+    $(".errorsss").css("display", "none");
     $(".errorssss").css("display", "none");
+    $(".errorsssss").css("display", "none");
 
     
     $('.mws-form-message').delay(2000).fadeOut(2000);
@@ -144,7 +154,8 @@
 
 			// 发送ajax
 			if (uv == ''){
-    			$(".errorssss").css("display", "none");
+				$(".errorsss").removeAttr("style").delay(2000).fadeOut(2000);
+    			US = false;
 			} else {
 				$.post("/home/ajaxcontrastname", {username:uv}, function(data){
 					// console.log(data);
@@ -160,14 +171,23 @@
 			}
 			
 		})
+
+		// 发送密码
+		$("input[name=password]").blur(function(data){
+			var pv = $("input[name=password]").val();	// console.log(pv);
+
+			if (pv == "") {
+				$(".errorsssss").removeAttr("style").delay(2000).fadeOut(2000);
+	    		PS = false;
+			} else {
+				PS = true;
+			}
+		})
 	}
 	regerror();
 
-	/*// 发送密码
-	$("input[name=password]").blur(function(data){
-		var pv = $("input[name=password]").val();	// console.log(pv);
-
-		// 发送ajax
+	
+		/*// 发送ajax
 		$.post("/home/ajaxcontrast", {password:pv}, function(data){
 			console.log(data);
 
@@ -178,8 +198,8 @@
 				$(".errorsss").css("display", "none");
 				PS = true;
 			}
-		})
-	})*/
+		})*/
+	
 
 	/*// 验证用户名和密码
 	$("#loginForm").submit(function(){
@@ -205,20 +225,16 @@
 	$("#submit").click(function(){
 
 		$("input[name=code]").trigger("blur");
+		$("input[name=password]").trigger("blur");
 		$("input[name=username]").trigger("blur");
 
 
 		if (CS && US) {
-			console.log(CS);
-			alert(1);
 			return true;
-			
-		}
+		} else {
 			// regerror();
-			console.log(CS);
-			alert(0);
 			return false;
-		
+		}	
 	})
 </script>
 

@@ -55,7 +55,7 @@
 			<label id="phone" class="errors" for="phone">手机号码已被注册</label>
 		</div>
 		<div>
-			<input type="email" name="email" class="email" placeholder="输入邮箱地址" oncontextmenu="return false" onpaste="return false" />
+			<input type="text" name="email" class="email" placeholder="输入邮箱地址"  />
 			<label id="email" class="errors" for="email">邮箱已被注册</label>
 		</div>
 		<div>
@@ -93,18 +93,18 @@
 	    }
 	});
 
-	var US = true;
-	var PS = true;
-	var ES = true;
-	var CS = true;
+	var US = false;
+	var PS = false;
+	var ES = false;
+	var CS = false;
 
 	//  设置提示信息隐藏
     $(".errors").css("display", "none");
     $(".errorss").css("display", "none");
 
 
-	function regerror()
-	{
+	// function regerror()
+	// {
 	    // 用户名
 		// 失去焦点事件
 		$("input[name=username]").blur(function(){
@@ -189,21 +189,22 @@
 		    
 		    // 发送ajax与数据库做比对
 		    $.post("/home/ajaxcode", {code:pv}, function(data){
-		    	console.log(data);
+		    	// console.log(data);
 		    	if (data == 0) {
 		    		$(".errors:eq(3)").removeAttr("style").delay(2000).fadeOut(2000);
 		    		CS = false;
 		    	} else if (data == 1) {
 		    		// $(".errors:eq(3)").css("display", "none");
 		    		CS = true;
+		    		// alert(1);
 		    	}
 		    })
 		})
-	}
-	regerror();
+	// }
+	// regerror();
 
 	// 按钮点击事件
-	$("#submit").click(function(){
+	$("#registerForm").submit(function(){
 
 		// 触发失去焦点事件判断ajax
 		$('input[name=code]').trigger('blur');
@@ -217,7 +218,8 @@
 		} else {
 			// 如果有为假的 执行一次ajax
 			// regerror();
-			return false;				
+			alert(false);
+			return false;
 		}
 	})
 	

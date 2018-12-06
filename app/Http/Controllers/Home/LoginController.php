@@ -23,7 +23,7 @@ class LoginController extends Controller
     // 登录的方法
     public function dologin(Request $request)
     {
-        echo 1; exit;
+        // echo 1; exit;
     	$res = $request -> except("_token", "code");
         // dd($res["username"]);
     
@@ -68,13 +68,14 @@ class LoginController extends Controller
     // 注册的方法
     public function signup(Request $request)
     {
-    	echo 1; exit;
+    	// echo 1; exit;
     	$res = $request -> except("_token", "code", "confirm_password");
 
 
     	// dd($res);
     	//网数据表里面添加数据  hash加密
         $res["password"] = Hash::make($request->password);
+        // dd($res);
         
 
     	// 存数据
@@ -85,7 +86,7 @@ class LoginController extends Controller
         // dd($rs);
         $res['token'] = str_random(40);
         session(["token"=>$res["token"]]);
-          //   if($rs){
+        if($rs){
     	// 发送邮件
         	Mail::send('home.remind', ['hid'=>$rs,'token'=>$res['token'],'email'=>$res['email'],'username'=>$res['username']], function ($m) use ($res) {
 
@@ -98,6 +99,7 @@ class LoginController extends Controller
 
             return view('/home/tixing',['title'=>'新注册用户提醒邮件']);
         }
+    }
 
     // 邮件的提醒方法
     public function tixing(Request $request)
@@ -223,12 +225,29 @@ class LoginController extends Controller
     }
 
 
-    public function ajaxcontrastname(Request $request){
-        // 获取用户所输入的用户名和密码
+    public function ajaxcontrastname(Request $request)
+    {
+        // 获取用户所输入的用户名
         $username = $request -> get("username");
 
         // 与数据库里的用户名做比对
         $res = Homes::where("username", $username)->first(); 
+
+        if (!$res) {
+            echo 0;
+        } else {
+            echo 1;
+        }
+    }
+
+    public function ajaxcontrastphone(Request $request)
+    {
+        // 获取用户所输入的手机号
+        $phone = $request -> get("phone_number");
+
+        // 与数据库里的用户名做比对
+        $res = Homes::where("phone_number", $phone)->first();
+        dd($res); 
 
         if (!$res) {
             echo 0;
@@ -304,5 +323,88 @@ class LoginController extends Controller
         session(['hid'=>'']);
 
         return redirect('/');
+    }
+
+    // 忘记密码
+    public function forget_password()
+    {
+        return view("home/forget_password", ["title" => "密码找回页面"]);
+    }
+
+    public function do_fp(Request $request)
+    {
+        // 获取用户提交的数据
+        $res = $request -> only("phone_number");
+        // dd($res);
+
+        return view("home/reset_password",[
+            "title" => "密码重置页面",
+            "res" => $res
+        ]);    
+    }
+
+    // 重置密码
+    public function do_rp(Request $request)
+    {
+        // 获取用户提交的数据
+        $res = $request -> only("password", "phone_number");   
+        // dd($res);
+
+        //网数据表里面添加数据  hash加密
+        $res["password"] = Hash::make($request->password);
+        // dd($res["password"]);
+
+        // 修改数据
+        $data = Homes::where("phone_number", $res["phone_number"])->update(["password"=>$res["password"]]);
+        
+        if (!$data) {
+            return back() -> with("error", "修改失败");
+        } else {
+            return redirect("/home/login")->with("success", "修改成功,请登录");
+        }
+    }
+
+    // 短信验证码
+    public function ajaxpcode(Request $request)
+    {
+        $Number = $request -> get("number");
+        $rs = $request -> get("codes");
+
+        //初始化必填
+        $options['accountsid']='a0477649bdaaa0d7a7a94ec91fc9a490';
+        $options['token']='43fbcb4f69bfbd0561ce625a1d5b4682';
+
+        //初始化 $options必填
+        $ucpass = new \Ucpaas($options);
+
+        //开发者账号信息查询默认为json或xml
+        // $ucpass->getDevinfo('xml');
+
+        // 验证码
+        $codes = rand(111111,999999);
+        $request->session()->put('codess', $codes);
+        $request->session()->save();
+        // $cc = $request->session()->get('codess');
+        // echo $cc;
+        // session("codess",$codes);
+        // var_dump(session('codess'));
+        // echo session("codess");
+
+        $appId = "2e85c67bef98453eae0c3b0913f40127";
+        $templateId = "406176";
+
+        $ucpass->templateSMS($appId,$Number,$templateId,$codes);
+    }
+
+    public function ajaxpcodes(Request $request)
+    {
+        $rs = $request -> get("codes");
+        // echo $request->session()->get('codess');
+        // echo session("codess");
+        if ($rs == $request->session()->get('codess')){
+            echo 1;
+        } else {
+            echo 0;
+        }
     }
 }

@@ -20,7 +20,7 @@ class LoginMiddleware
 
         // 查看路径
         /*$active = \Route::current()->getActionName();
-        dump($active)*/; // exit;
+        dump($active); */// exit;
 
         if ($uid) {
             return $next($request);

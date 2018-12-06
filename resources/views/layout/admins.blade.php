@@ -51,7 +51,7 @@
         
         	<!-- Logo Wrapper, images put within this wrapper will always be vertically centered -->
         	<div id="mws-logo-wrap">
-            	<span style='color:white'>lamp210小网站</span>
+            	<span style='color:white;font-family:华文彩云;font-size:20px;margin-left:25px;'>淘点货商城后台</span>
 			</div>
         </div>
         
@@ -65,7 +65,7 @@
                 @endphp
             	<!-- User Photo -->
             	<div id="mws-user-photo">
-                	<img src='{{$user->pic}}' alt="User Photo">
+                	<img src='{{$user->pic}}' alt="User Photo" style="margin:0px;height:30px;">
                 </div>
                 
                 <!-- Username and Functions -->
