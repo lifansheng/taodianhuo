@@ -218,7 +218,7 @@
 		} else {
 			// 如果有为假的 执行一次ajax
 			// regerror();
-			alert(false);
+			// alert(false);
 			return false;
 		}
 	})

@@ -208,7 +208,7 @@
 
 					<div id="foot " class="item ">
 						<a href="# ">
-							<span class="zuji "></span>
+							<span class="zuji"></span>
 						</a>
 						<div class="mp_tooltip ">
 							我的足迹

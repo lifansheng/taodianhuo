@@ -45,6 +45,11 @@ class LoginController extends Controller
             return back()->with('error','用户名或者密码错误');
         }
 
+        // 判断状态
+        if ($rs->auth == 0) {
+            return back()->with('error','您没有权限登录');
+        }
+
         //存点信息  session
         session(['uid'=>$rs->id]);
         session(['uname'=>$rs->username]);
