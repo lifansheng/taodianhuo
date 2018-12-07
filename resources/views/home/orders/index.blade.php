@@ -1,7 +1,7 @@
 @extends('layout.person')
 
 @section('title',$title)
-<meta name="csrf-token" content="{{ csrf_token() }}">
+
 @section('content')
 			@if(session('success'))
 					
@@ -150,6 +150,11 @@
 																<div class="am-btn am-btn-danger anniu">
 																	提醒发货</div>
 															</li>
+															@elseif($v->status == '5')
+															<li class="td td-change tixing" oid="{{$v->oid}}">
+																<div class="am-btn am-btn-danger anniu">
+																	提醒发货成功</div>
+															</li>
 															@elseif($v->status == '4')
 															<li class="td td-change">
 																<div class="am-btn am-btn-danger anniu">
@@ -161,24 +166,6 @@
 												</div>
 											</div>
 											@endforeach
-											<script type="text/javascript">
-												$.ajaxSetup({
-												    headers: {
-												        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-												    }
-												});
-												$('.tixing').click(function(){
-													var oid = $(this).attr('oid');
-														// alert('12312345');
-													$.post('/home/tixing',{oid:oid},function(data){
-														if(data == 1){
-															alert('提醒发货成功');
-														}else{
-															alert('提醒失败,请检查您的网络');
-														}
-													})
-												});
-											</script>
 										</div>
 
 									</div>
@@ -213,7 +200,7 @@
 									<div class="order-main">
 										<div class="order-list">
 											@foreach ($data as $kk=>$vv)
-											@if($vv->status == '2')
+											@if($vv->status == '2' || $vv->status == '5')
 											<div class="order-status2">
 												<div class="order-title">
 													<div class="dd-num">订单编号：<a href="javascript:;">{{$vv->oid}}</a></div>
@@ -273,10 +260,17 @@
 																	<p class="order-info" oid="{{$vv->oid}}"><a href="javascript:void(0);">订单详情</a></p>
 																</div>
 															</li>
-															<li class="td td-change">
+															@if($vv->status == '2')
+															<li class="td td-change tixing" oid="{{$vv->oid}}">
 																<div class="am-btn am-btn-danger anniu">
 																	提醒发货</div>
 															</li>
+															@else
+															<li class="td td-change">
+																<div class="am-btn am-btn-danger anniu">
+																	提醒发货成功</div>
+															</li>
+															@endif
 														</div>
 													</div>
 												</div>
@@ -603,20 +597,45 @@
 									</div>
 								</div>
 							</div>
-							<script type="text/javascript">
-								$('.order-info').click(function(){
-									// alert('1234');
-									var oid = $(this).attr('oid');
-									window.location.href='/home/orderxiang?oid='+oid;
-								});	
-
-								$('.shanorder').click(function(){
-									confirm('您确定要删除吗');
-									alert('删除成功');
-								});
-							</script>
+						
 						</div>
 					</div>
 				</div>
 
+@stop
+
+@section('js')
+<script type="text/javascript">
+	$.ajaxSetup({
+	    headers: {
+	        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+	    }
+	});
+	// 订单详情
+	$('.order-info').click(function(){
+		// alert('1234');
+		var oid = $(this).attr('oid');
+		window.location.href='/home/orderxiang?oid='+oid;
+	});	
+
+	// 删除订单
+	$('.shanorder').click(function(){
+		confirm('您确定要删除吗');
+		alert('删除成功');
+	});
+
+	// 订单提醒发货
+	$('.tixing').click(function(){
+		var oid = $(this).attr('oid');
+			// alert('12312345');
+		$.post('/home/tixing',{oid:oid},function(data){
+			if(data == 1){
+				alert('提醒发货成功');
+			}else{
+				alert('提醒失败,请检查您的网络');
+			}
+		})
+	});
+
+</script>
 @stop

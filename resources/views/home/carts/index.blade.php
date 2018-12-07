@@ -152,14 +152,6 @@
 						<a href="#" hidefocus="true" class="J_BatchFav">移入收藏夹</a>
 					</div>
 					<div class="float-bar-right">
-						<div class="amount-sum">
-							<span class="txt">已选商品</span>
-							<em id="J_SelectedItemsCount">0</em><span class="txt">件</span>
-							<div class="arrow-box">
-								<span class="selected-items-arrow"></span>
-								<span class="arrow"></span>
-							</div>
-						</div>
 						<div class="price-sum">
 							<span class="txt">合计:</span>
 							<strong class="price">¥<span id="J_Total">0</span></strong>
@@ -286,11 +278,13 @@
 		    })
 
 		})
-
+		
 		// 选择
 		$('.check').click(function(){
 			totals()
 		})
+
+		
 
 		function totals()
 		{
@@ -304,7 +298,6 @@
 
 			var pcr = 0;
 			var sum = 0;
-
 			// 遍历
 			$(':checkbox:checked').each(function(){
 				// 获取小计

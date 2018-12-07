@@ -77,11 +77,11 @@
 										<p class="text">
 											快递小哥正在运输,请您耐心等候(☄⊙ω⊙)☄
 										</p>
-										@elseif($res->status == '2')
+										@elseif($res->status == '2' || $res->status == '5')
 										<p class="text">
 											包裹等待揽收,请您耐心等待
 										</p>
-										@else
+										@elseif($res->status == '4' || $res->status == '0')
 										<p class="text">
 											已签收,签收人是{{$res->addrname}}签收，感谢使用天天快递，期待再次为您服务
 										</p>
@@ -227,9 +227,19 @@
 														<p class="Mystatus">卖家未发货</p>
 													</div>
 												</li>
-												<li class="td td-change">
+												<li class="td td-change tixing" oid="{{$res->oid}}">
 													<div class="am-btn am-btn-danger anniu">
 														提醒发货</div>
+												</li>
+												@elseif($res->status == '5')
+												<li class="td td-status">
+													<div class="item-status">
+														<p class="Mystatus">卖家未发货</p>
+													</div>
+												</li>
+												<li class="td td-change">
+													<div class="am-btn am-btn-danger anniu">
+														提醒发货成功</div>
 												</li>
 												@elseif($res->status == '4')
 												<li class="td td-status">
@@ -252,10 +262,34 @@
 					</div>
 
 				</div>
-				<script type="text/javascript">
-					$('.shanorder').click(function(){
-						confirm('您确定要删除吗');
-						alert('删除成功');
-					});
-				</script>
+				@stop
+
+@section('js')
+<script type="text/javascript">
+	$.ajaxSetup({
+	    headers: {
+	        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+	    }
+	});
+
+
+	$('.shanorder').click(function(){
+		confirm('您确定要删除吗');
+		alert('删除成功');
+	});
+
+	// 订单提醒发货
+	$('.tixing').click(function(){
+		var oid = $(this).attr('oid');
+			// alert('12312345');
+		$.post('/home/tixing',{oid:oid},function(data){
+			if(data == 1){
+				alert('提醒发货成功');
+			}else{
+				alert('您已经提醒过了,卖家正在光速投递中');
+			}
+		})
+	});
+</script>
+
 @stop

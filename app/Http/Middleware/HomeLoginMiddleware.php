@@ -15,8 +15,8 @@ class HomeLoginMiddleware
      */
     public function handle($request, Closure $next)
     {
-        $uid = session("uid");
-        if ($uid) {
+        $hid = session("hid");
+        if ($hid) {
             return $next($request);
         } else {
             return redirect("home/login");

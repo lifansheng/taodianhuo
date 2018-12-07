@@ -162,60 +162,70 @@ Route::post("home/ajaxpcodes", "Home\LoginController@ajaxpcodes");
 
 Route::post("home/ajaxcontrastname", "Home\LoginController@ajaxcontrastname");
 
-//退出登录
-Route::any("home/logout", "Home\LoginController@logout");
 
 // 忘记密码
 Route::any("home/forget_password", "Home\LoginController@forget_password");
 
-// 前台购物车的添加
-Route::get("home/addCar","Home\CartsController@addCar");
-// 购物车的显示
-Route::get("home/carts","Home\CartsController@shopcar");
-// 购物车的加运算
-Route::get("home/carAdd","Home\CartsController@carAdd");
-// 购物车的减运算
-Route::get("home/carJian","Home\CartsController@carJian");
-Route::get("home/shopcart","Home\CartsController@shopcart");
-// 立即购买
-Route::get("home/liGo","Home\CartsController@liGo");
 
-// 订单结算页面
-Route::post("home/jiesuan","Home\CartsController@index");
-// 点击设置默认地址
-Route::get("home/addrdefault","Home\OrderController@addrdefault");
-
-
-// 订单结算成功页面
-Route::get("home/cheng","Home\CartsController@cheng");
-
-// 订单中心
-Route::any("home/order","Home\OrderController@index");
-Route::get("home/orderxiang","Home\OrderController@orderxiang");
-Route::get("home/queren/{oid}","Home\OrderController@queren");
-Route::get("home/shanorder/{oid}","Home\OrderController@shanorder");
-Route::post("home/tixing","Home\OrderController@tixing");
-
-//个人中心
-Route::resource('home/person','Home\PersonController');
 // Route::post('ho/person','Home\PersonController@upload');
 
-//个人中心评价
-route::any('home/comments','Home\CommentController@comment');
-//添加评论
-route::any('home/comment','Home\CommentController@create');
-//查看个人所有的而评论
-// route::any('home/all','Home\CommentController@all');
 
 
-
-
-//个人信息
-Route::get('home/personinformation','Home\PersonController@informationindex');
 // 前台
 
-Route::group(["middleware" => "login"], function(){});
-	// ajax验证注册用户名
+Route::group(["middleware" => "home_login"], function(){
+
+	//退出登录
+	Route::any("home/logout", "Home\LoginController@logout");
+
+	//个人中心
+	Route::resource('home/person','Home\PersonController');
+
+	//个人信息
+	Route::get('home/personinformation','Home\PersonController@informationindex');
+
+	// 订单结算成功页面
+	Route::get("home/cheng","Home\CartsController@cheng");
+
+	// 订单结算页面
+	Route::post("home/jiesuan","Home\CartsController@index");
+
+	// 点击设置默认地址
+	Route::get("home/addrdefault","Home\OrderController@addrdefault");
+
+	// 订单中心
+	Route::any("home/order","Home\OrderController@index");
+
+	// 前台购物车的添加
+	Route::get("home/addCar","Home\CartsController@addCar");
+	// 购物车的显示
+	Route::get("home/carts","Home\CartsController@shopcar");
+	// 购物车的加运算
+	Route::get("home/carAdd","Home\CartsController@carAdd");
+	// 购物车的减运算
+	Route::get("home/carJian","Home\CartsController@carJian");
+	Route::get("home/shopcart","Home\CartsController@shopcart");
+	// 立即购买
+	Route::get("home/liGo","Home\CartsController@liGo");
+
+	// 订单中心
+	Route::any("home/order","Home\OrderController@index");
+	Route::get("home/orderxiang","Home\OrderController@orderxiang");
+	Route::get("home/queren/{oid}","Home\OrderController@queren");
+	Route::get("home/shanorder/{oid}","Home\OrderController@shanorder");
+	Route::post("home/tixing","Home\OrderController@tixing");
+
+
+	// Route::post('ho/person','Home\PersonController@upload');
+
+	//个人中心评价
+	route::any('home/comments','Home\CommentController@comment');
+	//添加评论
+	route::any('home/comment','Home\CommentController@create');
+	//查看个人所有的而评论
+	// route::any('home/all','Home\CommentController@all');
+
+});
 
 
 

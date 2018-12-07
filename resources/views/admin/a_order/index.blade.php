@@ -112,15 +112,32 @@
                         <td class="">
                             {{$v->addtime}}
                         </td>
-                       <td>
-                           @if ($v->status==2) 买家已付款(待发货)
-                           @elseif ($v->status == 1) 已发货(等待买家确认收货)
-                           @elseif ($v->status == 0) 交易完成
-                           @else ($v->status == 3) 买家申请退款
-                           @endif
+                        @if ($v->status=='2') 
+                        <td>
+                            买家已付款(待发货)
+                        </td>
+                        @elseif ($v->status == '1')
+                        <td class="">
+                            已发货(等待买家确认收货)
+                        </td>
+                        @elseif ($v->status == '5') 
+                        <td class="">
+                            买家已付款(买家提醒你不要忘记他在等它)
+                        </td>
+                        @elseif ($v->status == '0')
+                        <td class="">
+                            交易完成
+                        </td>
+                        
+                        @else ($v->status == '3')
+                        <td>
+                            买家申请退款
+                        </td>
+                        @endif    
+                                                       
                        </td>
                         <td class=" ">
-                            @if($v->status == 2)
+                            @if($v->status == 2 || $v->status == 5)
                             <button type="button" class="btn btn-success" onclick="window.location='/admin/fahuo/{{$v->oid}}'">发货</button>
                             @endif
                             <a href="/admin/details/{{$v->oid}}" class="btn btn-warning">详情</a>
