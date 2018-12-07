@@ -94,4 +94,16 @@ class OrderController extends Controller
         return redirect('/home/order');
     }
 
+    // 提醒发货
+    public function tixing(Request $request)
+    {
+        $oid = $request->oid;
+        $res = Orders::where('oid',$oid)->update(['status'=>'5']);
+        if($res){
+            echo 1;
+        }else{
+            echo 0;
+        }
+    }
+
 }

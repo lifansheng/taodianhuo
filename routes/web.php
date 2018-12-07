@@ -194,6 +194,7 @@ Route::any("home/order","Home\OrderController@index");
 Route::get("home/orderxiang","Home\OrderController@orderxiang");
 Route::get("home/queren/{oid}","Home\OrderController@queren");
 Route::get("home/shanorder/{oid}","Home\OrderController@shanorder");
+Route::post("home/tixing","Home\OrderController@tixing");
 
 //个人中心
 Route::resource('home/person','Home\PersonController');

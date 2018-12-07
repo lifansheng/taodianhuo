@@ -176,6 +176,17 @@
 							<i class="icon_arrow_white "></i>
 						</div>
 					</div>
+
+					<div id="shopCart " class="item cartss">
+						<a href="javascript:void(0)">
+							<span class="message "></span>
+						</a>
+						<p>
+							购物车
+						</p>
+						<p class="cart_num ">{{$count}}</p>
+					</div>
+
 	    			@else
 					<div id="prof" class="item ">
 						<a href="# ">
@@ -198,16 +209,6 @@
 						</div>
 					</div>
 
-					<div id="shopCart " class="item cartss">
-						<a href="javascript:void(0)">
-							<span class="message "></span>
-						</a>
-						<p>
-							购物车
-						</p>
-						<p class="cart_num ">{{$count}}</p>
-					</div>
-					@else
 					<div id="shopCart " class="item gologin">
 						<a href="javascript:void(0)">
 							<span class="message "></span>
@@ -217,8 +218,6 @@
 						</p>
 						<p class="cart_num ">0</p>
 					</div>
-
-					@endif
 					<div id="asset " class="item ">
 						<a href="# ">
 							<span class="view "></span>
@@ -228,7 +227,7 @@
 							<i class="icon_arrow_right_black "></i>
 						</div>
 					</div>
-
+					@endif
 					<div id="foot " class="item ">
 						<a href="# ">
 							<span class="zuji "></span>

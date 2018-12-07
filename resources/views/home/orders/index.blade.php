@@ -1,7 +1,7 @@
 @extends('layout.person')
 
 @section('title',$title)
-
+<meta name="csrf-token" content="{{ csrf_token() }}">
 @section('content')
 			@if(session('success'))
 					
@@ -146,7 +146,7 @@
 																<button type="button" onclick="window.location='/home/queren/{{$v->oid}}'" class="am-btn am-btn-danger anniu">确认收货</button>
 															</li>
 															@elseif($v->status == '2')
-															<li class="td td-change">
+															<li class="td td-change tixing" oid="{{$v->oid}}">
 																<div class="am-btn am-btn-danger anniu">
 																	提醒发货</div>
 															</li>
@@ -161,6 +161,24 @@
 												</div>
 											</div>
 											@endforeach
+											<script type="text/javascript">
+												$.ajaxSetup({
+												    headers: {
+												        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+												    }
+												});
+												$('.tixing').click(function(){
+													var oid = $(this).attr('oid');
+														// alert('12312345');
+													$.post('/home/tixing',{oid:oid},function(data){
+														if(data == 1){
+															alert('提醒发货成功');
+														}else{
+															alert('提醒失败,请检查您的网络');
+														}
+													})
+												});
+											</script>
 										</div>
 
 									</div>
