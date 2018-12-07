@@ -162,43 +162,43 @@ Route::any("home/logout", "Home\LoginController@logout");
 // 忘记密码
 Route::any("home/forget_password", "Home\LoginController@forget_password");
 
-// 前台购物车的添加
-Route::get("home/addCar","Home\CartsController@addCar");
-// 购物车的显示
-Route::get("home/carts","Home\CartsController@shopcar");
-// 购物车的加运算
-Route::get("home/carAdd","Home\CartsController@carAdd");
-// 购物车的减运算
-Route::get("home/carJian","Home\CartsController@carJian");
-Route::get("home/shopcart","Home\CartsController@shopcart");
-// 立即购买
-Route::get("home/liGo","Home\CartsController@liGo");
 
-// 订单结算页面
-Route::post("home/jiesuan","Home\CartsController@index");
-// 点击设置默认地址
-Route::get("home/addrdefault","Home\OrderController@addrdefault");
-
-
-// 订单结算成功页面
-Route::get("home/cheng","Home\CartsController@cheng");
-
-// 订单中心
-Route::any("home/order","Home\OrderController@index");
-
-//个人中心
-Route::resource('home/person','Home\PersonController');
 // Route::post('ho/person','Home\PersonController@upload');
 
 
-
-
-//个人信息
-Route::get('home/personinformation','Home\PersonController@informationindex');
 // 前台
 
-Route::group(["middleware" => "login"], function(){});
-	// ajax验证注册用户名
+Route::group(["middleware" => "home_login"], function(){
+	//个人中心
+	Route::resource('home/person','Home\PersonController');
+
+	//个人信息
+	Route::get('home/personinformation','Home\PersonController@informationindex');
+
+	// 订单结算成功页面
+	Route::get("home/cheng","Home\CartsController@cheng");
+
+	// 订单中心
+	Route::any("home/order","Home\OrderController@index");
+
+	// 前台购物车的添加
+	Route::get("home/addCar","Home\CartsController@addCar");
+	// 购物车的显示
+	Route::get("home/carts","Home\CartsController@shopcar");
+	// 购物车的加运算
+	Route::get("home/carAdd","Home\CartsController@carAdd");
+	// 购物车的减运算
+	Route::get("home/carJian","Home\CartsController@carJian");
+	Route::get("home/shopcart","Home\CartsController@shopcart");
+	// 立即购买
+	Route::get("home/liGo","Home\CartsController@liGo");
+
+	// 订单结算页面
+	Route::post("home/jiesuan","Home\CartsController@index");
+	// 点击设置默认地址
+	Route::get("home/addrdefault","Home\OrderController@addrdefault");
+
+});
 
 
 	
