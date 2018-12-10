@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 	<head>
+		<meta name="csrf-token" content="{{ csrf_token() }}">
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
@@ -71,13 +72,15 @@
 					<div class="topMessage mini-cart">
 						<div class="menu-hd" id='haha'><a id="mc-menu-hd" href="javascript:void(0)" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong id="J_MiniCartNum" class="h">{{$count}}</strong></a></div>
 					</div>
+					<div class="topMessage favorite">
+						<div class="menu-hd" id='heihei'><a href="javascript:void(0);" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>收藏夹</span></a></div>
 					@else
 					<div class="topMessage mini-cart">
 						<div class="menu-hd" id='hehe'><a id="mc-menu-hd" href="javascript:void(0)" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong id="J_MiniCartNum" class="h">0</strong></a></div>
 					</div>
-					@endif
 					<div class="topMessage favorite">
 						<div class="menu-hd"><a href="#" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>收藏夹</span></a></div>
+					@endif
 				</ul>
 			</div>
 
@@ -239,7 +242,7 @@
 					</div>
 
 					<div id="brand " class="item ">
-						<a href="#">
+						<a href="/home/collection">
 							<span class="wdsc "><img src="/homes/images/wdsc.png " /></span>
 						</a>
 						<div class="mp_tooltip ">
@@ -356,6 +359,10 @@
 
 			$('#haha').bind('click',function(){
 				location.href="/home/carts";
+			})
+
+			$('#heihei').bind('click',function(){
+				location.href="/home/collection";
 			})
 
 			$('.gologin').click(function(){

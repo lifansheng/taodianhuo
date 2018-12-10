@@ -12,6 +12,10 @@
 				<div class="paycont">
 					<div class="address">
 						<h3>确认收货地址 </h3>
+						<div class="control">
+							<div class="tc-btn createAddr theme-login am-btn am-btn-danger"><a href="/home/address">使用新地址</a></div>
+						</div>
+						<div class="clear"></div>
 						<ul>
 							@foreach($addrs as $k => $v)
 							<div class="per-border"></div>
@@ -61,6 +65,7 @@
 						<script type="text/javascript">
 							$('.addrdefault').click(function(){
 								var aid = $(this).attr('aid');
+								var shua = $(this)
 								$.get('/home/addrdefault',{aid:aid},function(data){
 									if(data == 1){
 										location.reload(true);

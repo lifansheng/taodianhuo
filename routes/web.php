@@ -196,6 +196,12 @@ Route::group(["middleware" => "home_login"], function(){
 	// 订单中心
 	Route::any("home/order","Home\OrderController@index");
 
+	// 我的收藏添加
+	Route::post("home/shoucang","Home\CollectController@shoucang");
+	// 我的收藏删除
+	Route::get("home/qushoucang","Home\CollectController@qushoucang");
+	// 我的收藏加载更多
+	Route::get("home/gengduo","Home\CollectController@gengduo");
 	// 前台购物车的添加
 	Route::get("home/addCar","Home\CartsController@addCar");
 	// 购物车的显示
@@ -208,12 +214,18 @@ Route::group(["middleware" => "home_login"], function(){
 	// 立即购买
 	Route::get("home/liGo","Home\CartsController@liGo");
 
+	// 购买时检测是否有收货地址
+	Route::get("home/ifaddr","Home\CartsController@ifaddr");
+
 	// 订单中心
 	Route::any("home/order","Home\OrderController@index");
 	Route::get("home/orderxiang","Home\OrderController@orderxiang");
 	Route::get("home/queren/{oid}","Home\OrderController@queren");
 	Route::get("home/shanorder/{oid}","Home\OrderController@shanorder");
 	Route::post("home/tixing","Home\OrderController@tixing");
+
+	// 我的收藏
+	Route::any("home/collection","Home\CollectController@index");
 
 
 	// Route::post('ho/person','Home\PersonController@upload');

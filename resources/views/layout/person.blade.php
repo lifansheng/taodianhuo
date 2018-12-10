@@ -12,6 +12,7 @@
 		<link href="/homes/css/personal.css" rel="stylesheet" type="text/css">
 		<link href="/homes/css/systyle.css" rel="stylesheet" type="text/css">
 		<link href="/homes/css/orstyle.css" rel="stylesheet" type="text/css">
+		<link href="/homes/css/colstyle.css" rel="stylesheet" type="text/css">
 
 		<script src="/homes/AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
 		<script src="/homes/AmazeUI-2.4.2/assets/js/amazeui.js"></script>
@@ -173,7 +174,7 @@
 					<li class="person">
 						<a href="#">我的小窝</a>
 						<ul>
-							<li> <a href="#">收藏</a></li>
+							<li> <a href="/home/collection">收藏</a></li>
 							<li> <a href="#">足迹</a></li>
 							<!-- <li> <a href="/home/all">评价</a></li> -->
 							<li> <a href="#">消息</a></li>

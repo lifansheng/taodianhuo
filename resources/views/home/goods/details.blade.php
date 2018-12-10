@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 	<head>
+		<meta name="csrf-token" content="{{ csrf_token() }}">
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
@@ -48,10 +49,10 @@
 				@endphp
 
 				<div class="topMessage mini-cart">
-					<div class="menu-hd"><a id="mc-menu-hd" href="/home/carts" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong id="J_MiniCartNum" class="h">{{$count}}</strong></a></div>
+					<div class="menu-hd"><a id="mc-menu-hd" href="/home/carts" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong id="J_MiniCartNum" class="h">@if(isset($count)) {{$count}} @endif</strong></a></div>
 				</div>
 				<div class="topMessage favorite">
-					<div class="menu-hd"><a href="#" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>收藏夹</span></a></div>
+					<div class="menu-hd"><a href="/home/collection" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>收藏夹</span></a></div>
 			</ul>
 			</div>
 
@@ -403,66 +404,26 @@
 							</div>
 							<li>
 								<div class="clearfix tb-btn tb-btn-buy theme-login">
-									<a id="LikBuy" title="点此按钮到下一步确认购买信息" href="#">立即购买</a>
+									<a id="LikBuy" title="点此按钮到下一步确认购买信息" href="javascript:void(0);">立即购买</a>
 								</div>
 							</li>
 							<li>
 								<div class="clearfix tb-btn tb-btn-basket theme-login">
-									<a id="LikBasket" title="加入购物车" href="javascript:void(0)"><i></i>加入购物车</a>
+									<a id="LikBasket" title="加入购物车" href="javascript:void(0);"><i></i>加入购物车</a>
 									<input type="hidden" name="id" value="{{$goods->id}}">
 								</div>
 							</li>
 							<li>
 								<div class="clearfix tb-btn tb-btn-buy theme-login">
-									<a id="LikBuy" title="点此加入收藏" href="#">加入收藏</a>
+									<a id="LikBuy2" title="点此加入收藏" href="javascript:void(0);">加入收藏</a>
 								</div>
 							</li>
 						</div>
-						<script type="text/javascript" language="javascript">
-							// 获取类型
-							$("input[name=leixing]").click(function(){
-								leixing = $(this).val();
-							});
-
-							// 获取size大小
-							$("input[name=size]").click(function(){
-								size = $(this).val();
-							});
-
-							id = $("input[name=id]").val();
-
-							// 拿到商品信息加入购物车
-							$("#LikBasket").click(function(){
-
-								// 获取购买的数量
-								var num = $("#text_box").val();
-
-								// 使用ajax get方式加入购物车
-								$.get('/home/addCar',{id:id,num:num,leixing:leixing,size:size},function(data){
-									if (data == 1) {
-										alert('添加成功,快去购物车看看吧');
-									}else{
-										alert('添加失败,请重新选择商品');
-									}
-								});
-								// window.location.href="/home/addCar?id="+id+"&num="+num+"&leixing="+leixing+"&size="+size;
-							});
-
-							// 拿到商品信息立即购买进入付款页面
-							$("#LikBuy").click(function(){
-
-								// 获取购买的数量
-								var num = $("#text_box").val();
-
-								window.location.href="/home/liGo?id="+id+"&num="+num+"&leixing="+leixing+"&size="+size;
-							})
-						</script>
 					</div>
 
 					<div class="clear"></div>
 
 				</div>
-
 				<!--优惠套装-->
 				<div class="match">
 					<div class="match-title">优惠套装</div>
@@ -822,7 +783,7 @@
 						</div>
 
 						<div id="brand" class="item">
-							<a href="#">
+							<a href="/home/collection">
 								<span class="wdsc"><img src="/homes/images/wdsc.png" /></span>
 							</a>
 							<div class="mp_tooltip">
@@ -934,5 +895,62 @@
 <script type="text/javascript">
 	$('.cartss').bind('click',function(){
 		location.href="/home/carts";
+	})
+
+	$.ajaxSetup({
+	    headers: {
+	        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+	    }
+	});
+
+	// 获取类型
+	$("input[name=leixing]").click(function(){
+		leixing = $(this).val();
+	});
+
+	// 获取size大小
+	$("input[name=size]").click(function(){
+		size = $(this).val();
+	});
+
+	id = $("input[name=id]").val();
+
+	// 拿到商品信息加入购物车
+	$("#LikBasket").click(function(){
+
+		// 获取购买的数量
+		var num = $("#text_box").val();
+
+		// 使用ajax get方式加入购物车
+		$.get('/home/addCar',{id:id,num:num,leixing:leixing,size:size},function(data){
+			if (data == 1) {
+				alert('添加成功,快去购物车看看吧');
+			}else{
+				alert('添加失败,请重新选择商品');
+			}
+		});
+		// window.location.href="/home/addCar?id="+id+"&num="+num+"&leixing="+leixing+"&size="+size;
+	});
+
+	// 拿到商品的信息加入收藏
+	$("#LikBuy2").click(function(){
+		$.post('/home/shoucang',{gid:id},function(data){
+			if(data == 2){
+				alert('该商品已经在我的收藏中了...');
+			}else if(data == 1){
+				alert('收藏成功,小的就在收藏中等您了.')
+			}else{
+				 alert('收藏失败!!!');
+			}
+		})
+	})
+
+	// 拿到商品信息立即购买进入付款页面
+	$("#LikBuy").click(function(){
+
+		// 获取购买的数量
+		var num = $("#text_box").val();
+
+		window.location.href="/home/liGo?id="+id+"&num="+num+"&leixing="+leixing+"&size="+size;
 	})
 </script>

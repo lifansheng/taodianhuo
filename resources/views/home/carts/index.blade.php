@@ -130,7 +130,7 @@
 									</li>
 									<li class="td td-op">
 										<div class="td-inner">
-											<a title="移入收藏夹" class="btn-fav" href="#">移入收藏夹</a>
+											<a title="移入收藏夹" class="btn-fav yiru" gid="{{$v->gid}}" href="javascript:void(0);">添加到收藏夹</a>
 											<a href="javascript:void(0)" data-point-url="#" class="delete">删除</a>
 										</div>
 									</li>
@@ -145,11 +145,10 @@
 						<div class="cart-checkbox">
 							<label for="J_SelectAllCbx2"></label>
 						</div>
-						<a href="javascript:void(0)" class="quan">全选</a>
+						<a href="javascript:void(0);" class="quan">全选</a>
 					</div>
 					<div class="operations">
-						<a href="javascript:void(0)" hidefocus="true" class="deleteAll">删除</a>
-						<a href="#" hidefocus="true" class="J_BatchFav">移入收藏夹</a>
+						<a href="javascript:void(0);" class="quanbu" style="margin-top:-2px">全不选</a>
 					</div>
 					<div class="float-bar-right">
 						<div class="price-sum">
@@ -159,7 +158,7 @@
 						<div class="">
 							{{csrf_field()}}
 							<!-- <a href="javascript:void(0)"  > -->
-								<input type="submit" id="J_Go" class="submit-btn submit-btn-disabled btn-area" name="" style="background:red;border-color:red">
+								<input type="submit" id="J_Go" hid="{{session('hid')}}" class="submit-btn submit-btn-disabled btn-area" name="" style="background:red;border-color:red" value="结算">
 							
 						</div>
 					</div>
@@ -187,6 +186,40 @@
 @section('js')
 
 	<script type="text/javascript">
+		$.ajaxSetup({
+		    headers: {
+		        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		    }
+		});
+
+		// 移入收藏夹
+		$('.yiru').click(function(){
+			var gid = $(this).attr('gid');
+			$.post('/home/shoucang',{gid:gid},function(data){
+				if(data == 2){
+					alert('该商品已经在我的收藏中了...');
+				}else if(data == 1){
+					alert('收藏成功,小的就在收藏中等您了.')
+				}else{
+					 alert('收藏失败!!!');
+				}
+			});
+		});
+
+
+		// 结算时判断是否填写收货地址
+		$('#J_Go').click(function(){
+			var hid = $(this).attr('hid');
+			// alert(hid);
+			$.get('/home/ifaddr',{hid:hid},function(data){
+				if(data == 0){
+					alert('您还未设置收货地址,将要前往设置收货地址');
+					window.location.href = '/home/address';
+				}
+			});
+		})
+
+
 		// 加
 		$('.plus').click(function(){
 			// 获取点击加的商品ID
@@ -313,6 +346,13 @@
 		// 全选
 		$('.quan').click(function(){
 			$('.check').attr('checked',true);
+
+			totals()
+		})
+
+		// 全不选
+		$('.quanbu').click(function(){
+			$('.check').attr('checked',false);
 
 			totals()
 		})

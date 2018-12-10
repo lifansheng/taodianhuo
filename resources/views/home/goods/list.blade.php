@@ -276,5 +276,64 @@
 	@stop
 
 	@section('js')
+	<script type="text/javascript" language="javascript">
+		$.ajaxSetup({
+		    headers: {
+		        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		    }
+		});
 
+		// 获取类型
+		$("input[name=leixing]").click(function(){
+			leixing = $(this).val();
+		});
+
+		// 获取size大小
+		$("input[name=size]").click(function(){
+			size = $(this).val();
+		});
+
+		id = $("input[name=id]").val();
+
+		// 拿到商品信息加入购物车
+		$("#LikBasket").click(function(){
+
+			// 获取购买的数量
+			var num = $("#text_box").val();
+
+			// 使用ajax get方式加入购物车
+			$.get('/home/addCar',{id:id,num:num,leixing:leixing,size:size},function(data){
+				if (data == 1) {
+					alert('添加成功,快去购物车看看吧');
+				}else{
+					alert('添加失败,请重新选择商品');
+				}
+			});
+			// window.location.href="/home/addCar?id="+id+"&num="+num+"&leixing="+leixing+"&size="+size;
+		});
+
+		// 拿到商品的信息加入收藏
+		$("#LikBuy2").click(function(){
+			$.post('/home/shoucang',{gid:id},function(data){
+				if(data == 2){
+					alert('该商品已经在我的收藏中了...');
+				}else if(data == 1){
+					alert('收藏成功,小的就在收藏中等您了.')
+				}else{
+					 alert('收藏失败!!!');
+				}
+			})
+		})
+
+		// 拿到商品信息立即购买进入付款页面
+		$("#LikBuy").click(function(){
+
+			// 获取购买的数量
+			var num = $("#text_box").val();
+
+			window.location.href="/home/liGo?id="+id+"&num="+num+"&leixing="+leixing+"&size="+size;
+		})
+	</script>
+
+	
 	@stop

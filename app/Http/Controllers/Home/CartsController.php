@@ -8,6 +8,7 @@ use App\Model\Admin\Goods;
 use App\Model\Home\Carts;
 use App\Model\Home\Orders;
 use App\Model\Admin\Address;
+use App\Model\Home\Collection;
 use DB;
 
 class CartsController extends Controller
@@ -117,6 +118,20 @@ class CartsController extends Controller
         }
     }
 
+
+    // 判断是否有收货地址
+    public function ifaddr(Request $request)
+    {
+        $hid = $request->hid;
+
+        $res = Address::where('hid',$hid)->count();
+        if($res){
+            echo 1;
+        }else{
+            echo 0;
+        }
+    }
+
     /**
      * 立即购买
      *
@@ -162,7 +177,7 @@ class CartsController extends Controller
     {
         $id = $request -> all();
         // dd($id);
-        session(['id'=>$id]);
+        session(['id'=>$id['carid']]);
         $data = Carts::find($id) -> all();
         $hid = session('hid');
         $addrs = Address::where('hid',$hid)->orderBy('status','desc') -> get();
@@ -195,7 +210,7 @@ class CartsController extends Controller
             // dd($id);
             $data = Carts::find($id) -> all();
             // dd($data);
-            for ($i=0; $i <count($id['carid']) ; $i++) { 
+            for ($i=0; $i <count($id) ; $i++) { 
                 Orders::insert($arr[] = array(
                     'oid'=>time().rand(111,999),
                     'hid'=>session('hid'),
@@ -238,7 +253,10 @@ class CartsController extends Controller
                 'status'=>'2',
             ));
         }
-
+        if($id){
+            Carts::whereIn('id',$id)->delete();
+        }
+        
         return view('home.carts.cheng',[
             'title'=>'付款成功'
         ]);
