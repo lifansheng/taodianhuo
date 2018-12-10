@@ -231,6 +231,9 @@ class CartsController extends Controller
                 ));
                 // echo $i;
             }
+            if($id){
+                Carts::whereIn('id',$id)->delete();
+            }
         }else{
             $data = session('liGO');
             // dd($data);
@@ -252,9 +255,6 @@ class CartsController extends Controller
                 'message'=>$_GET['liuyan'],
                 'status'=>'2',
             ));
-        }
-        if($id){
-            Carts::whereIn('id',$id)->delete();
         }
         
         return view('home.carts.cheng',[

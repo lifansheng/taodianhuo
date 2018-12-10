@@ -18,7 +18,7 @@ class OrderController extends Controller
     {
         //
         $hid = session('hid');
-        $data = Orders::where('hid',$hid)->get();
+        $data = Orders::where('hid',$hid)->orderBy('id','ace')->get();
         // dd($data);
         return view('home.orders.index',[
             'title'=>'订单管理',

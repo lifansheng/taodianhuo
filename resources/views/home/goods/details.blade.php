@@ -407,12 +407,20 @@
 									<a id="LikBuy" title="点此按钮到下一步确认购买信息" href="javascript:void(0);">立即购买</a>
 								</div>
 							</li>
+							@if(session('hid'))
 							<li>
 								<div class="clearfix tb-btn tb-btn-basket theme-login">
 									<a id="LikBasket" title="加入购物车" href="javascript:void(0);"><i></i>加入购物车</a>
 									<input type="hidden" name="id" value="{{$goods->id}}">
 								</div>
 							</li>
+							@else
+							<li>
+								<div class="clearfix tb-btn tb-btn-basket theme-login">
+									<a id="LikBasket2" title="加入购物车" href="javascript:void(0);"><i></i>加入购物车</a>
+								</div>
+							</li>
+							@endif
 							<li>
 								<div class="clearfix tb-btn tb-btn-buy theme-login">
 									<a id="LikBuy2" title="点此加入收藏" href="javascript:void(0);">加入收藏</a>
@@ -915,6 +923,12 @@
 
 	id = $("input[name=id]").val();
 
+	// 判断是否有登陆
+	$("#LikBasket2").click(function(){
+		alert('请先去登陆...');
+		location.href="/home/login";
+	})
+
 	// 拿到商品信息加入购物车
 	$("#LikBasket").click(function(){
 
@@ -940,7 +954,7 @@
 			}else if(data == 1){
 				alert('收藏成功,小的就在收藏中等您了.')
 			}else{
-				 alert('收藏失败!!!');
+				 alert('收藏失败,请先去登陆.');
 			}
 		})
 	})
