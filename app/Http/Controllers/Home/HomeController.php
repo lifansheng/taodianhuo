@@ -16,6 +16,7 @@ use App\Model\Admin\Link;
 use App\Model\Admin\Site;
 use App\Model\Admin\Comment;
 use App\Model\Home\Footprint;
+use App\Model\Admin\Orders;
 
 
 class HomeController extends Controller
@@ -165,6 +166,8 @@ class HomeController extends Controller
         //用户
         $user = DB::table('homes')->get();
         // dd($user);
+        //订单信息
+        $order = Orders::all();
         return view('home/goods/details',[
             'title'=>'商品详情页',
             'goods'=>$goods,
@@ -173,7 +176,8 @@ class HomeController extends Controller
             'link'=>$link,
             'cuxiao'=>$cuxiao,
             'comment'=>$comment,
-            'user'=>$user
+            'user'=>$user,
+            'order'=>$order
         ]);
     }
 
