@@ -86,17 +86,14 @@
 									<div class="am-form-content sex">
 
 										<label class="am-radio-inline">
-											<input type="radio" name="sex" value="1" data-am-ucheck       @if($data -> sex==1) checked @endif> 男
+											<input type="radio" name="sex" value="m" data-am-ucheck  @if($data -> sex=="m") checked @endif> 男
 										</label>
 										
 										
 										<label class="am-radio-inline">
-											<input type="radio" name="sex" value="2" data-am-ucheck @if($data -> sex==2) checked @endif> 女
+											<input type="radio" name="sex" value="w" data-am-ucheck @if($data -> sex=="w") checked @endif> 女
 										</label>
 										
-										<label class="am-radio-inline">
-											<input type="radio" name="sex" value="0" data-am-ucheck @if($data -> sex==0) checked @endif> 保密
-										</label>
 									
 									</div>
 								</div>
