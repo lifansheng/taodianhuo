@@ -167,7 +167,7 @@
 						<div class="demo">
 							<ul id="news">
 								@foreach($news as $news_v)							    
-								<li ><a target="_blank" href="#"><span style="color:red">[{{$news_v->title}}]</span>{{$news_v->content}}</a></li>
+								<li ><a target="_blank" href="JavaScript:viod(0)"><span style="color:red">[{{$news_v->title}}]</span>{{$news_v->content}}</a></li>
 								@endforeach
 							</ul>
                         	<div class="advTip"><img src="/homes/images/advTip.jpg"/></div>

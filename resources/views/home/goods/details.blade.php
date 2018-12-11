@@ -69,7 +69,7 @@
 						<input id="ai-topsearch" class="submit am-btn" value="搜索" index="1" type="submit">
 					</form> -->
 					<form action="/home/search">
-						<input id="searchInput" name="gname" type="text" placeholder="只要小店有的,都给你" autocomplete="off">
+						<input id="searchInput" name="gname" type="text" placeholder="只要小店有的,都给你" autocomplete="off" >
 						<input id="ai-topsearch" class="submit am-btn" value="搜索" index="1" type="submit">
 					</form>
 				</div>
@@ -166,7 +166,7 @@
 
 						<div class="clear"></div>
 					</div> -->
-					<!-- 放大镜 -->
+					<!-- 放大镜 开始-->
 						<link rel="stylesheet" type="text/css" href="/homes/fdj/css/normalize.css" /><!--CSS RESET-->
 						<link href="/homes/fdj/src/jquery.exzoom.css" rel="stylesheet" type="text/css"/>
 							<style>
@@ -175,8 +175,9 @@
 							        /*height: 400px;*/
 							        margin: 20px auto;
 							    }
-							</style>		
-							<div  class="clearfixLeft" id="clearcontent" style="margin-left: 220px"> 
+							</style>
+							<div class="item-inform">		
+							<div  class="clearfixLeft" id="clearcontent" > 
 								<div class="exzoom" id="exzoom">
 								    <!--大图区域-->
 								    <div class="exzoom_img_box">
@@ -193,8 +194,8 @@
 								        <a href="javascript:void(0);" class="exzoom_prev_btn"> &lt; </a>
 								        <a href="javascript:void(0);" class="exzoom_next_btn"> &gt; </a>
 								    </p>
-								</div>
-								 
+								</div>	 
+							</div>
 							</div>
 							
 							<script src="/homes/fdj/js/jquery-1.11.0.min.js" type="text/javascript"></script>
@@ -204,7 +205,7 @@
 							        autoPlay: false,
 							    });//方法调用，务必在加载完后执行
 							</script>
-
+						<!-- 放大镜结束 -->
 					<div class="clearfixRight">
 
 						<!--规格属性-->
@@ -256,6 +257,7 @@
 										<div class="theme-poptit">
 											<a href="javascript:;" title="关闭" class="close">×</a>
 										</div>
+
 										<div class="theme-popbod dform">
 											<form class="theme-signin" name="loginform" action="" method="post">
 
@@ -268,10 +270,21 @@
 														<div class="cart-title">口味</div>
 														<ul>
 															@foreach( $arr as $v)
-															<li class="sku-line" id=""><input class="sku-line" type="radio" name="leixing" value="{{$v}}">{{$v}}<i></i></li>
+															<li class="sku-line" id="kouwei" style="margin-left: 15px">
+																<input id="lx" class="sku-line" type="radio" name="leixing" value="{{$v}}">{{$v}}
+																<i></i>  
+															</li>
 															@endforeach
 														</ul>
 													</div>
+													<script>
+															$('#kouwei').click(function(){
+																// alert(123);
+
+															})
+															// alert($);
+													
+													</script>
 													<div class="theme-options">
 														<div class="cart-title">包装</div>
 														<!-- 遍历尺寸 -->
@@ -282,7 +295,10 @@
 														@endphp
 														<ul>
 															@foreach($arr as $v)
-															<li class="sku-line "><input class="sku-line" type="radio" name="size" value="{{$v}}">{{$v}}<i></i></li>
+															<li class="sku-line " style="margin-left: 15px">
+																<input class="sku-line" type="radio" name="size" value="{{$v}}" >{{$v}}
+																<i></i>
+															</li>
 															@endforeach
 														</ul>
 													</div>
@@ -297,8 +313,35 @@
 														</li>
 
 													</div>
-													
+													<!-- 库存问题 -->
+
 													<script>
+														//先获取库存
+														var stock = $('.jianshu').html();
+														// console.log(stock);
+														//转换int类型
+														var bian2 = parseInt(stock);
+														//点击+号 触发函数
+														$("#add").click(function(){
+															// alert(123);
+															//获取中间框的值
+															bian = $('#text_box').val();
+															//装换类型 再+2
+															bian1 = parseInt(bian)+2;
+															// console.log(parseInt(bian)+1);
+															//如果 中间的值大于> 库存值
+															if(bian1 > bian2){
+																// alert(123);
+																//把中间的值固定到库存数  
+																$("#text_box").val(bian2-1);
+															}
+														
+														})
+
+														
+													</script>
+													<script>
+														// 获取库存的件数
 														var b = $(".jianshu").text();
 														// $('#add').removeAttr('disabled');
 														// console.log(b);
@@ -314,39 +357,10 @@
 																// alert(123);
 																$(this).val(d);
 																alert('小店的库存可能不够啦');
-																$('#add').attr('disabled',true);
+																// $('#add').attr('disabled',true);
 																// $('#min').removeAttr('disabled');
 															}
 														})
-													
-														/*$("#min").click(function(){
-															$('#add').removeAttr('disabled');
-														})*/
-													
-													</script>
-													<script>
-														/*var num_jia = document.getElementById("num-jia");
-														var num_jian = document.getElementById("num-jian");
-														var input_num = document.getElementById("input-num");
-
-
-														num_jia.onclick = function() {
-
-															if (input_num.value>=10) {
-																input_num.value=10;
-															} else {
-																input_num.value = parseInt(input_num.value) + 1;
-															}
-														}
-														num_jian.onclick = function() {
-															if(input_num.value <= 0) {
-																input_num.value = 0;
-															} else {
-
-
-																input_num.value = parseInt(input_num.value) - 1;
-															}
-														}*/
 													</script>
 													<div class="clear"></div>
 
@@ -635,16 +649,11 @@
 										</ul>
 									</div>
 									<div class="clear"></div>
-
-									<ul class="am-comments-list am-comments-list-flip">
-
+									<!-- 如果商品的id == 评论的gid 显示数据 -->	
+									@foreach($comment as $cv)
 										<!-- 遍历评论表 -->
-										<!-- 如果商品的id == 评论的uid 显示数据 -->
-										
-										@foreach($comment as $cv)
-
-										@if($goods->id == $cv->gid)
-
+									@if($goods->id == $cv->gid)
+									<ul class="am-comments-list am-comments-list-flip">
 										<li class="am-comment">
 											<!-- 评论容器 -->
 											<!-- <a href="">
@@ -653,10 +662,10 @@
 											<!-- 遍历用户表 -->
 											@foreach($user as $uv)
 												@if($uv->hid == $cv->uid)
-													<a href="">
+													<a href="javascript:void(0)">
 													<img class="am-comment-avatar" src="{{$uv->pic}}" />
 													<!-- 评论者头像 -->
-												</a>
+													</a>
 												@endif
 											@endforeach
 											<div class="am-comment-main">
@@ -674,6 +683,14 @@
 														@endforeach
 														评论于
 														<time datetime="">{{$cv->addtime}}</time>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+														@if($cv->star == 2)
+															好评
+														@elseif($cv->star == 1)
+															一般
+														@else
+															差评
+														@endif
 													</div>
 												</header>
 												<!-- 评论内容 -->
@@ -683,18 +700,24 @@
 														<div class="J_TbcRate_ReviewContent tb-tbcr-content" style="font-size: 20px;">
 															{{$cv->content}}
 														</div>
+														@foreach($order as $ov)
+														@if($cv->oid == $ov ->oid)
 														<div class="tb-r-act-bar" style="color:skyblue;margin-top: 20px;">
-															口味:柠檬黄&nbsp;&nbsp;规格：  <br>
+															口味:{{$ov->leixing}}&nbsp;&nbsp;数量:{{$ov->cnt}}包&nbsp;&nbsp;规格：{{$ov->size}}<br>
 															商品名称: {{$goods->gname}}
 														</div>
+														@endif
+														@endforeach
 													</div>
 												</div>
 											</div>
 										</li>
 										
-										@endif
-										@endforeach
 									</ul>
+									
+									<!-- <img src="/homes/comment/comment.gif" alt=""> -->
+									@endif
+									@endforeach
 									<!-- <img src="/homes/comment/comment.gif" alt=""> -->
 									<div class="clear"></div>
 									<!-- 评价的分页 -->

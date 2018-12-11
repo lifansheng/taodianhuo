@@ -14,6 +14,7 @@ use App\Model\Admin\Advert;
 use App\Model\Admin\Link;
 use App\Model\Admin\Site;
 use App\Model\Admin\Comment;
+use App\Model\Admin\Orders;
 
 
 class HomeController extends Controller
@@ -146,11 +147,16 @@ class HomeController extends Controller
         $cuxiao = Goods::all();
 
         //comment 评论表
-        $comment = Comment::all();
+        $comment = Comment::orderBy('id','desc')->get();
+        // dd($comment);
+        // Goods::orderBy('id','asc')
         // dd($comment);
         //用户
         $user = DB::table('homes')->get();
         // dd($user);
+        //订单信息
+        $order = Orders::all();
+        // dd($order);
         return view('home/goods/details',[
             'title'=>'商品详情页',
             'goods'=>$goods,
@@ -159,7 +165,8 @@ class HomeController extends Controller
             'link'=>$link,
             'cuxiao'=>$cuxiao,
             'comment'=>$comment,
-            'user'=>$user
+            'user'=>$user,
+            'order'=>$order
         ]);
     }
 
@@ -174,19 +181,23 @@ class HomeController extends Controller
         // select * form goods where gname("gname",'like',"%".$res."%");
         // $data = DB::select('select * form goods where ("gname","like","%".$res."%")');
         $data = Goods::where('gname','like','%'.$res.'%')->get();
-        // dump($data[0]);
+        // dump($data);
         // if(is_null($data[0])){
         //     echo 1;
         // }else{
         //     echo 0;
         // }
-
+        // var_dump($data);
+        // foreach($data as $v){
+        //     var_dump($v);
+        // }
         // exit;
         $goods = Goods::all();
         return view('home.goods.search',[
             'title'=>'列表页面',
             'data'=>$data,
-            'goods'=>$goods
+            'goods'=>$goods,
+            'request'=>$request
         ]);
     }
 
@@ -235,5 +246,8 @@ class HomeController extends Controller
           // return view('layout.index',['site' => $site, 
     }
 
+    public function about(){
+        echo 111;
+    }
 
 }
