@@ -3,6 +3,7 @@
 
 	<head>
 		<meta charset="utf-8">
+		<meta name="csrf-token" content="{{ csrf_token() }}">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=0">
 
 		<title>@yield('title')</title>
@@ -51,7 +52,7 @@
 						<!--悬浮搜索框-->
 
 						<div class="nav white">
-				<div class="logo"><img src="/homes/images/logo.png" /></div>
+				
 				<div class="logoBig">
 
 							@php use App\Http\Controllers\Home\HomeController;
@@ -147,7 +148,7 @@
 						<ul>
 							<li> <a href="/home/personinformation">个人信息</a></li>
 							<li> <a href="safety.html">安全设置</a></li>
-							<li> <a href="address.html">收货地址</a></li>
+							<li> <a href="/home/address">收货地址</a></li>
 						</ul>
 					</li>
 					<li class="person">

@@ -119,6 +119,8 @@
                             <a href="/admin/address/{{$v->id}}/edit" class='btn btn-info'>修改</a>
 
                             <form action="/admin/address/{{$v->id}}" method='post' style='display:inline'>
+                            <!-- <a href="/admin/address/{{$v->id}}/edit" class='btn btn-info'>修改</a> -->
+                                
                             	{{csrf_field()}}
 
                             	{{method_field("DELETE")}}

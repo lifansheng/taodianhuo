@@ -8,13 +8,13 @@ use DB;
 class PersonController extends Controller
 {
     //
-    public function index(){
+    public function pindex(){
 
     	return view('home.person.sy');
     }
 
 
-    public function informationindex(){
+    public function index(){
     			$res = session('hid');
     			// dd($res);
     			$data = DB::table('homes')->where('hid',$res)->first();
