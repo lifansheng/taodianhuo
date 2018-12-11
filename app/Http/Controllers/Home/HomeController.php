@@ -115,6 +115,7 @@ class HomeController extends Controller
         $hid = session('hid');
         
         if ($hid){ 
+            
             // 组成数组
             $arr = ['hid'=>$hid, "goods_id"=>$id];
 
