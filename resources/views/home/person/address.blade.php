@@ -206,7 +206,7 @@
 						$(document).ready(function() {							
 							$(".new-option-r").click(function() {
 								$(this).parent('.user-addresslist').addClass("defaultAddr").siblings().removeClass("defaultAddr");
-								alert('收获地址已经改变')
+								// alert('收获地址已经改变')
 									
 
 

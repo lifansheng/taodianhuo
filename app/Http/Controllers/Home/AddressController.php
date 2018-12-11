@@ -97,33 +97,33 @@ public function adajax(Request $request){
     // echo $hid;
 //通过hid获取所有的status
     // $st = [];
-    $st = Db::table('address')->where('status','=','1')->where('hid',$hid)->get();
+    $st = Db::table('address')->where('status','=','0')->where('hid',$hid)->get();
+
+// var_dump($st);
 
 
-
-
-    //通过id获取状态
+    // //通过id获取状态
     $status = DB::table('address')->where('id',$ids)->first();
-    $s= $status->status;
-
-
+    // $s= $status->status;
+// var_dump($status->status);
+// echo $ids ;
     // $d = array_map('get_object_vars', $st);
-    //默认地址的id
+   // 默认地址的id
      $mid = $st[0]->id;
-
-     if ($ids !== $mid) {
+echo $mid;
+     if ($status->status == '0'||$ids !== $mid) {
 
          //修改状态为默认
      DB::table('address')->where('id',$ids)->update(['status'=>'1']);
-     DB::table('address')->where('id',$mid)->update(['status'=>'0']);
+     DB::table('address')->where('id','!=',$ids)->update(['status'=>'0']);
      
 
-
+}
          # code...
-     }else{
-         DB::table('address')->where('id',$ids)->update(['status'=>'0']);
-     DB::table('address')->where('id',$mid)->update(['status'=>'1']);
-     }
+     // }else{
+     //     DB::table('address')->where('id',$ids)->update(['status'=>'0']);
+     // DB::table('address')->where('id',$mid)->update(['status'=>'1']);
+     // }
 
 
 
