@@ -934,6 +934,8 @@
 	    }
 	});
 
+	var leixing = '';
+	var size = '';
 	// 获取类型
 	$("input[name=leixing]").click(function(){
 		leixing = $(this).val();
@@ -954,7 +956,10 @@
 
 	// 拿到商品信息加入购物车
 	$("#LikBasket").click(function(){
-
+		if(!(leixing && size)){
+			alert('请选择商品参数');
+			return false;
+		}
 		// 获取购买的数量
 		var num = $("#text_box").val();
 
@@ -984,7 +989,10 @@
 
 	// 拿到商品信息立即购买进入付款页面
 	$("#LikBuy").click(function(){
-
+		if(!(leixing && size)){
+			alert('请先选择商品参数');
+			return false;
+		}
 		// 获取购买的数量
 		var num = $("#text_box").val();
 
