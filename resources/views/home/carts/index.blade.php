@@ -155,7 +155,7 @@
 							<span class="txt">合计:</span>
 							<strong class="price">¥<span id="J_Total">0</span></strong>
 						</div>
-						<div class="">
+						<div class="jiesuan">
 							{{csrf_field()}}
 							<!-- <a href="javascript:void(0)"  > -->
 								<input type="submit" id="J_Go" hid="{{session('hid')}}" class="submit-btn submit-btn-disabled btn-area" name="" style="background:red;border-color:red" value="结算">
@@ -190,7 +190,19 @@
 		    headers: {
 		        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 		    }
-		});
+		}); 
+
+        // 点击结算
+		$('.jiesuan').click(function(){
+			var duo = $(':checkbox:checked').length;
+			// alert(duo);
+			if(duo == 0){
+				alert('您还未选择商品!!');
+				return false;
+			}
+			
+
+		})
 
 		// 移入收藏夹
 		$('.yiru').click(function(){
@@ -374,11 +386,6 @@
 					nums()
 				}
 			})
-		})
-
-		$('jiesuan').click(function(){
-			var duo = $('input[type=checkbox]').val();
-			console.log(duo);
 		})
 
 		function nums(){
