@@ -36,7 +36,7 @@
 						<hr/>
 <!--个人信息 -->
 						<div class="info-main">
-							<form class="am-form am-form-horizontal" method = "post" action="/home/person/{{session('hid')}}" enctype="multipart/form-data">
+							<form class="am-form am-form-horizontal" method = "post" action="/home/personinformation/{{session('hid')}}" enctype="multipart/form-data">
 						<!--头像 -->
 						<div class="user-infoPic">
 

@@ -173,14 +173,6 @@ Route::post("home/ajaxcontrastname", "Home\LoginController@ajaxcontrastname");
 // 忘记密码
 Route::any("home/forget_password", "Home\LoginController@forget_password");
 
-
-// Route::post('ho/person','Home\PersonController@upload');
-
-
-
-
-// 前台
-
 Route::group(["middleware" => "home_login"], function(){
 
 	//关于我们
@@ -189,11 +181,16 @@ Route::group(["middleware" => "home_login"], function(){
 	//退出登录
 	Route::any("home/logout", "Home\LoginController@logout");
 
-	//个人中心
-	Route::resource('home/person','Home\PersonController');
+	// 个人中心
+	Route::get('home/person','Home\PersonController@pindex');
 
 	//个人信息
-	Route::get('home/personinformation','Home\PersonController@informationindex');
+	Route::resource('home/personinformation','Home\PersonController');
+
+	//收货地址
+	Route::resource('home/address','Home\AddressController');
+
+	Route::post('home/addressajax','Home\AddressController@adajax');
 
 	// 订单结算成功页面
 	Route::get("home/cheng","Home\CartsController@cheng");
@@ -247,8 +244,8 @@ Route::group(["middleware" => "home_login"], function(){
 	route::any('home/comment','Home\CommentController@create');
 	//查看个人所有的而评论
 	// route::any('home/all','Home\CommentController@all');
-
 });
+
 
 
 
