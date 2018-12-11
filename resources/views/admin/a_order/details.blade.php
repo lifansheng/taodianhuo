@@ -75,7 +75,7 @@
                 </tbody>
             </table>
             <div class="dataTables_info" id="DataTables_Table_1_info">
-                <button class="icon-bended-arrow-left" type="submit" onclick="window.location.href='/admin/order'"></button>
+                <button class="icon-bended-arrow-left" type="submit" onclick="window.location.href='/admin/a_order'"></button>
             </div>
 
             </div>

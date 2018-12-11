@@ -288,16 +288,17 @@
 
 @section('js')
 <script type="text/javascript">
-	$("input[name=kuaidi]").click(function(){
-		kuaidi = $(this).val();
-	})
+	// $("input[name=kuaidi]").click(function(){
+	// 	kuaidi = $(this).val();
+	// })
 
+	var liuyan = '';
 	$('input[name=liuyan]').blur(function(){
 		liuyan = $(this).val().trim();
 	})
 
 	$("#J_Go").click(function(){
-		window.location.href = "/home/cheng?kuaidi="+kuaidi+"&liuyan="+liuyan;
+		window.location.href = "/home/cheng?liuyan="+liuyan;
 	})
 </script>
 

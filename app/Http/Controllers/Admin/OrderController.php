@@ -17,7 +17,7 @@ class OrderController extends Controller
     public function index(Request $request)
     {
         
-        $res = Orders::with('orderaddr')->orderBy('hid','ace')
+        $res = Orders::with('orderaddr')->orderBy('hid','ace')->orderBy('id','ace')
             ->where(function($query) use($request){
                  //按照订单号查询
                 $id = $request->input('oid');

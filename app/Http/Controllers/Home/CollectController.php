@@ -30,7 +30,7 @@ class CollectController extends Controller
         // echo $gid;
         $data = Goods::where('id',$gid)->first();
         $rs = Collection::where(['gid'=>$gid,'homeid'=>$homeid])->count();
-        // echo $rs;
+        // echo $rs; 
         
         if($rs == 0){
             
