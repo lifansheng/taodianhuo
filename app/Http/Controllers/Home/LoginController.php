@@ -24,39 +24,68 @@ class LoginController extends Controller
     public function dologin(Request $request)
     {
         // echo 1; exit;
+        // 获取用户提交的数据
     	$res = $request -> except("_token", "code");
         // dd($res["username"]);
     
-        $status = DB::table("homes")->where("username",$res["username"])->first();
-    	// dd($status->status);
-
-
-    	// 获取当前想要登录的用户的数据库里的密码
-    	$rs = Homes::where("username", $res["username"]) -> first();
-
-        if (!$rs) {
+        $usernames = Homes::where("username", $res["username"])->first();
+        $emails = Homes::where("email", $res["username"])->first();
+        $phones = Homes::where("phone_number", $res["username"])->first();
+        // dd($phones);
+        if (!($usernames || $emails || $phones)) {
             return back()->with("error", "用户名或者密码错误");
-        }
-        // dd($rs);
-    	// dd($rs->password);                    
-    	//判断密码
-        //hash
-        if (!Hash::check($request->password, $rs->password)) {
-            return back()->with('error','用户名或者密码错误');           
-        } else {  
-
-            if (!$status->status == "1") {
-                return back()->with('error','您尚未激活账号'); 
+        } else if ($usernames) {
+            //判断密码 hash
+            if (!Hash::check($request->password, $usernames->password)) {
+                return back()->with('error','用户名或者密码错误');           
+            } else {  
+                // 判断状态
+                if (!$usernames->status == "1") {
+                    return back()->with('error','您尚未激活账号'); 
+                }
+                // session 存入登录的ID和用户名信息
+                session([
+                    'hid'=>$usernames->hid,
+                    'huname'=>$usernames->username,
+                    'phone_number'=>$usernames->phone_number
+                ]);
+                return redirect("/");  
             }
-
-            // session 存入登录的ID和用户名信息
-            session([
-                'hid'=>$rs->hid,
-                'huname'=>$rs->username
-            ]);
-            return redirect("/");  
-        }
-
+        } else if ($emails) {
+            //判断密码 hash
+            if (!Hash::check($request->password, $emails->password)) {
+                return back()->with('error','用户名或者密码错误');           
+            } else {  
+                // 判断状态
+                if (!$emails->status == "1") {
+                    return back()->with('error','您尚未激活账号'); 
+                }
+                // session 存入登录的ID和用户名信息
+                session([
+                    'hid'=>$emails->hid,
+                    'huname'=>$emails->username,
+                    'phone_number'=>$emails->phone_number
+                ]);
+                return redirect("/");  
+            }
+        } else if ($phones) {
+            //判断密码 hash
+            if (!Hash::check($request->password, $phones->password)) {
+                return back()->with('error','用户名或者密码错误');           
+            } else {  
+                // 判断状态
+                if (!$phones->status == "1") {
+                    return back()->with('error','您尚未激活账号'); 
+                }
+                // session 存入登录的ID和用户名信息
+                session([
+                    'hid'=>$phones->hid,
+                    'huname'=>$phones->username,
+                    'phone_number'=>$phones->phone_number
+                ]);
+                return redirect("/");  
+            }
+        }     
     }
 
     // 注册的页面
@@ -231,9 +260,12 @@ class LoginController extends Controller
         $username = $request -> get("username");
 
         // 与数据库里的用户名做比对
-        $res = Homes::where("username", $username)->first(); 
+        $usernames = Homes::where("username", $username)->first(); 
+        $emails = Homes::where("email", $username)->first(); 
+        $phones = Homes::where("phone_number", $username)->first(); 
+        
 
-        if (!$res) {
+        if (!($usernames || $emails || $phones)) {
             echo 0;
         } else {
             echo 1;

@@ -10,11 +10,12 @@ use App\Model\Admin\Gpic;
 use App\Model\Admin\News;
 use App\Model\Admin\Lunbo;
 use DB;
+use Session;
 use App\Model\Admin\Advert;
 use App\Model\Admin\Link;
 use App\Model\Admin\Site;
 use App\Model\Admin\Comment;
-use App\Model\Admin\Orders;
+use App\Model\Home\Footprint;
 
 
 class HomeController extends Controller
@@ -105,14 +106,23 @@ class HomeController extends Controller
 
 
     //到详情页的方法
-      public function details()
+      public function details(Request $request)
     {
-        //
         //得到url地址栏得的id
         $id = $_GET['id'];
-        // dd($id);
-        // $goods = Goods::find($id);
-        // dd($goods);
+        
+        // 得到当前的用户id
+        $hid = session('hid');
+        
+        // 组成数组
+        $arr = ['hid'=>$hid, "goods_id"=>$id];
+
+        // 浏览的时间
+        $arr["created_at"] = date("Y-m-d H:i:s",time());
+
+        // 存数据
+        Footprint::create($arr);
+
         //关联查询 goods表和gpic  商品表和商品图片表
          $good = Goods::with('gis')->where('id',$id)->get();
          // dd($good[0]);
@@ -147,16 +157,11 @@ class HomeController extends Controller
         $cuxiao = Goods::all();
 
         //comment 评论表
-        $comment = Comment::orderBy('id','desc')->get();
-        // dd($comment);
-        // Goods::orderBy('id','asc')
+        $comment = Comment::all();
         // dd($comment);
         //用户
         $user = DB::table('homes')->get();
         // dd($user);
-        //订单信息
-        $order = Orders::all();
-        // dd($order);
         return view('home/goods/details',[
             'title'=>'商品详情页',
             'goods'=>$goods,
@@ -165,8 +170,7 @@ class HomeController extends Controller
             'link'=>$link,
             'cuxiao'=>$cuxiao,
             'comment'=>$comment,
-            'user'=>$user,
-            'order'=>$order
+            'user'=>$user
         ]);
     }
 
@@ -181,23 +185,19 @@ class HomeController extends Controller
         // select * form goods where gname("gname",'like',"%".$res."%");
         // $data = DB::select('select * form goods where ("gname","like","%".$res."%")');
         $data = Goods::where('gname','like','%'.$res.'%')->get();
-        // dump($data);
+        // dump($data[0]);
         // if(is_null($data[0])){
         //     echo 1;
         // }else{
         //     echo 0;
         // }
-        // var_dump($data);
-        // foreach($data as $v){
-        //     var_dump($v);
-        // }
+
         // exit;
         $goods = Goods::all();
         return view('home.goods.search',[
             'title'=>'列表页面',
             'data'=>$data,
-            'goods'=>$goods,
-            'request'=>$request
+            'goods'=>$goods
         ]);
     }
 
@@ -246,8 +246,5 @@ class HomeController extends Controller
           // return view('layout.index',['site' => $site, 
     }
 
-    public function about(){
-        echo 111;
-    }
 
 }

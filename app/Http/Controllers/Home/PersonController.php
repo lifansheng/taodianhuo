@@ -60,4 +60,11 @@ class PersonController extends Controller
         // 
         
     }
+
+    public function safety()
+    {
+        return view("home/person/safety", [
+            "title"=>"安全设置"
+        ]);
+    }
 }

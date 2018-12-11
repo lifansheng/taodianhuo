@@ -93,6 +93,9 @@
 	    }
 	});
 
+	// 设置ajax为同步
+	$.ajaxSetup({async:false});
+
 	var US = false;
 	var PS = false;
 	var ES = false;
@@ -102,106 +105,101 @@
     $(".errors").css("display", "none");
     $(".errorss").css("display", "none");
 
+    // 用户名
+	// 失去焦点事件
+	$("input[name=username]").blur(function(){
+		// 设置变量t表示当前被选中的对象
+	    var t = $(this);
+	    
+	    // 获取用户输入的值
+	    var pv = $(this).val().trim();    // console.log(pv);
+	    
+	    // 发送ajax与数据库做比对
+	    $.post("/home/ajaxhname", {hname:pv}, function(data){
+	    	// console.log(data);
+	    	if (data == 0) {
+	    		$(".errors:eq(0)").removeAttr("style").delay(2000).fadeOut(2000);
+	    		US = false;
+	    	} else if (data == 1) {
+	    		$(".errors:eq(0)").css("display", "none");
+	    		US = true;
+	    	}
+	    })
+	})
 
-	// function regerror()
-	// {
-	    // 用户名
-		// 失去焦点事件
-		$("input[name=username]").blur(function(){
-			// 设置变量t表示当前被选中的对象
-		    var t = $(this);
-		    
-		    // 获取用户输入的值
-		    var pv = $(this).val().trim();    // console.log(pv);
-		    
-		    // 发送ajax与数据库做比对
-		    $.post("/home/ajaxhname", {hname:pv}, function(data){
-		    	// console.log(data);
-		    	if (data == 0) {
-		    		$(".errors:eq(0)").removeAttr("style").delay(2000).fadeOut(2000);
-		    		US = false;
-		    	} else if (data == 1) {
-		    		$(".errors:eq(0)").css("display", "none");
-		    		US = true;
-		    	}
-		    })
-		})
+	// 手机号码
+	// 失去焦点事件
+	$("input[name=phone_number]").blur(function(){
+		// 设置变量t表示当前被选中的对象
+	    var t = $(this);
+	    
+	    // 获取用户输入的值
+	    var pv = $(this).val().trim();    // console.log(pv);
+	    
+	    // 发送ajax与数据库做比对
+	    $.post("/home/ajaxphone", {phone:pv}, function(data){
+	    	// console.log(data);
+	    	if (data == 0) {
+	    		$(".errors:eq(1)").removeAttr("style").delay(2000).fadeOut(2000);
+	    		PS = false;
+	    	} else if (data == 1) {
+	    		$(".errors:eq(1)").css("display", "none");
+	    		PS = true;
+	    	}
+	    })
+	})
 
-		// 手机号码
-		// 失去焦点事件
-		$("input[name=phone_number]").blur(function(){
-			// 设置变量t表示当前被选中的对象
-		    var t = $(this);
-		    
-		    // 获取用户输入的值
-		    var pv = $(this).val().trim();    // console.log(pv);
-		    
-		    // 发送ajax与数据库做比对
-		    $.post("/home/ajaxphone", {phone:pv}, function(data){
-		    	// console.log(data);
-		    	if (data == 0) {
-		    		$(".errors:eq(1)").removeAttr("style").delay(2000).fadeOut(2000);
-		    		PS = false;
-		    	} else if (data == 1) {
-		    		$(".errors:eq(1)").css("display", "none");
-		    		PS = true;
-		    	}
-		    })
-		})
+	// 邮箱
+	// 失去焦点事件
+	$("input[name=email]").blur(function(){
+		// 设置变量t表示当前被选中的对象
+	    var t = $(this);
+	    
+	    // 获取用户输入的值
+	    var pv = $(this).val().trim();    // console.log(pv);
+	    
+	    // 发送ajax与数据库做比对
+	    $.post("/home/ajaxemails", {emails:pv}, function(data){
+	    	// console.log(data);
+	    	if (data == 0) {
+	    		$(".errors:eq(2)").removeAttr("style").delay(2000).fadeOut(2000);
+	    		ES = false;
+	    	} else {
+	    		$(".errors:eq(2)").css("display", "none");
+	    		ES = true;
+	    	}
+	    })
+	})
 
-		// 邮箱
-		// 失去焦点事件
-		$("input[name=email]").blur(function(){
-			// 设置变量t表示当前被选中的对象
-		    var t = $(this);
-		    
-		    // 获取用户输入的值
-		    var pv = $(this).val().trim();    // console.log(pv);
-		    
-		    // 发送ajax与数据库做比对
-		    $.post("/home/ajaxemails", {emails:pv}, function(data){
-		    	// console.log(data);
-		    	if (data == 0) {
-		    		$(".errors:eq(2)").removeAttr("style").delay(2000).fadeOut(2000);
-		    		ES = false;
-		    	} else {
-		    		$(".errors:eq(2)").css("display", "none");
-		    		ES = true;
-		    	}
-		    })
-		})
+	// 验证码
+	// 失去焦点事件
+	$("input[name=code]").blur(function(){
+		// 设置变量t表示当前被选中的对象
+	    var t = $(this);
+	    
+	    // 获取用户输入的值
+	    var pv = $(this).val().trim();    // console.log(pv);
 
-		// 验证码
-		// 失去焦点事件
-		$("input[name=code]").blur(function(){
-			// 设置变量t表示当前被选中的对象
-		    var t = $(this);
-		    
-		    // 获取用户输入的值
-		    var pv = $(this).val().trim();    // console.log(pv);
-
-		    // 验证码不能为空
-		    if (pv == "") {
-		     	$(".errorss").removeAttr("style").delay(2000).fadeOut(2000);
-		     	CS = false; 
-		     	return;
-		    }
-		    
-		    // 发送ajax与数据库做比对
-		    $.post("/home/ajaxcode", {code:pv}, function(data){
-		    	// console.log(data);
-		    	if (data == 0) {
-		    		$(".errors:eq(3)").removeAttr("style").delay(2000).fadeOut(2000);
-		    		CS = false;
-		    	} else if (data == 1) {
-		    		// $(".errors:eq(3)").css("display", "none");
-		    		CS = true;
-		    		// alert(1);
-		    	}
-		    })
-		})
-	// }
-	// regerror();
+	    // 验证码不能为空
+	    if (pv == "") {
+	     	$(".errorss").removeAttr("style").delay(2000).fadeOut(2000);
+	     	CS = false; 
+	     	return;
+	    }
+	    
+	    // 发送ajax与数据库做比对
+	    $.post("/home/ajaxcode", {code:pv}, function(data){
+	    	// console.log(data);
+	    	if (data == 0) {
+	    		$(".errors:eq(3)").removeAttr("style").delay(2000).fadeOut(2000);
+	    		CS = false;
+	    	} else if (data == 1) {
+	    		// $(".errors:eq(3)").css("display", "none");
+	    		CS = true;
+	    		// alert(1);
+	    	}
+	    })
+	})
 
 	// 按钮点击事件
 	$("#registerForm").submit(function(){
@@ -212,15 +210,12 @@
 		$('input[name=email]').trigger('blur');
 		$('input[name=username]').trigger('blur');
 
+
 		if (US && PS && ES && CS) {
-			// 如果都为真
 			return true;
 		} else {
-			// 如果有为假的 执行一次ajax
-			// regerror();
-			// alert(false);
 			return false;
-		}
+		}	
 	})
 	
 </script>

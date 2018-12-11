@@ -57,8 +57,8 @@
 		{{csrf_field()}}
 		
 		<div>
-			<input type="text" name="username" class="username" placeholder="用户名" autocomplete="off"/>
-			<label id="codeerror" class="errorsss" for="code">用户名不能为空</label>
+			<input type="text" name="username" class="username" placeholder="用户名/邮箱/密码" autocomplete="off"/>
+			<label id="codeerror" class="errorsss" for="code">账号不能为空</label>
 		</div>
 		<div>
 			<input type="password" name="password" class="password" placeholder="密码" oncontextmenu="return false" onpaste="return false" />
@@ -99,6 +99,8 @@
 	        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 	    }
 	});
+	// 设置ajax为同步
+	$.ajaxSetup({async:false});
 
 	var CS = false;
 	var US = false;
@@ -114,8 +116,8 @@
     
     $('.mws-form-message').delay(2000).fadeOut(2000);
 
-    function regerror()
-	{
+ //    function regerror()
+	// {
 	    // 验证码
 		// 失去焦点事件
 		$("input[name=code]").blur(function(){
@@ -156,7 +158,7 @@
 			if (uv == ''){
 				$(".errorsss").removeAttr("style").delay(2000).fadeOut(2000);
     			US = false;
-			} else {
+			 } else {
 				$.post("/home/ajaxcontrastname", {username:uv}, function(data){
 					// console.log(data);
 
@@ -183,8 +185,8 @@
 				PS = true;
 			}
 		})
-	}
-	regerror();
+	// }
+	// regerror();
 
 	
 		/*// 发送ajax
@@ -227,15 +229,17 @@
 		$("input[name=code]").trigger("blur");
 		$("input[name=password]").trigger("blur");
 		$("input[name=username]").trigger("blur");
+		// console.log(CS)
+		// console.log(US)
+		// console.log(PS)
 
-
-		if (CS && US) {
-
-			return true;
-		} else {
-
-			return false;
-		}	
+			if (CS && US && PS) {
+				return true;
+			} else {
+				// alert(1);
+				// regerror();
+				return false;
+			}			
 	})
 </script>
 

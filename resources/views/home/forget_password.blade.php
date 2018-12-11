@@ -97,6 +97,9 @@
 	var CS = false;
 	var pv = null;
 
+	// 设置ajax为同步
+	$.ajaxSetup({async:false});
+
 	// 手机号码输入框失去焦点事件
 	$("input[name=phone_number]").blur(function(){
 		// 获得此时用户输入的号码
@@ -143,12 +146,14 @@
 	    if (PS == true) {
 	    	// 发送ajax 手机号  获取验证码
 	        $.post("/home/ajaxpcode", {number: pv},function(data){
-	            // console.log(data);
+	            console.log(data);
 	        }) 
 	    } else {
 	        // 返回
 	        return false;        
 	    }
+
+	   
 	})
 
 
@@ -165,7 +170,7 @@
 
         // 发送ajax做比对验证码
         $.post("/home/ajaxpcodes", {codes:cv},function(data){
-            // console.log(data);
+            console.log(data);
             if (data == 1) {
                 CS = true;
             } else if (data == 0) {
@@ -178,16 +183,18 @@
 							
 	
 	// 按钮点击事件
-	$("#forms").submit(function(){
+	$("#submit").click(function(){
 
 		$("input[name=phone_number]").trigger("blur");
 		$("input[name=code]").trigger("blur");
 
-		if (PS && CS) {
-			return true;			
-		} else {
-			return false;
-		}		
+
+			if (PS && CS) {
+				return true;			
+			} else {
+				// alert(1);
+				return false;
+			}				
 	})
 </script>
 

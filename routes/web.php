@@ -244,6 +244,14 @@ Route::group(["middleware" => "home_login"], function(){
 	route::any('home/comment','Home\CommentController@create');
 	//查看个人所有的而评论
 	// route::any('home/all','Home\CommentController@all');
+
+	// 我的足迹
+	Route::any("home/footprint", "Home\FootprintController@footprint");
+	// 删除足迹
+	Route::any("/home/ajaxcheckfoots", "Home\FootprintController@ajaxcheckfoots");
+
+	// 安全设置
+	Route::any("home/safety", "Home\PersonController@safety");
 });
 
 
