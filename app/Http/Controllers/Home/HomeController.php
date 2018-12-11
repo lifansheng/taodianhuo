@@ -114,14 +114,17 @@ class HomeController extends Controller
         // 得到当前的用户id
         $hid = session('hid');
         
-        // 组成数组
-        $arr = ['hid'=>$hid, "goods_id"=>$id];
+        if ($hid){ 
+            // 组成数组
+            $arr = ['hid'=>$hid, "goods_id"=>$id];
 
-        // 浏览的时间
-        $arr["created_at"] = date("Y-m-d H:i:s",time());
+            // 浏览的时间
+            $arr["created_at"] = date("Y-m-d H:i:s",time());
 
-        // 存数据
-        Footprint::create($arr);
+            // 存数据
+            Footprint::create($arr);
+        }
+       
 
         //关联查询 goods表和gpic  商品表和商品图片表
          $good = Goods::with('gis')->where('id',$id)->get();
