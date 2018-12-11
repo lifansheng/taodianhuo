@@ -252,6 +252,25 @@ Route::group(["middleware" => "home_login"], function(){
 
 	// 安全设置
 	Route::any("home/safety", "Home\PersonController@safety");
+	// 修改登录密码的页面
+	Route::any("home/psword", "Home\PersonController@psword");
+	// 修改登录密码的方法
+	Route::post("home/dopsword", "Home\PersonController@dopsword");
+	// ajax 原密码
+	Route::post("/home/ajaxuop", "Home\PersonController@ajaxuop");
+
+	// 绑定手机的页面
+	Route::any("home/bindphone", "Home\PersonController@bindphone");
+	// 绑定手机的方法
+	Route::any("home/dobindphone", "Home\PersonController@dobindphone");
+	// ajax 解绑手机号码
+	Route::post("/home/ajaxbindphone", "Home\PersonController@ajaxbindphone");
+	// ajax 解绑验证码
+	Route::post("/home/ajaxbindphonecode", "Home\PersonController@ajaxbindphonecode");
+	// ajax 新绑定手机号码
+	Route::post("/home/ajaxbindphones", "Home\PersonController@ajaxbindphones");
+	// ajax 绑定验证码
+	Route::post("/home/ajaxbindphonecodes", "Home\PersonController@ajaxbindphonecodes");
 });
 
 
