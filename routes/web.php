@@ -33,7 +33,10 @@ Route::any("admin/changenewpass", "Admin\LoginController@changenewpass");
 //退出登录
 Route::any("admin/logout", "Admin\LoginController@logout");
 
-
+// 双击商品的修改图片 goods
+route::get('/admin/goodsajaxs','Admin\GoodsController@xiugai');
+//修改主图片
+route::any('/admin/edituajax','Admin\GoodsController@xiutu');
 //后台
 Route::group(["middleware" => ["login", "userper"]], function(){
  
@@ -74,6 +77,10 @@ Route::group(["middleware" => ["login", "userper"]], function(){
 	route::resource('admin/cate','Admin\CateController');
 	//商品的管理
 	route::resource('admin/goods','Admin\GoodsController');
+
+	///admin/goodsajax
+	// route::get("admin/goodsajax", "Admin\GoodsController@goodsajax");
+
 	//商品的评论管理
 	route::resource('admin/comment','Admin\CommentController');
 
@@ -171,9 +178,13 @@ Route::any("home/forget_password", "Home\LoginController@forget_password");
 
 
 
+
 // 前台
 
 Route::group(["middleware" => "home_login"], function(){
+
+	//关于我们
+	route::get('/home/about','Home\HomeController@about');
 
 	//退出登录
 	Route::any("home/logout", "Home\LoginController@logout");

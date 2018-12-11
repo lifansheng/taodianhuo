@@ -68,7 +68,7 @@
                         <ul class="mws-form-list inline">
                             <li><label><input type="radio" name='star' value="2"  @if($res->star == 2) checked @endif>好评</label></li>
     						<li><label><input type="radio" name='star' value="1"  @if($res->star == 1) checked @endif>一般</label></li>
-    						<li><label><input type="radio" name='star' value="0"  @if($res->star == 0) checked @endif>不咋滴</label></li>
+    						<li><label><input type="radio" name='star' value="0"  @if($res->star == 0) checked @endif>差评</label></li>
                         </ul>
                     </div>
                               

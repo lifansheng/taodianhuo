@@ -116,8 +116,9 @@
 								<div class="clear"></div>
 
 								<ul class="am-avg-sm-2 am-avg-md-3 am-avg-lg-4 boxes">
-									@if(!is_null($data))
+									
 									@foreach($data as $v)
+									
 									<li>
 										<div class="i-pic limit">
 											<a href="/home/details?id={{$v->id}}">
@@ -132,10 +133,9 @@
 											</p>
 										</div>
 									</li>
+									
 									@endforeach
-									@else
-									123
-									@endif
+									
 								</ul>
 					
 	<!--热门活动 -->

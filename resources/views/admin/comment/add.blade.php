@@ -42,7 +42,7 @@
                         <ul class="mws-form-list inline">
                             <li><label><input type="radio" name='star' value="2" checked>好评</label></li>
     						<li><label><input type="radio" name='star' value="1">一般</label></li>
-    						<li><label><input type="radio" name='star' value="0">不咋滴</label></li>
+    						<li><label><input type="radio" name='star' value="0">差评</label></li>
                         </ul>
                     </div>
                               

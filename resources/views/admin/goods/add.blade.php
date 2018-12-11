@@ -44,33 +44,33 @@
                 <div class="mws-form-row">
                     <label class="mws-form-label">商品名</label>
                     <div class="mws-form-item">
-                        <input class="small" type="text" name="gname"><span></span>
+                        <input class="small" type="text" name="gname" placeholder="请输入商品名"><span></span>
                     </div>
                 </div>
 
                 <div class="mws-form-row">
                     <label class="mws-form-label">价格</label>
                     <div class="mws-form-item">
-                        <input class="small" type="text" name="price">
+                        <input class="small" type="text" name="price" placeholder="请输入价格">
                     </div>
                 </div>
 
                 <div class="mws-form-row">
                     <label class="mws-form-label">口味</label>
                     <div class="mws-form-item">
-                        <input class="small" type="text" name="color">
+                        <input class="small" type="text" name="color" placeholder="不同口味尽量用逗号隔开">
                     </div>
                 </div>
                <div class="mws-form-row">
                     <label class="mws-form-label">规格</label>
                     <div class="mws-form-item">
-                        <input class="small" type="text" name="size">
+                        <input class="small" type="text" name="size" placeholder="不同规格尽量用逗号隔开">
                     </div>
                 </div>
                 <div class="mws-form-row">
                     <label class="mws-form-label">库存</label>
                     <div class="mws-form-item">
-                        <input class="small" type="text" name="stock">
+                        <input class="small" type="text" name="stock" placeholder="请输入库存">
                     </div>
                 </div>
                 <div class="mws-form-row">
@@ -122,17 +122,38 @@
 
     var ue = UE.getEditor('editor');
 
-    /*    var gname = $('input[name = gname]').blur(function(){
 
-            // alert(123);
-            var uv = $(this).val().trim();
-            if(uv == ''){
-            $(this).next().text(' *商品名不能为空').css('color','#e53e41');
+    //     var GN = true;
 
-            $(this).css('border','solid 1px #e53e41');
+    //     var gname = $('input[name = gname]').blur(function(){
 
-            return;
-        }
-    });*/
+    //         // alert(123);
+    //         var uv = $(this).val().trim();
+    //         if(uv == ''){
+    //         $(this).next().text(' *商品名不能为空').css('color','#e53e41');
+
+    //         $(this).css('border','solid 2px #e53e41');
+
+    //         GN = false;
+    //         return;
+    //     }
+    //     //正则
+    //     var reg = /^\S{13,26}$/;
+    //     // var reg=/^[\u4e00-\u9fa5]+$/;
+    //     // var tg = $(this);
+    //     //检测
+    //     console.log(uv);
+    //     if(!reg.test(uv)){
+    //         $(this).next().text(' *用商品名格式不正确').css('color','#e53e41');
+
+    //         $(this).css('border','solid 2px #e53e41');
+
+    //         GN = false;
+    //     }else{
+    //         $(this).next().text(' *√').css('color','green');
+    //         $(this).css('border','solid 2px green');
+    //         GN = true;
+    //     }
+    // });
 </script>
 @stop

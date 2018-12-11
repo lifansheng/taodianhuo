@@ -24,7 +24,7 @@ class GoodsController extends Controller
                 //检测关键字
                 $gname = $request->input('gname');
                
-                //如果用户名不为空
+                //如果商品名不为空
                 if(!empty($gname)) {
                     $query->where('gname','like','%'.$gname.'%');
                 }
@@ -166,14 +166,16 @@ class GoodsController extends Controller
      */
     public function show($id)
     {
+        // echo $id;
+        // exit;
         // $res = Gpic::destroy($id);
-        $res = Gpic::where('id',$id)->delete();
+        // $res = Gpic::where('id',$id)->delete();
 
-        if($res){
-            echo 1;
-        }else{
-            echo 0;
-        }
+        // if($res){
+        //     echo 1;
+        // }else{
+        //     echo 0;
+        // }
 
     }
 
@@ -299,4 +301,39 @@ class GoodsController extends Controller
           return back()->with('error','删除失败');
       }
     }
+
+//修改主图片
+    public function xiutu(Request $request){
+          $file = $request->file('imgs');
+        //判断文件是否有效
+        if($file->isValid()){
+          //上传文件的后缀名
+            $entension = $file->getClientOriginalExtension();
+            //修改名字
+            $newName = date('YmdHis').mt_rand(1000,9999).'.'.$entension;
+            //移动文件
+            $path = $file->move('./uploads/goods',$newName);
+
+            $filepath = '/uploads/goods/'.$newName;
+
+            $res['imgs'] = $filepath;
+            // DB::table('goods')->where('id',session('uid'))->update($res);
+            //返回文件的路径
+            return  $filepath;
+        }
+    }
+
+//双击修改子图片
+  public function xiugai(Request $request){
+    // echo 1;
+    $res = $request->get('gid');
+    $ress = Gpic::where('id',$res)->delete();
+
+        if($ress){
+            echo 1;
+        }else{
+            echo 0;
+        }
+    // echo $res;
+  }
 }

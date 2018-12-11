@@ -157,8 +157,8 @@
 															</li>
 															@elseif($v->status == '4')
 															<li class="td td-change">
-																<div class="am-btn am-btn-danger anniu">
-																	我要评价</div>
+																<a href="/home/comments?oid={{$v->oid}}"><div class="am-btn am-btn-danger anniu">
+																	我要评价</div></a>
 															</li>
 															@endif
 														</div>
