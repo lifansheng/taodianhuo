@@ -168,13 +168,27 @@
 							<div class="avatar_box ">
 								<p class="avatar_imgbox "><img src="{{$user->pic}}" /></p>
 								<ul class="user_info ">
-									<li>{{$user->username}}</li>
+									@if($user->integral == 0)
+									<li style="font-size:25px;">{{$user->username}}</li>
 									<li>级&nbsp;别：普通会员</li>
+									@elseif($user->integral == 10)
+									<li style="color:#cc0;font-size:25px;">{{$user->username}}</li>
+									<li style="color:#cc0;">级&nbsp;别：铜牌会员</li>
+									@elseif($user->integral == 20)
+									<li style="color:#ccc;font-size:25px;">{{$user->username}}</li>
+									<li style="color:#ccc;">级&nbsp;别：银牌会员</li>
+									@elseif($user->integral == 30)
+									<li style="color:yellow;font-size:25px;">{{$user->username}}</li>
+									<li style="color:yellow;">级&nbsp;别：金牌会员</li>
+									@else
+									<li style="color:red;font-size:25px;">{{$user->username}}</li>
+									<li style="color:red;">级&nbsp;别：钻石会员</li>
+									@endif
 								</ul>
 							</div>
 							<div class="login_btnbox ">
-								<a href="# " class="login_order ">我的订单</a>
-								<a href="# " class="login_favorite ">我的收藏</a>
+								<a href="/home/order" class="login_order ">我的订单</a>
+								<a href="/home/collection" class="login_favorite ">我的收藏</a>
 							</div>
 							<i class="icon_arrow_white "></i>
 						</div>
