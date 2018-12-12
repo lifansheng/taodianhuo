@@ -84,7 +84,7 @@
 														<ul class="item-list">
 															<li class="td td-item">
 																<div class="item-pic">
-																	<a href="#" class="J_MakePoint">
+																	<a href="/home/details?id={{$v->gid}}" class="J_MakePoint">
 																		<img src="{{$v->imgs}}" class="itempic J_ItemImg">
 																	</a>
 																</div>

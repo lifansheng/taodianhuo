@@ -8,6 +8,7 @@ use DB;
 use  App\Model\Admin\Goods;
 use  App\Model\Admin\Cate;
 use  App\Model\Admin\Gpic;
+use App\Http\Requests\GoodsRequest;
 
 class GoodsController extends Controller
 {
@@ -72,7 +73,7 @@ class GoodsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(GoodsRequest $request)
     {
         //
        // $res = $request->all();
