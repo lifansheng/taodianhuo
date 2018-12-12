@@ -6,7 +6,11 @@
 
 		<link href="/homes/css/personal.css" rel="stylesheet" type="text/css">
 		<link href="/homes/css/footstyle.css" rel="stylesheet" type="text/css">
-
+		<style>
+			.cur{
+				display:none;
+			}
+		</style>
 
 		<div class="center">
 			<div class="col-main">
@@ -156,8 +160,8 @@
    		if(num == 0){
    			$('.cart-empty').show();
    			$(".goods").hide;
+   			$("#qing").addClass("cur");
    		}
-
    }
    foots()
 </script>
