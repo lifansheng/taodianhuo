@@ -18,7 +18,7 @@
 										<a href="information.html">
 											<img src="/homes/images/getAvatar.do.jpg">
 										</a>
-										<em class="s-name">(小叮当)<span class="vip1"></em>
+										<em class="s-name">{{$data -> username}}<span class="vip1"></em>
 										<div class="s-prestige am-btn am-round">
 											</span>会员福利</div>
 									</div>
