@@ -229,7 +229,7 @@ Route::group(["middleware" => "home_login"], function(){
 	Route::any("home/order","Home\OrderController@index");
 	Route::get("home/orderxiang","Home\OrderController@orderxiang");
 	Route::get("home/queren/{oid}","Home\OrderController@queren");
-	Route::get("home/shanorder/{oid}","Home\OrderController@shanorder");
+	Route::get("home/shanorder","Home\OrderController@shanorder");
 	Route::post("home/tixing","Home\OrderController@tixing");
 
 	// 我的收藏
@@ -249,6 +249,8 @@ Route::group(["middleware" => "home_login"], function(){
 	Route::any("home/footprint", "Home\FootprintController@footprint");
 	// 删除足迹
 	Route::any("/home/ajaxcheckfoots", "Home\FootprintController@ajaxcheckfoots");
+	// 清空足迹
+	Route::any("/home/ajaxcheckfootss", "Home\FootprintController@ajaxcheckfootss");
 
 	// 安全设置
 	Route::any("home/safety", "Home\PersonController@safety");

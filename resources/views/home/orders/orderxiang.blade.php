@@ -206,7 +206,7 @@
 													</div>
 												</li>
 												<li class="td td-change">
-													<button class="am-btn am-btn-danger anniu shanorder" onclick="window.location='/home/shanorder/{{$res->oid}}'">
+													<button class="am-btn am-btn-danger anniu shanorder" oid="{{$res->oid}}" onclick="shanchu(this)">
 																	删除订单</button>
 												</li>
 												@elseif($res->status == '1')
@@ -272,11 +272,17 @@
 	    }
 	});
 
-
-	$('.shanorder').click(function(){
-		confirm('您确定要删除吗');
-		alert('删除成功');
-	});
+	function shanchu(oid)
+	{
+		var oid = $(oid).attr("oid");
+		// alert(oid);
+		var aa = confirm('您确定要删除吗');
+		if(aa) {
+			window.location.href='/home/shanorder?oid='+oid;
+		}else{
+			return false;
+		}
+	}
 
 	// 订单提醒发货
 	$('.tixing').click(function(){

@@ -88,8 +88,9 @@ class OrderController extends Controller
     }
 
     // 删除订单
-    public function shanorder($oid)
+    public function shanorder(Request $request)
     {
+        $oid = $request->oid;
         Orders::where('oid',$oid)->delete();
         return redirect('/home/order');
     }

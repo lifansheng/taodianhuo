@@ -12,8 +12,10 @@ class PersonController extends Controller
 {
     //
     public function pindex(){
-
-    	return view('home.person.sy');
+$res = session('hid');
+                // dd($res);
+                $data = DB::table('homes')->where('hid',$res)->first();
+    	return view('home.person.sy',['data' => $data]);
     }
 
 

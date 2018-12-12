@@ -46,7 +46,7 @@ class HomeController extends Controller
     {   
         // $res = Goods::with('gis')->get();
         //遍历得到商品表的所有数据
-        $goods = Goods::all();
+        $goods = Goods::orderBy('id','desc')->get();
         //便利得到新闻表的所有信息
         $news = News::all();
         //便利得到所有轮播表的所有信息
@@ -86,9 +86,13 @@ class HomeController extends Controller
         //得到广告表的所有信息
         $homeadv = Advert::all();
         // dd($homeadv);
+$title = Site::first();
+// foreach ($title as $key => $value) {
+// $titles = $value->name;
+// }
 
         return view('home.index',[
-            'title'=>'淘点货',
+            'title'=>$title->name,
             'goods'=>$goods,
             //'imgs'=>$imgs 
             'news'=>$news,
@@ -162,9 +166,10 @@ class HomeController extends Controller
         $cuxiao = Goods::all();
 
         //comment 评论表
-        $comment = Comment::all();
-        // dd($comment);
+        $comment = Comment::orderBy('id','desc')->paginate(10);
         //用户
+        // dd($comment);
+        //用户{{ $users->links() }}
         $user = DB::table('homes')->get();
         // dd($user);
         //订单信息
@@ -253,6 +258,8 @@ class HomeController extends Controller
          return $links; 
           // return view('layout.index',['site' => $site, 
     }
+
+
 
 
 }
