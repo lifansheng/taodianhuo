@@ -49,7 +49,7 @@
 
 							<div class="info-m">
 								@if($data->integral == 0)
-								<div><b><i style="font-size:25px;">{{$data -> username}}</i></b></div>
+								<div><b><i style="font-size:10px;font-size:25px;">{{$data -> username}}</i></b></div>
 								@elseif($data->integral == 10)
 								<div><b><i style="color:#cc0;font-size:25px;">{{$data -> username}}</i></b></div>
 								@elseif($data->integral == 20)
