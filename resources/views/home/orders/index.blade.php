@@ -621,7 +621,7 @@
 	// 删除订单
 	$('.shanorder').click(function(){
 		var aa = confirm('您确定要删除吗');
-		if(!aa) return;
+		if(!aa) return false;
 		alert('删除成功');
 	});
 
