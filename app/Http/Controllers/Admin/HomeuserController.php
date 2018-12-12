@@ -35,7 +35,7 @@ class HomeuserController extends Controller
         ->paginate($request->input("num", 10));
 
         return view("admin/homeuser/index", [
-            "title" => "管理员列表页面",
+            "title" => "用户列表页面",
             "res" => $res,
             "request" => $request
         ]);
