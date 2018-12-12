@@ -16,7 +16,13 @@
 						<!--标题 -->
 						<div class="am-cf am-padding">
 							<div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">我的足迹</strong> / <small>Browser&nbsp;History</small></div>
+							@php 
+			        		$hid = DB::table("footprint") -> where("hid", session("hid")) -> first();
+			    			@endphp
+			    			@if($hid)
 							<button id="qing" style="float:right;background:white;border-radius:5px;border:solid 1px white;">清空足迹</button>
+							@else
+							@endif
 						</div>
 						<hr/>
 
