@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head> 
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+        <title>演示：SweetAlert - 演示6种不同的提示框效果</title>
+        <meta name="keywords" content="提示框插件,SweetAlert" />
+
+        <!-- <link rel="stylesheet" type="text/css" href="http://www.sucaihuo.com/jquery/css/common.css" /> -->
+        <link rel="stylesheet" type="text/css" href="sweetalert.css"/>
+        <script type="text/javascript" src="jquery.js"></script> 
+        <script src="sweetalert.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="demo">
+                <div class="demo_1">
+                    基本示例：<button>点击这里</button> 
+                </div>
+                <div class="demo_3">
+                    提示失败：<button>点击这里</button> 
+                </div>
+        </div>
+        
+        <script>
+            $(function() {
+                $(".demo_1 button").click(function() {
+                    swal("这是一个信息提示框!!!!!!!!");
+                });
+ 
+                $(".demo_3 button").click(function() {
+                    swal("OMG!", "弹出了一个错误提示框", "error");
+                });
+            });
+        </script>
+    </body>
+</html>
