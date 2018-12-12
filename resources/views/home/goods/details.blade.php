@@ -30,12 +30,27 @@
 		<!--顶部导航条 -->
 		<div class="am-container header">
 			<ul class="message-l">
-				<div class="topMessage">
-					<div class="menu-hd">
-						<a href="#" target="_top" class="h">亲，请登录</a>
-						<a href="#" target="_top">免费注册</a>
-					</div>
-				</div>
+				@php 
+        		$userss = DB::table("homes") -> where("hid", session("hid")) -> first();
+    			@endphp
+				@if($userss)
+					<ul class="message-l">
+						<div class="topMessage">
+							<div class="menu-hd">
+								<a href="/home/person" target="_top" class="h">欢迎您,{{$userss->username}}</a>&nbsp;&nbsp;<a href="/home/logout" target="_top">退出</a>
+							</div>
+						</div>
+					</ul>
+    			@else
+					<ul class="message-l">
+						<div class="topMessage">
+							<div class="menu-hd">
+								<a href="/home/login" target="_top" class="h">亲，请登录</a>
+								<a href="/home/register" target="_top">免费注册</a>
+							</div>
+						</div>
+					</ul>
+				@endif
 			</ul>
 			<ul class="message-r">
 				<div class="topMessage home">
@@ -102,7 +117,7 @@
 					<li><a href="/">分类</a></li>
 					<li class="am-active">内容</li>
 				</ol>
-				<script type="text/javascript">
+				<!-- <script type="text/javascript">
 					$(function() {});
 					$(window).load(function() {
 						$('.flexslider').flexslider({
@@ -112,7 +127,7 @@
 							}
 						});
 					});
-				</script>
+				</script> -->
 				<div class="scoll">
 					<section class="slider">
 						<div class="flexslider">
@@ -272,19 +287,34 @@
 														<ul>
 															@foreach( $arr as $v)
 															<li class="sku-line" id="kouwei" style="margin-left: 15px">
-																<input id="lx" class="sku-line" type="radio" name="leixing" value="{{$v}}">{{$v}}
+																<input id="lx" type="radio" name="leixing" value="{{$v}}">{{$v}}
 																<i></i>  
 															</li>
 															@endforeach
 														</ul>
 													</div>
+													<style>
+														/*input[type="radio"] {
+															  width: 20px;
+															  height: 20px;
+															}*/
+													</style>
 													<script>
-															$('#kouwei').click(function(){
-																// alert(123);
+														$('#kouwei').click(function(){
+															// alert('123');
+															// $('#lx').prop('checked',true);
+															// $(this).siblings().removeClass('selected');
+															// $(this).siblings().find('input[type=radio]').prop('checked',false);
+															// console.log($(this).siblings());
+															// console.log($(this).siblings());
 
-															})
-															// alert($);
-													
+															// $(this).addClass('selected');
+															// $(this).find('input[type=radio]').attr('checked','checked');
+															// console.log($(this).find('input[type=radio]'));
+															// $(this).child().attr('checked',true);
+															// $("#lx").attr('checked',true);
+															// $(this).children().attr('checked',true);
+														})
 													</script>
 													<div class="theme-options">
 														<div class="cart-title">包装</div>
@@ -297,13 +327,15 @@
 														<ul>
 															@foreach($arr as $v)
 															<li class="sku-line " style="margin-left: 15px">
-																<input class="sku-line" type="radio" name="size" value="{{$v}}" >{{$v}}
+																<input type="radio" name="size" value="{{$v}}" >{{$v}}
 																<i></i>
 															</li>
 															@endforeach
 														</ul>
 													</div>
-								
+													<script>
+														
+													</script>
 													<div class="theme-options">
 														<div class="cart-title number">库存</div>
 														<li>
@@ -341,6 +373,9 @@
 
 														
 													</script>
+		<link rel="stylesheet" type="text/css" href="/homes/alerts/sweetalert.css"/>
+        <script type="text/javascript" src="/homes/alerts/jquery.js"></script> 
+        <script src="/homes/alerts/sweetalert.min.js"></script>
 													<script>
 														// 获取库存的件数
 														var b = $(".jianshu").text();
@@ -357,7 +392,8 @@
 															if(c > d){
 																// alert(123);
 																$(this).val(d);
-																alert('小店的库存可能不够啦');
+																// alert('小店的库存可能不够啦');
+																 swal("OMG!", "小店的库存可能不够啦", "error");
 																// $('#add').attr('disabled',true);
 																// $('#min').removeAttr('disabled');
 															}
@@ -568,7 +604,7 @@
 									
                                     <div class="actor-new">
                                     	<div class="rate">                
-                                    		<strong>100<span>%</span></strong><br> <span>好评度</span>            
+                                    		<strong id="one">100<span>%</span></strong><br> <span>好评度</span>            
                                     	</div>
                                         <dl>                    
                                             <dt>买家印象</dt>                    
@@ -591,14 +627,14 @@
 											<li class="tb-taglist-li tb-taglist-li-current">
 												<div class="comment-info">
 													<span>全部评价</span>
-													<span class="tb-tbcr-num">(32)</span>
+													<span class="tb-tbcr-num" id="all">(32)</span>
 												</div>
 											</li>
 
 											<li class="tb-taglist-li tb-taglist-li-1">
 												<div class="comment-info">
 													<span>好评</span>
-													<span class="tb-tbcr-num">(32)</span>
+													<span class="tb-tbcr-num" id="better">(32)</span>
 												</div>
 											</li>
 
@@ -664,7 +700,7 @@
 												</header>
 												<!-- 评论内容 -->
 												
-												<div class="am-comment-bd">
+												<div class="am-comment-bd" id="commt">
 													<div class="tb-rev-item " data-id="255776406962">
 														<div class="J_TbcRate_ReviewContent tb-tbcr-content" style="font-size: 20px;">
 															{{$cv->content}}
@@ -683,10 +719,40 @@
 										</li>
 										
 									</ul>
-									
 									<!-- <img src="/homes/comment/comment.gif" alt=""> -->
 									@endif
 									@endforeach
+																<!-- 没有找到商品的页面			 -->
+								<div class="cart-empty" style="display:none;margin-top:150px;margin-bottom:150px;  margin-left:100px;">
+								    <div class="message">
+								        <ul>
+								            <li class="txt"	style="font-size:25px;font-family:华文彩云;">
+								                还没有评论~，您来就是第一个~
+								            </li>
+								            <br>
+								            <br>
+								            <li class="mt10" style="margin-top:15px;">
+								                <img src="/homes/comment/comment.gif" alt="">
+								            </li>  
+								        </ul>
+								   	</div>
+								</div>
+								<script>
+									 
+								   function foots()
+								   {
+								   		// 没有找到评论的时候
+								   		var num = $("#commt").length;
+								   		// console.log(num);
+								   		// 当商品的长度为0时
+								   		if(num == 0){
+								   			//
+								   			$('.cart-empty').show();
+								   			$("#commt").hide;
+								   		}
+								   }
+								   foots();
+								</script>
 									<!-- <img src="/homes/comment/comment.gif" alt=""> -->
 									<div class="clear"></div>
 									<!-- 评价的分页 -->
@@ -768,21 +834,25 @@
 							<a href="#">
 								<span class="setting"></span>
 							</a>
+							@php 
+			        		$userss = DB::table("homes") -> where("hid", session("hid")) -> first();
+			    			@endphp
+							@if($userss)
 							<div class="ibar_login_box status_login">
 								<div class="avatar_box">
-									<p class="avatar_imgbox"><img src="/homes/images/no-img_mid_.jpg" /></p>
+									<p class="avatar_imgbox"><img src="{{$userss->pic}}" height="80px" width="80px"></p>
 									<ul class="user_info">
-										<li>用户名：sl1903</li>
+										<li>用户名：{{$userss->username}}</li>
 										<li>级&nbsp;别：普通会员</li>
 									</ul>
 								</div>
 								<div class="login_btnbox">
-									<a href="#" class="login_order">我的订单</a>
-									<a href="#" class="login_favorite">我的收藏</a>
+									<a href="/home/order" class="login_order">我的订单</a>
+									<a href="/home/collection" class="login_favorite">我的收藏</a>
 								</div>
 								<i class="icon_arrow_white"></i>
 							</div>
-
+							@endif
 						</div>
 						<div id="shopCart" class="item">
 							<a href="/home/carts">
@@ -794,7 +864,7 @@
 							<p class="cart_num">{{$count}}</p>
 						</div>
 						<div id="asset" class="item">
-							<a href="#">
+							<a href="javascript:void(0)">
 								<span class="view"></span>
 							</a>
 							<div class="mp_tooltip">
@@ -804,7 +874,7 @@
 						</div>
 
 						<div id="foot" class="item">
-							<a href="#">
+							<a href="/home/footprint">
 								<span class="zuji"></span>
 							</a>
 							<div class="mp_tooltip">
@@ -824,7 +894,7 @@
 						</div>
 
 						<div id="broadcast" class="item">
-							<a href="#">
+							<a href="javascript:void(0)">
 								<span class="chongzhi"><img src="/homes/images/chongzhi.png" /></span>
 							</a>
 							<div class="mp_tooltip">
@@ -835,7 +905,7 @@
 
 						<div class="quick_toggle">
 							<li class="qtitem">
-								<a href="#"><span class="kfzx"></span></a>
+								<a href="javascript:void(0)"><span class="kfzx"></span></a>
 								<div class="mp_tooltip">客服中心<i class="icon_arrow_right_black"></i></div>
 							</li>
 							<!--二维码 -->

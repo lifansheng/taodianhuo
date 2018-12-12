@@ -115,11 +115,10 @@
 								</div>
 								<div class="clear"></div>
 
-								<ul class="am-avg-sm-2 am-avg-md-3 am-avg-lg-4 boxes">
+								<ul  class="am-avg-sm-2 am-avg-md-3 am-avg-lg-4 boxes">
 									
 									@foreach($data as $v)
-									
-									<li>
+									<li class="goods">
 										<div class="i-pic limit">
 											<a href="/home/details?id={{$v->id}}">
 											<img src="{{$v->imgs}}" width="218px" height="218px"/>											
@@ -133,10 +132,41 @@
 											</p>
 										</div>
 									</li>
-									
-									@endforeach
-									
+									@endforeach								
 								</ul>
+								<!-- 没有找到商品的页面			 -->
+								<div class="cart-empty" style="display:none;margin-top:150px;margin-bottom:150px;  margin-left:200px;">
+								    <div class="message">
+								        <ul>
+								            <li class="txt"	style="font-size:25px;font-family:华文彩云;">
+								                您搜索的好吃的~，小店还没有找到~
+								            </li>
+								            <br>
+								            <br>
+								            <li class="mt10" style="margin-top:15px;">
+								                <a href="/" class="ftx-05" style="font-size:25px;font-family:华文彩云;">
+								                    去首页看看吧!!!
+								                </a>
+								            </li>  
+								        </ul>
+								   	</div>
+								</div>
+								<script>
+									
+								   function foots()
+								   {
+								   		// 没有找到商品的时候
+								   		var num = $(".goods").length;
+								   		// console.log(num);
+								   		// 当商品的长度为0时
+								   		if(num == 0){
+								   			//
+								   			$('.cart-empty').show();
+								   			$(".goods").hide;
+								   		}
+								   }
+								   foots();
+								</script>
 					
 	<!--热门活动 -->
 
