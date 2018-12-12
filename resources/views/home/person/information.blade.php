@@ -51,7 +51,18 @@
 								<div><b>用户名：<i>{{$data -> username}}</i></b></div>
 								<div class="u-level">
 									<span class="rank r2">
-							             <s class="vip1"></s><a class="classes" href="#">铜牌会员</a>
+							             <s class="vip1"></s><a class="classes" href="javascript:void(0)">@if($data->integral == 0)
+							             普通会员
+							             @elseif($data->integral == 10)
+							             铜牌会员名
+							             @elseif($data->integral == 20)
+							             银牌会员
+							             @elseif($data->integral == 30)
+							             金牌会员
+							             @else
+							             钻石会员
+							             @endif
+							             </a>
 						            </span>
 								</div>
 								<div class="u-safety">

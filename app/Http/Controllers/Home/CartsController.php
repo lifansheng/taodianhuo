@@ -9,6 +9,7 @@ use App\Model\Home\Carts;
 use App\Model\Home\Orders;
 use App\Model\Admin\Address;
 use App\Model\Home\Collection;
+use App\Model\Home\Homes;
 use DB;
 
 class CartsController extends Controller
@@ -204,6 +205,9 @@ class CartsController extends Controller
      */
     public function cheng(Request $request)
     {
+        // 获取当前用户的积分情况
+        $jifen = Homes::where("hid",session('hid'))->value("integral");
+        // dd($jifen);
 
         if(!session('liGO')){
             $id = session('id');
@@ -227,9 +231,10 @@ class CartsController extends Controller
                     'leixing'=>$data[$i]['leixing'],
                     'size'=>$data[$i]['size'],
                     'message'=>$_GET['liuyan'],
-                    'status'=>'2',
+                    'status'=>'2', 
                 ));
-                // echo $i;
+                // 将积分存入数据库
+                Homes::where("hid",session('hid'))->update(['integral'=>$jifen+10]);
             }
             if($id){
                 Carts::whereIn('id',$id)->delete();
@@ -254,7 +259,10 @@ class CartsController extends Controller
                 'size'=>$data[0]['size'],
                 'message'=>$_GET['liuyan'],
                 'status'=>'2',
+                
             ));
+            // 将积分存入数据库
+            Homes::where("hid",session('hid'))->update(['integral'=>$jifen+10]);
         }
         
         return view('home.carts.cheng',[
