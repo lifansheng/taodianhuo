@@ -86,9 +86,13 @@ class HomeController extends Controller
         //得到广告表的所有信息
         $homeadv = Advert::all();
         // dd($homeadv);
+$title = Site::first();
+// foreach ($title as $key => $value) {
+// $titles = $value->name;
+// }
 
         return view('home.index',[
-            'title'=>'淘点货',
+            'title'=>$title->name,
             'goods'=>$goods,
             //'imgs'=>$imgs 
             'news'=>$news,
@@ -253,6 +257,8 @@ class HomeController extends Controller
          return $links; 
           // return view('layout.index',['site' => $site, 
     }
+
+
 
 
 }
