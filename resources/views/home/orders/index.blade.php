@@ -75,6 +75,7 @@
 											<div class="order-status5">
 												<div class="order-title">
 													<div class="dd-num">订单编号：<a href="javascript:;">{{$v->oid}}</a></div>
+													<input type="hidden" name="" id="shanchu" oid="{{$v->oid}}">
 													<span>成交时间：{{$v->addtime}}</span>
 												</div>
 												<div class="order-content">
@@ -138,7 +139,7 @@
 															</li>
 															@if($v->status == '0')
 															<li class="td td-change">
-																<button class="am-btn am-btn-danger anniu shanorder" onclick="window.location='/home/shanorder/{{$v->oid}}'">
+																<button class="am-btn am-btn-danger anniu" oid="{{$v->oid}}" onclick="shanchu(this)">
 																	删除订单</button>
 															</li>
 															@elseif($v->status == '1')
@@ -151,7 +152,7 @@
 																	提醒发货</div>
 															</li>
 															@elseif($v->status == '5')
-															<li class="td td-change tixing" oid="{{$v->oid}}">
+															<li class="td td-change">
 																<div class="am-btn am-btn-danger anniu">
 																	提醒发货成功</div>
 															</li>
@@ -584,7 +585,7 @@
 																</div>
 															</li>
 															<li class="td td-change">
-																<button class="am-btn am-btn-danger anniu shanorder" onclick="window.location='/home/shanorder/{{$vv->oid}}'">
+																<button class="am-btn am-btn-danger anniu" oid="{{$vv->oid}}" onclick="shanchu(this)">
 																	删除订单</button>
 															</li>
 														</div>
@@ -618,12 +619,18 @@
 		window.location.href='/home/orderxiang?oid='+oid;
 	});	
 
-	// 删除订单
-	$('.shanorder').click(function(){
+		
+	function shanchu(oid)
+	{
+		var oid = $(oid).attr("oid");
+		// alert(oid);
 		var aa = confirm('您确定要删除吗');
-		if(!aa) return false;
-		alert('删除成功');
-	});
+		if(aa) {
+			window.location.href='/home/shanorder?oid='+oid;
+		}else{
+			return false;
+		}
+	}
 
 	// 订单提醒发货
 	$('.tixing').click(function(){
