@@ -7,6 +7,7 @@
 		<link href="/homes/css/personal.css" rel="stylesheet" type="text/css">
 		<link href="/homes/css/footstyle.css" rel="stylesheet" type="text/css">
 
+
 		<div class="center">
 			<div class="col-main">
 				<div class="main-wrap">
@@ -15,6 +16,7 @@
 						<!--标题 -->
 						<div class="am-cf am-padding">
 							<div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">我的足迹</strong> / <small>Browser&nbsp;History</small></div>
+							<button id="qing" style="float:right;background:white;border-radius:5px;border:solid 1px white;">清空足迹</button>
 						</div>
 						<hr/>
 
@@ -23,7 +25,7 @@
 				@foreach($goodss as $vv)
 				@if(session('hid') == $v->hid && $v->goods_id == $vv->id)
 
-				<div class="goods">
+				<div class="goods" value="{{session('hid')}}">
 					<div class="goods-date" data-date="{{$v->created_at}}">
 						<span>浏览于{{$v->created_at}}</span>
 						<s class="line"></s>
@@ -96,6 +98,7 @@
 	        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 	    }
 	});
+
 	// 点击足迹删除事件
    $(".goods-delete").click(function(){
    		var t = $(this);
@@ -117,6 +120,26 @@
 		})	
    })
 
+   // 点击清空足迹按钮事件
+   $("#qing").click(function(){
+   		// 确认是否清空足迹
+   		var rs = confirm("清空足迹?");
+		if(!rs) return;
+
+		// 获取当前的用户id 
+		var ids = $('.goods').attr("value");	// console.log(ids);
+
+		// 将此id发送ajax
+		$.post("/home/ajaxcheckfootss", {ids:ids}, function(data){
+			// console.log(data);
+			if (data == 1) {
+				// 删除当前足迹
+				$('.goods').remove(".goods");
+				foots();
+			}
+		})	
+   })
+
    // 当足迹清空时
    function foots()
    {
@@ -133,4 +156,4 @@
    foots()
 </script>
 
-				@stop
+@stop

@@ -48,28 +48,32 @@
 							<p class="am-form-help">头像</p>
 
 							<div class="info-m">
-								<div><b>用户名：<i>{{$data -> username}}</i></b></div>
+								@if($data->integral == 0)
+								<div><b><i style="font-size:10px;font-size:25px;">{{$data -> username}}</i></b></div>
+								@elseif($data->integral == 10)
+								<div><b><i style="color:#cc0;font-size:25px;">{{$data -> username}}</i></b></div>
+								@elseif($data->integral == 20)
+								<div><b><i style="color:#ccc;font-size:25px;">{{$data -> username}}</i></b></div>
+								@elseif($data->integral == 30)
+								<div><b><i style="color:yellow;font-size:25px;">{{$data -> username}}</i></b></div>
+								@else
+								<div><b><i style="color:red;font-size:25px;">{{$data -> username}}</i></b></div>
+								@endif
 								<div class="u-level">
 									<span class="rank r2">
 							             <s class="vip1"></s><a class="classes" href="javascript:void(0)">@if($data->integral == 0)
 							             普通会员
 							             @elseif($data->integral == 10)
-							             铜牌会员名
+							             <b style="color:#cc0;">铜牌会员</b>
 							             @elseif($data->integral == 20)
-							             银牌会员
+							             <b style="color:#ccc;">银牌会员</b>
 							             @elseif($data->integral == 30)
-							             金牌会员
+							             <b style="color:yellow;">金牌会员</b>
 							             @else
-							             钻石会员
+							             <b style="color:red;">钻石会员</b>
 							             @endif
 							             </a>
 						            </span>
-								</div>
-								<div class="u-safety">
-									<a href="safety.html">
-									 账户安全
-									<span class="u-profile"><i class="bc_ee0000" style="width: 60px;" width="0">60分</i></span>
-									</a>
 								</div>
 							</div>
 						</div>
