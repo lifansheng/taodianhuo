@@ -620,7 +620,8 @@
 
 	// 删除订单
 	$('.shanorder').click(function(){
-		confirm('您确定要删除吗');
+		var aa = confirm('您确定要删除吗');
+		if(!aa) return;
 		alert('删除成功');
 	});
 

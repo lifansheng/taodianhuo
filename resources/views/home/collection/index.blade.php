@@ -48,6 +48,22 @@
 								@endforeach
 							</div>
 
+							<div class="cart-empty" style="display:none;position:absolute;margin-top:120px;margin-left:200px;">
+							    <div class="message">
+							        <ul>
+							            <li class="txt"	style="font-size:25px;font-family:华文彩云;">
+							                收藏是空的，快去看看心仪的商品吧~
+							            </li>
+							            <li class="mt10" style="margin-top:15px;">
+							                <a href="/" class="ftx-05" style="font-size:25px;font-family:华文彩云;">
+							                    去购物-->
+							                </a>
+							            </li>
+							            
+							        </ul>
+							   	</div>
+							</div>
+
 						</div>
 
 					</div>
@@ -70,9 +86,24 @@
 			// alert(data);
 			if(data == 1){
 				rem.parents().remove('#shanba');
+				shoucang()
 			}
 		})
 	});
 
+	// 当收藏清空时
+   function shoucang()
+   {
+   		// 获取当前足迹的数量
+   		var num = $("#shanba").length;
+
+   		// 当足迹为0时
+   		if(num == 0){
+   			$('.cart-empty').show();
+   			$("#shanba").hide;
+   		}
+
+   }
+   shoucang()
 </script>
 @stop
