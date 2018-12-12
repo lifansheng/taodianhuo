@@ -122,7 +122,7 @@
                     <li>
                         <a href="#"><i class="icon-add-contact"></i>用户管理</a>
                         <ul class='closed'>
-                            <li><a href="/admin/homeuser/create">用户添加</a></li>
+                            <!-- <li><a href="/admin/homeuser/create">用户添加</a></li> -->
                             <li><a href="/admin/homeuser">浏览用户</a></li>
                         </ul>
                     </li>
