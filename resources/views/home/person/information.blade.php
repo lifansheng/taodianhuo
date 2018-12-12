@@ -129,13 +129,7 @@
 
 									</div>
 								</div>
-								<div class="am-form-group">
-									<label for="user-email" class="am-form-label">电子邮件</label>
-									<div class="am-form-content">
-										<input id="user-email" placeholder="Email" type="email" value="{{$data -> email}}" name="email">
-
-									</div>
-								</div>
+								
 								<div class="am-form-group address">
 									<label for="user-address" class="am-form-label">收货地址</label>
 									<div class="am-form-content address">
