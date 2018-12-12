@@ -21,7 +21,9 @@
 		<script type="text/javascript" src="/homes/js/jquery.imagezoom.min.js"></script>
 		<script type="text/javascript" src="/homes/js/jquery.flexslider.js"></script>
 		<script type="text/javascript" src="/homes/js/list.js"></script>
-
+		<link rel="stylesheet" type="text/css" href="/homes/alerts/sweetalert.css"/>
+        <script type="text/javascript" src="/homes/alerts/jquery.js"></script> 
+        <script src="/homes/alerts/sweetalert.min.js"></script>
 	</head>
 
 	<body>
@@ -286,8 +288,8 @@
 														<div class="cart-title">口味</div>
 														<ul>
 															@foreach( $arr as $v)
-															<li class="sku-line" id="kouwei" style="margin-left: 15px">
-																<input id="lx" type="radio" name="leixing" value="{{$v}}">{{$v}}
+															<li class="sku-line leixing" leixing="{{$v}}" id="kouwei" style="margin-left: 15px">
+																<input class="lx" type="radio" name="leixing"  style="display: none;">{{$v}}
 																<i></i>  
 															</li>
 															@endforeach
@@ -299,23 +301,7 @@
 															  height: 20px;
 															}*/
 													</style>
-													<script>
-														$('#kouwei').click(function(){
-															// alert('123');
-															// $('#lx').prop('checked',true);
-															// $(this).siblings().removeClass('selected');
-															// $(this).siblings().find('input[type=radio]').prop('checked',false);
-															// console.log($(this).siblings());
-															// console.log($(this).siblings());
-
-															// $(this).addClass('selected');
-															// $(this).find('input[type=radio]').attr('checked','checked');
-															// console.log($(this).find('input[type=radio]'));
-															// $(this).child().attr('checked',true);
-															// $("#lx").attr('checked',true);
-															// $(this).children().attr('checked',true);
-														})
-													</script>
+													
 													<div class="theme-options">
 														<div class="cart-title">包装</div>
 														<!-- 遍历尺寸 -->
@@ -326,13 +312,32 @@
 														@endphp
 														<ul>
 															@foreach($arr as $v)
-															<li class="sku-line " style="margin-left: 15px">
-																<input type="radio" name="size" value="{{$v}}" >{{$v}}
+															<li class="sku-line size" size="{{$v}}" style="margin-left: 15px">
+																<input type="radio" name="size"  style="display: none;">{{$v}}
 																<i></i>
 															</li>
+
 															@endforeach
 														</ul>
 													</div>
+													<script>
+														$('.sku-line').click(function(){
+															// alert('123');
+															// $('#lx').prop('checked',true);
+															// $(this).siblings().removeClass('selected');
+															// $(this).siblings().find('input[type=radio]').prop('checked',false);
+															// console.log($(this).siblings());
+															// console.log($(this).siblings());
+
+															// $(this).addClass('selected');
+															$(this).find('input[type=radio]').prop('checked',true);
+															// $(this).find('input[type=radio]')[0].checked = true;
+															// console.log($(this).find('input[type=radio]'));
+															// $(this).child().attr('checked',true);
+															// $("#lx").attr('checked',true);
+															// $(this).children().attr('checked',true);
+														})
+													</script>
 													<script>
 														
 													</script>
@@ -373,9 +378,7 @@
 
 														
 													</script>
-		<link rel="stylesheet" type="text/css" href="/homes/alerts/sweetalert.css"/>
-        <script type="text/javascript" src="/homes/alerts/jquery.js"></script> 
-        <script src="/homes/alerts/sweetalert.min.js"></script>
+		
 													<script>
 														// 获取库存的件数
 														var b = $(".jianshu").text();
@@ -604,19 +607,19 @@
 									
                                     <div class="actor-new">
                                     	<div class="rate">                
-                                    		<strong id="one">100<span>%</span></strong><br> <span>好评度</span>            
+                                    		<strong id="onee">100<span>%</span></strong><br> <span>好评度</span>            
                                     	</div>
                                         <dl>                    
                                             <dt>买家印象</dt>                    
                                             <dd class="p-bfc">
-                                    			<q class="comm-tags"><span>味道不错</span><em>(2177)</em></q>
-                                    			<q class="comm-tags"><span>颗粒饱满</span><em>(1860)</em></q>
-                                    			<q class="comm-tags"><span>口感好</span><em>(1823)</em></q>
-                                    			<q class="comm-tags"><span>商品不错</span><em>(1689)</em></q>
-                                    			<q class="comm-tags"><span>香脆可口</span><em>(1488)</em></q>
-                                    			<q class="comm-tags"><span>个个开口</span><em>(1392)</em></q>
-                                    			<q class="comm-tags"><span>价格便宜</span><em>(1119)</em></q>
-                                    			<q class="comm-tags"><span>特价买的</span><em>(865)</em></q>
+                                    			<q class="comm-tags"><span>味道不错</span><em>(21)</em></q>
+                                    			<q class="comm-tags"><span>颗粒饱满</span><em>(186)</em></q>
+                                    			<q class="comm-tags"><span>口感好</span><em>(182)</em></q>
+                                    			<q class="comm-tags"><span>商品不错</span><em>(168)</em></q>
+                                    			<q class="comm-tags"><span>香脆可口</span><em>(148)</em></q>
+                                    			<q class="comm-tags"><span>个个开口</span><em>(192)</em></q>
+                                    			<q class="comm-tags"><span>价格便宜</span><em>(119)</em></q>
+                                    			<q class="comm-tags"><span>特价买的</span><em>(85)</em></q>
                                     			<q class="comm-tags"><span>皮很薄</span><em>(831)</em></q> 
                                             </dd>                                           
                                          </dl> 
@@ -634,21 +637,21 @@
 											<li class="tb-taglist-li tb-taglist-li-1">
 												<div class="comment-info">
 													<span>好评</span>
-													<span class="tb-tbcr-num" id="better">(32)</span>
+													<span class="tb-tbcr-num" id="a">(32)</span>
 												</div>
 											</li>
 
 											<li class="tb-taglist-li tb-taglist-li-0">
 												<div class="comment-info">
 													<span>中评</span>
-													<span class="tb-tbcr-num">(32)</span>
+													<span class="tb-tbcr-num" id="b">(32)</span>
 												</div>
 											</li>
 
 											<li class="tb-taglist-li tb-taglist-li--1">
 												<div class="comment-info">
 													<span>差评</span>
-													<span class="tb-tbcr-num">(32)</span>
+													<span class="tb-tbcr-num" id="c">(32)</span>
 												</div>
 											</li>
 										</ul>
@@ -690,11 +693,11 @@
 														<time datetime="">{{$cv->addtime}}</time>
 														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 														@if($cv->star == 2)
-															好评
+															<span class="hao">好评</span>
 														@elseif($cv->star == 1)
-															一般
+															<span class="zhong" >一般</span>
 														@else
-															差评
+															<span class="cha" >差评</span>
 														@endif
 													</div>
 												</header>
@@ -753,19 +756,64 @@
 								   }
 								   foots();
 								</script>
+								<script>
+									//好评
+									hao= $(".hao").length;
+									hao1 = '('+hao+')';
+									$('#a').text(hao1);
+									//中评
+									zhong = $(".zhong").length;
+									$('#b').text('('+zhong+')')
+									//差评
+									cha = $(".cha").length;
+									$('#c').text('('+cha+')');
+									//全部评论
+									num = hao+zhong+cha;
+									// console.log(num);
+									$("#all").text('('+num+')');
+									//好评度
+									// var d =  (hao / num * 100).toFixed(0);
+									//小数点后没有小数
+									var e =  (hao / num * 100).toFixed(0);
+									var d = e;
+									// var e = hao / num * 100;
+									// var d = e.toFixed(0);
+									// var dd = round(d);
+									// console.log(d);
+									 // num
+									 //如果d 不等于NaN 那么 
+									if(d !== 'NaN'){
+										$('#onee').text(d+'%');
+									}else{
+										$('#onee').text(100+'%');
+									}
+									
+									// $('#twoo').text(%);
+								</script>
+								<!-- <script>
+									
+									d =  (num / hao) * 100;
+									// console.log(d);
+									$('#onee').text(d);
+									$('#twoo').text(%);
+
+								</script> -->
 									<!-- <img src="/homes/comment/comment.gif" alt=""> -->
 									<div class="clear"></div>
 									<!-- 评价的分页 -->
 									<!--分页 -->
-									<!-- <ul class="am-pagination am-pagination-right">
-										<li class="am-disabled"><a href="#">&laquo;</a></li>
+									<!-- <ul class="am-pagination am-pagination-right"> -->
+										<!-- <li class="am-disabled"><a href="#">&laquo;</a></li>
 										<li class="am-active"><a href="#">1</a></li>
 										<li><a href="#">2</a></li>
 										<li><a href="#">3</a></li>
 										<li><a href="#">4</a></li>
 										<li><a href="#">5</a></li>
-										<li><a href="#">&raquo;</a></li>
-									</ul> -->
+										<li><a href="#">&raquo;</a></li> -->
+										{!!$comment->links()!!}
+									<!-- </ul> -->
+									
+
 									<div class="clear"></div>
 									<!-- <div class="tb-reviewsft">
 										<div class="tb-rate-alert type-attention">购买前请查看该商品的 <a href="#" target="_blank">购物保障</a>，明确您的售后保障权益。</div>
@@ -815,11 +863,11 @@
 							</div>
 							<div class="footer-bd">
 								<p>
-									<a href="#">关于恒望</a>
-									<a href="#">合作伙伴</a>
-									<a href="#">联系我们</a>
-									<a href="#">网站地图</a>
-									<em>© 2015-2025 Hengwang.com 版权所有. 更多模板 <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></em>
+									<a href="#">关于我们</a>
+									<a href="javascript:void(0)">合作伙伴</a>
+									<a href="javascript:void(0)">联系我们</a>
+									<a href="javascript:void(0)">网站地图</a>
+									<em>© 2015-2025 Hengwang.com 版权所有.  <a href="/" title="淘点货"淘点货</a> - Collect from <a href="/" title="网页模板" target="_blank">更多商品</a></em>
 								</p>
 							</div>
 						</div>
@@ -1007,13 +1055,15 @@
 	var leixing = '';
 	var size = '';
 	// 获取类型
-	$("input[name=leixing]").click(function(){
-		leixing = $(this).val();
+	$(".leixing").click(function(){
+		leixing = $(this).attr('leixing');
+		// alert(leixing)
 	});
 
 	// 获取size大小
-	$("input[name=size]").click(function(){
-		size = $(this).val();
+	$(".size").click(function(){
+		size = $(this).attr('size');
+		// alert(size);
 	});
 
 	id = $("input[name=id]").val();
@@ -1027,7 +1077,9 @@
 	// 拿到商品信息加入购物车
 	$("#LikBasket").click(function(){
 		if(!(leixing && size)){
-			alert('请选择商品参数');
+			// alert('请选择商品参数');
+			swal("OMG!", "请先选择商品参数", "error");
+
 			return false;
 		}
 		// 获取购买的数量
@@ -1061,6 +1113,7 @@
 	$("#LikBuy").click(function(){
 		if(!(leixing && size)){
 			alert('请先选择商品参数');
+			// swal("OMG!", "请先选择商品参数", "error");
 			return false;
 		}
 		// 获取购买的数量
