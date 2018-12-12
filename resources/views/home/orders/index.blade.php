@@ -130,7 +130,7 @@
 																	@elseif($v->status == '1')
 																	<p class="Mystatus">正在运送</p>
 																	<p class="order-info"><a href="logistics.html">查看物流</a></p>
-																	@elseif($v->status == '2')
+																	@elseif($v->status == '2' || $v->status == '5')
 																	<p class="Mystatus">等待发货</p>
 																	@endif
 																	<p class="order-info" oid="{{$v->oid}}"><a href="javascript:void(0);">订单详情</a></p>

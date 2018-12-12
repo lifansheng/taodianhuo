@@ -51,6 +51,7 @@
 						</div>
 					</ul>
 				@endif
+
 			</ul>
 			<ul class="message-r">
 				<div class="topMessage home">
