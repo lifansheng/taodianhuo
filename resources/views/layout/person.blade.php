@@ -45,7 +45,7 @@
 								<div class="menu-hd"><a href="/" target="_top" class="h">商城首页</a></div>
 							</div>
 							<div class="topMessage my-shangcheng">
-								<div class="menu-hd MyShangcheng"><a href="#" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a></div>
+								<div class="menu-hd MyShangcheng"><a href="/home/person" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a></div>
 							</div>
 							@php
 								$count = DB::table('shopcar') -> where('hid',session('hid')) -> count();
@@ -149,7 +149,7 @@
 						<a href="">个人中心</a>
 					</li>
 					<li class="person">
-						<a href="#">个人资料</a>
+						<a href="#" style="font-size:17px;font-weight:900;">个人资料</a>
 						<ul>
 							<li> <a href="/home/personinformation">个人信息</a></li>
 							<li> <a href="/home/safety">安全设置</a></li>
@@ -157,14 +157,14 @@
 						</ul>
 					</li>
 					<li class="person">
-						<a href="#">我的交易</a>
+						<a href="#" style="font-size:17px;font-weight:900;">我的交易</a>
 						<ul>
 							<li><a href="/home/order">订单管理</a></li>
 							<li> <a href="change.html">退款售后</a></li>
 						</ul>
 					</li>
 					<li class="person">
-						<a href="#">我的资产</a>
+						<a href="#" style="font-size:17px;font-weight:900;">我的资产</a>
 						<ul>
 							<li> <a href="coupon.html">优惠券 </a></li>
 							<li> <a href="bonus.html">红包</a></li>
@@ -173,10 +173,10 @@
 					</li>
 
 					<li class="person">
-						<a href="#">我的小窝</a>
+						<a href="#" style="font-size:17px;font-weight:900;">我的小窝</a>
 						<ul>
 							<li> <a href="/home/collection">收藏</a></li>
-							<li> <a href="#">足迹</a></li>
+							<li> <a href="/home/footprint">足迹</a></li>
 							<!-- <li> <a href="/home/all">评价</a></li> -->
 							<li> <a href="#">消息</a></li>
 						</ul>

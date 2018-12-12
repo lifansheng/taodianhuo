@@ -112,7 +112,7 @@
 
 		if (cv == "") {
 			// 不能为空
-			t.next().text("验证码不能为空").css("color", "red");
+			t.next().text("验证码不允许为空").css("color", "red");
 			t.css("border", "solid 2px red");
 			OCS = false;
 			return;

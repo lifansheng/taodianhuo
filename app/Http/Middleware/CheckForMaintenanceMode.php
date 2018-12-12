@@ -23,7 +23,7 @@ class CheckForMaintenanceMode
         if(app()->isDownForMaintenance() || $site[0]['status'] == 0){
  
  if(!$request->is('admin*')){
-            throw new HttpException(404);
+            throw new HttpException(503);
 }
 
     }
