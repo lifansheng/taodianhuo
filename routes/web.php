@@ -249,6 +249,8 @@ Route::group(["middleware" => "home_login"], function(){
 	Route::any("home/footprint", "Home\FootprintController@footprint");
 	// 删除足迹
 	Route::any("/home/ajaxcheckfoots", "Home\FootprintController@ajaxcheckfoots");
+	// 清空足迹
+	Route::any("/home/ajaxcheckfootss", "Home\FootprintController@ajaxcheckfootss");
 
 	// 安全设置
 	Route::any("home/safety", "Home\PersonController@safety");

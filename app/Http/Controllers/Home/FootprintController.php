@@ -26,6 +26,7 @@ class FootprintController extends Controller
     	]);
     }
 
+    // 删除足迹
     public function ajaxcheckfoots(Request $request)
     {
     	// 获取用户想要删除的足迹的id
@@ -40,5 +41,22 @@ class FootprintController extends Controller
     	} else {
     		echo 0;
     	}
+    }
+
+    // 清空足迹
+    public function ajaxcheckfootss(Request $request)
+    {
+        // 获取当前要删除的用户的id
+        $hid = $request -> get("ids");
+        // echo $id;
+
+        // 删除数据库里该id下的所有足迹
+        $res = Footprint::where("hid", $hid)->delete();
+
+        if ($res) {
+            echo 1;
+        } else {
+            echo 0;
+        }
     }
 }
