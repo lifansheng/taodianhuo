@@ -19,7 +19,7 @@ class FootprintController extends Controller
     	// dd($foots);
     	$goodss = Goods::all();
 
-    	return view("home/footprint", [
+    	return view("home/footprint/footprint", [
     		"title" => "我的足迹",
     		"foots"=>$foots,
     		"goodss"=>$goodss

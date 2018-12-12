@@ -19,7 +19,7 @@ class HomeLoginMiddleware
         if ($hid) {
             return $next($request);
         } else {
-            return redirect("home/login");
+            return redirect("home/login/login");
         }
     }
 }

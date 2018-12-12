@@ -17,7 +17,7 @@ class LoginController extends Controller
     // 显示登录页面
     public function login()
     {
-    	return view("home.login", ["title" => "前台登录页面"]);
+    	return view("home/login/login", ["title" => "前台登录页面"]);
     }
 
     // 登录的方法
@@ -91,7 +91,7 @@ class LoginController extends Controller
     // 注册的页面
     public function register()
     {
-    	return view("home/register", ["title" => "用户注册页面"]);
+    	return view("home/login/register", ["title" => "用户注册页面"]);
     }
 
     // 注册的方法
@@ -117,7 +117,7 @@ class LoginController extends Controller
         session(["token"=>$res["token"]]);
         if($rs){
     	// 发送邮件
-        	Mail::send('home.remind', ['hid'=>$rs,'token'=>$res['token'],'email'=>$res['email'],'username'=>$res['username']], function ($m) use ($res) {
+        	Mail::send('home.login.remind', ['hid'=>$rs,'token'=>$res['token'],'email'=>$res['email'],'username'=>$res['username']], function ($m) use ($res) {
 
 
                 $m->from(Config::get("app.email"), '淘点货官方网站');
@@ -126,7 +126,7 @@ class LoginController extends Controller
 
             });
 
-            return view('/home/tixing',['title'=>'新注册用户提醒邮件']);
+            return view('/home/login/tixing',['title'=>'新注册用户提醒邮件']);
         }
     }
 
@@ -151,7 +151,7 @@ class LoginController extends Controller
 
             if($data){
 
-                return redirect('/home/login');
+                return redirect('/home/login/login');
             }
         }
     }
@@ -360,7 +360,7 @@ class LoginController extends Controller
     // 忘记密码
     public function forget_password()
     {
-        return view("home/forget_password", ["title" => "密码找回页面"]);
+        return view("home/login/forget_password", ["title" => "密码找回页面"]);
     }
 
     public function do_fp(Request $request)
@@ -369,7 +369,7 @@ class LoginController extends Controller
         $res = $request -> only("phone_number");
         // dd($res);
 
-        return view("home/reset_password",[
+        return view("home/login/reset_password",[
             "title" => "密码重置页面",
             "res" => $res
         ]);    
@@ -392,7 +392,7 @@ class LoginController extends Controller
         if (!$data) {
             return back() -> with("error", "修改失败");
         } else {
-            return redirect("/home/login")->with("success", "修改成功,请登录");
+            return redirect("/home/login/login")->with("success", "修改成功,请登录");
         }
     }
 
