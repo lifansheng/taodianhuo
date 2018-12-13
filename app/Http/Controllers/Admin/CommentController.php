@@ -21,7 +21,7 @@ class CommentController extends Controller
         //
         //1个条件的搜索
         //查询comment的内容
-        $res = Comment::orderBy("id","asc")
+        $res = Comment::orderBy("id","desc")
             ->where(function($query) use($request){
                 //检测关键字
                

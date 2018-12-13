@@ -712,7 +712,7 @@
 														@foreach($order as $ov)
 														@if($cv->oid == $ov ->oid)
 														<div class="tb-r-act-bar" style="color:skyblue;margin-top: 20px;">
-															口味:{{$ov->leixing}}&nbsp;&nbsp;数量:{{$ov->cnt}}包&nbsp;&nbsp;规格：{{$ov->size}}<br>
+															口味:{{$ov->leixing}}&nbsp;&nbsp;数量:{{$ov->cnt}}件&nbsp;&nbsp;规格：{{$ov->size}}<br>
 															商品名称: {{$goods->gname}}
 														</div>
 														@endif
