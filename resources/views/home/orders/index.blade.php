@@ -148,7 +148,7 @@
 															</li>
 															@elseif($v->status == '2')
 															<li class="td td-change tixing" oid="{{$v->oid}}">
-																<div class="am-btn am-btn-danger anniu">
+																<div class="am-btn am-btn-danger anniu" id="titi">
 																	提醒发货</div>
 															</li>
 															@elseif($v->status == '5')
@@ -263,12 +263,12 @@
 															</li>
 															@if($vv->status == '2')
 															<li class="td td-change tixing" oid="{{$vv->oid}}">
-																<div class="am-btn am-btn-danger anniu">
+																<div class="am-btn am-btn-danger anniu" id="titi">
 																	提醒发货</div>
 															</li>
 															@else
 															<li class="td td-change">
-																<div class="am-btn am-btn-danger anniu">
+																<div class="am-btn am-btn-danger anniu" >
 																	提醒发货成功</div>
 															</li>
 															@endif
@@ -646,6 +646,7 @@
 		$.post('/home/tixing',{oid:oid},function(data){
 			if(data == 1){
 				alert('提醒发货成功');
+				$('#titi').text('提醒发货成功');
 			}else{
 				alert('提醒失败,请检查您的网络');
 			}
