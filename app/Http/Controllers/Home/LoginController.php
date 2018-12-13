@@ -98,7 +98,8 @@ class LoginController extends Controller
     public function signup(Request $request)
     {
     	// echo 1; exit;
-    	$res = $request -> except("_token", "code", "confirm_password");
+    	$res = $request -> except("_token", "code", "confirm_password", "geetest_challenge", "geetest_validate", "geetest_seccode");
+        // dd($res);
 
 
     	// dd($res);
@@ -116,7 +117,7 @@ class LoginController extends Controller
         $res['token'] = str_random(40);
         session(["token"=>$res["token"]]);
         if($rs){
-    	// 发送邮件
+    	   // 发送邮件
         	Mail::send('home.login.remind', ['hid'=>$rs,'token'=>$res['token'],'email'=>$res['email'],'username'=>$res['username']], function ($m) use ($res) {
 
 
@@ -151,14 +152,14 @@ class LoginController extends Controller
 
             if($data){
 
-                return redirect('/home/login/login');
+                return redirect('/home/login');
             }
         }
     }
 
 
 
-    //生成验证码方法
+   /* //生成验证码方法
 	public function captcha()
     {
         $phrase = new PhraseBuilder;
@@ -181,7 +182,7 @@ class LoginController extends Controller
         header("Cache-Control: no-cache, must-revalidate");
         header("Content-Type:image/jpeg");
         $builder->output();
-    }
+    }*/
 
     // ajax验证注册名是否重名的方法
     public function ajaxhname(Request $request)
@@ -236,7 +237,7 @@ class LoginController extends Controller
     	}
     }
 
-    // ajax验证验证码的方法
+   /* // ajax验证验证码的方法
     public function ajaxcode(Request $request)
     {
     	// 获取用户输入的验证码
@@ -251,7 +252,7 @@ class LoginController extends Controller
     	} else {
     		echo 0;
     	}
-    }
+    }*/
 
 
     public function ajaxcontrastname(Request $request)
@@ -392,7 +393,7 @@ class LoginController extends Controller
         if (!$data) {
             return back() -> with("error", "修改失败");
         } else {
-            return redirect("/home/login/login")->with("success", "修改成功,请登录");
+            return redirect("/home/login")->with("success", "修改成功,请登录");
         }
     }
 

@@ -95,7 +95,7 @@ $res = session('hid');
         try{
             $data = Homes::where("hid", session("hid"))->update($res);
             if($data){
-                return redirect("/home/login/login")->with("success", "修改成功，安全起见，请您重新登录");
+                return redirect("/home/login")->with("success", "修改成功，安全起见，请您重新登录");
             }
         }catch(\Exception $e){
             return back()->with("error","修改失败");
@@ -139,7 +139,7 @@ $res = session('hid');
         try{
             $data = Homes::where("hid", session("hid"))->update($res);
             if($data){
-                return redirect("/home/login/login")->with("success", "修改成功，请以新绑定的号码重新登录");
+                return redirect("/home/login")->with("success", "修改成功，请以新绑定的号码重新登录");
             }
         }catch(\Exception $e){
             return back()->with("error","修改失败");

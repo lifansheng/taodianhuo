@@ -35,10 +35,11 @@
 								<span class="us_uer"></span>
 								<input name="password" class="text" style="color: #FFFFFF !important; position:absolute; z-index:100;"value="" type="password" placeholder="请输入密码">
 							</div>
-							<div class="input_outer" style="width:190px;">
+							<!-- <div class="input_outer" style="width:190px;">
 								<input name="code" class="text" style="color: #FFFFFF !important" type="text" placeholder="请输入验证码">
-							</div>
-							<img src="/admin/captcha" alt="" style="position:absolute;margin-left:195px;display:inline;border-radius:25px;margin-top:-73px;" onclick='this.src = this.src+="?1"'>
+							</div> -->
+							<div style="margin-left:18px;">{!! Geetest::render() !!}</div>
+							<!-- <img src="/admin/captcha" alt="" style="position:absolute;margin-left:195px;display:inline;border-radius:25px;margin-top:-73px;" onclick='this.src = this.src+="?1"'> -->
 							
 								<input type="submit" value="登录" class="act-but submit" style="width:330px;">
                         	{{csrf_field()}}

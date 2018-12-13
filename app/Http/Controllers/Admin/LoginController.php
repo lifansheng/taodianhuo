@@ -26,13 +26,13 @@ class LoginController extends Controller
 
         // dd($rs);
         
-        //判断验证码
+        /*//判断验证码
         $code = session('code');
 
         if($code != $request->code){
            
             return back()->with('error','验证码错误');
-        }
+        }*/
 
         if (!$rs) {
             return back()->with("error", "用户名或者密码错误");
@@ -58,7 +58,7 @@ class LoginController extends Controller
     }
 
     //生成验证码方法
-	public function captcha()
+	/*public function captcha()
     {
         $phrase = new PhraseBuilder;
         // 设置验证码位数
@@ -80,8 +80,8 @@ class LoginController extends Controller
         header("Cache-Control: no-cache, must-revalidate");
         header("Content-Type:image/jpeg");
         $builder->output();
-    }
-
+    }*/
+    
     // 修改头像页面
     public function pic()
     {
