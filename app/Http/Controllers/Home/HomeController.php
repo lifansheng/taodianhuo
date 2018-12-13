@@ -166,7 +166,8 @@ $title = Site::first();
         $cuxiao = Goods::all();
 
         //comment 评论表
-        $comment = Comment::orderBy('id','desc')->paginate(10);
+        // $comment = Comment::orderBy('id','desc')->paginate(10);
+        $comment = Comment::orderBy('id','desc')->get();
         //用户
         // dd($comment);
         //用户{{ $users->links() }}
@@ -260,6 +261,9 @@ $title = Site::first();
     }
 
 
-
+    public function about()
+    {
+        echo 123;
+    }
 
 }
