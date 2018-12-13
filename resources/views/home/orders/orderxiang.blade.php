@@ -218,7 +218,7 @@
 													</div>
 												</li>
 												<li class="td td-change">
-													<button type="button" onclick="window.location='/home/queren/{{$res->oid}}'" class="am-btn am-btn-danger anniu">
+													<button type="button" oid="{{$res->oid}}" onclick="shouhuo(this)" class="am-btn am-btn-danger anniu">
 														确认收货</button>
 												</li>
 												@elseif($res->status == '2')
@@ -282,6 +282,14 @@
 		}else{
 			return false;
 		}
+	}
+
+	function shouhuo(oid)
+	{
+		var oid = $(oid).attr("oid");
+		// alert(oid);
+		alert('收货成功,如果对该商品还算满意的话就去给个好评吧o(∩_∩)o');
+		window.location.href='/home/shouorder?oid='+oid;
 	}
 
 	// 订单提醒发货

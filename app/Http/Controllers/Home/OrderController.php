@@ -81,11 +81,13 @@ class OrderController extends Controller
     }
 
     // 确认收货
-    public function queren($oid)
+    public function queren(Request $request)
     {
+        $oid = $request->oid;
         Orders::where('oid',$oid)->update(['status'=>'4']);
         return redirect('/home/order');
     }
+
 
     // 删除订单
     public function shanorder(Request $request)

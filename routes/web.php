@@ -228,7 +228,7 @@ Route::group(["middleware" => "home_login"], function(){
 	// 订单中心
 	Route::any("home/order","Home\OrderController@index");
 	Route::get("home/orderxiang","Home\OrderController@orderxiang");
-	Route::get("home/queren/{oid}","Home\OrderController@queren");
+	Route::get("home/shouorder","Home\OrderController@queren");
 	Route::get("home/shanorder","Home\OrderController@shanorder");
 	Route::post("home/tixing","Home\OrderController@tixing");
 
