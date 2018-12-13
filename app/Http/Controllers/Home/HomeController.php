@@ -263,7 +263,9 @@ $title = Site::first();
 
     public function about()
     {
-        echo 123;
+        // echo 123;
+        return view('home.about'); 
+
     }
 
 }

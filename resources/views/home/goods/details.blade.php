@@ -829,8 +829,12 @@
 												<div class="i-pic limit">
 													<a href="/home/details?id={{$v->id}}">
 													<img src="{{$v->imgs}}" width="212px" height="212px" />											
-													<h5>{{$v->gname}}</h5>
 													
+													<div class="p-name" style="margin-top: 30px">
+							      					<h5>{{$v->gname}}</h5> 	
+											    </div>
+											</a>
+							      	<div class="p-price">￥{{$v->price}}</strong></div>
 												</div>
 											</li>
 											@endforeach
