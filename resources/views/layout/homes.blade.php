@@ -139,7 +139,7 @@
 								<a href="javascript:void(0)">合作伙伴</a>
 								<a href="javascript:void(0)">联系我们</a>
 								<a href="JavaScript:void(0)">网站地图</a>
-								<em>© 2015-2025 tao.cn 版权所有.  <a href="tao.cn" target="_blank" title="淘点货">淘点货</a> - Collect from <!-- <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></em> -->
+								<em>© 2015-2025 tao.cn 版权所有.  <a href="/" target="_blank" title="淘点货">淘点货</a> - Collect from <!-- <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></em> -->
 							</p>
 						</div>
 					</div>

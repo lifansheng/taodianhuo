@@ -16,7 +16,7 @@
 								<div class="m-userinfo">
 									<div class="m-baseinfo">
 										<a href="information.html">
-											<img src="/homes/images/getAvatar.do.jpg">
+											<img src="{{$data->pic}}">
 										</a>
 										<em class="s-name">{{$data -> username}}<span class="vip1"></em>
 										<div class="s-prestige am-btn am-round">
@@ -345,9 +345,9 @@
 							</div>
 							<div class="s-care s-care-noweather">
 								<div class="s-date">
-									<em>21</em>
-									<span>星期一</span>
-									<span>2015.12</span>
+									<em>14</em>
+									<span>星期五</span>
+									<span>2018.12</span>
 								</div>
 							</div>
 						</div>
