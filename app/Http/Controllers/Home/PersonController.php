@@ -15,7 +15,13 @@ class PersonController extends Controller
 $res = session('hid');
                 // dd($res);
                 $data = DB::table('homes')->where('hid',$res)->first();
-    	return view('home.person.sy',['data' => $data]);
+                // 我的收藏显示数据
+                $rs = DB::table('collection')->where('homeid',$res)->get();
+                // 我的订单显示数据
+                $orders = DB::table('order')->where('hid',$res)->limit(3)->get();
+                // dd($orders);
+                // dd($rs);
+    	return view('home.person.sy',['data' => $data,'rs'=>$rs,'orders'=>$orders]);
     }
 
 
