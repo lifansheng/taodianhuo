@@ -258,7 +258,7 @@
 									<div class="tm-indcon"><span class="tm-label">累计销量</span><span class="tm-count">6015</span></div>
 								</li>
 								<li class="tm-ind-item tm-ind-reviewCount canClick tm-line3">
-									<div class="tm-indcon"><span class="tm-label">累计评价</span><span class="tm-count">640</span></div>
+									<div class="tm-indcon"><span class="tm-label">累计评价</span><span class="tm-count" id="ping">640</span></div>
 								</li>
 							</ul>
 							<div class="clear"></div>
@@ -772,6 +772,7 @@
 									num = hao+zhong+cha;
 									// console.log(num);
 									$("#all").text('('+num+')');
+									$("#ping").text(num);
 									//好评度
 									// var d =  (hao / num * 100).toFixed(0);
 									//小数点后没有小数
@@ -811,7 +812,7 @@
 										<li><a href="#">4</a></li>
 										<li><a href="#">5</a></li>
 										<li><a href="#">&raquo;</a></li> -->
-										{!!$comment->links()!!}
+										
 									<!-- </ul> -->
 									
 
