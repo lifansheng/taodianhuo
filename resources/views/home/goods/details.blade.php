@@ -20,7 +20,7 @@
 		<script type="text/javascript" src="/homes/AmazeUI-2.4.2/assets/js/amazeui.js"></script>
 		<script type="text/javascript" src="/homes/js/jquery.imagezoom.min.js"></script>
 		<script type="text/javascript" src="/homes/js/jquery.flexslider.js"></script>
-		<script type="text/javascript" src="/homes/js/list.js"></script>
+		<script type="text/javascript" src="/homes/js/list1.js"></script>
 		<link rel="stylesheet" type="text/css" href="/homes/alerts/sweetalert.css"/>
         <script type="text/javascript" src="/homes/alerts/jquery.js"></script> 
         <script src="/homes/alerts/sweetalert.min.js"></script>

@@ -1,6 +1,25 @@
 // JavaScript Document
 
 
+//商品规格选择
+$(function() {
+	$(".theme-options").each(function() {
+		var i = $(this);
+		var p = i.find("ul>li");
+		p.click(function() {
+			if (!!$(this).hasClass("selected")) {
+				$(this).removeClass("selected");
+
+			} else {
+				$(this).addClass("selected").siblings("li").removeClass("selected");
+
+			}
+
+		})
+	})
+
+})
+
 
 //弹出规格选择
 $(document).ready(function() {
