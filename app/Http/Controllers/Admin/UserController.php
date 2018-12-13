@@ -151,7 +151,8 @@ class UserController extends Controller
      */
     public function update(UserupdateRequest $request, $id)
     {
-        //
+        
+//
         $res = $request->except("_token","pic","_method");
 
         // dd($res);
@@ -196,19 +197,19 @@ class UserController extends Controller
 
         }
 
+
         // 数据表修改数据
         try{
-
+      
             $data = User::where("id", $id)->update($res);
             
-            if($data){
-                return redirect("/admin/user")->with("success","修改成功");
-            }
+            return redirect("/admin/user")->with("success","修改成功");
 
         }catch(\Exception $e){
 
             return back()->with("error","修改失败");
         }
+          
 
         // $data = User::where("id", $id)->update($res);
         // if ($data) {

@@ -28,8 +28,8 @@ class UserupdateRequest extends FormRequest
             // "password" => "required|regex:/^\S{6,12}$/",
             // "repass"=>"same:password",
             "phone"=>"regex:/^1[3456789]\d{9}$/",
-            "email"=>"email",
-            "pic"=>"required"
+            "email"=>"email"
+            // "pic"=>"required"
         ];
     }
 
@@ -47,8 +47,8 @@ class UserupdateRequest extends FormRequest
             // "password.regex"  => "密码格式不正确",
             // "repass.same"=>"两次密码不一致",
             "phone.regex"=>"手机号码格式不正确",
-            "email.email"=>"邮箱格式不正确",
-            "pic.required"=>"请上传图片"
+            "email.email"=>"邮箱格式不正确"
+            // "pic.required"=>"请上传图片"
         ];
     }
 }
