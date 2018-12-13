@@ -20,7 +20,7 @@ class GoodsController extends Controller
     public function index(Request $request)
     {
         //
-        $res = Goods::orderBy('id','asc')
+        $res = Goods::orderBy('id','desc')
             ->where(function($query) use($request){
                 //检测关键字
                 $gname = $request->input('gname');
