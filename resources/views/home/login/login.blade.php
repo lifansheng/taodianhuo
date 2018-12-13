@@ -64,16 +64,18 @@
 			<input type="password" name="password" class="password" placeholder="密码" oncontextmenu="return false" onpaste="return false" />
 			<label id="codeerror" class="errorsssss" for="code">密码不能为空</label>
 		</div>
-		<div>
+		<!-- 原验证码 -->
+		<!-- <div>
 			<input type="text" name="code" class="code" placeholder="输入验证码" oncontextmenu="return false" onpaste="return false" />
 			<label id="codeerror" class="errorss" for="code">验证码不能为空</label>
-			<label id="codeerror" class="errors" for="code">验证码错误</label>
-			
-		</div>
+			<label id="codeerror" class="errors" for="code">验证码错误</label>			
+		</div> -->
 		<a href="/home/forget_password" style="float:right;font-size:8px;color:#eee;text-decoration:none;margin-top:5px;">忘记密码?</a>
-		<div>
+		<!-- 原验证码 -->
+		<!-- <div>
 			<img src="/home/captcha" alt="" onclick='this.src = this.src+="?1"' style="float:right; margin-top:20px;margin-left:120px; border-radius:8px;">
-		</div>
+		</div> -->
+		<div style="margin-top:23px;margin-left:3px;">{!! Geetest::render() !!}</div>
 		<button id="submit" type="submit">登 录</button>
 		<!-- <div>
 			<input type="submit"  id="submit" value="登 录"/>
@@ -100,9 +102,9 @@
 	    }
 	});
 	// 设置ajax为同步
-	$.ajaxSetup({async:false});
+	// $.ajaxSetup({async:false});
 
-	var CS = false;
+	// var CS = false;
 	var US = false;
 	var PS = false;
 
@@ -116,9 +118,8 @@
     
     $('.mws-form-message').delay(2000).fadeOut(2000);
 
- //    function regerror()
-	// {
-	    // 验证码
+
+	    /*// 验证码
 		// 失去焦点事件
 		$("input[name=code]").blur(function(){
 			// 设置变量t表示当前被选中的对象
@@ -145,7 +146,7 @@
 		    		CS = true;
 		    	}
 		    })
-		})
+		})*/
 
 		
 	
@@ -185,8 +186,7 @@
 				PS = true;
 			}
 		})
-	// }
-	// regerror();
+
 
 	
 		/*// 发送ajax
@@ -226,18 +226,16 @@
 	// 按钮点击事件
 	$("#submit").click(function(){
 
-		$("input[name=code]").trigger("blur");
+		// $("input[name=code]").trigger("blur");
 		$("input[name=password]").trigger("blur");
 		$("input[name=username]").trigger("blur");
 		// console.log(CS)
 		// console.log(US)
 		// console.log(PS)
 
-			if (CS && US && PS) {
+			if (US && PS) {
 				return true;
 			} else {
-				// alert(1);
-				// regerror();
 				return false;
 			}			
 	})

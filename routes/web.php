@@ -162,7 +162,7 @@ Route::get("home/tixing", "Home\LoginController@tixing");
 Route::post("home/ajaxhname", "Home\LoginController@ajaxhname");
 Route::post("home/ajaxemails", "Home\LoginController@ajaxemail");
 Route::post("home/ajaxphone", "Home\LoginController@ajaxphone");
-Route::post("home/ajaxcode", "Home\LoginController@ajaxcode");
+// Route::post("home/ajaxcode", "Home\LoginController@ajaxcode");
 
 Route::post("home/ajaxpcode", "Home\LoginController@ajaxpcode");
 Route::post("home/ajaxpcodes", "Home\LoginController@ajaxpcodes");

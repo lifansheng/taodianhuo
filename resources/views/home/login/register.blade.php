@@ -58,15 +58,16 @@
 			<input type="text" name="email" class="email" placeholder="输入邮箱地址"  />
 			<label id="email" class="errors" for="email">邮箱已被注册</label>
 		</div>
-		<div>
+		<!-- 原验证码 -->
+		<!-- <div>
 			<input type="text" name="code" class="code" placeholder="输入验证码" oncontextmenu="return false" onpaste="return false" />
 			<label id="codeerror" class="errors" for="code">验证码错误</label>
 			<label id="codeerror" class="errorss" for="code">验证码不能为空</label>
 		</div>
 		<div>
 			<img src="/home/captcha" alt="" onclick='this.src = this.src+="?1"' style="float:right; margin-top:26px; border-radius:8px;">
-		</div>
-
+		</div> -->
+		<div style="margin-left:3px;margin-top:16px;">{!! Geetest::render() !!}</div>
 		<button id="submit" type="submit">注 册</button>
 		<!-- <div>
 			<input type="submit"  id="submit" value="注 册"/>
@@ -94,12 +95,12 @@
 	});
 
 	// 设置ajax为同步
-	$.ajaxSetup({async:false});
+	// $.ajaxSetup({async:false});
 
 	var US = false;
 	var PS = false;
 	var ES = false;
-	var CS = false;
+	// var CS = false;
 
 	//  设置提示信息隐藏
     $(".errors").css("display", "none");
@@ -171,7 +172,7 @@
 	    })
 	})
 
-	// 验证码
+	/*// 验证码
 	// 失去焦点事件
 	$("input[name=code]").blur(function(){
 		// 设置变量t表示当前被选中的对象
@@ -199,19 +200,19 @@
 	    		// alert(1);
 	    	}
 	    })
-	})
+	})*/
 
 	// 按钮点击事件
 	$("#registerForm").submit(function(){
 
 		// 触发失去焦点事件判断ajax
-		$('input[name=code]').trigger('blur');
+		// $('input[name=code]').trigger('blur');
 		$('input[name=phone_number]').trigger('blur');
 		$('input[name=email]').trigger('blur');
 		$('input[name=username]').trigger('blur');
 
 
-		if (US && PS && ES && CS) {
+		if (US && PS && ES) {
 			return true;
 		} else {
 			return false;
