@@ -63,10 +63,10 @@
                         rowspan="1" colspan="1" style="width: 57px;" aria-label="CSS grade: activate to sort column ascending">
                             图片
                         </th>
-                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
+                        <!-- <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
                         rowspan="1" colspan="1" style="width: 40px;" aria-label="CSS grade: activate to sort column ascending">
                             状态
-                        </th>
+                        </th> -->
                          <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
                         rowspan="1" colspan="1" style="width: 97px;" aria-label="CSS grade: activate to sort column ascending">
                             操作
@@ -95,13 +95,13 @@
                         <td class=" ">
                             <img src="{{$v->pic}}" alt="" width='80px'>
                         </td>
-                        <td class=" ">
+                       <!--  <td class=" ">
                             @if($v->status == '1')
                             开启
                             @else
                             关闭
                             @endif
-                        </td>
+                        </td> -->
                         
                         <td class=" ">
                             <a href="/admin/advert/{{$v->id}}/edit" class='btn btn-info'>修改</a>
