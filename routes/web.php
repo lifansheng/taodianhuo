@@ -20,7 +20,7 @@
 Route::any("admin/login", "Admin\LoginController@login");
 Route::any("admin/dologin", "Admin\LoginController@dologin");
 Route::any("admin/captcha", "Admin\LoginController@captcha");
-
+Route::any('admin/upload','Admin\LunboController@upload');
 
 //后台的修改已登录管理员的头像
 Route::any("admin/pic", "Admin\LoginController@pic");
@@ -86,7 +86,7 @@ Route::group(["middleware" => ["login", "userper"]], function(){
 
 	// 后台的轮播图管理
 	Route::resource('admin/lunbo','Admin\LunboController');
-	Route::any('/admin/upload','Admin\LunboController@upload');
+	
 
 	// 后台订单管理
 	Route::resource('admin/a_order','Admin\OrderController');
