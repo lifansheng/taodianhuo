@@ -35,7 +35,7 @@
                             </div>
                         </div>
                 </div>
-                <div class="mws-form-row">
+                <!-- <div class="mws-form-row">
                     <label class="mws-form-label">状态</label>
                     <div class="mws-form-item clearfix">
                         <ul class="mws-form-list inline">
@@ -43,7 +43,7 @@
                             <li><label><input type="radio" name="status" value="0"> 禁用</label></li>
                         </ul>
                     </div>
-                </div>
+                </div> -->
             </div>
             <div class="mws-button-row">
                 <input value="添加" class="btn btn-info" type="submit">
