@@ -9,11 +9,18 @@
 				<div class="am-slider am-slider-default scoll" data-am-flexslider id="demo-slider-0">
 					<ul class="am-slides">
 						@foreach($lunbo as $k => $v)
-						<li class="banner1"><a href="{{$v->url}}"><img src="{{$v->pic}}" /></a></li>
+						<li class="banner1" beijing="{{$v->beijing}}"><a href="{{$v->url}}"><img src="{{$v->pic}}" /></a></li>
 						@endforeach
 					</ul>
 				</div>
 				<div class="clear"></div>
+				<script type="text/javascript">
+					var aa = $('.banner1');
+					aa.each(function(){
+						var bb = $(this).attr('beijing')
+						$(this).attr('style','background:'+bb);
+					});
+				</script>
 			</div>
 			
 			<div class="shopNav">

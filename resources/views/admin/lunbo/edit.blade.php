@@ -45,6 +45,15 @@
                 </div>
             </div>
 
+            <div class="mws-form-row">
+                <label  class="mws-form-label">
+                   背景色:
+                </label>
+                <div class="mws-form-item">
+                    <input type="text"  name="beijing" value="{{$data->beijing}}" class="layui-input">
+                </div>
+            </div>
+
             <!-- <div class="mws-form-row">
                 <label  class="mws-form-label">
                    轮播图:

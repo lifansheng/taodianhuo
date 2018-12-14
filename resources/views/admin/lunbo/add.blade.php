@@ -38,6 +38,13 @@
                     </div>
                 </div>
 
+                <div class="mws-form-row">
+                    <label class="mws-form-label">轮播图背景色</label>
+                    <div class="mws-form-item">
+                        <input type="text" name='beijing' class="small">
+                    </div>
+                </div>
+
     			<div class="mws-form-row">
     				<label class="mws-form-label">跳转地址</label>
     				<div class="mws-form-item clearfix">

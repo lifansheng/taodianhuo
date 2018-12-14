@@ -64,6 +64,11 @@
                         rowspan="1" colspan="1" style="width: 100px;" aria-label="Browser: activate to sort column ascending">
                            轮播图
                         </th>
+
+                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
+                        rowspan="1" colspan="1" style="width: 100px;" aria-label="Browser: activate to sort column ascending">
+                           轮播图背景色
+                        </th>
                         
                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
                         rowspan="1" colspan="1" style="width: 80px;" aria-label="Engine version: activate to sort column ascending">
@@ -88,6 +93,7 @@
                 <td>{{$v['id']}}</td>
                 <td>{{$v['title']}}</td>
                 <td><img src="{{$v->pic}}" style="width: 252px;height: 158px;"></td>
+                <td><div style="background:{{$v['beijing']}};width: 100px;height: 100px;"></div></td>
                 <td><a>{{$v['url']}}</a></td>
                 <td>{{$v['addtime']}}</td>
                   <td class=" ">
